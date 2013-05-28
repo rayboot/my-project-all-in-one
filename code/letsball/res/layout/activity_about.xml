@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".AboutActivity" >
+
+    <TextView
+        android:id="@+id/tvAbout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/llComment"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:text="@string/hello_world"
+        android:textColor="@color/black" />
+
+    <LinearLayout
+        android:id="@+id/llComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" >
+
+        <Button
+            android:id="@+id/btnLike"
+            style="@drawable/tab_indicator_ab_mygreenstyle"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:background="@drawable/btn_tab_mygreenstyle"
+            android:drawableTop="@drawable/about_like"
+            android:paddingTop="10dp"
+            android:text="喜欢" />
+
+        <Button
+            android:id="@+id/btnSad"
+            style="@drawable/tab_indicator_ab_mygreenstyle"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:background="@drawable/btn_tab_mygreenstyle"
+            android:drawableTop="@drawable/about_sad"
+            android:paddingTop="10dp"
+            android:text="不喜欢" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="@dimen/s_5_dp" >
+
+    <TextView
+        android:id="@+id/tvIndex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:maxWidth="25dp"
+        android:minWidth="25dp"
+        android:text="100"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tvShoot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvIndex"
+        android:layout_alignBottom="@+id/tvIndex"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:maxWidth="40dp"
+        android:minWidth="40dp"
+        android:text="100"
+        android:textColor="@color/black" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/tvShoot"
+        android:layout_toRightOf="@+id/tvIndex"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/s_5_dp"
+        android:paddingRight="@dimen/s_5_dp" >
+
+        <TextView
+            android:id="@+id/tvPlayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="120dp"
+            android:minWidth="120dp"
+            android:text="TextView"
+            android:textColor="@color/black" />
+
+        <ImageView
+            android:id="@+id/ivTeamLogo"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/default_60" />
+
+        <TextView
+            android:id="@+id/tvTeamName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+</RelativeLayout>
