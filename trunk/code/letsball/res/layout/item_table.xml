@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/s_5_dp" >
+
+    <TextView
+        android:id="@+id/tvLoss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_weight="1"
+        android:gravity="center_vertical|center_horizontal"
+        android:maxWidth="25dp"
+        android:minWidth="25dp"
+        android:text="1"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tvDraw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvLoss"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/tvLoss"
+        android:layout_weight="1"
+        android:gravity="center_vertical|center_horizontal"
+        android:maxWidth="25dp"
+        android:minWidth="25dp"
+        android:text="1"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tvWin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvDraw"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/tvDraw"
+        android:layout_weight="1"
+        android:gravity="center_vertical|center_horizontal"
+        android:maxWidth="25dp"
+        android:minWidth="25dp"
+        android:text="1"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tvBalls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvWin"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/tvWin"
+        android:layout_weight="2"
+        android:gravity="center_vertical|center_horizontal"
+        android:maxWidth="50dp"
+        android:minWidth="50dp"
+        android:text="1"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tvRound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvBalls"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/tvBalls"
+        android:layout_weight="1"
+        android:gravity="center_vertical|center_horizontal"
+        android:maxWidth="25dp"
+        android:minWidth="25dp"
+        android:text="1"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tvScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvRound"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/tvRound"
+        android:layout_weight="1"
+        android:gravity="center_vertical|center_horizontal"
+        android:maxWidth="25dp"
+        android:minWidth="25dp"
+        android:text="1"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tvIndex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvScore"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_weight="1"
+        android:gravity="center_vertical|center_horizontal"
+        android:maxWidth="25dp"
+        android:minWidth="25dp"
+        android:text="10"
+        android:textColor="@color/black" />
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/tvIndex"
+        android:src="@drawable/default_60" />
+
+    <TextView
+        android:id="@+id/tvTeamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/tvScore"
+        android:layout_toRightOf="@+id/ivLogo"
+        android:layout_weight="4"
+        android:maxWidth="25dp"
+        android:minWidth="25dp"
+        android:text="TextView"
+        android:textColor="@color/black" />
+
+</RelativeLayout>

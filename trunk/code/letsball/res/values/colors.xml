@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2010 Johan Nilsson <http://markupartist.com>
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+
+    <color name="actionbar_separator">#8B1A1A</color>
+    <color name="actionbar_title">#FFFFFF</color>
+    <color name="actionbar_background_start">#8B1A1A</color>
+    <color name="actionbar_background_end">#CD2626</color>
+    <color name="actionbar_background_item_pressed_start">#FF7F00</color>
+    <color name="actionbar_background_item_pressed_end">#EE7600</color>
+    <color name="glass">#00000000</color>
+    <color name="blue">#000000ff</color>
+    <color name="edit_pic_bg">#424242</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="red">#ff0000</color>
+    <color name="edit_line">#d1d1d1</color>
+    <color name="title_dropdown_line">#dddddd</color>
+    <color name="title_dropdown_item">#ededed</color>
+    <color name="grid_take_pic_bg">#dedede</color>
+    <color name="title_line">#4a9ece</color>
+    <color name="gray">#e8e8e8</color>
+    <color name="is_deal_red">#44ff0000</color>
+    <color name="is_deal_green">#4400ff00</color>
+    <color name="ita_bg">#56c5ff</color>
+    <color name="eng_bg">#55769e</color>
+    <color name="span_bg">#ff2e12</color>
+    <color name="de_bg">#15992a</color>
+    <color name="china_bg">#FFa5c43f</color>
+    <color name="green1">#33199900</color>
+
+</resources>

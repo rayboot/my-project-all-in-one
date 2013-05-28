@@ -1,0 +1,244 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".TableAndShooterActivity" >
+
+    <FrameLayout
+        android:id="@+id/frameLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" >
+
+        <RelativeLayout
+            android:id="@+id/rlTableTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="30dp"
+            android:padding="@dimen/s_5_dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/tvLoss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:maxWidth="25dp"
+                android:minWidth="25dp"
+                android:text="负"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tvDraw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tvLoss"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/tvLoss"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:maxWidth="25dp"
+                android:minWidth="25dp"
+                android:text="平"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tvWin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tvDraw"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/tvDraw"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:maxWidth="25dp"
+                android:minWidth="25dp"
+                android:text="胜"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tvBalls"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tvWin"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/tvWin"
+                android:layout_weight="2"
+                android:gravity="center_vertical|center_horizontal"
+                android:maxWidth="50dp"
+                android:minWidth="50dp"
+                android:text="进/失"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tvRound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tvBalls"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/tvBalls"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:maxWidth="25dp"
+                android:minWidth="25dp"
+                android:text="赛"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tvScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tvRound"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/tvRound"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:maxWidth="25dp"
+                android:minWidth="25dp"
+                android:text="分"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tvIndex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tvScore"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_weight="1"
+                android:gravity="center_vertical|center_horizontal"
+                android:maxWidth="25dp"
+                android:minWidth="25dp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/tvTeamName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/tvScore"
+                android:layout_toRightOf="@+id/tvIndex"
+                android:layout_weight="4"
+                android:gravity="center_vertical|center_horizontal"
+                android:maxWidth="25dp"
+                android:minWidth="25dp"
+                android:text="球队"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlShooterTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="30dp"
+            android:padding="@dimen/s_5_dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/tvIndex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:maxWidth="25dp"
+                android:minWidth="25dp"
+                android:text=""
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/tvShoot"
+                android:layout_toRightOf="@+id/tvIndex"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/s_5_dp"
+                android:paddingRight="@dimen/s_5_dp" >
+
+                <TextView
+                    android:id="@+id/tvPlayer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxWidth="120dp"
+                    android:minWidth="120dp"
+                    android:text="球员"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/tvTeamName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="球队"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvShoot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:maxWidth="40dp"
+                android:minWidth="40dp"
+                android:text="进球"
+                android:textColor="@color/black" />
+        </RelativeLayout>
+    </FrameLayout>
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="wrap_content"
+        android:layout_height="2dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/frameLayout1"
+        android:background="#d9d9d9" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/view1" >
+
+        <ListView
+            android:id="@+id/lvShow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="#d9d9d9"
+            android:dividerHeight="2px"
+            android:fadingEdge="none"
+            android:scrollingCache="false" >
+
+        </ListView>
+
+        <LinearLayout
+            android:id="@+id/llContent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="正在加载" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

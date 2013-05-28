@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/glass"
+    android:padding="5dp" >
+
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/round_bg"
+            android:gravity="center"
+            android:lines="1"
+            android:text="110&apos;"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/tvTime" >
+
+        <ImageView
+            android:id="@+id/ivHomeStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@android:drawable/ic_menu_info_details" />
+
+        <TextView
+            android:id="@+id/tvHomeEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/ivHomeStatus"
+            android:background="#619230"
+            android:gravity="right"
+            android:padding="5dp"
+            android:text="TextView"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/tvTime" >
+
+        <ImageView
+            android:id="@+id/ivAwayStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@android:drawable/ic_menu_info_details" />
+
+        <TextView
+            android:id="@+id/tvAwayEvent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/ivAwayStatus"
+            android:background="@color/default_title_indicator_footer_color"
+            android:padding="5dp"
+            android:text="TextView"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+</RelativeLayout>
