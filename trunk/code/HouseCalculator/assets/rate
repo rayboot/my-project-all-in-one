@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+	<docname name="页面标题">贷款利率列表</docname>
+	<ratelist id="1" name="利率列表">
+		<ratename name="标题">
+    2012年7月6日后利率下浮30%
+    </ratename>
+    <year1 name="小于等于1年" gjj="0.028" sy="0.042"></year1>
+    <year2 name="等于2年或3年" gjj="0.028" sy="0.04305"></year2>
+    <year4 name="等于4年或5年" gjj="0.028" sy="0.0448"></year4>
+    <year6 name="大于5年" gjj="0.0315" sy="0.04585"></year6>
+	</ratelist>
+	<ratelist id="2" name="利率列表">
+		<ratename name="标题">
+    2012年7月6日后利率下浮20%
+    </ratename>
+    <year1 name="小于等于1年" gjj="0.032" sy="0.048"></year1>
+    <year2 name="等于2年或3年" gjj="0.032" sy="0.0492"></year2>
+    <year4 name="等于4年或5年" gjj="0.032" sy="0.0512"></year4>
+    <year6 name="大于5年" gjj="0.036" sy="0.0524"></year6>
+	</ratelist>
+	<ratelist id="3" name="利率列表">
+		<ratename name="标题">
+    2012年7月6日后利率下浮15%
+    </ratename>
+    <year1 name="小于等于1年" gjj="0.034" sy="0.051"></year1>
+    <year2 name="等于2年或3年" gjj="0.034" sy="0.052275"></year2>
+    <year4 name="等于4年或5年" gjj="0.034" sy="0.0544"></year4>
+    <year6 name="大于5年" gjj="0.03825" sy="0.055675"></year6>
+	</ratelist>
+	<ratelist id="4" name="利率列表">
+		<ratename name="标题">
+    2012年7月6日后利率上浮10%
+    </ratename>
+    <year1 name="小于等于1年" gjj="0.044" sy="0.066"></year1>
+    <year2 name="等于2年或3年" gjj="0.044" sy="0.06765"></year2>
+    <year4 name="等于4年或5年" gjj="0.044" sy="0.0704"></year4>
+    <year6 name="大于5年" gjj="0.0495" sy="0.07205"></year6>
+	</ratelist>
+	<ratelist id="5" name="利率列表">
+		<ratename name="标题">
+    selected>2012年7月6日后基准利率
+    </ratename>
+    <year1 name="小于等于1年" gjj="0.04" sy="0.06"></year1>
+    <year2 name="等于2年或3年" gjj="0.04" sy="0.0615"></year2>
+    <year4 name="等于4年或5年" gjj="0.04" sy="0.0640"></year4>
+    <year6 name="大于5年" gjj="0.045" sy="0.0655"></year6>
+	</ratelist>
+</document>
