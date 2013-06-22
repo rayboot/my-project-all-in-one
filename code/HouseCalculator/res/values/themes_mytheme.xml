@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="MyTheme" parent="Theme.Sherlock.Light">
+
+    <item name="android:editTextStyle">@style/EditTextMyTheme</item>
+
+    <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewMyTheme</item>
+
+    <item name="android:checkboxStyle">@style/CheckBoxMyTheme</item>
+
+    <item name="android:radioButtonStyle">@style/RadioButtonMyTheme</item>
+
+    <item name="android:buttonStyle">@style/ButtonMyTheme</item>
+
+    <item name="android:imageButtonStyle">@style/ImageButtonMyTheme</item>
+
+    <item name="android:spinnerStyle">@style/SpinnerMyTheme</item>
+
+    <item name="android:dropDownSpinnerStyle">@style/SpinnerMyTheme.DropDown</item>
+
+    <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItemMyTheme</item>
+
+    <item name="android:listViewStyle">@style/ListViewMyTheme</item>
+
+    <item name="android:listViewWhiteStyle">@style/ListViewMyTheme.White</item>
+
+    <item name="android:spinnerItemStyle">@style/SpinnerItemMyTheme</item>
+
+  </style>
+
+</resources>
