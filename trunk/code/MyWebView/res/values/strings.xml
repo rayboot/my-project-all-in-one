@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">我的浏览器</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="choose_upload">Choose file for upload</string>
+    <string name="title">提示</string>
+    <string name="message">问题提交成功！</string>
+    <string name="ok_button">确定</string>
+    <string name="cancel_button">取消</string>
+    <string name="message_record">记录已生成！</string>
+    <string name="message_toast">服务器连接异常请重试！</string>
+    <string name="message_upload">确定要上传此文件?</string>
+    <string name="str_rename">重命名:</string>
+    <string name="str_new">新建:</string>
+    <string name="str_copy">复制到位置：</string>
+    <string name="str_move">移动到位置：</string>
+    <string name="file">文 件</string>
+    <string name="dir">文件夹</string>
+    <string name="dirAddButton">新建</string>
+    <string name="dirSetButton">设置</string>
+    <string name="dirAboutButton">关于</string>
+    <string name="open">打开方式</string>
+    <string name="zoom">缩略图片</string>
+
+</resources>
