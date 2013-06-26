@@ -26,6 +26,7 @@ public class MainActivity extends Activity {
 		webSettings.setJavaScriptEnabled(true);// 设置支持javascript脚本
 		webSettings.setBuiltInZoomControls(true);// 设置支持缩放
 		mWebView.loadUrl("http://wapah.189.cn");
+		mWebView.setDownloadListener(new MyWebViewDownloader(this));
 		mWebView.setWebChromeClient(new TestWebChromeClient(
 				new WebChromeClient()) {
 
