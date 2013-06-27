@@ -10,11 +10,13 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	private WebView mWebView;
 	private ValueCallback<Uri> mUploadMessage;
 	final static int FILE_SELECTED = 4;
+	long lastBackTime = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,9 +69,27 @@ public class MainActivity extends Activity {
 	}
 
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if ((keyCode == KeyEvent.KEYCODE_BACK) && mWebView.canGoBack()) {
-			mWebView.goBack();
-			return true;
+		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+			if (mWebView.canGoBack()) {
+				mWebView.goBack();
+				return true;
+			} else {
+
+				if (lastBackTime == 0) {
+					lastBackTime = System.currentTimeMillis();
+					Toast.makeText(this, "再按一次退出程序。", Toast.LENGTH_LONG).show();
+					return false;
+				} else {
+					if (System.currentTimeMillis() - lastBackTime <= 3000) {
+						return super.onKeyDown(keyCode, event);
+					} else {
+						lastBackTime = System.currentTimeMillis();
+						Toast.makeText(this, "再按一次退出程序。", Toast.LENGTH_LONG)
+								.show();
+						return false;
+					}
+				}
+			}
 		}
 		return super.onKeyDown(keyCode, event);
 	}
