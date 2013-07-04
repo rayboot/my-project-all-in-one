@@ -29,12 +29,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-            <View
-                android:id="@+id/view1"
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"
-                android:layout_weight="1" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -111,7 +105,7 @@
                     android:text="年限" />
 
                 <EditText
-                    android:id="@+id/editText3"
+                    android:id="@+id/etYearGJJ"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -121,7 +115,7 @@
                     android:inputType="number" />
 
                 <EditText
-                    android:id="@+id/editText4"
+                    android:id="@+id/etYearSY"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -143,7 +137,7 @@
                     android:layout_weight="1" />
 
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/tvSelectYearGJJ"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
@@ -156,7 +150,7 @@
                     android:textStyle="italic" />
 
                 <TextView
-                    android:id="@+id/textView8"
+                    android:id="@+id/tvSelectYearSY"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
@@ -172,7 +166,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" >
+                android:layout_weight="1"
+                android:gravity="bottom" >
 
                 <Spinner
                     android:id="@+id/spType"
@@ -184,18 +179,41 @@
                 </Spinner>
 
                 <LinearLayout
+                    android:id="@+id/llCustomRate"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    android:visibility="gone" >
+                    android:gravity="bottom" >
+
+                    <EditText
+                        android:id="@+id/editText5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:inputType="number" />
+
+                    <EditText
+                        android:id="@+id/editText6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:inputType="number" />
                 </LinearLayout>
 
                 <Spinner
-                    android:id="@+id/spContent"
+                    android:id="@+id/spRate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2" />
+                    android:layout_weight="2"
+                    android:visibility="gone" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvRateDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="TextView" />
         </LinearLayout>
     </ScrollView>
 
