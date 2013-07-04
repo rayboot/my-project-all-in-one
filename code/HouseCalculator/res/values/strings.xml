@@ -7,8 +7,10 @@
     <string name="title_activity_about">关于</string>
     <string name="share_main_content">感谢分享</string>
     <string name="spinnertypename">利率类型</string>
+
     <string-array name="spinnertypearray">
         <item>主流利率</item>
         <item>自定义利率</item>
     </string-array>
+
 </resources>
