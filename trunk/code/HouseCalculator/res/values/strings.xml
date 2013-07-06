@@ -13,4 +13,6 @@
         <item>自定义利率</item>
     </string-array>
 
+    <string name="title_activity_result">ResultActivity</string>
+
 </resources>
