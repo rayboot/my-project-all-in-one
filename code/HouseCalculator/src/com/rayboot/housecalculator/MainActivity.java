@@ -23,11 +23,11 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 import butterknife.InjectView;
 import butterknife.Views;
 
@@ -66,6 +66,15 @@ public class MainActivity extends SherlockActivity {
 	EditText etYearGJJ;
 	@InjectView(R.id.etYearSY)
 	EditText etYearSY;
+	@InjectView(R.id.etGJJValue)
+	EditText etGJJValue;
+	@InjectView(R.id.etSYValue)
+	EditText etSYValue;
+	@InjectView(R.id.btnResult)
+	Button btnResult;
+
+	double curGjjRate = 0.045;
+	double curSYRate = 0.0655;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +87,8 @@ public class MainActivity extends SherlockActivity {
 
 		tvSelectYearGJJ.setOnClickListener(onClickListener);
 		tvSelectYearSY.setOnClickListener(onClickListener);
+		btnResult.setOnClickListener(onClickListener);
+		;
 
 		spType.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override
@@ -126,7 +137,16 @@ public class MainActivity extends SherlockActivity {
 			case R.id.tvSelectYearSY:
 				showSelectYearDialog(v);
 				break;
-
+			case R.id.btnResult:
+				Intent intent = new Intent(MainActivity.this,
+						ResultActivity.class);
+				intent.putExtra("gjjRate", curGjjRate);
+				intent.putExtra("sdRate", curSYRate);
+				intent.putExtra("gjjValue", Integer.valueOf(etGJJValue.getText().toString()));
+				intent.putExtra("sdValue", Integer.valueOf(etSYValue.getText().toString()));
+				intent.putExtra("gjjMonth", Integer.valueOf(etYearGJJ.getText().toString()));
+				intent.putExtra("sdMonth", Integer.valueOf(etYearSY.getText().toString()));
+				MainActivity.this.startActivity(intent);
 			default:
 				break;
 			}
