@@ -14,6 +14,7 @@ import butterknife.InjectView;
 import butterknife.Views;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.MenuItem;
 
 public class ResultActivity extends SherlockActivity {
 	@InjectView(R.id.btnType1)
@@ -31,8 +32,8 @@ public class ResultActivity extends SherlockActivity {
 
 	double gjjRate = 0;
 	double sdRate = 0;
-	int gjjValue = 0;
-	int sdValue = 0;
+	double gjjValue = 0;
+	double sdValue = 0;
 	int gjjMonth = 0;
 	int sdMonth = 0;
 
@@ -56,12 +57,14 @@ public class ResultActivity extends SherlockActivity {
 		setTheme(R.style.MyTheme);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_result);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setDisplayShowHomeEnabled(false);
 		Views.inject(this);
 
 		gjjRate = getIntent().getDoubleExtra("gjjRate", 0.045) / 12;
 		sdRate = getIntent().getDoubleExtra("sdRate", 0.0655) / 12;
-		gjjValue = getIntent().getIntExtra("gjjValue", 0);
-		sdValue = getIntent().getIntExtra("sdValue", 0);
+		gjjValue = getIntent().getDoubleExtra("gjjValue", 0) * 10000;
+		sdValue = getIntent().getDoubleExtra("sdValue", 0) * 10000;
 		gjjMonth = getIntent().getIntExtra("gjjMonth", 0);
 		sdMonth = getIntent().getIntExtra("sdMonth", 0);
 
@@ -70,6 +73,7 @@ public class ResultActivity extends SherlockActivity {
 		getResult(1);
 		getResult(2);
 		btnType1.performClick();
+		btnType1.setSelected(true);
 	}
 
 	private OnClickListener onClickListener = new OnClickListener() {
@@ -81,10 +85,14 @@ public class ResultActivity extends SherlockActivity {
 			case R.id.btnType1:
 				changeTitle(totalType1);
 				changeList(resultType1Adapter);
+				btnType1.setSelected(true);
+				btnType2.setSelected(false);
 				break;
 			case R.id.btnType2:
 				changeTitle(totalType2);
 				changeList(resultType2Adapter);
+				btnType1.setSelected(false);
+				btnType2.setSelected(true);
 				break;
 			default:
 				break;
@@ -198,5 +206,15 @@ public class ResultActivity extends SherlockActivity {
 			}
 			totalType2 = total;
 		}
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			this.finish();
+			break;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }

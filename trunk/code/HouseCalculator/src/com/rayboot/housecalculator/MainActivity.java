@@ -18,6 +18,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -88,7 +89,6 @@ public class MainActivity extends SherlockActivity {
 		tvSelectYearGJJ.setOnClickListener(onClickListener);
 		tvSelectYearSY.setOnClickListener(onClickListener);
 		btnResult.setOnClickListener(onClickListener);
-		;
 
 		spType.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override
@@ -142,10 +142,26 @@ public class MainActivity extends SherlockActivity {
 						ResultActivity.class);
 				intent.putExtra("gjjRate", curGjjRate);
 				intent.putExtra("sdRate", curSYRate);
-				intent.putExtra("gjjValue", Integer.valueOf(etGJJValue.getText().toString()));
-				intent.putExtra("sdValue", Integer.valueOf(etSYValue.getText().toString()));
-				intent.putExtra("gjjMonth", Integer.valueOf(etYearGJJ.getText().toString()));
-				intent.putExtra("sdMonth", Integer.valueOf(etYearSY.getText().toString()));
+				double gjjvalue = 0;
+				if (!TextUtils.isEmpty(etGJJValue.getText().toString())) {
+					gjjvalue = Double.valueOf(etGJJValue.getText().toString());
+				}
+				intent.putExtra("gjjValue", gjjvalue);
+				double sdValue = 0;
+				if (!TextUtils.isEmpty(etSYValue.getText().toString())) {
+					sdValue = Double.valueOf(etSYValue.getText().toString());
+				}
+				intent.putExtra("sdValue", sdValue);
+				int gjjMonth = 0;
+				if (!TextUtils.isEmpty(etYearGJJ.getText().toString())) {
+					gjjMonth = Integer.valueOf(etYearGJJ.getText().toString());
+				}
+				intent.putExtra("gjjMonth", gjjMonth);
+				int sdMonth = 0;
+				if (!TextUtils.isEmpty(etYearSY.getText().toString())) {
+					sdMonth = Integer.valueOf(etYearSY.getText().toString());
+				}
+				intent.putExtra("sdMonth", sdMonth);
 				MainActivity.this.startActivity(intent);
 			default:
 				break;
