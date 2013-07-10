@@ -198,19 +198,21 @@
                     android:gravity="bottom" >
 
                     <EditText
-                        android:id="@+id/editText5"
+                        android:id="@+id/etCusGjj"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:inputType="numberDecimal"
+                        android:text="0.045"
                         android:textSize="12sp" />
 
                     <EditText
-                        android:id="@+id/editText6"
+                        android:id="@+id/etCusSy"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:inputType="numberDecimal"
+                        android:text="0.0655"
                         android:textSize="12sp" />
 
                 </LinearLayout>
