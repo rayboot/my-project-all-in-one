@@ -34,4 +34,17 @@ public class RateObj {
 		DecimalFormat df = new DecimalFormat("#.##");
 		return Double.parseDouble(df.format(Double.valueOf(value) * 100));
 	}
+
+	public String getRate(int type, int year) {
+
+		if (year <= 12) {
+			return type == 0 ? year1.gjj : year1.sy;
+		} else if (year > 12 && year <= 36) {
+			return type == 0 ? year2.gjj : year2.sy;
+		} else if (year > 36 && year <= 60) {
+			return type == 0 ? year4.gjj : year4.sy;
+		} else {
+			return type == 0 ? year6.gjj : year6.sy;
+		}
+	}
 }

@@ -18,7 +18,9 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -73,6 +75,10 @@ public class MainActivity extends SherlockActivity {
 	EditText etSYValue;
 	@InjectView(R.id.btnResult)
 	Button btnResult;
+	@InjectView(R.id.etCusGjj)
+	EditText etCusGjj;
+	@InjectView(R.id.etCusSy)
+	EditText etCusSy;
 
 	double curGjjRate = 0.045;
 	double curSYRate = 0.0655;
@@ -117,7 +123,7 @@ public class MainActivity extends SherlockActivity {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
-				tvRateDetail.setText(rateList.get(position).toString());
+				changeRateDesc();
 			}
 
 			@Override
@@ -125,6 +131,72 @@ public class MainActivity extends SherlockActivity {
 				// TODO Auto-generated method stub
 			}
 		});
+		etYearGJJ.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+				changeRateDesc();
+			}
+		});
+		etYearSY.addTextChangedListener(new TextWatcher() {
+
+			@Override
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void afterTextChanged(Editable s) {
+				// TODO Auto-generated method stub
+				changeRateDesc();
+			}
+		});
+	}
+
+	private void changeRateDesc() {
+		String gjj;
+		String sy;
+		if (spRate.getVisibility() == View.GONE) {
+			return;
+		}
+
+		int gjjMonth = 0;
+		if (!TextUtils.isEmpty(etYearGJJ.getText().toString())) {
+			gjjMonth = Integer.valueOf(etYearGJJ.getText().toString());
+		}
+		int sdMonth = 0;
+		if (!TextUtils.isEmpty(etYearSY.getText().toString())) {
+			sdMonth = Integer.valueOf(etYearSY.getText().toString());
+		}
+		gjj = rateList.get(spRate.getSelectedItemPosition()).getRate(0,
+				gjjMonth);
+		sy = rateList.get(spRate.getSelectedItemPosition()).getRate(1, sdMonth);
+
+		tvRateDetail.setText("公积金利率：" + gjj + "   商贷利率：" + sy);
 	}
 
 	private OnClickListener onClickListener = new OnClickListener() {
@@ -296,8 +368,9 @@ public class MainActivity extends SherlockActivity {
 		rateAdapter
 				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spRate.setAdapter(rateAdapter);
-		tvRateDetail.setText(rateList.get(spRate.getSelectedItemPosition())
-				.toString());
+		changeRateDesc();
+		// tvRateDetail.setText(rateList.get(spRate.getSelectedItemPosition())
+		// .toString());
 	}
 
 	public List<RateObj> parse(String xmlString) {
