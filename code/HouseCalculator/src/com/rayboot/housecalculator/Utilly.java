@@ -8,8 +8,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.umeng.fb.NotificationType;
-import com.umeng.fb.UMFeedbackService;
+import com.umeng.fb.FeedbackAgent;
 import com.umeng.update.UmengUpdateAgent;
 import com.umeng.update.UmengUpdateListener;
 import com.umeng.update.UpdateResponse;
@@ -17,9 +16,7 @@ import com.umeng.update.UpdateResponse;
 public class Utilly {
 
 	public static void initUMeng(final Context context) {
-		// 友盟意见反馈检索
-		UMFeedbackService.enableNewReplyNotification(context,
-				NotificationType.AlertDialog);
+		new FeedbackAgent(context).sync();
 		// 友盟检测更新
 		UmengUpdateAgent.update(context);
 		UmengUpdateAgent.setUpdateAutoPopup(false);

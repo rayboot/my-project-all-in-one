@@ -16,8 +16,11 @@ import org.xml.sax.XMLReader;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -33,6 +36,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import butterknife.InjectView;
 import butterknife.Views;
+import cn.waps.AdView;
+import cn.waps.AppConnect;
+import cn.waps.UpdatePointsNotifier;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
@@ -41,12 +47,15 @@ import com.actionbarsherlock.view.SubMenu;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.umeng.analytics.MobclickAgent;
-import com.umeng.fb.UMFeedbackService;
+import com.umeng.fb.FeedbackAgent;
 
-public class MainActivity extends SherlockActivity {
+public class MainActivity extends SherlockActivity implements
+		UpdatePointsNotifier {
+	final int MORE_AWARK = 1;
 	final int MORE_FEEBACK = 2;
 	final int MORE_ABOUT = 3;
 	final int MORE_SHARE = 4;
+	int totalPoint = 0;
 	final String rateUrl = "http://wxcs.ahhouse.com/yiDong/oldhouse.php/Index/index/type/rate/ps/100/isXml/1/";
 	List<RateObj> rateList;
 	String[] mRateStrings = null;
@@ -90,6 +99,12 @@ public class MainActivity extends SherlockActivity {
 		setContentView(R.layout.activity_main);
 		Views.inject(this);
 		Utilly.initUMeng(this);
+		AppConnect.getInstance(this);
+		AppConnect.getInstance(this).getPoints(this);
+		LinearLayout container = (LinearLayout) findViewById(R.id.AdLinearLayout);
+		new AdView(this, container).DisplayAd();
+		AppConnect.getInstance(this).initPopAd(this);
+
 		getRateData();
 
 		tvSelectYearGJJ.setOnClickListener(onClickListener);
@@ -177,6 +192,13 @@ public class MainActivity extends SherlockActivity {
 		});
 	}
 
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		AppConnect.getInstance(this).finalize();
+	}
+
 	private void changeRateDesc() {
 		String gjj;
 		String sy;
@@ -198,6 +220,46 @@ public class MainActivity extends SherlockActivity {
 
 		tvRateDetail.setText("公积金利率：" + gjj + "   商贷利率：" + sy);
 	}
+	Handler updateDate = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            switch(msg.what){
+                case 0:
+					if (msg.obj.equals("您的账户已不足,无法消费")) {
+					new AlertDialog.Builder(MainActivity.this)
+							.setTitle("您的积分不足")
+							.setMessage("您的积分已不足，右上角的按钮可以获取更多积分哦。")
+							.setNegativeButton("残忍的取消",
+									new DialogInterface.OnClickListener() {
+
+										@Override
+										public void onClick(
+												DialogInterface dialog,
+												int which) {
+											dialog.dismiss();
+										}
+									})
+							.setPositiveButton("立即获取积分",
+									new DialogInterface.OnClickListener() {
+
+										@Override
+										public void onClick(
+												DialogInterface dialog,
+												int which) {
+											AppConnect.getInstance(
+													MainActivity.this)
+													.showOffers(
+															MainActivity.this);
+
+										}
+									}).create().show();
+					}else{
+						goResult();
+					}
+                    break;
+            }
+        }
+    };
 
 	private OnClickListener onClickListener = new OnClickListener() {
 
@@ -210,40 +272,90 @@ public class MainActivity extends SherlockActivity {
 				showSelectYearDialog(v);
 				break;
 			case R.id.btnResult:
-				Intent intent = new Intent(MainActivity.this,
-						ResultActivity.class);
-				intent.putExtra("gjjRate", curGjjRate);
-				intent.putExtra("sdRate", curSYRate);
-				double gjjvalue = 0;
-				if (!TextUtils.isEmpty(etGJJValue.getText().toString())) {
-					gjjvalue = Double.valueOf(etGJJValue.getText().toString());
-				}
-				intent.putExtra("gjjValue", gjjvalue);
-				double sdValue = 0;
-				if (!TextUtils.isEmpty(etSYValue.getText().toString())) {
-					sdValue = Double.valueOf(etSYValue.getText().toString());
-				}
-				intent.putExtra("sdValue", sdValue);
-				int gjjMonth = 0;
-				if (!TextUtils.isEmpty(etYearGJJ.getText().toString())) {
-					gjjMonth = Integer.valueOf(etYearGJJ.getText().toString());
-				}
-				intent.putExtra("gjjMonth", gjjMonth);
-				int sdMonth = 0;
-				if (!TextUtils.isEmpty(etYearSY.getText().toString())) {
-					sdMonth = Integer.valueOf(etYearSY.getText().toString());
-				}
-				intent.putExtra("sdMonth", sdMonth);
-				MainActivity.this.startActivity(intent);
+				AppConnect.getInstance(MainActivity.this).spendPoints(25,
+						new UpdatePointsNotifier() {
+
+							@Override
+							public void getUpdatePointsFailed(String arg0) {
+								// TODO Auto-generated method stub
+								Message msg = new Message();
+								msg.what = 0;
+								msg.obj = arg0;
+								updateDate.sendMessage(msg);
+							}
+
+							@Override
+							public void getUpdatePoints(String arg0, int arg1) {
+								// TODO Auto-generated method stub
+								totalPoint = arg1;
+
+								boolean hasPopAd = AppConnect.getInstance(
+										MainActivity.this).hasPopAd(
+										MainActivity.this);
+								if (hasPopAd) {
+									AppConnect.getInstance(MainActivity.this)
+											.showPopAd(MainActivity.this);
+									Dialog popAdDialog = AppConnect
+											.getInstance(MainActivity.this)
+											.getPopAdDialog();
+									if (popAdDialog != null) {
+										if (popAdDialog.isShowing()) {
+											// 插屏广告正在显示
+										}
+										popAdDialog
+												.setOnCancelListener(new OnCancelListener() {
+													@Override
+													public void onCancel(
+															DialogInterface dialog) {
+														// 监听插屏广告关闭事件
+														goResult();
+													}
+												});
+									}
+								} else {
+									goResult();
+								}
+							}
+						});
+
 			default:
 				break;
 			}
 		}
 	};
 
+	private void goResult() {
+
+		Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+		intent.putExtra("gjjRate", curGjjRate);
+		intent.putExtra("sdRate", curSYRate);
+		double gjjvalue = 0;
+		if (!TextUtils.isEmpty(etGJJValue.getText().toString())) {
+			gjjvalue = Double.valueOf(etGJJValue.getText().toString());
+		}
+		intent.putExtra("gjjValue", gjjvalue);
+		double sdValue = 0;
+		if (!TextUtils.isEmpty(etSYValue.getText().toString())) {
+			sdValue = Double.valueOf(etSYValue.getText().toString());
+		}
+		intent.putExtra("sdValue", sdValue);
+		int gjjMonth = 0;
+		if (!TextUtils.isEmpty(etYearGJJ.getText().toString())) {
+			gjjMonth = Integer.valueOf(etYearGJJ.getText().toString());
+		}
+		intent.putExtra("gjjMonth", gjjMonth);
+		int sdMonth = 0;
+		if (!TextUtils.isEmpty(etYearSY.getText().toString())) {
+			sdMonth = Integer.valueOf(etYearSY.getText().toString());
+		}
+		intent.putExtra("sdMonth", sdMonth);
+		MainActivity.this.startActivity(intent);
+	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		SubMenu sub = menu.addSubMenu("Setting");
+		sub.add(0, MORE_AWARK, 0, "获取积分");
 		sub.add(0, MORE_FEEBACK, 0, "意见反馈");
 		sub.add(0, MORE_SHARE, 0, "分享");
 		sub.add(0, MORE_ABOUT, 0, "关于");
@@ -258,15 +370,16 @@ public class MainActivity extends SherlockActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-		case 0:
-			return false;
+		case MORE_AWARK:
+			AppConnect.getInstance(this).showOffers(this);
+			break;
 		case MORE_ABOUT:
 			startActivity(new Intent(this, AboutActivity.class));
 			overridePendingTransition(R.anim.base_slide_right_in,
 					R.anim.stay_anim);
 			break;
 		case MORE_FEEBACK:
-			UMFeedbackService.openUmengFeedbackSDK(this);
+			 new FeedbackAgent(this).startFeedbackActivity();
 			break;
 		case MORE_SHARE:
 			Utilly.shareSomethingText(this,
@@ -398,5 +511,16 @@ public class MainActivity extends SherlockActivity {
 		}
 
 		return null;
+	}
+
+	@Override
+	public void getUpdatePoints(String currencyName, int pointTotal) {
+		// TODO Auto-generated method stub
+		totalPoint = pointTotal;
+	}
+
+	@Override
+	public void getUpdatePointsFailed(String error) {
+		// TODO Auto-generated method stub
 	}
 }
