@@ -114,8 +114,6 @@ public class ResultActivity extends SherlockActivity {
 		tvTotalHuanKuan.setText("=" + (int) totalValue);
 	}
 
-	// rateType == 1 "等额本息"
-	// rateType == 1 "等额本金"
 	private void getResult(int rateType) {
 		if (gjjMonth > 0) {
 			gjjPay = new double[gjjMonth];

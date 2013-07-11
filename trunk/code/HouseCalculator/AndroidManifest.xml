@@ -20,6 +20,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
 
     <application
         android:allowBackup="true"
@@ -38,10 +39,14 @@
 
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="518f89b456240bb20701ed94" >
+            android:value="51dee65456240b560c01c91c" >
         </meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
+            android:value="baidu" />
+        <!-- 以下属性为分发渠道ID,编码表参见本文档末附表 -->
+        <meta-data
+            android:name="WAPS_PID"
             android:value="baidu" />
         <!-- 您从百度移动联盟网站获取的APPSID -->
         <meta-data
@@ -52,6 +57,14 @@
             android:name="BaiduMobAd_APP_SEC"
             android:value="d9bc85eb" />
         <!-- 注册AppActivity -->
+        <activity
+            android:name="cn.waps.OffersWebView"
+            android:configChanges="keyboardHidden|orientation" />
+        <!-- 以下属性为应用ID,从万普后台获取 -->
+        <meta-data
+            android:name="WAPS_ID"
+            android:value="d9dfb4447590dbf6d14308478a523661" />
+
         <activity
             android:name="com.rayboot.housecalculator.MainActivity"
             android:label="@string/app_name" >
@@ -76,6 +89,8 @@
             android:name="com.rayboot.housecalculator.ResultActivity"
             android:label="@string/title_activity_result" >
         </activity>
+        <activity android:name="com.umeng.fb.ConversationActivity" />
+        <activity android:name="com.umeng.fb.ContactActivity" />
     </application>
 
 </manifest>
