@@ -5,6 +5,8 @@ import java.io.InputStreamReader;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
@@ -76,5 +78,20 @@ public class Utilly {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public static String getInfoFromShared(String key) {
+		SharedPreferences preferences = MyApplication.mInstance
+				.getSharedPreferences("roundu", Context.MODE_PRIVATE);
+		return preferences.getString(key, null);
+	}
+
+	public static boolean setInfoToShared(String key, String value) {
+		SharedPreferences preferences = MyApplication.mInstance
+				.getSharedPreferences("roundu", Context.MODE_PRIVATE);
+		Editor editor = preferences.edit();
+		editor.putString(key, value);
+		editor.commit();
+		return true;
 	}
 }

@@ -19,8 +19,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -38,7 +36,6 @@ import butterknife.InjectView;
 import butterknife.Views;
 import cn.waps.AdView;
 import cn.waps.AppConnect;
-import cn.waps.UpdatePointsNotifier;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
@@ -49,8 +46,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
 
-public class MainActivity extends SherlockActivity implements
-		UpdatePointsNotifier {
+public class MainActivity extends SherlockActivity {
 	final int MORE_AWARK = 1;
 	final int MORE_FEEBACK = 2;
 	final int MORE_ABOUT = 3;
@@ -88,9 +84,12 @@ public class MainActivity extends SherlockActivity implements
 	EditText etCusGjj;
 	@InjectView(R.id.etCusSy)
 	EditText etCusSy;
+	@InjectView(R.id.AdLinearLayout)
+	LinearLayout AdLinearLayout;
 
 	double curGjjRate = 0.045;
 	double curSYRate = 0.0655;
+	int spendPoint = 4;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -98,12 +97,7 @@ public class MainActivity extends SherlockActivity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Views.inject(this);
-		Utilly.initUMeng(this);
-		AppConnect.getInstance(this);
-		AppConnect.getInstance(this).getPoints(this);
-		LinearLayout container = (LinearLayout) findViewById(R.id.AdLinearLayout);
-		new AdView(this, container).DisplayAd();
-		AppConnect.getInstance(this).initPopAd(this);
+		new AdView(this, AdLinearLayout).DisplayAd();
 
 		getRateData();
 
@@ -192,13 +186,6 @@ public class MainActivity extends SherlockActivity implements
 		});
 	}
 
-	@Override
-	protected void onDestroy() {
-		// TODO Auto-generated method stub
-		super.onDestroy();
-		AppConnect.getInstance(this).finalize();
-	}
-
 	private void changeRateDesc() {
 		String gjj;
 		String sy;
@@ -220,46 +207,6 @@ public class MainActivity extends SherlockActivity implements
 
 		tvRateDetail.setText("公积金利率：" + gjj + "   商贷利率：" + sy);
 	}
-	Handler updateDate = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            switch(msg.what){
-                case 0:
-					if (msg.obj.equals("您的账户已不足,无法消费")) {
-					new AlertDialog.Builder(MainActivity.this)
-							.setTitle("您的积分不足")
-							.setMessage("您的积分已不足，右上角的按钮可以获取更多积分哦。")
-							.setNegativeButton("残忍的取消",
-									new DialogInterface.OnClickListener() {
-
-										@Override
-										public void onClick(
-												DialogInterface dialog,
-												int which) {
-											dialog.dismiss();
-										}
-									})
-							.setPositiveButton("立即获取积分",
-									new DialogInterface.OnClickListener() {
-
-										@Override
-										public void onClick(
-												DialogInterface dialog,
-												int which) {
-											AppConnect.getInstance(
-													MainActivity.this)
-													.showOffers(
-															MainActivity.this);
-
-										}
-									}).create().show();
-					}else{
-						goResult();
-					}
-                    break;
-            }
-        }
-    };
 
 	private OnClickListener onClickListener = new OnClickListener() {
 
@@ -272,57 +219,74 @@ public class MainActivity extends SherlockActivity implements
 				showSelectYearDialog(v);
 				break;
 			case R.id.btnResult:
-				AppConnect.getInstance(MainActivity.this).spendPoints(25,
-						new UpdatePointsNotifier() {
 
+				boolean hasPopAd = AppConnect.getInstance(MainActivity.this)
+						.hasPopAd(MainActivity.this);
+				if (hasPopAd) {
+					AppConnect.getInstance(MainActivity.this).showPopAd(
+							MainActivity.this);
+					Dialog popAdDialog = AppConnect.getInstance(
+							MainActivity.this).getPopAdDialog();
+					if (popAdDialog != null) {
+						if (popAdDialog.isShowing()) {
+							// 插屏广告正在显示
+						}
+						popAdDialog.setOnCancelListener(new OnCancelListener() {
 							@Override
-							public void getUpdatePointsFailed(String arg0) {
-								// TODO Auto-generated method stub
-								Message msg = new Message();
-								msg.what = 0;
-								msg.obj = arg0;
-								updateDate.sendMessage(msg);
-							}
-
-							@Override
-							public void getUpdatePoints(String arg0, int arg1) {
-								// TODO Auto-generated method stub
-								totalPoint = arg1;
-
-								boolean hasPopAd = AppConnect.getInstance(
-										MainActivity.this).hasPopAd(
-										MainActivity.this);
-								if (hasPopAd) {
-									AppConnect.getInstance(MainActivity.this)
-											.showPopAd(MainActivity.this);
-									Dialog popAdDialog = AppConnect
-											.getInstance(MainActivity.this)
-											.getPopAdDialog();
-									if (popAdDialog != null) {
-										if (popAdDialog.isShowing()) {
-											// 插屏广告正在显示
-										}
-										popAdDialog
-												.setOnCancelListener(new OnCancelListener() {
-													@Override
-													public void onCancel(
-															DialogInterface dialog) {
-														// 监听插屏广告关闭事件
-														goResult();
-													}
-												});
-									}
-								} else {
-									goResult();
-								}
+							public void onCancel(DialogInterface dialog) {
+								// 监听插屏广告关闭事件
+								goSpend();
 							}
 						});
+					}
+				} else {
+					goSpend();
+				}
 
 			default:
 				break;
 			}
 		}
 	};
+
+	private void goSpend() {
+		AppConnect.getInstance(MainActivity.this).spendPoints(spendPoint,
+				MyApplication.mInstance.updatePointsNotifier);
+		if (TextUtils.isEmpty(Utilly.getInfoFromShared("total_point"))) {
+			goResult();
+		} else {
+			int total = Integer
+					.valueOf(Utilly.getInfoFromShared("total_point"));
+			if (total - spendPoint > 0) {
+				goResult();
+			} else {
+				new AlertDialog.Builder(MainActivity.this)
+						.setTitle("您的积分不足")
+						.setMessage("您的积分已不足，右上角的按钮可以获取更多积分哦。")
+						.setNegativeButton("残忍的取消",
+								new DialogInterface.OnClickListener() {
+
+									@Override
+									public void onClick(DialogInterface dialog,
+											int which) {
+										dialog.dismiss();
+									}
+								})
+						.setPositiveButton("立即获取积分",
+								new DialogInterface.OnClickListener() {
+
+									@Override
+									public void onClick(DialogInterface dialog,
+											int which) {
+										AppConnect.getInstance(
+												MainActivity.this).showOffers(
+												MainActivity.this);
+
+									}
+								}).create().show();
+			}
+		}
+	}
 
 	private void goResult() {
 
@@ -379,12 +343,13 @@ public class MainActivity extends SherlockActivity implements
 					R.anim.stay_anim);
 			break;
 		case MORE_FEEBACK:
-			 new FeedbackAgent(this).startFeedbackActivity();
+			new FeedbackAgent(this).startFeedbackActivity();
 			break;
 		case MORE_SHARE:
+			String str = String.format(this.getString(R.string.share_content),
+					getString(R.string.app_name), getString(R.string.app_name));
 			Utilly.shareSomethingText(this,
-					getResources().getString(R.string.app_name), getResources()
-							.getString(R.string.share_main_content));
+					getResources().getString(R.string.app_name), str);
 			break;
 		default:
 			break;
@@ -513,14 +478,4 @@ public class MainActivity extends SherlockActivity implements
 		return null;
 	}
 
-	@Override
-	public void getUpdatePoints(String currencyName, int pointTotal) {
-		// TODO Auto-generated method stub
-		totalPoint = pointTotal;
-	}
-
-	@Override
-	public void getUpdatePointsFailed(String error) {
-		// TODO Auto-generated method stub
-	}
 }
