@@ -1,1948 +1,1944 @@
 [
     {
-        "province": "±±¾©",
+        "province": "åŒ—äº¬",
         "citys": [
             {
-                "cityname": "±±¾©",
+                "cityname": "åŒ—äº¬",
                 "citycode": "101010100"
             },
             {
-                "cityname": "³¯Ñô",
+                "cityname": "æœé˜³",
                 "citycode": "101010300"
             },
             {
-                "cityname": "Ë³Òå",
+                "cityname": "é¡ºä¹‰",
                 "citycode": "101010400"
             },
             {
-                "cityname": "»³Èá",
+                "cityname": "æ€€æŸ”",
                 "citycode": "101010500"
             },
             {
-                "cityname": "Í¨Öİ",
+                "cityname": "é€šå·",
                 "citycode": "101010600"
             },
             {
-                "cityname": "²ıÆ½",
+                "cityname": "æ˜Œå¹³",
                 "citycode": "101010700"
             },
             {
-                "cityname": "ÑÓÇì",
+                "cityname": "å»¶åº†",
                 "citycode": "101010800"
             },
             {
-                "cityname": "·áÌ¨",
+                "cityname": "ä¸°å°",
                 "citycode": "101010900"
             },
             {
-                "cityname": "Ê¯¾°É½",
+                "cityname": "çŸ³æ™¯å±±",
                 "citycode": "101011000"
             },
             {
-                "cityname": "´óĞË",
+                "cityname": "å¤§å…´",
                 "citycode": "101011100"
             },
             {
-                "cityname": "·¿É½",
+                "cityname": "æˆ¿å±±",
                 "citycode": "101011200"
             },
             {
-                "cityname": "ÃÜÔÆ",
+                "cityname": "å¯†äº‘",
                 "citycode": "101011300"
             },
             {
-                "cityname": "ÃÅÍ·¹µ",
+                "cityname": "é—¨å¤´æ²Ÿ",
                 "citycode": "101011400"
             },
             {
-                "cityname": "Æ½¹È",
+                "cityname": "å¹³è°·",
                 "citycode": "101011500"
             },
             {
-                "cityname": "°Ë´ïÁë",
+                "cityname": "å…«è¾¾å²­",
                 "citycode": "101011600"
             },
             {
-                "cityname": "·ğÒ¯¶¥",
+                "cityname": "ä½›çˆ·é¡¶",
                 "citycode": "101011700"
             },
             {
-                "cityname": "ÌÀºÓ¿Ú",
+                "cityname": "æ±¤æ²³å£",
                 "citycode": "101011800"
             },
             {
-                "cityname": "ÃÜÔÆÉÏµé×Ó",
+                "cityname": "å¯†äº‘ä¸Šç”¸å­",
                 "citycode": "101011900"
             },
             {
-                "cityname": "Õ«ÌÃ",
+                "cityname": "æ–‹å ‚",
                 "citycode": "101012000"
             },
             {
-                "cityname": "Ï¼ÔÆÁë",
+                "cityname": "éœäº‘å²­",
                 "citycode": "101012100"
             },
             {
-                "cityname": "±±¾©³ÇÇø",
-                "citycode": "101012200"
-            },
-            {
-                "cityname": "º£µí",
+                "cityname": "æµ·æ·€",
                 "citycode": "101010200"
             }
         ]
     },
     {
-        "province": "Ìì½òÊĞ",
+        "province": "å¤©æ´¥å¸‚",
         "citys": [
             {
-                "cityname": "Ìì½ò",
+                "cityname": "å¤©æ´¥",
                 "citycode": "101030100"
             },
             {
-                "cityname": "±¦Ûæ",
+                "cityname": "å®å»",
                 "citycode": "101030300"
             },
             {
-                "cityname": "¶«Àö",
+                "cityname": "ä¸œä¸½",
                 "citycode": "101030400"
             },
             {
-                "cityname": "Î÷Çà",
+                "cityname": "è¥¿é’",
                 "citycode": "101030500"
             },
             {
-                "cityname": "±±³½",
+                "cityname": "åŒ—è¾°",
                 "citycode": "101030600"
             },
             {
-                "cityname": "¼»ÏØ",
+                "cityname": "è“Ÿå¿",
                 "citycode": "101031400"
             },
             {
-                "cityname": "ºº¹Á",
+                "cityname": "æ±‰æ²½",
                 "citycode": "101030800"
             },
             {
-                "cityname": "¾²º£",
+                "cityname": "é™æµ·",
                 "citycode": "101030900"
             },
             {
-                "cityname": "½òÄÏ",
+                "cityname": "æ´¥å—",
                 "citycode": "101031000"
             },
             {
-                "cityname": "ÌÁ¹Á",
+                "cityname": "å¡˜æ²½",
                 "citycode": "101031100"
             },
             {
-                "cityname": "´ó¸Û",
+                "cityname": "å¤§æ¸¯",
                 "citycode": "101031200"
             },
             {
-                "cityname": "ÎäÇå",
+                "cityname": "æ­¦æ¸…",
                 "citycode": "101030200"
             },
             {
-                "cityname": "ÄşºÓ",
+                "cityname": "å®æ²³",
                 "citycode": "101030700"
             }
         ]
     },
     {
-        "province": "ÉÏº£",
+        "province": "ä¸Šæµ·",
         "citys": [
             {
-                "cityname": "ÉÏº£",
+                "cityname": "ä¸Šæµ·",
                 "citycode": "101020100"
             },
             {
-                "cityname": "±¦É½",
+                "cityname": "å®å±±",
                 "citycode": "101020300"
             },
             {
-                "cityname": "¼Î¶¨",
+                "cityname": "å˜‰å®š",
                 "citycode": "101020500"
             },
             {
-                "cityname": "ÄÏ»ã",
+                "cityname": "å—æ±‡",
                 "citycode": "101020600"
             },
             {
-                "cityname": "ÆÖ¶«",
+                "cityname": "æµ¦ä¸œ",
                 "citycode": "101021300"
             },
             {
-                "cityname": "ÇàÆÖ",
+                "cityname": "é’æµ¦",
                 "citycode": "101020800"
             },
             {
-                "cityname": "ËÉ½­",
+                "cityname": "æ¾æ±Ÿ",
                 "citycode": "101020900"
             },
             {
-                "cityname": "·îÏÍ",
+                "cityname": "å¥‰è´¤",
                 "citycode": "101021000"
             },
             {
-                "cityname": "³çÃ÷",
+                "cityname": "å´‡æ˜",
                 "citycode": "101021100"
             },
             {
-                "cityname": "Ğì¼Ò»ã",
+                "cityname": "å¾å®¶æ±‡",
                 "citycode": "101021200"
             },
             {
-                "cityname": "ãÉĞĞ",
+                "cityname": "é—µè¡Œ",
                 "citycode": "101020200"
             },
             {
-                "cityname": "½ğÉ½",
+                "cityname": "é‡‘å±±",
                 "citycode": "101020700"
             }
         ]
     },
     {
-        "province": "ºÓ±±",
+        "province": "æ²³åŒ—",
         "citys": [
             {
-                "cityname": "Ê¯¼Ò×¯",
+                "cityname": "çŸ³å®¶åº„",
                 "citycode": "101090101"
             },
             {
-                "cityname": "ÕÅ¼Ò¿Ú",
+                "cityname": "å¼ å®¶å£",
                 "citycode": "101090301"
             },
             {
-                "cityname": "³ĞµÂ",
+                "cityname": "æ‰¿å¾·",
                 "citycode": "101090402"
             },
             {
-                "cityname": "ÌÆÉ½",
+                "cityname": "å”å±±",
                 "citycode": "101090501"
             },
             {
-                "cityname": "ÇØ»Êµº",
+                "cityname": "ç§¦çš‡å²›",
                 "citycode": "101091101"
             },
             {
-                "cityname": "²×Öİ",
+                "cityname": "æ²§å·",
                 "citycode": "101090701"
             },
             {
-                "cityname": "ºâË®",
+                "cityname": "è¡¡æ°´",
                 "citycode": "101090801"
             },
             {
-                "cityname": "ĞÏÌ¨",
+                "cityname": "é‚¢å°",
                 "citycode": "101090901"
             },
             {
-                "cityname": "ºªµ¦",
+                "cityname": "é‚¯éƒ¸",
                 "citycode": "101091001"
             },
             {
-                "cityname": "±£¶¨",
+                "cityname": "ä¿å®š",
                 "citycode": "101090201"
             },
             {
-                "cityname": "ÀÈ·»",
+                "cityname": "å»ŠåŠ",
                 "citycode": "101090601"
             }
         ]
     },
     {
-        "province": "ºÓÄÏ",
+        "province": "æ²³å—",
         "citys": [
             {
-                "cityname": "Ö£Öİ",
+                "cityname": "éƒ‘å·",
                 "citycode": "101180101"
             },
             {
-                "cityname": "ĞÂÏç",
+                "cityname": "æ–°ä¹¡",
                 "citycode": "101180301"
             },
             {
-                "cityname": "Ğí²ı",
+                "cityname": "è®¸æ˜Œ",
                 "citycode": "101180401"
             },
             {
-                "cityname": "Æ½¶¥É½",
+                "cityname": "å¹³é¡¶å±±",
                 "citycode": "101180501"
             },
             {
-                "cityname": "ĞÅÑô",
+                "cityname": "ä¿¡é˜³",
                 "citycode": "101180601"
             },
             {
-                "cityname": "ÄÏÑô",
+                "cityname": "å—é˜³",
                 "citycode": "101180701"
             },
             {
-                "cityname": "¿ª·â",
+                "cityname": "å¼€å°",
                 "citycode": "101180801"
             },
             {
-                "cityname": "ÂåÑô",
+                "cityname": "æ´›é˜³",
                 "citycode": "101180901"
             },
             {
-                "cityname": "ÉÌÇğ",
+                "cityname": "å•†ä¸˜",
                 "citycode": "101181001"
             },
             {
-                "cityname": "½¹×÷",
+                "cityname": "ç„¦ä½œ",
                 "citycode": "101181101"
             },
             {
-                "cityname": "º×±Ú",
+                "cityname": "é¹¤å£",
                 "citycode": "101181201"
             },
             {
-                "cityname": "å§Ñô",
+                "cityname": "æ¿®é˜³",
                 "citycode": "101181301"
             },
             {
-                "cityname": "ÖÜ¿Ú",
+                "cityname": "å‘¨å£",
                 "citycode": "101181401"
             },
             {
-                "cityname": "äğºÓ",
+                "cityname": "æ¼¯æ²³",
                 "citycode": "101181501"
             },
             {
-                "cityname": "×¤Âíµê",
+                "cityname": "é©»é©¬åº—",
                 "citycode": "101181601"
             },
             {
-                "cityname": "ÈıÃÅÏ¿",
+                "cityname": "ä¸‰é—¨å³¡",
                 "citycode": "101181701"
             },
             {
-                "cityname": "¼ÃÔ´",
+                "cityname": "æµæº",
                 "citycode": "101181801"
             },
             {
-                "cityname": "°²Ñô",
+                "cityname": "å®‰é˜³",
                 "citycode": "101180201"
             }
         ]
     },
     {
-        "province": "°²»Õ",
+        "province": "å®‰å¾½",
         "citys": [
             {
-                "cityname": "ºÏ·Ê",
+                "cityname": "åˆè‚¥",
                 "citycode": "101220101"
             },
             {
-                "cityname": "Îßºş",
+                "cityname": "èŠœæ¹–",
                 "citycode": "101220301"
             },
             {
-                "cityname": "»´ÄÏ",
+                "cityname": "æ·®å—",
                 "citycode": "101220401"
             },
             {
-                "cityname": "Âí°°É½",
+                "cityname": "é©¬éå±±",
                 "citycode": "101220501"
             },
             {
-                "cityname": "°²Çì",
+                "cityname": "å®‰åº†",
                 "citycode": "101220601"
             },
             {
-                "cityname": "ËŞÖİ",
+                "cityname": "å®¿å·",
                 "citycode": "101220701"
             },
             {
-                "cityname": "¸·Ñô",
+                "cityname": "é˜œé˜³",
                 "citycode": "101220801"
             },
             {
-                "cityname": "ÙñÖİ",
+                "cityname": "äº³å·",
                 "citycode": "101220901"
             },
             {
-                "cityname": "»ÆÉ½",
+                "cityname": "é»„å±±",
                 "citycode": "101221001"
             },
             {
-                "cityname": "³üÖİ",
+                "cityname": "æ»å·",
                 "citycode": "101221101"
             },
             {
-                "cityname": "»´±±",
+                "cityname": "æ·®åŒ—",
                 "citycode": "101221201"
             },
             {
-                "cityname": "Í­Áê",
+                "cityname": "é“œé™µ",
                 "citycode": "101221301"
             },
             {
-                "cityname": "Ğû³Ç",
+                "cityname": "å®£åŸ",
                 "citycode": "101221401"
             },
             {
-                "cityname": "Áù°²",
+                "cityname": "å…­å®‰",
                 "citycode": "101221501"
             },
             {
-                "cityname": "³²ºş",
+                "cityname": "å·¢æ¹–",
                 "citycode": "101221601"
             },
             {
-                "cityname": "³ØÖİ",
+                "cityname": "æ± å·",
                 "citycode": "101221701"
             },
             {
-                "cityname": "°ö²º",
+                "cityname": "èšŒåŸ ",
                 "citycode": "101220201"
             }
         ]
     },
     {
-        "province": "Õã½­",
+        "province": "æµ™æ±Ÿ",
         "citys": [
             {
-                "cityname": "º¼Öİ",
+                "cityname": "æ­å·",
                 "citycode": "101210101"
             },
             {
-                "cityname": "ÖÛÉ½",
+                "cityname": "èˆŸå±±",
                 "citycode": "101211101"
             },
             {
-                "cityname": "ºşÖİ",
+                "cityname": "æ¹–å·",
                 "citycode": "101210201"
             },
             {
-                "cityname": "¼ÎĞË",
+                "cityname": "å˜‰å…´",
                 "citycode": "101210301"
             },
             {
-                "cityname": "½ğ»ª",
+                "cityname": "é‡‘å",
                 "citycode": "101210901"
             },
             {
-                "cityname": "ÉÜĞË",
+                "cityname": "ç»å…´",
                 "citycode": "101210501"
             },
             {
-                "cityname": "Ì¨Öİ",
+                "cityname": "å°å·",
                 "citycode": "101210601"
             },
             {
-                "cityname": "ÎÂÖİ",
+                "cityname": "æ¸©å·",
                 "citycode": "101210701"
             },
             {
-                "cityname": "ÀöË®",
+                "cityname": "ä¸½æ°´",
                 "citycode": "101210801"
             },
             {
-                "cityname": "áéÖİ",
+                "cityname": "è¡¢å·",
                 "citycode": "101211001"
             },
             {
-                "cityname": "Äş²¨",
+                "cityname": "å®æ³¢",
                 "citycode": "101210401"
             }
         ]
     },
     {
-        "province": "ÖØÇì",
+        "province": "é‡åº†",
         "citys": [
             {
-                "cityname": "ÖØÇì",
+                "cityname": "é‡åº†",
                 "citycode": "101040100"
             },
             {
-                "cityname": "ºÏ´¨",
+                "cityname": "åˆå·",
                 "citycode": "101040300"
             },
             {
-                "cityname": "ÄÏ´¨",
+                "cityname": "å—å·",
                 "citycode": "101040400"
             },
             {
-                "cityname": "½­½ò",
+                "cityname": "æ±Ÿæ´¥",
                 "citycode": "101040500"
             },
             {
-                "cityname": "ÍòÊ¢",
+                "cityname": "ä¸‡ç››",
                 "citycode": "101040600"
             },
             {
-                "cityname": "Óå±±",
+                "cityname": "æ¸åŒ—",
                 "citycode": "101040700"
             },
             {
-                "cityname": "±±íÕ",
+                "cityname": "åŒ—ç¢š",
                 "citycode": "101040800"
             },
             {
-                "cityname": "°ÍÄÏ",
+                "cityname": "å·´å—",
                 "citycode": "101040900"
             },
             {
-                "cityname": "³¤ÊÙ",
+                "cityname": "é•¿å¯¿",
                 "citycode": "101041000"
             },
             {
-                "cityname": "Ç­½­",
+                "cityname": "é»”æ±Ÿ",
                 "citycode": "101041100"
             },
             {
-                "cityname": "ÍòÖİÌì³Ç",
+                "cityname": "ä¸‡å·å¤©åŸ",
                 "citycode": "101041200"
             },
             {
-                "cityname": "ÍòÖİÁú±¦",
+                "cityname": "ä¸‡å·é¾™å®",
                 "citycode": "101041300"
             },
             {
-                "cityname": "¸¢Áê",
+                "cityname": "æ¶ªé™µ",
                 "citycode": "101041400"
             },
             {
-                "cityname": "¿ªÏØ",
+                "cityname": "å¼€å¿",
                 "citycode": "101041500"
             },
             {
-                "cityname": "³Ç¿Ú",
+                "cityname": "åŸå£",
                 "citycode": "101041600"
             },
             {
-                "cityname": "ÔÆÑô",
+                "cityname": "äº‘é˜³",
                 "citycode": "101041700"
             },
             {
-                "cityname": "Î×Ïª",
+                "cityname": "å·«æºª",
                 "citycode": "101041800"
             },
             {
-                "cityname": "·î½Ú",
+                "cityname": "å¥‰èŠ‚",
                 "citycode": "101041900"
             },
             {
-                "cityname": "Î×É½",
+                "cityname": "å·«å±±",
                 "citycode": "101042000"
             },
             {
-                "cityname": "äüÄÏ",
+                "cityname": "æ½¼å—",
                 "citycode": "101042100"
             },
             {
-                "cityname": "µæ½­",
+                "cityname": "å«æ±Ÿ",
                 "citycode": "101042200"
             },
             {
-                "cityname": "ÁºÆ½",
+                "cityname": "æ¢å¹³",
                 "citycode": "101042300"
             },
             {
-                "cityname": "ÖÒÏØ",
+                "cityname": "å¿ å¿",
                 "citycode": "101042400"
             },
             {
-                "cityname": "Ê¯Öù",
+                "cityname": "çŸ³æŸ±",
                 "citycode": "101042500"
             },
             {
-                "cityname": "´ó×ã",
+                "cityname": "å¤§è¶³",
                 "citycode": "101042600"
             },
             {
-                "cityname": "ÈÙ²ı",
+                "cityname": "è£æ˜Œ",
                 "citycode": "101042700"
             },
             {
-                "cityname": "Í­Áº",
+                "cityname": "é“œæ¢",
                 "citycode": "101042800"
             },
             {
-                "cityname": "èµÉ½",
+                "cityname": "ç’§å±±",
                 "citycode": "101042900"
             },
             {
-                "cityname": "·á¶¼",
+                "cityname": "ä¸°éƒ½",
                 "citycode": "101043000"
             },
             {
-                "cityname": "ÎäÂ¡",
+                "cityname": "æ­¦éš†",
                 "citycode": "101043100"
             },
             {
-                "cityname": "ÅíË®",
+                "cityname": "å½­æ°´",
                 "citycode": "101043200"
             },
             {
-                "cityname": "ôë½­",
+                "cityname": "ç¶¦æ±Ÿ",
                 "citycode": "101043300"
             },
             {
-                "cityname": "ÓÏÑô",
+                "cityname": "é…‰é˜³",
                 "citycode": "101043400"
             },
             {
-                "cityname": "ĞãÉ½",
+                "cityname": "ç§€å±±",
                 "citycode": "101043600"
             },
             {
-                "cityname": "É³Æº°Ó",
+                "cityname": "æ²™åªå",
                 "citycode": "101043700"
             },
             {
-                "cityname": "ÓÀ´¨",
+                "cityname": "æ°¸å·",
                 "citycode": "101040200"
             }
         ]
     },
     {
-        "province": "¸£½¨",
+        "province": "ç¦å»º",
         "citys": [
             {
-                "cityname": "¸£Öİ",
+                "cityname": "ç¦å·",
                 "citycode": "101230101"
             },
             {
-                "cityname": "ÈªÖİ",
+                "cityname": "æ³‰å·",
                 "citycode": "101230501"
             },
             {
-                "cityname": "ÕÄÖİ",
+                "cityname": "æ¼³å·",
                 "citycode": "101230601"
             },
             {
-                "cityname": "ÁúÑÒ",
+                "cityname": "é¾™å²©",
                 "citycode": "101230701"
             },
             {
-                "cityname": "½ú½­",
+                "cityname": "æ™‹æ±Ÿ",
                 "citycode": "101230509"
             },
             {
-                "cityname": "ÄÏÆ½",
+                "cityname": "å—å¹³",
                 "citycode": "101230901"
             },
             {
-                "cityname": "ÏÃÃÅ",
+                "cityname": "å¦é—¨",
                 "citycode": "101230201"
             },
             {
-                "cityname": "ÄşµÂ",
+                "cityname": "å®å¾·",
                 "citycode": "101230301"
             },
             {
-                "cityname": "ÆÎÌï",
+                "cityname": "è†ç”°",
                 "citycode": "101230401"
             },
             {
-                "cityname": "ÈıÃ÷",
+                "cityname": "ä¸‰æ˜",
                 "citycode": "101230801"
             }
         ]
     },
     {
-        "province": "¸ÊËà",
+        "province": "ç”˜è‚ƒ",
         "citys": [
             {
-                "cityname": "À¼Öİ",
+                "cityname": "å…°å·",
                 "citycode": "101160101"
             },
             {
-                "cityname": "Æ½Á¹",
+                "cityname": "å¹³å‡‰",
                 "citycode": "101160301"
             },
             {
-                "cityname": "ÇìÑô",
+                "cityname": "åº†é˜³",
                 "citycode": "101160401"
             },
             {
-                "cityname": "ÎäÍş",
+                "cityname": "æ­¦å¨",
                 "citycode": "101160501"
             },
             {
-                "cityname": "½ğ²ı",
+                "cityname": "é‡‘æ˜Œ",
                 "citycode": "101160601"
             },
             {
-                "cityname": "¼ÎÓø¹Ø",
+                "cityname": "å˜‰å³ªå…³",
                 "citycode": "101161401"
             },
             {
-                "cityname": "¾ÆÈª",
+                "cityname": "é…’æ³‰",
                 "citycode": "101160801"
             },
             {
-                "cityname": "ÌìË®",
+                "cityname": "å¤©æ°´",
                 "citycode": "101160901"
             },
             {
-                "cityname": "Îä¶¼",
+                "cityname": "æ­¦éƒ½",
                 "citycode": "101161001"
             },
             {
-                "cityname": "ÁÙÏÄ",
+                "cityname": "ä¸´å¤",
                 "citycode": "101161101"
             },
             {
-                "cityname": "ºÏ×÷",
+                "cityname": "åˆä½œ",
                 "citycode": "101161201"
             },
             {
-                "cityname": "°×Òø",
+                "cityname": "ç™½é“¶",
                 "citycode": "101161301"
             },
             {
-                "cityname": "¶¨Î÷",
+                "cityname": "å®šè¥¿",
                 "citycode": "101160201"
             },
             {
-                "cityname": "ÕÅÒ´",
+                "cityname": "å¼ æ–",
                 "citycode": "101160701"
             }
         ]
     },
     {
-        "province": "¹ã¶«",
+        "province": "å¹¿ä¸œ",
         "citys": [
             {
-                "cityname": "¹ãÖİ",
+                "cityname": "å¹¿å·",
                 "citycode": "101280101"
             },
             {
-                "cityname": "»İÖİ",
+                "cityname": "æƒ å·",
                 "citycode": "101280301"
             },
             {
-                "cityname": "Ã·Öİ",
+                "cityname": "æ¢…å·",
                 "citycode": "101280401"
             },
             {
-                "cityname": "ÉÇÍ·",
+                "cityname": "æ±•å¤´",
                 "citycode": "101280501"
             },
             {
-                "cityname": "ÉîÛÚ",
+                "cityname": "æ·±åœ³",
                 "citycode": "101280601"
             },
             {
-                "cityname": "Öéº£",
+                "cityname": "ç æµ·",
                 "citycode": "101280701"
             },
             {
-                "cityname": "·ğÉ½",
+                "cityname": "ä½›å±±",
                 "citycode": "101280800"
             },
             {
-                "cityname": "ÕØÇì",
+                "cityname": "è‚‡åº†",
                 "citycode": "101280901"
             },
             {
-                "cityname": "Õ¿½­",
+                "cityname": "æ¹›æ±Ÿ",
                 "citycode": "101281001"
             },
             {
-                "cityname": "½­ÃÅ",
+                "cityname": "æ±Ÿé—¨",
                 "citycode": "101281101"
             },
             {
-                "cityname": "ºÓÔ´",
+                "cityname": "æ²³æº",
                 "citycode": "101281201"
             },
             {
-                "cityname": "ÇåÔ¶",
+                "cityname": "æ¸…è¿œ",
                 "citycode": "101281301"
             },
             {
-                "cityname": "ÔÆ¸¡",
+                "cityname": "äº‘æµ®",
                 "citycode": "101281401"
             },
             {
-                "cityname": "³±Öİ",
+                "cityname": "æ½®å·",
                 "citycode": "101281501"
             },
             {
-                "cityname": "¶«İ¸",
+                "cityname": "ä¸œè",
                 "citycode": "101281601"
             },
             {
-                "cityname": "ÖĞÉ½",
+                "cityname": "ä¸­å±±",
                 "citycode": "101281701"
             },
             {
-                "cityname": "Ñô½­",
+                "cityname": "é˜³æ±Ÿ",
                 "citycode": "101281801"
             },
             {
-                "cityname": "½ÒÑô",
+                "cityname": "æ­é˜³",
                 "citycode": "101281901"
             },
             {
-                "cityname": "Ã¯Ãû",
+                "cityname": "èŒ‚å",
                 "citycode": "101282001"
             },
             {
-                "cityname": "ÉÇÎ²",
+                "cityname": "æ±•å°¾",
                 "citycode": "101282101"
             },
             {
-                "cityname": "ÉØ¹Ø",
+                "cityname": "éŸ¶å…³",
                 "citycode": "101280201"
             }
         ]
     },
     {
-        "province": "¹ãÎ÷",
+        "province": "å¹¿è¥¿",
         "citys": [
             {
-                "cityname": "ÄÏÄş",
+                "cityname": "å—å®",
                 "citycode": "101300101"
             },
             {
-                "cityname": "ÁøÖİ",
+                "cityname": "æŸ³å·",
                 "citycode": "101300301"
             },
             {
-                "cityname": "À´±ö",
+                "cityname": "æ¥å®¾",
                 "citycode": "101300401"
             },
             {
-                "cityname": "¹ğÁÖ",
+                "cityname": "æ¡‚æ—",
                 "citycode": "101300501"
             },
             {
-                "cityname": "ÎàÖİ",
+                "cityname": "æ¢§å·",
                 "citycode": "101300601"
             },
             {
-                "cityname": "·À³Ç¸Û",
+                "cityname": "é˜²åŸæ¸¯",
                 "citycode": "101301401"
             },
             {
-                "cityname": "¹ó¸Û",
+                "cityname": "è´µæ¸¯",
                 "citycode": "101300801"
             },
             {
-                "cityname": "ÓñÁÖ",
+                "cityname": "ç‰æ—",
                 "citycode": "101300901"
             },
             {
-                "cityname": "°ÙÉ«",
+                "cityname": "ç™¾è‰²",
                 "citycode": "101301001"
             },
             {
-                "cityname": "ÇÕÖİ",
+                "cityname": "é’¦å·",
                 "citycode": "101301101"
             },
             {
-                "cityname": "ºÓ³Ø",
+                "cityname": "æ²³æ± ",
                 "citycode": "101301201"
             },
             {
-                "cityname": "±±º£",
+                "cityname": "åŒ—æµ·",
                 "citycode": "101301301"
             },
             {
-                "cityname": "³ç×ó",
+                "cityname": "å´‡å·¦",
                 "citycode": "101300201"
             },
             {
-                "cityname": "ºØÖİ",
+                "cityname": "è´ºå·",
                 "citycode": "101300701"
             }
         ]
     },
     {
-        "province": "¹óÖİ",
+        "province": "è´µå·",
         "citys": [
             {
-                "cityname": "¹óÑô",
+                "cityname": "è´µé˜³",
                 "citycode": "101260101"
             },
             {
-                "cityname": "°²Ë³",
+                "cityname": "å®‰é¡º",
                 "citycode": "101260301"
             },
             {
-                "cityname": "¶¼ÔÈ",
+                "cityname": "éƒ½åŒ€",
                 "citycode": "101260401"
             },
             {
-                "cityname": "ĞËÒå",
+                "cityname": "å…´ä¹‰",
                 "citycode": "101260906"
             },
             {
-                "cityname": "Í­ÈÊ",
+                "cityname": "é“œä»",
                 "citycode": "101260601"
             },
             {
-                "cityname": "±Ï½Ú",
+                "cityname": "æ¯•èŠ‚",
                 "citycode": "101260701"
             },
             {
-                "cityname": "ÁùÅÌË®",
+                "cityname": "å…­ç›˜æ°´",
                 "citycode": "101260801"
             },
             {
-                "cityname": "×ñÒå",
+                "cityname": "éµä¹‰",
                 "citycode": "101260201"
             },
             {
-                "cityname": "¿­Àï",
+                "cityname": "å‡¯é‡Œ",
                 "citycode": "101260501"
             }
         ]
     },
     {
-        "province": "ÔÆÄÏ",
+        "province": "äº‘å—",
         "citys": [
             {
-                "cityname": "À¥Ã÷",
+                "cityname": "æ˜†æ˜",
                 "citycode": "101290101"
             },
             {
-                "cityname": "ºìºÓ",
+                "cityname": "çº¢æ²³",
                 "citycode": "101290301"
             },
             {
-                "cityname": "ÎÄÉ½",
+                "cityname": "æ–‡å±±",
                 "citycode": "101290601"
             },
             {
-                "cityname": "ÓñÏª",
+                "cityname": "ç‰æºª",
                 "citycode": "101290701"
             },
             {
-                "cityname": "³şĞÛ",
+                "cityname": "æ¥šé›„",
                 "citycode": "101290801"
             },
             {
-                "cityname": "ÆÕ¶ı",
+                "cityname": "æ™®æ´±",
                 "citycode": "101290901"
             },
             {
-                "cityname": "ÕÑÍ¨",
+                "cityname": "æ˜­é€š",
                 "citycode": "101291001"
             },
             {
-                "cityname": "ÁÙ²×",
+                "cityname": "ä¸´æ²§",
                 "citycode": "101291101"
             },
             {
-                "cityname": "Å­½­",
+                "cityname": "æ€’æ±Ÿ",
                 "citycode": "101291201"
             },
             {
-                "cityname": "Ïã¸ñÀïÀ­",
+                "cityname": "é¦™æ ¼é‡Œæ‹‰",
                 "citycode": "101291301"
             },
             {
-                "cityname": "Àö½­",
+                "cityname": "ä¸½æ±Ÿ",
                 "citycode": "101291401"
             },
             {
-                "cityname": "µÂºê",
+                "cityname": "å¾·å®",
                 "citycode": "101291501"
             },
             {
-                "cityname": "¾°ºé",
+                "cityname": "æ™¯æ´ª",
                 "citycode": "101291601"
             },
             {
-                "cityname": "´óÀí",
+                "cityname": "å¤§ç†",
                 "citycode": "101290201"
             },
             {
-                "cityname": "Çú¾¸",
+                "cityname": "æ›²é–",
                 "citycode": "101290401"
             },
             {
-                "cityname": "±£É½",
+                "cityname": "ä¿å±±",
                 "citycode": "101290501"
             }
         ]
     },
     {
-        "province": "ÄÚÃÉ¹Å",
+        "province": "å†…è’™å¤",
         "citys": [
             {
-                "cityname": "ºôºÍºÆÌØ",
+                "cityname": "å‘¼å’Œæµ©ç‰¹",
                 "citycode": "101080101"
             },
             {
-                "cityname": "ÎÚº£",
+                "cityname": "ä¹Œæµ·",
                 "citycode": "101080301"
             },
             {
-                "cityname": "¼¯Äş",
+                "cityname": "é›†å®",
                 "citycode": "101080401"
             },
             {
-                "cityname": "Í¨ÁÉ",
+                "cityname": "é€šè¾½",
                 "citycode": "101080501"
             },
             {
-                "cityname": "°¢À­ÉÆ×óÆì",
+                "cityname": "é˜¿æ‹‰å–„å·¦æ——",
                 "citycode": "101081201"
             },
             {
-                "cityname": "¶õ¶û¶àË¹",
+                "cityname": "é„‚å°”å¤šæ–¯",
                 "citycode": "101080701"
             },
             {
-                "cityname": "ÁÙºÓ",
+                "cityname": "ä¸´æ²³",
                 "citycode": "101080801"
             },
             {
-                "cityname": "ÎıÁÖºÆÌØ",
+                "cityname": "é”¡æ—æµ©ç‰¹",
                 "citycode": "101080901"
             },
             {
-                "cityname": "ºôÂ×±´¶û",
+                "cityname": "å‘¼ä¼¦è´å°”",
                 "citycode": "101081000"
             },
             {
-                "cityname": "ÎÚÀ¼ºÆÌØ",
+                "cityname": "ä¹Œå…°æµ©ç‰¹",
                 "citycode": "101081101"
             },
             {
-                "cityname": "°üÍ·",
+                "cityname": "åŒ…å¤´",
                 "citycode": "101080201"
             },
             {
-                "cityname": "³à·å",
+                "cityname": "èµ¤å³°",
                 "citycode": "101080601"
             }
         ]
     },
     {
-        "province": "½­Î÷",
+        "province": "æ±Ÿè¥¿",
         "citys": [
             {
-                "cityname": "ÄÏ²ı",
+                "cityname": "å—æ˜Œ",
                 "citycode": "101240101"
             },
             {
-                "cityname": "ÉÏÈÄ",
+                "cityname": "ä¸Šé¥¶",
                 "citycode": "101240301"
             },
             {
-                "cityname": "¸§Öİ",
+                "cityname": "æŠšå·",
                 "citycode": "101240401"
             },
             {
-                "cityname": "ÒË´º",
+                "cityname": "å®œæ˜¥",
                 "citycode": "101240501"
             },
             {
-                "cityname": "Ó¥Ì¶",
+                "cityname": "é¹°æ½­",
                 "citycode": "101241101"
             },
             {
-                "cityname": "¸ÓÖİ",
+                "cityname": "èµ£å·",
                 "citycode": "101240701"
             },
             {
-                "cityname": "¾°µÂÕò",
+                "cityname": "æ™¯å¾·é•‡",
                 "citycode": "101240801"
             },
             {
-                "cityname": "Æ¼Ïç",
+                "cityname": "èä¹¡",
                 "citycode": "101240901"
             },
             {
-                "cityname": "ĞÂÓà",
+                "cityname": "æ–°ä½™",
                 "citycode": "101241001"
             },
             {
-                "cityname": "¾Å½­",
+                "cityname": "ä¹æ±Ÿ",
                 "citycode": "101240201"
             },
             {
-                "cityname": "¼ª°²",
+                "cityname": "å‰å®‰",
                 "citycode": "101240601"
             }
         ]
     },
     {
-        "province": "ºş±±",
+        "province": "æ¹–åŒ—",
         "citys": [
             {
-                "cityname": "Îäºº",
+                "cityname": "æ­¦æ±‰",
                 "citycode": "101200101"
             },
             {
-                "cityname": "»Æ¸Ô",
+                "cityname": "é»„å†ˆ",
                 "citycode": "101200501"
             },
             {
-                "cityname": "¾£Öİ",
+                "cityname": "è†å·",
                 "citycode": "101200801"
             },
             {
-                "cityname": "ÒË²ı",
+                "cityname": "å®œæ˜Œ",
                 "citycode": "101200901"
             },
             {
-                "cityname": "¶÷Ê©",
+                "cityname": "æ©æ–½",
                 "citycode": "101201001"
             },
             {
-                "cityname": "Ê®Ñß",
+                "cityname": "åå °",
                 "citycode": "101201101"
             },
             {
-                "cityname": "ÉñÅ©¼Ü",
+                "cityname": "ç¥å†œæ¶",
                 "citycode": "101201201"
             },
             {
-                "cityname": "ËæÖİ",
+                "cityname": "éšå·",
                 "citycode": "101201301"
             },
             {
-                "cityname": "¾£ÃÅ",
+                "cityname": "è†é—¨",
                 "citycode": "101201401"
             },
             {
-                "cityname": "ÌìÃÅ",
+                "cityname": "å¤©é—¨",
                 "citycode": "101201501"
             },
             {
-                "cityname": "ÏÉÌÒ",
+                "cityname": "ä»™æ¡ƒ",
                 "citycode": "101201601"
             },
             {
-                "cityname": "Ç±½­",
+                "cityname": "æ½œæ±Ÿ",
                 "citycode": "101201701"
             },
             {
-                "cityname": "Ïå·®",
+                "cityname": "è¥„æ¨Š",
                 "citycode": "101200201"
             },
             {
-                "cityname": "¶õÖİ",
+                "cityname": "é„‚å·",
                 "citycode": "101200301"
             },
             {
-                "cityname": "Ğ¢¸Ğ",
+                "cityname": "å­æ„Ÿ",
                 "citycode": "101200401"
             },
             {
-                "cityname": "»ÆÊ¯",
+                "cityname": "é»„çŸ³",
                 "citycode": "101200601"
             },
             {
-                "cityname": "ÏÌÄş",
+                "cityname": "å’¸å®",
                 "citycode": "101200701"
             }
         ]
     },
     {
-        "province": "ËÄ´¨",
+        "province": "å››å·",
         "citys": [
             {
-                "cityname": "³É¶¼",
+                "cityname": "æˆéƒ½",
                 "citycode": "101270101"
             },
             {
-                "cityname": "×Ô¹±",
+                "cityname": "è‡ªè´¡",
                 "citycode": "101270301"
             },
             {
-                "cityname": "ÃàÑô",
+                "cityname": "ç»µé˜³",
                 "citycode": "101270401"
             },
             {
-                "cityname": "ÄÏ³ä",
+                "cityname": "å—å……",
                 "citycode": "101270501"
             },
             {
-                "cityname": "´ïÖİ",
+                "cityname": "è¾¾å·",
                 "citycode": "101270601"
             },
             {
-                "cityname": "ËìÄş",
+                "cityname": "é‚å®",
                 "citycode": "101270701"
             },
             {
-                "cityname": "¹ã°²",
+                "cityname": "å¹¿å®‰",
                 "citycode": "101270801"
             },
             {
-                "cityname": "°ÍÖĞ",
+                "cityname": "å·´ä¸­",
                 "citycode": "101270901"
             },
             {
-                "cityname": "ãòÖİ",
+                "cityname": "æ³¸å·",
                 "citycode": "101271001"
             },
             {
-                "cityname": "ÒË±ö",
+                "cityname": "å®œå®¾",
                 "citycode": "101271101"
             },
             {
-                "cityname": "ÄÚ½­",
+                "cityname": "å†…æ±Ÿ",
                 "citycode": "101271201"
             },
             {
-                "cityname": "×ÊÑô",
+                "cityname": "èµ„é˜³",
                 "citycode": "101271301"
             },
             {
-                "cityname": "ÀÖÉ½",
+                "cityname": "ä¹å±±",
                 "citycode": "101271401"
             },
             {
-                "cityname": "Ã¼É½",
+                "cityname": "çœ‰å±±",
                 "citycode": "101271501"
             },
             {
-                "cityname": "Á¹É½",
+                "cityname": "å‡‰å±±",
                 "citycode": "101271601"
             },
             {
-                "cityname": "ÑÅ°²",
+                "cityname": "é›…å®‰",
                 "citycode": "101271701"
             },
             {
-                "cityname": "¸Ê×Î",
+                "cityname": "ç”˜å­œ",
                 "citycode": "101271801"
             },
             {
-                "cityname": "°¢°Ó",
+                "cityname": "é˜¿å",
                 "citycode": "101271901"
             },
             {
-                "cityname": "µÂÑô",
+                "cityname": "å¾·é˜³",
                 "citycode": "101272001"
             },
             {
-                "cityname": "¹ãÔª",
+                "cityname": "å¹¿å…ƒ",
                 "citycode": "101272101"
             },
             {
-                "cityname": "ÅÊÖ¦»¨",
+                "cityname": "æ”€æèŠ±",
                 "citycode": "101270201"
             }
         ]
     },
     {
-        "province": "ÄşÏÄ",
+        "province": "å®å¤",
         "citys": [
             {
-                "cityname": "Òø´¨",
+                "cityname": "é“¶å·",
                 "citycode": "101170101"
             },
             {
-                "cityname": "ÖĞÎÀ",
+                "cityname": "ä¸­å«",
                 "citycode": "101170501"
             },
             {
-                "cityname": "¹ÌÔ­",
+                "cityname": "å›ºåŸ",
                 "citycode": "101170401"
             },
             {
-                "cityname": "Ê¯×ìÉ½",
+                "cityname": "çŸ³å˜´å±±",
                 "citycode": "101170201"
             },
             {
-                "cityname": "ÎâÖÒ",
+                "cityname": "å´å¿ ",
                 "citycode": "101170301"
             }
         ]
     },
     {
-        "province": "Çàº£Ê¡",
+        "province": "é’æµ·çœ",
         "citys": [
             {
-                "cityname": "Î÷Äş",
+                "cityname": "è¥¿å®",
                 "citycode": "101150101"
             },
             {
-                "cityname": "»ÆÄÏ",
+                "cityname": "é»„å—",
                 "citycode": "101150301"
             },
             {
-                "cityname": "º£±±",
+                "cityname": "æµ·åŒ—",
                 "citycode": "101150801"
             },
             {
-                "cityname": "¹ûÂå",
+                "cityname": "æœæ´›",
                 "citycode": "101150501"
             },
             {
-                "cityname": "ÓñÊ÷",
+                "cityname": "ç‰æ ‘",
                 "citycode": "101150601"
             },
             {
-                "cityname": "º£Î÷",
+                "cityname": "æµ·è¥¿",
                 "citycode": "101150701"
             },
             {
-                "cityname": "º£¶«",
+                "cityname": "æµ·ä¸œ",
                 "citycode": "101150201"
             },
             {
-                "cityname": "º£ÄÏ",
+                "cityname": "æµ·å—",
                 "citycode": "101150401"
             }
         ]
     },
     {
-        "province": "É½¶«",
+        "province": "å±±ä¸œ",
         "citys": [
             {
-                "cityname": "¼ÃÄÏ",
+                "cityname": "æµå—",
                 "citycode": "101120101"
             },
             {
-                "cityname": "Î«·»",
+                "cityname": "æ½åŠ",
                 "citycode": "101120601"
             },
             {
-                "cityname": "ÁÙÒÊ",
+                "cityname": "ä¸´æ²‚",
                 "citycode": "101120901"
             },
             {
-                "cityname": "ºÊÔó",
+                "cityname": "èæ³½",
                 "citycode": "101121001"
             },
             {
-                "cityname": "±õÖİ",
+                "cityname": "æ»¨å·",
                 "citycode": "101121101"
             },
             {
-                "cityname": "¶«Óª",
+                "cityname": "ä¸œè¥",
                 "citycode": "101121201"
             },
             {
-                "cityname": "Íşº£",
+                "cityname": "å¨æµ·",
                 "citycode": "101121301"
             },
             {
-                "cityname": "Ôæ×¯",
+                "cityname": "æ£åº„",
                 "citycode": "101121401"
             },
             {
-                "cityname": "ÈÕÕÕ",
+                "cityname": "æ—¥ç…§",
                 "citycode": "101121501"
             },
             {
-                "cityname": "À³Îß",
+                "cityname": "è±èŠœ",
                 "citycode": "101121601"
             },
             {
-                "cityname": "ÁÄ³Ç",
+                "cityname": "èŠåŸ",
                 "citycode": "101121701"
             },
             {
-                "cityname": "Çàµº",
+                "cityname": "é’å²›",
                 "citycode": "101120201"
             },
             {
-                "cityname": "×Í²©",
+                "cityname": "æ·„åš",
                 "citycode": "101120301"
             },
             {
-                "cityname": "µÂÖİ",
+                "cityname": "å¾·å·",
                 "citycode": "101120401"
             },
             {
-                "cityname": "ÑÌÌ¨",
+                "cityname": "çƒŸå°",
                 "citycode": "101120501"
             },
             {
-                "cityname": "¼ÃÄş",
+                "cityname": "æµå®",
                 "citycode": "101120701"
             },
             {
-                "cityname": "Ì©°²",
+                "cityname": "æ³°å®‰",
                 "citycode": "101120801"
             }
         ]
     },
     {
-        "province": "ÉÂÎ÷Ê¡",
+        "province": "é™•è¥¿çœ",
         "citys": [
             {
-                "cityname": "Î÷°²",
+                "cityname": "è¥¿å®‰",
                 "citycode": "101110101"
             },
             {
-                "cityname": "ÑÓ°²",
+                "cityname": "å»¶å®‰",
                 "citycode": "101110300"
             },
             {
-                "cityname": "ÓÜÁÖ",
+                "cityname": "æ¦†æ—",
                 "citycode": "101110401"
             },
             {
-                "cityname": "Í­´¨",
+                "cityname": "é“œå·",
                 "citycode": "101111001"
             },
             {
-                "cityname": "ÉÌÂå",
+                "cityname": "å•†æ´›",
                 "citycode": "101110601"
             },
             {
-                "cityname": "°²¿µ",
+                "cityname": "å®‰åº·",
                 "citycode": "101110701"
             },
             {
-                "cityname": "ººÖĞ",
+                "cityname": "æ±‰ä¸­",
                 "citycode": "101110801"
             },
             {
-                "cityname": "±¦¼¦",
+                "cityname": "å®é¸¡",
                 "citycode": "101110901"
             },
             {
-                "cityname": "ÏÌÑô",
+                "cityname": "å’¸é˜³",
                 "citycode": "101110200"
             },
             {
-                "cityname": "Î¼ÄÏ",
+                "cityname": "æ¸­å—",
                 "citycode": "101110501"
             }
         ]
     },
     {
-        "province": "É½Î÷",
+        "province": "å±±è¥¿",
         "citys": [
             {
-                "cityname": "Ì«Ô­",
+                "cityname": "å¤ªåŸ",
                 "citycode": "101100101"
             },
             {
-                "cityname": "ÁÙ·Ú",
+                "cityname": "ä¸´æ±¾",
                 "citycode": "101100701"
             },
             {
-                "cityname": "ÔË³Ç",
+                "cityname": "è¿åŸ",
                 "citycode": "101100801"
             },
             {
-                "cityname": "Ë·Öİ",
+                "cityname": "æœ”å·",
                 "citycode": "101100901"
             },
             {
-                "cityname": "ĞÃÖİ",
+                "cityname": "å¿»å·",
                 "citycode": "101101001"
             },
             {
-                "cityname": "³¤ÖÎ",
+                "cityname": "é•¿æ²»",
                 "citycode": "101100501"
             },
             {
-                "cityname": "´óÍ¬",
+                "cityname": "å¤§åŒ",
                 "citycode": "101100201"
             },
             {
-                "cityname": "ÑôÈª",
+                "cityname": "é˜³æ³‰",
                 "citycode": "101100301"
             },
             {
-                "cityname": "½úÖĞ",
+                "cityname": "æ™‹ä¸­",
                 "citycode": "101100401"
             },
             {
-                "cityname": "½ú³Ç",
+                "cityname": "æ™‹åŸ",
                 "citycode": "101100601"
             },
             {
-                "cityname": "ÂÀÁº",
+                "cityname": "å•æ¢",
                 "citycode": "101101100"
             }
         ]
     },
     {
-        "province": "ĞÂ½®",
+        "province": "æ–°ç–†",
         "citys": [
             {
-                "cityname": "ÎÚÂ³Ä¾Æë",
+                "cityname": "ä¹Œé²æœ¨é½",
                 "citycode": "101130101"
             },
             {
-                "cityname": "Ê¯ºÓ×Ó",
+                "cityname": "çŸ³æ²³å­",
                 "citycode": "101130301"
             },
             {
-                "cityname": "²ı¼ª",
+                "cityname": "æ˜Œå‰",
                 "citycode": "101130401"
             },
             {
-                "cityname": "ÍÂÂ³·¬",
+                "cityname": "åé²ç•ª",
                 "citycode": "101130501"
             },
             {
-                "cityname": "¿â¶ûÀÕ",
+                "cityname": "åº“å°”å‹’",
                 "citycode": "101130601"
             },
             {
-                "cityname": "°¢À­¶û",
+                "cityname": "é˜¿æ‹‰å°”",
                 "citycode": "101130701"
             },
             {
-                "cityname": "°¢¿ËËÕ",
+                "cityname": "é˜¿å…‹è‹",
                 "citycode": "101130801"
             },
             {
-                "cityname": "¿¦Ê²",
+                "cityname": "å–€ä»€",
                 "citycode": "101130901"
             },
             {
-                "cityname": "ÒÁÄş",
+                "cityname": "ä¼Šå®",
                 "citycode": "101131001"
             },
             {
-                "cityname": "Ëş³Ç",
+                "cityname": "å¡”åŸ",
                 "citycode": "101131101"
             },
             {
-                "cityname": "¹şÃÜ",
+                "cityname": "å“ˆå¯†",
                 "citycode": "101131201"
             },
             {
-                "cityname": "ºÍÌï",
+                "cityname": "å’Œç”°",
                 "citycode": "101131301"
             },
             {
-                "cityname": "°¢ÀÕÌ©",
+                "cityname": "é˜¿å‹’æ³°",
                 "citycode": "101131401"
             },
             {
-                "cityname": "°¢Í¼Ê²",
+                "cityname": "é˜¿å›¾ä»€",
                 "citycode": "101131501"
             },
             {
-                "cityname": "²©ÀÖ",
+                "cityname": "åšä¹",
                 "citycode": "101131601"
             },
             {
-                "cityname": "¿ËÀ­ÂêÒÀ",
+                "cityname": "å…‹æ‹‰ç›ä¾",
                 "citycode": "101130201"
             }
         ]
     },
     {
-        "province": "Î÷²Ø",
+        "province": "è¥¿è—",
         "citys": [
             {
-                "cityname": "À­Èø",
+                "cityname": "æ‹‰è¨",
                 "citycode": "101140101"
             },
             {
-                "cityname": "É½ÄÏ",
+                "cityname": "å±±å—",
                 "citycode": "101140301"
             },
             {
-                "cityname": "°¢Àï",
+                "cityname": "é˜¿é‡Œ",
                 "citycode": "101140701"
             },
             {
-                "cityname": "²ı¶¼",
+                "cityname": "æ˜Œéƒ½",
                 "citycode": "101140501"
             },
             {
-                "cityname": "ÄÇÇú",
+                "cityname": "é‚£æ›²",
                 "citycode": "101140601"
             },
             {
-                "cityname": "ÈÕ¿¦Ôò",
+                "cityname": "æ—¥å–€åˆ™",
                 "citycode": "101140201"
             },
             {
-                "cityname": "ÁÖÖ¥",
+                "cityname": "æ—èŠ",
                 "citycode": "101140401"
             }
         ]
     },
     {
-        "province": "Ì¨Íå",
+        "province": "å°æ¹¾",
         "citys": [
             {
-                "cityname": "Ì¨±±ÏØ",
+                "cityname": "å°åŒ—å¿",
                 "citycode": "101340101"
             },
             {
-                "cityname": "¸ßĞÛ",
+                "cityname": "é«˜é›„",
                 "citycode": "101340201"
             },
             {
-                "cityname": "Ì¨ÖĞ",
+                "cityname": "å°ä¸­",
                 "citycode": "101340401"
             }
         ]
     },
     {
-        "province": "º£ÄÏÊ¡",
+        "province": "æµ·å—çœ",
         "citys": [
             {
-                "cityname": "º£¿Ú",
+                "cityname": "æµ·å£",
                 "citycode": "101310101"
             },
             {
-                "cityname": "ÈıÑÇ",
+                "cityname": "ä¸‰äºš",
                 "citycode": "101310201"
             },
             {
-                "cityname": "¶«·½",
+                "cityname": "ä¸œæ–¹",
                 "citycode": "101310202"
             },
             {
-                "cityname": "ÁÙ¸ß",
+                "cityname": "ä¸´é«˜",
                 "citycode": "101310203"
             },
             {
-                "cityname": "³ÎÂõ",
+                "cityname": "æ¾„è¿ˆ",
                 "citycode": "101310204"
             },
             {
-                "cityname": "ÙÙÖİ",
+                "cityname": "å„‹å·",
                 "citycode": "101310205"
             },
             {
-                "cityname": "²ı½­",
+                "cityname": "æ˜Œæ±Ÿ",
                 "citycode": "101310206"
             },
             {
-                "cityname": "°×É³",
+                "cityname": "ç™½æ²™",
                 "citycode": "101310207"
             },
             {
-                "cityname": "ÇíÖĞ",
+                "cityname": "ç¼ä¸­",
                 "citycode": "101310208"
             },
             {
-                "cityname": "¶¨°²",
+                "cityname": "å®šå®‰",
                 "citycode": "101310209"
             },
             {
-                "cityname": "ÍÍ²ı",
+                "cityname": "å±¯æ˜Œ",
                 "citycode": "101310210"
             },
             {
-                "cityname": "Çíº£",
+                "cityname": "ç¼æµ·",
                 "citycode": "101310211"
             },
             {
-                "cityname": "ÎÄ²ı",
+                "cityname": "æ–‡æ˜Œ",
                 "citycode": "101310212"
             },
             {
-                "cityname": "±£Í¤",
+                "cityname": "ä¿äº­",
                 "citycode": "101310214"
             },
             {
-                "cityname": "ÍòÄş",
+                "cityname": "ä¸‡å®",
                 "citycode": "101310215"
             },
             {
-                "cityname": "ÁêË®",
+                "cityname": "é™µæ°´",
                 "citycode": "101310216"
             },
             {
-                "cityname": "Î÷É³",
+                "cityname": "è¥¿æ²™",
                 "citycode": "101310217"
             },
             {
-                "cityname": "ÄÏÉ³µº",
+                "cityname": "å—æ²™å²›",
                 "citycode": "101310220"
             },
             {
-                "cityname": "ÀÖ¶«",
+                "cityname": "ä¹ä¸œ",
                 "citycode": "101310221"
             },
             {
-                "cityname": "ÎåÖ¸É½",
+                "cityname": "äº”æŒ‡å±±",
                 "citycode": "101310222"
             },
             {
-                "cityname": "ÇíÉ½",
+                "cityname": "ç¼å±±",
                 "citycode": "101310102"
             }
         ]
     },
     {
-        "province": "ºşÄÏ",
+        "province": "æ¹–å—",
         "citys": [
             {
-                "cityname": "³¤É³",
+                "cityname": "é•¿æ²™",
                 "citycode": "101250101"
             },
             {
-                "cityname": "ÖêÖŞ",
+                "cityname": "æ ªæ´²",
                 "citycode": "101250301"
             },
             {
-                "cityname": "ºâÑô",
+                "cityname": "è¡¡é˜³",
                 "citycode": "101250401"
             },
             {
-                "cityname": "³»Öİ",
+                "cityname": "éƒ´å·",
                 "citycode": "101250501"
             },
             {
-                "cityname": "³£µÂ",
+                "cityname": "å¸¸å¾·",
                 "citycode": "101250601"
             },
             {
-                "cityname": "ÒæÑô",
+                "cityname": "ç›Šé˜³",
                 "citycode": "101250700"
             },
             {
-                "cityname": "Â¦µ×",
+                "cityname": "å¨„åº•",
                 "citycode": "101250801"
             },
             {
-                "cityname": "ÉÛÑô",
+                "cityname": "é‚µé˜³",
                 "citycode": "101250901"
             },
             {
-                "cityname": "ÔÀÑô",
+                "cityname": "å²³é˜³",
                 "citycode": "101251001"
             },
             {
-                "cityname": "ÕÅ¼Ò½ç",
+                "cityname": "å¼ å®¶ç•Œ",
                 "citycode": "101251101"
             },
             {
-                "cityname": "»³»¯",
+                "cityname": "æ€€åŒ–",
                 "citycode": "101251201"
             },
             {
-                "cityname": "Ç­Ñô",
+                "cityname": "é»”é˜³",
                 "citycode": "101251301"
             },
             {
-                "cityname": "ÓÀÖİ",
+                "cityname": "æ°¸å·",
                 "citycode": "101251401"
             },
             {
-                "cityname": "¼ªÊ×",
+                "cityname": "å‰é¦–",
                 "citycode": "101251501"
             },
             {
-                "cityname": "ÏæÌ¶",
+                "cityname": "æ¹˜æ½­",
                 "citycode": "101250201"
             }
         ]
     },
     {
-        "province": "½­ËÕ",
+        "province": "æ±Ÿè‹",
         "citys": [
             {
-                "cityname": "ÄÏ¾©",
+                "cityname": "å—äº¬",
                 "citycode": "101190101"
             },
             {
-                "cityname": "Õò½­",
+                "cityname": "é•‡æ±Ÿ",
                 "citycode": "101190301"
             },
             {
-                "cityname": "ËÕÖİ",
+                "cityname": "è‹å·",
                 "citycode": "101190401"
             },
             {
-                "cityname": "ÄÏÍ¨",
+                "cityname": "å—é€š",
                 "citycode": "101190501"
             },
             {
-                "cityname": "ÑïÖİ",
+                "cityname": "æ‰¬å·",
                 "citycode": "101190601"
             },
             {
-                "cityname": "ËŞÇ¨",
+                "cityname": "å®¿è¿",
                 "citycode": "101191301"
             },
             {
-                "cityname": "ĞìÖİ",
+                "cityname": "å¾å·",
                 "citycode": "101190801"
             },
             {
-                "cityname": "»´°²",
+                "cityname": "æ·®å®‰",
                 "citycode": "101190901"
             },
             {
-                "cityname": "Á¬ÔÆ¸Û",
+                "cityname": "è¿äº‘æ¸¯",
                 "citycode": "101191001"
             },
             {
-                "cityname": "³£Öİ",
+                "cityname": "å¸¸å·",
                 "citycode": "101191101"
             },
             {
-                "cityname": "Ì©Öİ",
+                "cityname": "æ³°å·",
                 "citycode": "101191201"
             },
             {
-                "cityname": "ÎŞÎı",
+                "cityname": "æ— é”¡",
                 "citycode": "101190201"
             },
             {
-                "cityname": "ÑÎ³Ç",
+                "cityname": "ç›åŸ",
                 "citycode": "101190701"
             }
         ]
     },
     {
-        "province": "ºÚÁú½­",
+        "province": "é»‘é¾™æ±Ÿ",
         "citys": [
             {
-                "cityname": "¹ş¶û±õ",
+                "cityname": "å“ˆå°”æ»¨",
                 "citycode": "101050101"
             },
             {
-                "cityname": "Äµµ¤½­",
+                "cityname": "ç‰¡ä¸¹æ±Ÿ",
                 "citycode": "101050301"
             },
             {
-                "cityname": "¼ÑÄ¾Ë¹",
+                "cityname": "ä½³æœ¨æ–¯",
                 "citycode": "101050401"
             },
             {
-                "cityname": "Ëç»¯",
+                "cityname": "ç»¥åŒ–",
                 "citycode": "101050501"
             },
             {
-                "cityname": "ºÚºÓ",
+                "cityname": "é»‘æ²³",
                 "citycode": "101050601"
             },
             {
-                "cityname": "Ë«Ñ¼É½",
+                "cityname": "åŒé¸­å±±",
                 "citycode": "101051301"
             },
             {
-                "cityname": "ÒÁ´º",
+                "cityname": "ä¼Šæ˜¥",
                 "citycode": "101050801"
             },
             {
-                "cityname": "´óÇì",
+                "cityname": "å¤§åº†",
                 "citycode": "101050901"
             },
             {
-                "cityname": "ÆßÌ¨ºÓ",
+                "cityname": "ä¸ƒå°æ²³",
                 "citycode": "101051002"
             },
             {
-                "cityname": "¼¦Î÷",
+                "cityname": "é¸¡è¥¿",
                 "citycode": "101051101"
             },
             {
-                "cityname": "º×¸Ú",
+                "cityname": "é¹¤å²—",
                 "citycode": "101051201"
             },
             {
-                "cityname": "ÆëÆë¹ş¶û",
+                "cityname": "é½é½å“ˆå°”",
                 "citycode": "101050201"
             },
             {
-                "cityname": "´óĞË°²Áë",
+                "cityname": "å¤§å…´å®‰å²­",
                 "citycode": "101050701"
             }
         ]
     },
     {
-        "province": "¼ªÁÖ",
+        "province": "å‰æ—",
         "citys": [
             {
-                "cityname": "³¤´º",
+                "cityname": "é•¿æ˜¥",
                 "citycode": "101060101"
             },
             {
-                "cityname": "ÑÓ¼ª",
+                "cityname": "å»¶å‰",
                 "citycode": "101060301"
             },
             {
-                "cityname": "ËÄÆ½",
+                "cityname": "å››å¹³",
                 "citycode": "101060401"
             },
             {
-                "cityname": "°×É½",
+                "cityname": "ç™½å±±",
                 "citycode": "101060901"
             },
             {
-                "cityname": "°×³Ç",
+                "cityname": "ç™½åŸ",
                 "citycode": "101060601"
             },
             {
-                "cityname": "ÁÉÔ´",
+                "cityname": "è¾½æº",
                 "citycode": "101060701"
             },
             {
-                "cityname": "ËÉÔ­",
+                "cityname": "æ¾åŸ",
                 "citycode": "101060801"
             },
             {
-                "cityname": "¼ªÁÖ",
+                "cityname": "å‰æ—",
                 "citycode": "101060201"
             },
             {
-                "cityname": "Í¨»¯",
+                "cityname": "é€šåŒ–",
                 "citycode": "101060501"
             }
         ]
     },
     {
-        "province": "ÁÉÄş",
+        "province": "è¾½å®",
         "citys": [
             {
-                "cityname": "ÉòÑô",
+                "cityname": "æ²ˆé˜³",
                 "citycode": "101070101"
             },
             {
-                "cityname": "°°É½",
+                "cityname": "éå±±",
                 "citycode": "101070301"
             },
             {
-                "cityname": "¸§Ë³",
+                "cityname": "æŠšé¡º",
                 "citycode": "101070401"
             },
             {
-                "cityname": "±¾Ïª",
+                "cityname": "æœ¬æºª",
                 "citycode": "101070501"
             },
             {
-                "cityname": "µ¤¶«",
+                "cityname": "ä¸¹ä¸œ",
                 "citycode": "101070601"
             },
             {
-                "cityname": "ºùÂ«µº",
+                "cityname": "è‘«èŠ¦å²›",
                 "citycode": "101071401"
             },
             {
-                "cityname": "Óª¿Ú",
+                "cityname": "è¥å£",
                 "citycode": "101070801"
             },
             {
-                "cityname": "¸·ĞÂ",
+                "cityname": "é˜œæ–°",
                 "citycode": "101070901"
             },
             {
-                "cityname": "ÁÉÑô",
+                "cityname": "è¾½é˜³",
                 "citycode": "101071001"
             },
             {
-                "cityname": "ÌúÁë",
+                "cityname": "é“å²­",
                 "citycode": "101071101"
             },
             {
-                "cityname": "³¯Ñô",
+                "cityname": "æœé˜³",
                 "citycode": "101071201"
             },
             {
-                "cityname": "ÅÌ½õ",
+                "cityname": "ç›˜é”¦",
                 "citycode": "101071301"
             },
             {
-                "cityname": "´óÁ¬",
+                "cityname": "å¤§è¿",
                 "citycode": "101070201"
             },
             {
-                "cityname": "½õÖİ",
+                "cityname": "é”¦å·",
                 "citycode": "101070701"
             }
         ]
