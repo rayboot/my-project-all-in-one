@@ -61,11 +61,10 @@ public class MainActivity extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		// long lastTime =
-		// Long.valueOf(DataUtil.getInfoFromShared("allsktime"));
-		// if (System.currentTimeMillis() - lastTime > 31 * 60 * 1000) {
-		// getAllWeather();
-		// }
+		long lastTime = Long.valueOf(DataUtil.getInfoFromShared("allsktime"));
+		if (System.currentTimeMillis() - lastTime > 31 * 60 * 1000) {
+			getAllWeather();
+		}
 	}
 
 	private void getAllWeather() {
