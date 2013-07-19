@@ -2,17 +2,16 @@ package com.rayboot.weatherpk;
 
 import java.util.Random;
 
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.nineoldandroids.animation.ObjectAnimator;
-
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.InjectView;
 import butterknife.Views;
+
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
+import com.nineoldandroids.animation.ObjectAnimator;
 
 public class FalshActivity extends Activity {
 	@InjectView(R.id.tvYou)
