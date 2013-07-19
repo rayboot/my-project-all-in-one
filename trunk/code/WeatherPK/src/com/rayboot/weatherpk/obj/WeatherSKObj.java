@@ -23,7 +23,17 @@ public class WeatherSKObj extends Model {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static List<WeatherSKObj> getMyHistoryTalkingTableAll() {
+	public static List<WeatherSKObj> getWeatherSKObjTableAll() {
 		return new Select().from(WeatherSKObj.class).execute();
+	}
+
+	public static WeatherSKObj getWeatherSKObjFromeID(String citycode) {
+		return new Select().from(WeatherSKObj.class)
+				.where("cityId = ?", citycode).executeSingle();
+	}
+
+	public static WeatherSKObj getRandom() {
+		return new Select().from(WeatherSKObj.class).orderBy("RANDOM()")
+				.executeSingle();
 	}
 }
