@@ -14,7 +14,7 @@ public class WeatherSKObj extends Model {
 	@Column(name = "cityId")
 	public String cityId;
 	@Column(name = "temp")
-	public String temp;
+	public double temp;
 	@Column(name = "city")
 	public String city;
 
@@ -35,5 +35,9 @@ public class WeatherSKObj extends Model {
 	public static WeatherSKObj getRandom() {
 		return new Select().from(WeatherSKObj.class).orderBy("RANDOM()")
 				.executeSingle();
+	}
+	public static List<WeatherSKObj> getPaiMing(double curTemp) {
+		return new Select().from(WeatherSKObj.class)
+				.where("temp > ?", curTemp).execute();
 	}
 }
