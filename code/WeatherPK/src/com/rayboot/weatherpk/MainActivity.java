@@ -1,5 +1,8 @@
 package com.rayboot.weatherpk;
 
+import java.util.List;
+
+import android.R.integer;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,6 +35,8 @@ public class MainActivity extends Activity {
 	TextView tvTemp;
 	@InjectView(R.id.tvTime)
 	TextView tvTime;
+	@InjectView(R.id.tvPKDesc)
+	TextView tvPKDesc;
 	@InjectView(R.id.btnPK)
 	Button btnPK;
 	String curCityCode;
@@ -83,6 +88,8 @@ public class MainActivity extends Activity {
 					public void onSuccess(String json) {
 						// TODO Auto-generated method stub
 						super.onSuccess(json);
+						json = json.replace("暂无更新", "00:00");
+						json = json.replace("暂无实况", "0");
 						Gson gson = new Gson();
 						SKResultObj skro = gson.fromJson(json,
 								SKResultObj.class);
@@ -132,8 +139,16 @@ public class MainActivity extends Activity {
 		if (wsko == null) {
 			return;
 		}
-		tvTemp.setText(wsko.temp);
-		tvTime.setText(wsko.time);
+		tvTemp.setText((int) (wsko.temp) + "");
+		tvTime.setText("发布时间：" + wsko.time);
+		List<WeatherSKObj> all = WeatherSKObj.getWeatherSKObjTableAll();
+		int total = all.size();
+		all.clear();
+		all = WeatherSKObj.getPaiMing(wsko.temp);
+		int index = all.size();
+		all.clear();
+		tvPKDesc.setText("恭喜您在全国" + total + "个省市温度PK中获得第" + index
+				+ "名！\n敢不敢随机PK一下？？！！");
 	}
 
 	private void initLocation() {

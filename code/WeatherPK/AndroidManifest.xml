@@ -39,7 +39,7 @@
             android:value="weacherpk.db" />
         <meta-data
             android:name="AA_DB_VERSION"
-            android:value="4" />
+            android:value="7" />
 
         <activity
             android:name="com.rayboot.weatherpk.MainActivity"
