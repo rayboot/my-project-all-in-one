@@ -1,6 +1,7 @@
 package com.rayboot.weatherpk;
 
 import java.util.List;
+import java.util.Random;
 
 import android.R.integer;
 import android.app.Activity;
@@ -22,6 +23,7 @@ import com.baidu.location.LocationClientOption;
 import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.rayboot.weatherpk.obj.CityObj;
+import com.rayboot.weatherpk.obj.PKObj;
 import com.rayboot.weatherpk.obj.SKResultObj;
 import com.rayboot.weatherpk.obj.WeatherSKObj;
 import com.rayboot.weatherpk.utily.DataUtil;
@@ -60,6 +62,12 @@ public class MainActivity extends Activity {
 						PKActivity.class).putExtra("curCityCode", curCityCode));
 			}
 		});
+		initPKDB();
+	}
+
+	private void initPKDB() {
+		PKObj.clearAll();
+		PKObj.autoAddRadomN(new Random().nextInt(120));
 	}
 
 	@Override
@@ -88,12 +96,12 @@ public class MainActivity extends Activity {
 					public void onSuccess(String json) {
 						// TODO Auto-generated method stub
 						super.onSuccess(json);
-						json = json.replace("暂无更新", "00:00");
-						json = json.replace("暂无实况", "0");
+						json = json.replace("暂无实况", "" + "0");
 						Gson gson = new Gson();
 						SKResultObj skro = gson.fromJson(json,
 								SKResultObj.class);
 						if (skro.code.equals("0000")) {
+							WeatherSKObj.clearAll();
 							ActiveAndroid.beginTransaction();
 							try {
 								for (WeatherSKObj wsdo : skro.list) {

@@ -238,7 +238,10 @@ public class MainActivity extends SherlockActivity {
 								goSpend();
 							}
 						});
+					}else{
+						goSpend();
 					}
+						
 				} else {
 					goSpend();
 				}
