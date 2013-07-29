@@ -43,11 +43,11 @@
         </meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="baidu" />
+            android:value="91" />
         <!-- 以下属性为分发渠道ID,编码表参见本文档末附表 -->
         <meta-data
             android:name="WAPS_PID"
-            android:value="baidu" />
+            android:value="91" />
         <!-- 您从百度移动联盟网站获取的APPSID -->
         <meta-data
             android:name="BaiduMobAd_APP_ID"

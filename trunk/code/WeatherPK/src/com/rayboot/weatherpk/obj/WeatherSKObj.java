@@ -5,6 +5,7 @@ import java.util.List;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
 
 @Table(name = "WeatherSKObjTable")
@@ -36,8 +37,14 @@ public class WeatherSKObj extends Model {
 		return new Select().from(WeatherSKObj.class).orderBy("RANDOM()")
 				.executeSingle();
 	}
+
 	public static List<WeatherSKObj> getPaiMing(double curTemp) {
-		return new Select().from(WeatherSKObj.class)
-				.where("temp > ?", curTemp).execute();
+		return new Select().from(WeatherSKObj.class).where("temp > ?", curTemp)
+				.execute();
 	}
+
+	public static void clearAll() {
+		new Delete().from(WeatherSKObj.class).execute();
+	}
+
 }
