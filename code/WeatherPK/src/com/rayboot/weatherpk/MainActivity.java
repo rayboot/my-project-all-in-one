@@ -3,9 +3,9 @@ package com.rayboot.weatherpk;
 import java.util.List;
 import java.util.Random;
 
-import android.R.integer;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -41,7 +41,11 @@ public class MainActivity extends Activity {
 	TextView tvPKDesc;
 	@InjectView(R.id.btnPK)
 	Button btnPK;
+	@InjectView(R.id.btnPaihang)
+	Button btnPaihang;
+
 	String curCityCode;
+	Typeface fontFace;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,12 +66,28 @@ public class MainActivity extends Activity {
 						PKActivity.class).putExtra("curCityCode", curCityCode));
 			}
 		});
+		btnPaihang.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				MainActivity.this.startActivity(new Intent(MainActivity.this,
+						RankActivity.class));
+			}
+		});
+		fontFace = Typeface.createFromAsset(getAssets(),
+				"fonts/HelveticaNeue.ttf");
+		tvTemp.setTypeface(fontFace);
 		initPKDB();
 	}
 
 	private void initPKDB() {
 		PKObj.clearAll();
-		PKObj.autoAddRadomN(new Random().nextInt(120));
+		PKObj.autoAddRadomN(new Random().nextInt(514));
+		PKObj myPKObj = new PKObj();
+		myPKObj.sore = 0;
+		myPKObj.other = 0;
+		myPKObj.save();
 	}
 
 	@Override
@@ -96,7 +116,7 @@ public class MainActivity extends Activity {
 					public void onSuccess(String json) {
 						// TODO Auto-generated method stub
 						super.onSuccess(json);
-						json = json.replace("暂无实况", "" + "0");
+						json = json.replace("暂无实况", "" + "-100");
 						Gson gson = new Gson();
 						SKResultObj skro = gson.fromJson(json,
 								SKResultObj.class);
@@ -105,6 +125,9 @@ public class MainActivity extends Activity {
 							ActiveAndroid.beginTransaction();
 							try {
 								for (WeatherSKObj wsdo : skro.list) {
+									if (wsdo.temp == -100) {
+										continue;
+									}
 									wsdo.save();
 								}
 								ActiveAndroid.setTransactionSuccessful();
@@ -153,9 +176,9 @@ public class MainActivity extends Activity {
 		int total = all.size();
 		all.clear();
 		all = WeatherSKObj.getPaiMing(wsko.temp);
-		int index = all.size();
+		int index = all.size() + 1;
 		all.clear();
-		tvPKDesc.setText("恭喜您在全国" + total + "个省市温度PK中获得第" + index
+		tvPKDesc.setText("全国" + total + "个省市温度PK中第" + index
 				+ "名！\n敢不敢随机PK一下？？！！");
 	}
 

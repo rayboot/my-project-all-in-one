@@ -1,15 +1,14 @@
 package com.rayboot.weatherpk.obj;
 
+import java.util.List;
 import java.util.Random;
-
-import android.R.integer;
-import android.content.ClipData.Item;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.activeandroid.query.Delete;
+import com.activeandroid.query.Select;
 
 @Table(name = "PKObjTable")
 public class PKObj extends Model {
@@ -39,12 +38,21 @@ public class PKObj extends Model {
 		ActiveAndroid.beginTransaction();
 		try {
 			for (int i = 0; i < n; i++) {
-				new PKObj(random.nextInt(50), 1).save();
+				new PKObj(random.nextInt(845), 1).save();
 			}
 			ActiveAndroid.setTransactionSuccessful();
 		} finally {
 			ActiveAndroid.endTransaction();
 		}
+	}
+
+	public static PKObj getMyData() {
+		return new Select().from(PKObj.class).where("other = ?", 0)
+				.executeSingle();
+	}
+
+	public static List<PKObj> getMyIndex(int sore) {
+		return new Select().from(PKObj.class).where("sore > ?", sore).execute();
 	}
 
 }
