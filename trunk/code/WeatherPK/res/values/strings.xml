@@ -6,5 +6,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_falsh">FalshActivity</string>
     <string name="title_activity_pk">PKActivity</string>
+    <string name="title_activity_rank">RankActivity</string>
 
 </resources>

@@ -2,6 +2,8 @@ package com.rayboot.weatherpk.obj;
 
 import java.util.List;
 
+import android.R.integer;
+
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
@@ -45,6 +47,16 @@ public class WeatherSKObj extends Model {
 
 	public static void clearAll() {
 		new Delete().from(WeatherSKObj.class).execute();
+	}
+
+	public static List<WeatherSKObj> getAllTemp() {
+		return new Select().from(WeatherSKObj.class).groupBy("temp")
+				.orderBy("temp desc").execute();
+	}
+
+	public static List<WeatherSKObj> getDataFromTemp(double curTemp) {
+		return new Select().from(WeatherSKObj.class)
+				.where("temp == ?", curTemp).orderBy("cityId").execute();
 	}
 
 }

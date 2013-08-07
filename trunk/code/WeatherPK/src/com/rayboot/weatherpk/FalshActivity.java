@@ -5,6 +5,8 @@ import java.util.Random;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 import butterknife.InjectView;
 import butterknife.Views;
@@ -22,6 +24,8 @@ public class FalshActivity extends Activity {
 	TextView tvMe;
 	@InjectView(R.id.tvPK)
 	TextView tvPK;
+	@InjectView(R.id.btnJump)
+	Button btnJump;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,14 @@ public class FalshActivity extends Activity {
 		Views.inject(this);
 		startAnimation();
 //		finishAnimation();
+		btnJump.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finishAnimation();
+			}
+		});
 	}
 
 	private void startAnimation() {
