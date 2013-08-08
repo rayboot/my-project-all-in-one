@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:baiduadsdk="http://schemas.android.com/apk/res/com.rayboot.weatherpk"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#008989"
@@ -97,5 +98,23 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:text="排行榜" />
+
+    <Button
+        android:id="@+id/btnFeedback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignParentRight="true"
+        android:text="反馈" />
+
+    <com.baidu.mobads.AdView
+        android:id="@+id/adView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        baiduadsdk:adId=""
+        baiduadsdk:adSize="0" />
 
 </RelativeLayout>

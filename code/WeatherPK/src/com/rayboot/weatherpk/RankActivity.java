@@ -21,6 +21,7 @@ import butterknife.Views;
 import com.rayboot.weatherpk.obj.RankObj;
 import com.rayboot.weatherpk.obj.WeatherSKObj;
 import com.rayboot.weatherpk.utily.DataUtil;
+import com.umeng.analytics.MobclickAgent;
 
 public class RankActivity extends Activity {
 	String curCityName;
@@ -110,4 +111,13 @@ public class RankActivity extends Activity {
 		});
 	}
 
+	public void onResume() {
+		super.onResume();
+		MobclickAgent.onResume(this);
+	}
+
+	public void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
+	}
 }
