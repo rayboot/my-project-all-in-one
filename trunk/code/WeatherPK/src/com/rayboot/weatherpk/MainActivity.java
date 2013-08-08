@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import butterknife.InjectView;
 import butterknife.Views;
 
@@ -28,6 +29,11 @@ import com.rayboot.weatherpk.obj.SKResultObj;
 import com.rayboot.weatherpk.obj.WeatherSKObj;
 import com.rayboot.weatherpk.utily.DataUtil;
 import com.rayboot.weatherpk.utily.HttpUtil;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.fb.FeedbackAgent;
+import com.umeng.update.UmengUpdateAgent;
+import com.umeng.update.UmengUpdateListener;
+import com.umeng.update.UpdateResponse;
 
 public class MainActivity extends Activity {
 	public LocationClient mLocationClient = null;
@@ -43,9 +49,12 @@ public class MainActivity extends Activity {
 	Button btnPK;
 	@InjectView(R.id.btnPaihang)
 	Button btnPaihang;
+	@InjectView(R.id.btnFeedback)
+	Button btnFeedback;
 
 	String curCityCode;
 	Typeface fontFace;
+	FeedbackAgent agent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,10 +84,39 @@ public class MainActivity extends Activity {
 						RankActivity.class));
 			}
 		});
+		btnFeedback.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				agent.startFeedbackActivity();
+			}
+		});
 		fontFace = Typeface.createFromAsset(getAssets(),
 				"fonts/HelveticaNeue.ttf");
 		tvTemp.setTypeface(fontFace);
 		initPKDB();
+		initUMeng();
+	}
+
+	private void initUMeng() {
+		MobclickAgent.onError(this);
+		MobclickAgent.updateOnlineConfig(this);
+		agent = new FeedbackAgent(this);
+		agent.sync();
+		UmengUpdateAgent.update(this);
+		UmengUpdateAgent.setUpdateAutoPopup(false);
+		UmengUpdateAgent.setUpdateListener(new UmengUpdateListener() {
+			@Override
+			public void onUpdateReturned(int updateStatus,
+					UpdateResponse updateInfo) {
+				switch (updateStatus) {
+				case 0: // has update
+					UmengUpdateAgent.showUpdateDialog(MainActivity.this, updateInfo);
+					break;
+				}
+			}
+		});
 	}
 
 	private void initPKDB() {
@@ -98,6 +136,12 @@ public class MainActivity extends Activity {
 		if (System.currentTimeMillis() - lastTime > 31 * 60 * 1000) {
 			getAllWeather();
 		}
+		MobclickAgent.onResume(this);
+	}
+
+	public void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
 	}
 
 	private void getAllWeather() {

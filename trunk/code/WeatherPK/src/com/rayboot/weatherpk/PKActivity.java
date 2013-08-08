@@ -19,6 +19,7 @@ import butterknife.Views;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.rayboot.weatherpk.obj.PKObj;
 import com.rayboot.weatherpk.obj.WeatherSKObj;
+import com.umeng.analytics.MobclickAgent;
 
 public class PKActivity extends Activity implements SensorEventListener {
 	WeatherSKObj weatherMy;
@@ -72,12 +73,12 @@ public class PKActivity extends Activity implements SensorEventListener {
 		ObjectAnimator.ofFloat(tvMyLoc, "alpha", 0, 1).setDuration(4000)
 				.start();
 		ObjectAnimator theTranslationX = ObjectAnimator.ofFloat(tvMyLoc,
-				"translationX",  -100, 0).setDuration(4000);
+				"translationX", -100, 0).setDuration(4000);
 		theTranslationX.start();
 
 		ObjectAnimator.ofFloat(tvOtherLoc, "alpha", 0, 1).setDuration(4000)
 				.start();
-		ObjectAnimator.ofFloat(tvOtherLoc, "translationX",  100, 0)
+		ObjectAnimator.ofFloat(tvOtherLoc, "translationX", 100, 0)
 				.setDuration(4000).start();
 
 		tvMyLoc.setText(weatherMy.city);
@@ -123,6 +124,7 @@ public class PKActivity extends Activity implements SensorEventListener {
 		mSensorManager.registerListener(this,
 				mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
 				SensorManager.SENSOR_DELAY_NORMAL);
+		MobclickAgent.onResume(this);
 	}
 
 	@Override
@@ -137,6 +139,7 @@ public class PKActivity extends Activity implements SensorEventListener {
 		// TODO Auto-generated method stub
 		mSensorManager.unregisterListener(this);
 		super.onPause();
+		MobclickAgent.onPause(this);
 	}
 
 	@Override
