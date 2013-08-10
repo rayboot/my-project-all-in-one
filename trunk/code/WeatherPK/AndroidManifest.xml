@@ -32,6 +32,15 @@
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
+    
+    <!-- for log. -->
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER"/>
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    
+    
     <application
         android:name="com.rayboot.weatherpk.MyApplication"
         android:allowBackup="true"
@@ -103,7 +112,7 @@
         </service>
 
         <!-- push service client -->
-        <receiver android:name="com.baidu.push.example.PushMessageReceiver" >
+        <receiver android:name="com.rayboot.weatherpk.PushMessageReceiver" >
             <intent-filter>
 
                 <!-- 接收push消息 -->
