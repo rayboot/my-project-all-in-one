@@ -3,10 +3,18 @@ package com.rayboot.weatherpk;
 import java.util.List;
 import java.util.Random;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,7 +24,11 @@ import android.widget.Toast;
 import butterknife.InjectView;
 import butterknife.Views;
 
+import com.actionbarsherlock.app.SherlockActivity;
 import com.activeandroid.ActiveAndroid;
+import com.baidu.android.common.logging.Log;
+import com.baidu.android.pushservice.PushConstants;
+import com.baidu.android.pushservice.PushManager;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -35,7 +47,7 @@ import com.umeng.update.UmengUpdateAgent;
 import com.umeng.update.UmengUpdateListener;
 import com.umeng.update.UpdateResponse;
 
-public class MainActivity extends Activity {
+public class MainActivity extends SherlockActivity {
 	public LocationClient mLocationClient = null;
 	public MyLocationListenner myListener = new MyLocationListenner();
 
@@ -58,6 +70,7 @@ public class MainActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		setTheme(R.style.AppTheme);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Views.inject(this);
@@ -112,7 +125,8 @@ public class MainActivity extends Activity {
 					UpdateResponse updateInfo) {
 				switch (updateStatus) {
 				case 0: // has update
-					UmengUpdateAgent.showUpdateDialog(MainActivity.this, updateInfo);
+					UmengUpdateAgent.showUpdateDialog(MainActivity.this,
+							updateInfo);
 					break;
 				}
 			}
@@ -240,4 +254,5 @@ public class MainActivity extends Activity {
 		mLocationClient.setLocOption(option);
 		mLocationClient.start();
 	}
+
 }
