@@ -6,8 +6,6 @@ import java.util.List;
 import android.util.Log;
 
 import com.activeandroid.ActiveAndroid;
-import com.baidu.android.pushservice.PushConstants;
-import com.baidu.android.pushservice.PushManager;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.rayboot.weatherpk.obj.CityObj;
@@ -23,10 +21,6 @@ public class MyApplication extends com.activeandroid.app.Application {
 		super.onCreate();
 		mInstance = this;
 		initDB();
-
-		PushManager.startWork(getApplicationContext(),
-				PushConstants.LOGIN_TYPE_API_KEY, this.getResources()
-						.getString(R.string.baidu_key));
 	}
 
 	private void initDB() {
