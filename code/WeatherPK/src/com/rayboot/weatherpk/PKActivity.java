@@ -10,6 +10,8 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -49,6 +51,8 @@ public class PKActivity extends Activity implements SensorEventListener {
 	LinearLayout llMyTemp;
 	@InjectView(R.id.llYouTemp)
 	LinearLayout llYouTemp;
+	@InjectView(R.id.btnBack)
+	Button btnBack;
 
 	// Sensor管理器
 	private SensorManager mSensorManager = null;
@@ -67,6 +71,22 @@ public class PKActivity extends Activity implements SensorEventListener {
 		mVibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
 		refelshSore();
+
+		btnBack.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if (llPKImg.getVisibility() == View.VISIBLE) {
+					PKActivity.this.finish();
+				} else if (rlPK.getVisibility() == View.VISIBLE) {
+					llPKImg.setVisibility(View.VISIBLE);
+					rlPK.setVisibility(View.GONE);
+				} else {
+					PKActivity.this.finish();
+				}
+			}
+		});
 	}
 
 	private void doPK() {
