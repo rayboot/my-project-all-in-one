@@ -74,8 +74,7 @@ public class MainActivity extends Activity {
 				MainActivity.this.startActivity(new Intent(MainActivity.this,
 						PKActivity.class).putExtra("curCityCode", curCityCode));
 			}
-			
-			
+
 		});
 		btnPaihang.setOnClickListener(new OnClickListener() {
 
@@ -94,8 +93,7 @@ public class MainActivity extends Activity {
 				agent.startFeedbackActivity();
 			}
 		});
-		fontFace = Typeface.createFromAsset(getAssets(),
-				"fonts/HelveticaNeue.ttf");
+		fontFace = Typeface.createFromAsset(getAssets(), "fonts/Ba.otf");
 		tvTemp.setTypeface(fontFace);
 		initPKDB();
 		initUMeng();
@@ -114,7 +112,8 @@ public class MainActivity extends Activity {
 					UpdateResponse updateInfo) {
 				switch (updateStatus) {
 				case 0: // has update
-					UmengUpdateAgent.showUpdateDialog(MainActivity.this, updateInfo);
+					UmengUpdateAgent.showUpdateDialog(MainActivity.this,
+							updateInfo);
 					break;
 				}
 			}
