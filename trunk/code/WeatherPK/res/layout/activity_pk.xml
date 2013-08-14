@@ -38,9 +38,10 @@
         android:layout_above="@+id/tvScore"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_margin="10dp"
-        android:visibility="gone" >
+        android:layout_below="@+id/btnBack"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:visibility="visible" >
 
         <LinearLayout
             android:id="@+id/llMyTemp"
@@ -130,7 +131,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="10dp"
             android:layout_toLeftOf="@+id/textView1"
             android:gravity="center"
             android:text="Medium Text"
@@ -173,7 +173,6 @@
             android:text="你赢了！"
             android:textColor="@color/white"
             android:textSize="60sp" />
-
     </RelativeLayout>
 
     <com.baidu.mobads.AdView
@@ -210,14 +209,13 @@
         android:textColor="@color/white" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/btnBack"
         style="@style/AppTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
         android:background="@null"
         android:drawableLeft="@drawable/back"
         android:text="返回"
