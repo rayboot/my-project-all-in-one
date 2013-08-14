@@ -16,6 +16,8 @@ import android.widget.TextView;
 import butterknife.InjectView;
 import butterknife.Views;
 
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.rayboot.weatherpk.obj.PKObj;
 import com.rayboot.weatherpk.obj.WeatherSKObj;
@@ -43,6 +45,10 @@ public class PKActivity extends Activity implements SensorEventListener {
 	LinearLayout llPKImg;
 	@InjectView(R.id.rlPK)
 	RelativeLayout rlPK;
+	@InjectView(R.id.llMyTemp)
+	LinearLayout llMyTemp;
+	@InjectView(R.id.llYouTemp)
+	LinearLayout llYouTemp;
 
 	// Sensor管理器
 	private SensorManager mSensorManager = null;
@@ -66,25 +72,120 @@ public class PKActivity extends Activity implements SensorEventListener {
 	private void doPK() {
 		llPKImg.setVisibility(View.GONE);
 		rlPK.setVisibility(View.VISIBLE);
+		llMyTemp.setVisibility(View.GONE);
+		llYouTemp.setVisibility(View.GONE);
+		tvResult.setVisibility(View.GONE);
 		weatherMy = WeatherSKObj.getWeatherSKObjFromeID(getIntent()
 				.getStringExtra("curCityCode"));
 		weatherYou = WeatherSKObj.getRandom();
 
-		ObjectAnimator.ofFloat(tvMyLoc, "alpha", 0, 1).setDuration(4000)
+		ObjectAnimator.ofFloat(tvMyLoc, "alpha", 0, 1).setDuration(2000)
 				.start();
 		ObjectAnimator theTranslationX = ObjectAnimator.ofFloat(tvMyLoc,
-				"translationX", -100, 0).setDuration(4000);
+				"translationX", -50, 0).setDuration(2000);
 		theTranslationX.start();
 
-		ObjectAnimator.ofFloat(tvOtherLoc, "alpha", 0, 1).setDuration(4000)
+		ObjectAnimator.ofFloat(tvOtherLoc, "alpha", 0, 1).setDuration(2000)
 				.start();
-		ObjectAnimator.ofFloat(tvOtherLoc, "translationX", 100, 0)
-				.setDuration(4000).start();
+		ObjectAnimator.ofFloat(tvOtherLoc, "translationX", 50, 0)
+				.setDuration(2000).start();
+
+		theTranslationX.addListener(new AnimatorListener() {
+
+			@Override
+			public void onAnimationStart(Animator arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onAnimationRepeat(Animator arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onAnimationEnd(Animator arg0) {
+				// TODO Auto-generated method stub
+
+				llMyTemp.setVisibility(View.VISIBLE);
+				ObjectAnimator.ofFloat(llMyTemp, "alpha", 0, 1)
+						.setDuration(1000).start();
+				ObjectAnimator theTranslationX = ObjectAnimator.ofFloat(
+						llMyTemp, "translationX", -50, 0).setDuration(1000);
+				theTranslationX.addListener(new AnimatorListener() {
+
+					@Override
+					public void onAnimationStart(Animator arg0) {
+						// TODO Auto-generated method stub
+
+					}
+
+					@Override
+					public void onAnimationRepeat(Animator arg0) {
+						// TODO Auto-generated method stub
+
+					}
+
+					@Override
+					public void onAnimationEnd(Animator arg0) {
+						// TODO Auto-generated method stub
+						llYouTemp.setVisibility(View.VISIBLE);
+						ObjectAnimator.ofFloat(llYouTemp, "alpha", 0, 1)
+								.setDuration(1000).start();
+						ObjectAnimator theTranslationX = ObjectAnimator
+								.ofFloat(llYouTemp, "translationX", 50, 0)
+								.setDuration(1000);
+						theTranslationX.addListener(new AnimatorListener() {
+
+							@Override
+							public void onAnimationStart(Animator arg0) {
+								// TODO Auto-generated method stub
+
+							}
+
+							@Override
+							public void onAnimationRepeat(Animator arg0) {
+								// TODO Auto-generated method stub
+
+							}
+
+							@Override
+							public void onAnimationEnd(Animator arg0) {
+								// TODO Auto-generated method stub
+								tvResult.setVisibility(View.VISIBLE);
+							}
+
+							@Override
+							public void onAnimationCancel(Animator arg0) {
+								// TODO Auto-generated method stub
+
+							}
+						});
+						theTranslationX.start();
+
+					}
+
+					@Override
+					public void onAnimationCancel(Animator arg0) {
+						// TODO Auto-generated method stub
+
+					}
+				});
+				theTranslationX.start();
+			}
+
+			@Override
+			public void onAnimationCancel(Animator arg0) {
+				// TODO Auto-generated method stub
+
+			}
+		});
 
 		tvMyLoc.setText(weatherMy.city);
 		tvOtherLoc.setText(weatherYou.city);
-		tvMyTemp.setText(weatherMy.temp + "℃");
-		tvOtherTemp.setText(weatherYou.temp + "℃");
+		tvMyTemp.setText((weatherMy.temp + "℃").replace(".0", ""));
+		tvOtherTemp.setText((weatherYou.temp + "℃").replace(".0", ""));
 
 		if (weatherMy.temp > weatherYou.temp) {
 			tvResult.setText("你赢了！");

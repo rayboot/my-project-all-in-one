@@ -3,19 +3,8 @@
     xmlns:baiduadsdk="http://schemas.android.com/apk/res/com.rayboot.weatherpk"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#008989"
+    android:background="#ff4958"
     tools:context=".MainActivity" >
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tvTemp"
-        android:layout_toRightOf="@+id/tvTemp"
-        android:text="℃"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/white"
-        android:textSize="40sp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -28,21 +17,13 @@
         android:textColor="@color/white"
         android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/tvTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvTemp"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/white" />
-
     <View
         android:id="@+id/view1"
         android:layout_width="wrap_content"
         android:layout_height="2dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/tvTime"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:background="#ffffff" />
 
     <TextView
@@ -52,6 +33,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView2"
         android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
         android:text="当前温度："
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/white"
@@ -63,58 +45,93 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:text="30"
+        android:text="3"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/white"
-        android:textSize="190sp"
+        android:textSize="270sp"
         android:typeface="monospace" />
 
     <TextView
         android:id="@+id/tvPKDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/ll"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/view1"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
         android:text="11111111111111111111111111111111111111"
         android:textColor="@color/white"
         android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/btnPK"
+    <LinearLayout
+        android:id="@+id/ll"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tvPKDesc"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="去PK" />
-
-    <Button
-        android:id="@+id/btnPaihang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:text="排行榜" />
-
-    <Button
-        android:id="@+id/btnFeedback"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView1"
-        android:layout_alignBottom="@+id/textView1"
-        android:layout_alignParentRight="true"
-        android:text="反馈" />
-
-    <com.baidu.mobads.AdView
-        android:id="@+id/adView"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        baiduadsdk:adId=""
-        baiduadsdk:adSize="0" />
+        android:layout_alignParentRight="true" >
+
+        <Button
+            android:id="@+id/btnFeedback"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableLeft="@drawable/feedback"
+            android:drawablePadding="-10dp"
+            android:paddingLeft="20dp"
+            android:text="反馈"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnPK"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:text="去PK"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnPaihang"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableLeft="@drawable/rank"
+            android:drawablePadding="-10dp"
+            android:paddingLeft="20dp"
+            android:text="排行榜"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tvTemp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textView1"
+        android:layout_marginRight="5dp"
+        android:text="°"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/white"
+        android:textSize="90sp" />
 
 </RelativeLayout>

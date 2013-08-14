@@ -3,7 +3,7 @@
     xmlns:baiduadsdk="http://schemas.android.com/apk/res/com.rayboot.weatherpk"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green1"
+    android:background="#ff4958"
     tools:context=".PKActivity" >
 
     <LinearLayout
@@ -21,7 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="摇一摇 跟其他人PK"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white" />
 
         <ImageView
             android:id="@+id/imageView1"
@@ -38,10 +39,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_margin="10dp" >
+        android:layout_margin="10dp"
+        android:visibility="gone" >
 
         <LinearLayout
-            android:id="@+id/linearLayout1"
+            android:id="@+id/llMyTemp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -54,22 +56,38 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="我这里"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white" />
 
-            <TextView
-                android:id="@+id/tvMyTemp"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Large Text"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="50sp" />
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/tvMyTemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Large Text"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/white"
+                    android:textSize="50sp" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="℃"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/llYouTemp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_below="@+id/linearLayout1"
+            android:layout_below="@+id/llMyTemp"
             android:layout_marginTop="20dp"
             android:gravity="right"
             android:orientation="vertical" >
@@ -79,25 +97,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="我这里"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/white" />
 
-            <TextView
-                android:id="@+id/tvOtherTemp"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Large Text"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="50sp" />
-        </LinearLayout>
+                android:layout_weight="1" >
 
-        <TextView
-            android:id="@+id/tvResult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="你赢了！"
-            android:textSize="60sp" />
+                <TextView
+                    android:id="@+id/tvOtherTemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Large Text"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="@color/white"
+                    android:textSize="50sp" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="℃"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+            </LinearLayout>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/tvMyLoc"
@@ -105,11 +130,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="10dp"
             android:layout_toLeftOf="@+id/textView1"
             android:gravity="center"
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/white"
             android:textSize="25sp" />
 
         <TextView
@@ -123,6 +149,7 @@
             android:gravity="center"
             android:text="Medium Text"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/white"
             android:textSize="25sp" />
 
         <TextView
@@ -133,7 +160,19 @@
             android:layout_alignBottom="@+id/tvMyLoc"
             android:layout_centerHorizontal="true"
             android:text="VS"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tvResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llYouTemp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="你赢了！"
+            android:textColor="@color/white"
+            android:textSize="60sp" />
 
     </RelativeLayout>
 
@@ -152,18 +191,36 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/adView"
         android:layout_alignLeft="@+id/rlPK"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp"
         android:text="积分："
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/tvIndex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/rlPK"
-        android:layout_below="@+id/rlPK"
-        android:layout_marginRight="18dp"
+        android:layout_alignBaseline="@+id/tvScore"
+        android:layout_alignBottom="@+id/tvScore"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
         android:text="排名："
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/button1"
+        style="@style/AppTheme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@null"
+        android:drawableLeft="@drawable/back"
+        android:text="返回"
+        android:textColor="@color/white" />
 
 </RelativeLayout>
