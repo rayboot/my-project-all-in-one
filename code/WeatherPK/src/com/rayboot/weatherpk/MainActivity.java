@@ -68,7 +68,6 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		Views.inject(this);
 
-		// http://blog.mynook.info/2012/08/18/weather-com-cn-api.html
 		startActivity(new Intent(this, FalshActivity.class));
 		getAllWeather();
 		initLocation();
@@ -168,7 +167,6 @@ public class MainActivity extends Activity {
 	}
 
 	private void getAllWeather() {
-		// http://61.191.44.170/clt/clt/getSKtemp.msp?cityCode=all/101010100,101010300
 		DataUtil.setInfoToShared("allsktime", System.currentTimeMillis() + "");
 		HttpUtil.get("http://61.191.44.170/clt/clt/getSKtemp.msp?cityCode=all",
 				new AsyncHttpResponseHandler() {
