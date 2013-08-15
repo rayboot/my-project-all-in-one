@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:text="3"
+        android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/white"
         android:textSize="270sp"
@@ -57,12 +57,13 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/ll"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/view1"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:gravity="center_vertical"
-        android:text="11111111111111111111111111111111111111"
+        android:text=""
         android:textColor="@color/white"
         android:textSize="18sp" />
 

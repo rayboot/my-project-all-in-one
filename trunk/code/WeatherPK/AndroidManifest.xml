@@ -50,7 +50,7 @@
         </meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="baidu" />
+            android:value="jifeng" />
 
         <!-- 注册AppActivity -->
         <activity
@@ -59,11 +59,11 @@
         <!-- 您从百度移动联盟网站获取的APPSID -->
         <meta-data
             android:name="BaiduMobAd_APP_ID"
-            android:value="debug" />
+            android:value="a24c20f2" />
         <!-- 您从百度移动联盟网站获取的计费名 -->
         <meta-data
             android:name="BaiduMobAd_APP_SEC"
-            android:value="debug" />
+            android:value="a24c20f2_cafc9297" />
 
         <activity
             android:name="com.rayboot.weatherpk.MainActivity"
