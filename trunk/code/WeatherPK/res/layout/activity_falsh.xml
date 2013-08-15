@@ -65,6 +65,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="10dp"
-        android:text="跳过" />
+        android:text="跳过"
+        android:textSize="20sp" />
 
 </RelativeLayout>
