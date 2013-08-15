@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,6 +6,7 @@
     tools:context=".ResultActivity" >
 
     <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
@@ -24,9 +25,32 @@
             android:text="等额本金" />
     </LinearLayout>
 
+    <com.baidu.mobads.AdView
+        android:id="@+id/adView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:visibility="visible" >
+
+    </com.baidu.mobads.AdView>
+
+    <ListView
+        android:id="@+id/lvContent"
+        android:layout_width="match_parent"
+        android:layout_height="123dp"
+        android:layout_above="@+id/adView"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/llTitle" >
+
+    </ListView>
+
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
@@ -116,8 +140,11 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/llTitle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/linearLayout2" >
 
         <TextView
             android:id="@+id/textView1"
@@ -165,10 +192,4 @@
             android:textSize="12sp" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/lvContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
-    </ListView>
-
-</LinearLayout>
+</RelativeLayout>

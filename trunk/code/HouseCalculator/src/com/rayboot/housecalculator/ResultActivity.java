@@ -12,7 +12,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import butterknife.InjectView;
 import butterknife.Views;
-import cn.waps.AppConnect;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
@@ -61,8 +60,6 @@ public class ResultActivity extends SherlockActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setDisplayShowHomeEnabled(false);
 		Views.inject(this);
-		AppConnect.getInstance(this).getPoints(
-				MyApplication.mInstance.updatePointsNotifier);
 
 		gjjRate = getIntent().getDoubleExtra("gjjRate", 0.045) / 12;
 		sdRate = getIntent().getDoubleExtra("sdRate", 0.0655) / 12;

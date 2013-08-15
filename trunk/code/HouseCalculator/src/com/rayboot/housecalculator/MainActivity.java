@@ -16,7 +16,6 @@ import org.xml.sax.XMLReader;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -34,8 +33,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import butterknife.InjectView;
 import butterknife.Views;
-import cn.waps.AdView;
-import cn.waps.AppConnect;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
@@ -47,7 +44,6 @@ import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
 
 public class MainActivity extends SherlockActivity {
-	final int MORE_AWARK = 1;
 	final int MORE_FEEBACK = 2;
 	final int MORE_ABOUT = 3;
 	final int MORE_SHARE = 4;
@@ -84,8 +80,6 @@ public class MainActivity extends SherlockActivity {
 	EditText etCusGjj;
 	@InjectView(R.id.etCusSy)
 	EditText etCusSy;
-	@InjectView(R.id.AdLinearLayout)
-	LinearLayout AdLinearLayout;
 
 	double curGjjRate = 0.045;
 	double curSYRate = 0.0655;
@@ -97,7 +91,6 @@ public class MainActivity extends SherlockActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Views.inject(this);
-		new AdView(this, AdLinearLayout).DisplayAd();
 
 		getRateData();
 
@@ -219,77 +212,12 @@ public class MainActivity extends SherlockActivity {
 				showSelectYearDialog(v);
 				break;
 			case R.id.btnResult:
-
-				boolean hasPopAd = AppConnect.getInstance(MainActivity.this)
-						.hasPopAd(MainActivity.this);
-				if (hasPopAd) {
-					AppConnect.getInstance(MainActivity.this).showPopAd(
-							MainActivity.this);
-					Dialog popAdDialog = AppConnect.getInstance(
-							MainActivity.this).getPopAdDialog();
-					if (popAdDialog != null) {
-						if (popAdDialog.isShowing()) {
-							// 插屏广告正在显示
-						}
-						popAdDialog.setOnCancelListener(new OnCancelListener() {
-							@Override
-							public void onCancel(DialogInterface dialog) {
-								// 监听插屏广告关闭事件
-								goSpend();
-							}
-						});
-					}else{
-						goSpend();
-					}
-						
-				} else {
-					goSpend();
-				}
-
+				goResult();
 			default:
 				break;
 			}
 		}
 	};
-
-	private void goSpend() {
-		AppConnect.getInstance(MainActivity.this).spendPoints(spendPoint,
-				MyApplication.mInstance.updatePointsNotifier);
-		if (TextUtils.isEmpty(Utilly.getInfoFromShared("total_point"))) {
-			goResult();
-		} else {
-			int total = Integer
-					.valueOf(Utilly.getInfoFromShared("total_point"));
-			if (total - spendPoint > 0) {
-				goResult();
-			} else {
-				new AlertDialog.Builder(MainActivity.this)
-						.setTitle("您的积分不足")
-						.setMessage("您的积分已不足，右上角的按钮可以获取更多积分哦。")
-						.setNegativeButton("残忍的取消",
-								new DialogInterface.OnClickListener() {
-
-									@Override
-									public void onClick(DialogInterface dialog,
-											int which) {
-										dialog.dismiss();
-									}
-								})
-						.setPositiveButton("立即获取积分",
-								new DialogInterface.OnClickListener() {
-
-									@Override
-									public void onClick(DialogInterface dialog,
-											int which) {
-										AppConnect.getInstance(
-												MainActivity.this).showOffers(
-												MainActivity.this);
-
-									}
-								}).create().show();
-			}
-		}
-	}
 
 	private void goResult() {
 
@@ -322,7 +250,6 @@ public class MainActivity extends SherlockActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		SubMenu sub = menu.addSubMenu("Setting");
-		sub.add(0, MORE_AWARK, 0, "获取积分");
 		sub.add(0, MORE_FEEBACK, 0, "意见反馈");
 		sub.add(0, MORE_SHARE, 0, "分享");
 		sub.add(0, MORE_ABOUT, 0, "关于");
@@ -337,8 +264,6 @@ public class MainActivity extends SherlockActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-		case MORE_AWARK:
-			AppConnect.getInstance(this).showOffers(this);
 			break;
 		case MORE_ABOUT:
 			startActivity(new Intent(this, AboutActivity.class));
