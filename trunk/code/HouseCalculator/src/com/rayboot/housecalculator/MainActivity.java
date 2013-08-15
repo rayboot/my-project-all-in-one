@@ -42,6 +42,7 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
+import com.umeng.update.UmengUpdateAgent;
 
 public class MainActivity extends SherlockActivity {
 	final int MORE_FEEBACK = 2;
@@ -274,10 +275,8 @@ public class MainActivity extends SherlockActivity {
 			new FeedbackAgent(this).startFeedbackActivity();
 			break;
 		case MORE_SHARE:
-			String str = String.format(this.getString(R.string.share_content),
-					getString(R.string.app_name), getString(R.string.app_name));
-			Utilly.shareSomethingText(this,
-					getResources().getString(R.string.app_name), str);
+			Utilly.shareSomethingText(MainActivity.this, "分享",
+					"我使用  #最优房贷计算器#  计算房贷灵活控制，还款一目了然，很好用，大家也来试试？");
 			break;
 		default:
 			break;
