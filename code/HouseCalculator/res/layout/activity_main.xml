@@ -70,7 +70,6 @@
                     android:hint="万"
                     android:inputType="numberDecimal"
                     android:textSize="12sp" >
-
                 </EditText>
 
                 <EditText
@@ -227,14 +226,12 @@
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:id="@+id/AdLinearLayout"
+    <com.baidu.mobads.AdView
+        android:id="@+id/adView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal" >
-
-    </LinearLayout>
+        android:layout_alignParentLeft="true" >
+    </com.baidu.mobads.AdView>
 
 </RelativeLayout>
