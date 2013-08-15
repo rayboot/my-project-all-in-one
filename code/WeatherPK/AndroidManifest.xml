@@ -67,16 +67,21 @@
 
         <activity
             android:name="com.rayboot.weatherpk.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.rayboot.weatherpk.FalshActivity" >
+        <activity
+            android:name="com.rayboot.weatherpk.FalshActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.rayboot.weatherpk.PKActivity" >
+        <activity
+            android:name="com.rayboot.weatherpk.PKActivity"
+            android:screenOrientation="portrait" >
         </activity>
 
         <service
@@ -85,10 +90,16 @@
             android:process=":remote" >
         </service>
 
-        <activity android:name="com.rayboot.weatherpk.RankActivity" >
+        <activity
+            android:name="com.rayboot.weatherpk.RankActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity android:name="com.umeng.fb.ConversationActivity" />
-        <activity android:name="com.umeng.fb.ContactActivity" />
+        <activity
+            android:name="com.umeng.fb.ConversationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.umeng.fb.ContactActivity"
+            android:screenOrientation="portrait" />
 
         <service
             android:name="com.umeng.common.net.DownloadingService"
@@ -142,7 +153,9 @@
             android:name="api_key"
             android:value="s37rtBBGi6Omywrfjlj9v2GO" />
         <!-- push service end -->
-        <activity android:name="com.rayboot.weatherpk.AboutActivity" >
+        <activity
+            android:name="com.rayboot.weatherpk.AboutActivity"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 
