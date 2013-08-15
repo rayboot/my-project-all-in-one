@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -28,6 +29,7 @@ import com.rayboot.weatherpk.obj.PKObj;
 import com.rayboot.weatherpk.obj.SKResultObj;
 import com.rayboot.weatherpk.obj.WeatherSKObj;
 import com.rayboot.weatherpk.utily.DataUtil;
+import com.rayboot.weatherpk.utily.Encrypt;
 import com.rayboot.weatherpk.utily.HttpUtil;
 import com.rayboot.weatherpk.utily.ScreenShot;
 import com.rayboot.weatherpk.utily.Utilly;
@@ -61,6 +63,7 @@ public class MainActivity extends Activity {
 
 	int totalCity = 0;
 	int curIndex = 0;
+	String port = "7e448edb2920690dad244d4d2fc429225debec724d207d823f574f8bcee033eb91137cb8971c437a0973c38f3d8b913592c07d725e9e8c3c";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -168,7 +171,7 @@ public class MainActivity extends Activity {
 
 	private void getAllWeather() {
 		DataUtil.setInfoToShared("allsktime", System.currentTimeMillis() + "");
-		HttpUtil.get("http://61.191.44.170/clt/clt/getSKtemp.msp?cityCode=all",
+		HttpUtil.get(Encrypt.decrypt(port, "rayboot.work"),
 				new AsyncHttpResponseHandler() {
 
 					@Override
