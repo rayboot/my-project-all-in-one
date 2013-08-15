@@ -58,7 +58,7 @@ public class RankActivity extends Activity {
 				for (WeatherSKObj weatherSKObj : tempList) {
 					if (weatherSKObj.city.equals(DataUtil
 							.getInfoFromShared("curCityName"))) {
-						ro.citys.append("<font color='red'>")
+						ro.citys.append("<font color='#fffa62'>")
 								.append(weatherSKObj.city).append("</font> ");
 						continue;
 					}

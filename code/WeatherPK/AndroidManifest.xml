@@ -74,13 +74,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.rayboot.weatherpk.FalshActivity"
-            android:label="@string/title_activity_falsh" >
+        <activity android:name="com.rayboot.weatherpk.FalshActivity" >
         </activity>
-        <activity
-            android:name="com.rayboot.weatherpk.PKActivity"
-            android:label="@string/title_activity_pk" >
+        <activity android:name="com.rayboot.weatherpk.PKActivity" >
         </activity>
 
         <service
@@ -89,9 +85,7 @@
             android:process=":remote" >
         </service>
 
-        <activity
-            android:name="com.rayboot.weatherpk.RankActivity"
-            android:label="@string/title_activity_rank" >
+        <activity android:name="com.rayboot.weatherpk.RankActivity" >
         </activity>
         <activity android:name="com.umeng.fb.ConversationActivity" />
         <activity android:name="com.umeng.fb.ContactActivity" />
@@ -148,6 +142,8 @@
             android:name="api_key"
             android:value="s37rtBBGi6Omywrfjlj9v2GO" />
         <!-- push service end -->
+        <activity android:name="com.rayboot.weatherpk.AboutActivity" >
+        </activity>
     </application>
 
 </manifest>

@@ -75,15 +75,15 @@
         android:layout_alignParentRight="true" >
 
         <Button
-            android:id="@+id/btnFeedback"
+            android:id="@+id/btnShare"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@null"
-            android:drawableLeft="@drawable/feedback"
+            android:drawableLeft="@drawable/share32"
             android:drawablePadding="-10dp"
             android:paddingLeft="20dp"
-            android:text="反馈"
+            android:text="分享"
             android:textColor="@color/white"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -133,5 +133,14 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/white"
         android:textSize="90sp" />
+
+    <ImageButton
+        android:id="@+id/btnAbout"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@null"
+        android:src="@drawable/about" />
 
 </RelativeLayout>
