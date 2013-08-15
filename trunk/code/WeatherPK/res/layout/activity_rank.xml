@@ -3,6 +3,7 @@
     xmlns:baiduadsdk="http://schemas.android.com/apk/res/com.rayboot.weatherpk"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ff4958"
     tools:context=".RankActivity" >
 
     <ListView
@@ -11,8 +12,9 @@
         android:layout_height="100dp"
         android:layout_above="@+id/adView"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/linearLayout1" >
-
+        android:layout_below="@+id/linearLayout1"
+        android:fadingEdge="none"
+        android:scrollingCache="false" >
     </ListView>
 
     <LinearLayout
@@ -25,14 +27,23 @@
 
         <Button
             android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="返回" />
+            style="@style/AppTheme"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="5dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/back"
+            android:text="返回"
+            android:textColor="@color/white" />
 
         <EditText
             android:id="@+id/etSearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_weight="1"
             android:ems="10"
             android:hint="搜索其他城市"
@@ -57,6 +68,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="排名"
+            android:textColor="@color/white"
             android:textSize="14sp" />
 
         <TextView
@@ -66,6 +78,7 @@
             android:gravity="center"
             android:text="温度"
             android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/white"
             android:textSize="14sp" />
 
         <TextView
@@ -74,6 +87,7 @@
             android:layout_height="wrap_content"
             android:text="城市"
             android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/white"
             android:textSize="14sp" />
     </LinearLayout>
 

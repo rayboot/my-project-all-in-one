@@ -11,8 +11,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 import butterknife.InjectView;
 import butterknife.Views;
 
@@ -29,6 +29,8 @@ import com.rayboot.weatherpk.obj.SKResultObj;
 import com.rayboot.weatherpk.obj.WeatherSKObj;
 import com.rayboot.weatherpk.utily.DataUtil;
 import com.rayboot.weatherpk.utily.HttpUtil;
+import com.rayboot.weatherpk.utily.ScreenShot;
+import com.rayboot.weatherpk.utily.Utilly;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
 import com.umeng.update.UmengUpdateAgent;
@@ -49,12 +51,16 @@ public class MainActivity extends Activity {
 	Button btnPK;
 	@InjectView(R.id.btnPaihang)
 	Button btnPaihang;
-	@InjectView(R.id.btnFeedback)
-	Button btnFeedback;
+	@InjectView(R.id.btnShare)
+	Button btnShare;
+	@InjectView(R.id.btnAbout)
+	ImageButton btnAbout;
 
 	String curCityCode;
 	Typeface fontFace;
-	FeedbackAgent agent;
+
+	int totalCity = 0;
+	int curIndex = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -85,12 +91,30 @@ public class MainActivity extends Activity {
 						RankActivity.class));
 			}
 		});
-		btnFeedback.setOnClickListener(new OnClickListener() {
+		btnShare.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				agent.startFeedbackActivity();
+				String file = ScreenShot.shoot(MainActivity.this);
+				if (TextUtils.isEmpty(file)) {
+					Utilly.shareSomethingText(MainActivity.this, "分享",
+							"我使用  #哪最热#  看到现在我这里温度全国排名第几，很有意思，还能PK，赶紧来试试吧。");
+				} else {
+					Utilly.shareSomethingTextPhoto(MainActivity.this, "分享",
+							"我使用  #哪最热#  看到现在我这里" + "全国" + totalCity
+									+ "个省市温度PK中第" + curIndex + "名！真的好热啊，你那呢？",
+							file);
+				}
+			}
+		});
+		btnAbout.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				MainActivity.this.startActivity(new Intent(MainActivity.this,
+						AboutActivity.class));
 			}
 		});
 		fontFace = Typeface.createFromAsset(getAssets(), "fonts/Ba.otf");
@@ -102,8 +126,6 @@ public class MainActivity extends Activity {
 	private void initUMeng() {
 		MobclickAgent.onError(this);
 		MobclickAgent.updateOnlineConfig(this);
-		agent = new FeedbackAgent(this);
-		agent.sync();
 		UmengUpdateAgent.update(this);
 		UmengUpdateAgent.setUpdateAutoPopup(false);
 		UmengUpdateAgent.setUpdateListener(new UmengUpdateListener() {
@@ -225,6 +247,8 @@ public class MainActivity extends Activity {
 		all.clear();
 		tvPKDesc.setText("全国" + total + "个省市温度PK中第" + index
 				+ "名！\n敢不敢随机PK一下？？！！");
+		totalCity = total;
+		curIndex = index;
 	}
 
 	private void initLocation() {
