@@ -23,13 +23,13 @@ public class AboutActivity extends Activity {
 	Button btnShare;
 	@InjectView(R.id.btnFeedback)
 	Button btnFeedback;
-	FeedbackAgent agent;
 	@InjectView(R.id.tvAppname)
 	TextView tvAppname;
 	@InjectView(R.id.tvVersion)
 	TextView tvVersion;
 	@InjectView(R.id.ivIcon)
 	ImageView ivIcon;
+	FeedbackAgent agent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
