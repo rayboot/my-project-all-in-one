@@ -1,0 +1,41 @@
+package com.rayboot.jietongmap.obj;
+
+import com.activeandroid.Model;
+import com.activeandroid.annotation.Column;
+import com.activeandroid.annotation.Table;
+
+@Table(name = "POIObjs")
+public class POIObj extends Model {
+
+	@Column(name = "name")
+	public String name;
+	@Column(name = "type")
+	public String type;
+	@Column(name = "address")
+	public String address;
+	@Column(name = "tel")
+	public String tel;
+	@Column(name = "la")
+	public double la;
+	@Column(name = "lo")
+	public double lo;
+	
+
+	public POIObj() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public POIObj(String name, String type, String address, String tel,
+			double la, double lo) {
+		super();
+		this.name = name;
+		this.type = type;
+		this.address = address;
+		this.tel = tel;
+		this.la = la;
+		this.lo = lo;
+	}
+
+}
