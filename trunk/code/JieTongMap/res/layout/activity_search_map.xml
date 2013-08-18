@@ -72,6 +72,15 @@
             android:layout_weight="12"
             android:onClick="saveToDB"
             android:text="保存" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="12"
+            android:onClick="tempUpdateDB"
+            android:text="更新位置" />
+
     </LinearLayout>
 
     <RelativeLayout

@@ -41,7 +41,7 @@ public class MyPoiOverlay extends PoiOverlay {
 
 				new POIObj(curIinfo.name, "", curIinfo.address,
 						curIinfo.phoneNum, curIinfo.pt.getLatitudeE6(),
-						curIinfo.pt.getLatitudeE6()).save();
+						curIinfo.pt.getLongitudeE6()).save();
 				dialog.dismiss();
 
 			}
