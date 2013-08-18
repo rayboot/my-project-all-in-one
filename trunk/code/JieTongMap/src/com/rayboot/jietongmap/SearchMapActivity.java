@@ -54,6 +54,10 @@ public class SearchMapActivity extends Activity {
 		mMapView = (MapView) findViewById(R.id.bmapView);
 		mMapView.getController().enableClick(true);
 		mMapView.getController().setZoom(12);
+		/**
+		 * 显示内置缩放控件
+		 */
+		mMapView.setBuiltInZoomControls(true);
 
 		// 初始化搜索模块，注册搜索事件监听
 		mSearch = new MKSearch();
