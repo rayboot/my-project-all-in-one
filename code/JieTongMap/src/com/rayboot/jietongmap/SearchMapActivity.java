@@ -1,5 +1,6 @@
 package com.rayboot.jietongmap;
 
+import android.R.integer;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.ClipData.Item;
@@ -261,7 +262,7 @@ public class SearchMapActivity extends Activity {
 			for (int i = 0; i < poiOverlay.size(); i++) {
 				MKPoiInfo info = poiOverlay.getPoi(i);
 				new POIObj(info.name, "", info.address, info.phoneNum,
-						info.pt.getLatitudeE6(), info.pt.getLatitudeE6())
+						info.pt.getLatitudeE6(), info.pt.getLongitudeE6())
 						.save();
 			}
 			ActiveAndroid.setTransactionSuccessful();
@@ -276,5 +277,26 @@ public class SearchMapActivity extends Activity {
 		intent.putExtra("la", mMapView.getMapCenter().getLatitudeE6());
 		intent.putExtra("lo", mMapView.getMapCenter().getLongitudeE6());
 		startActivity(intent);
+	}
+
+	public void tempUpdateDB(View v) {
+		int count = 0;
+		ActiveAndroid.beginTransaction();
+		try {
+			for (int i = 0; i < poiOverlay.size(); i++) {
+				MKPoiInfo info = poiOverlay.getPoi(i);
+				POIObj poi = POIObj.getOneData(info.name, info.phoneNum,
+						info.address, info.pt.getLatitudeE6());
+				if (poi != null) {
+					poi.lo = info.pt.getLongitudeE6();
+					poi.save();
+					count++;
+				}
+			}
+			ActiveAndroid.setTransactionSuccessful();
+		} finally {
+			ActiveAndroid.endTransaction();
+		}
+		Toast.makeText(this, "更新 " + count + "个", Toast.LENGTH_SHORT).show();
 	}
 }

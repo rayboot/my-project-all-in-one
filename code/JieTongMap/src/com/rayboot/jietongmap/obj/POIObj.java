@@ -1,8 +1,11 @@
 package com.rayboot.jietongmap.obj;
 
+import java.util.List;
+
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Select;
 
 @Table(name = "POIObjs")
 public class POIObj extends Model {
@@ -16,19 +19,17 @@ public class POIObj extends Model {
 	@Column(name = "tel")
 	public String tel;
 	@Column(name = "la")
-	public double la;
+	public int la;
 	@Column(name = "lo")
-	public double lo;
-	
+	public int lo;
 
 	public POIObj() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public POIObj(String name, String type, String address, String tel,
-			double la, double lo) {
+	public POIObj(String name, String type, String address, String tel, int la,
+			int lo) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -38,4 +39,15 @@ public class POIObj extends Model {
 		this.lo = lo;
 	}
 
+	public static List<POIObj> getAllData() {
+		return new Select().from(POIObj.class).execute();
+	}
+
+	public static POIObj getOneData(String name, String tel, String address,
+			int la) {
+		return new Select()
+				.from(POIObj.class)
+				.where("name = ? AND la = ? AND lo = ? AND tel = ? AND address = ? ",
+						name, la, la, tel, address).executeSingle();
+	}
 }
