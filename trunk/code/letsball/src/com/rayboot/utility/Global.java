@@ -10,7 +10,7 @@ import com.rayboot.letsball.R;
 import com.rayboot.letsball.model.TeamMapInfo;
 
 public class Global {
-	public static String Domain = "http://soccer.sports.sohu.com/";
+	public static String Domain = "http://soccer.sports.sohu.com";
 	public static String CUR_TABLE_URL = "http://soccer.sports.sohu.com/league/1/23/table/";
 	public static String CUR_SHOOTER_URL = "http://soccer.sports.sohu.com/league/1/23/shooter/";
 

@@ -49,7 +49,7 @@ public class SampleDataCache {
 			// 没有缓存数据
 			cacheData = HttpUtility.executeHttpGet(urlString);
 			if (TextUtils.isEmpty(cacheData)) {
-				Log.e("警告", "数据返回有误。");
+				Log.e("警告", "数据返回有误。" + urlString);
 				return null;
 			}
 			FileUtility.writeFile2SD(cacheFile.getAbsolutePath(), cacheData);
