@@ -9,6 +9,7 @@ import org.apache.http.ParseException;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import com.baidu.android.pushservice.PushConstants;
@@ -35,9 +36,26 @@ public class IndexActivity extends Activity {
 
 		initMsgPush();
 
-		initAreaInfo();
-		initLeagueData();
+		new LoadContentTask().execute();
 
+	}
+
+	private class LoadContentTask extends AsyncTask<Object, Object, Object> {
+
+		@Override
+		protected Object doInBackground(Object... arg) {
+			initAreaInfo();
+			initLeagueData();
+			return true;
+		}
+
+		protected void onPostExecute(Object result) {
+			// process result
+			finishLoad();
+		}
+	}
+
+	private void finishLoad() {
 		Intent intent = new Intent(IndexActivity.this, MainActivity.class);
 		startActivity(intent);
 		finish();

@@ -62,15 +62,20 @@ public class JsoupUtility {
 		asElements = null;
 
 		// 获取轮数
-		estart = doc.body().getElementsByAttributeValue("class", "sctable")
-				.get(0);
-		asElements = estart.getElementsByTag("a");
-		for (Element element : asElements) {
-			if (!StringUtil.isNumeric(element.text())) {// 过滤全部的连接
-				continue;
+		if (doc.body().getElementsByAttributeValue("class", "sctable").size() > 0) {
+			estart = doc.body().getElementsByAttributeValue("class", "sctable")
+					.get(0);
+			asElements = estart.getElementsByTag("a");
+			for (Element element : asElements) {
+				if (!StringUtil.isNumeric(element.text())) {// 过滤全部的连接
+					continue;
+				}
+				pairsRoundUrl.add(new PairRoundUrl(element.text(), element
+						.attr("href").trim(), allUrlString.hashCode()));
 			}
-			pairsRoundUrl.add(new PairRoundUrl(element.text(), element.attr(
-					"href").trim(), allUrlString.hashCode()));
+		} else {
+			pairsRoundUrl.add(new PairRoundUrl("1", allUrlString.replace(
+					Global.Domain, "").trim(), allUrlString.hashCode()));
 		}
 
 		// 获取轮次信息

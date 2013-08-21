@@ -1,6 +1,7 @@
 package com.rayboot.utility;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 
 import android.content.Context;
@@ -17,19 +18,46 @@ public class Utility {
 	}
 
 	public static String getAllMatchUrl(String fileName) {
-		try {
-			InputStreamReader inputReader = new InputStreamReader(LetsBallApp
-					.getAppInstant().getResources().getAssets().open(fileName));
-			BufferedReader bufReader = new BufferedReader(inputReader);
-			String line = "";
-			while ((line = bufReader.readLine()) != null) {
-				return line;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		try {
+//			InputStreamReader inputReader = new InputStreamReader(LetsBallApp
+//					.getAppInstant().getResources().getAssets().open(fileName));
+//			BufferedReader bufReader = new BufferedReader(inputReader);
+//			String line = "";
+//			while ((line = bufReader.readLine()) != null) {
+//				return line;
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//		return null;
+		
 
-		return null;
+        BufferedReader bufferedReader = null;  
+        try {  
+            bufferedReader = new BufferedReader(new InputStreamReader((LetsBallApp
+					.getAppInstant().getAssets().open(fileName))));
+            String line = null;  
+            StringBuilder builder = new StringBuilder();  
+            while (null != (line = bufferedReader.readLine())) {  
+                builder.append(line);  
+            }  
+            return builder.toString();  
+        } catch (IOException e) {  
+            // TODO Auto-generated catch block  
+            e.printStackTrace();  
+        }finally{  
+            if (null != bufferedReader) {  
+                try {  
+                    bufferedReader.close();  
+                } catch (IOException e) {  
+                    // TODO Auto-generated catch block  
+                    e.printStackTrace();  
+                }  
+            }  
+            bufferedReader = null;  
+        }  
+        return "";  
 	}
 
 	public static void sendEmail(Context context, String subject, String text) {

@@ -45,6 +45,7 @@ public class HttpUtility {
 		try {
 			url = new URL(urlString);
 			connection = (HttpURLConnection) url.openConnection();
+			Log.i("START HTTP CONNECT ",urlString);
 			Log.i("HTTP CONNECT ",
 					"RESULT CODE = " + connection.getResponseCode()
 							+ "   URL = " + urlString);
