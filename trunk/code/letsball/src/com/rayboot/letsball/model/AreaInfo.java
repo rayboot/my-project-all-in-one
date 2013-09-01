@@ -21,6 +21,8 @@ public class AreaInfo extends Model {
 	public final static int[] TYPE_AREA_ARRAY = { TYPE_ITALY, TYPE_ENGLAND,
 			TYPE_SPAIN, TYPE_GERMANY };
 
+	// public final static int[] TYPE_AREA_ARRAY = { TYPE_ENGLAND, TYPE_SPAIN };
+
 	final public static int TYPE_LEAGUE = 1;
 	final public static int TYPE_CUP = 2;
 	@Column(name = "areaId")

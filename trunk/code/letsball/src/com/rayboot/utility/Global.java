@@ -211,6 +211,10 @@ public class Global {
 				"莱切斯特城",
 				getTeamParaArray(context, R.string.eng_team_39,
 						"eng_team_logo_39.png"));
+		mapTeams.put(
+				"卡迪夫城",
+				getTeamParaArray(context, R.string.eng_team_40,
+						"eng_team_logo_40.png"));
 
 		// 意甲
 		mapTeams.put(
