@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 import butterknife.InjectView;
+import butterknife.Views;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.google.gson.Gson;
@@ -35,6 +36,7 @@ public class MainActivity extends SherlockActivity {
 		setTheme(R.style.Theme_Sherlock_Light);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		Views.inject(this);
 		doLogin();
 	}
 
@@ -57,7 +59,7 @@ public class MainActivity extends SherlockActivity {
 		HttpUtil.get(HttpUtil.LOGIN, rp, null);
 	}
 
-	public void sendSMS(View view) {
+	public void doSendSMS(View view) {
 		curOrder = "";
 		if (TextUtils.isEmpty(etPhone.getText().toString())) {
 			Toast.makeText(this, "请先填写扣费手机号码", Toast.LENGTH_LONG).show();
