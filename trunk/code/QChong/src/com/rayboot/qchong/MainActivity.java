@@ -1,25 +1,47 @@
 package com.rayboot.qchong;
 
+import java.text.DecimalFormat;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.telephony.TelephonyManager;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.InjectView;
 import butterknife.Views;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.view.SubMenu;
 import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.umeng.fb.FeedbackAgent;
+import com.umeng.update.UmengUpdateAgent;
+import com.umeng.update.UmengUpdateListener;
+import com.umeng.update.UpdateResponse;
 
 public class MainActivity extends SherlockActivity {
+	final int MORE_CLEAR_CACHE = 1;
+	final int MORE_FEEBACK = 2;
+	final int MORE_ABOUT = 3;
+	final int MORE_SHARE = 4;
 	@InjectView(R.id.etCount)
 	EditText etCount;
 	@InjectView(R.id.etPhone)
@@ -28,8 +50,14 @@ public class MainActivity extends SherlockActivity {
 	EditText etQQ;
 	@InjectView(R.id.etSMS)
 	EditText etSMS;
+	@InjectView(R.id.btnSMS)
+	Button btnSMS;
+	@InjectView(R.id.tvPrice)
+	TextView tvPrice;
 
 	String curOrder = "";
+	FeedbackAgent agent;
+	DecimalFormat df = new DecimalFormat("0.00");
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +66,60 @@ public class MainActivity extends SherlockActivity {
 		setContentView(R.layout.activity_main);
 		Views.inject(this);
 		doLogin();
+		initUMeng();
+		etCount.addTextChangedListener(textWatcher);
+	}
+
+	private TextWatcher textWatcher = new TextWatcher() {
+
+		@Override
+		public void afterTextChanged(Editable arg0) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+				int arg3) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void onTextChanged(CharSequence arg0, int arg1, int arg2,
+				int arg3) {
+			// TODO Auto-generated method stub
+			if (TextUtils.isEmpty(arg0)) {
+				tvPrice.setText("价格总计：0元");
+			} else {
+				tvPrice.setText("价格总计："
+						+ df.format(Integer.parseInt(arg0.toString()) * 0.92)
+						+ "元");
+			}
+
+		}
+
+	};
+
+	private void initUMeng() {
+		// 友盟意见反馈检索
+		agent = new FeedbackAgent(this);
+		agent.sync();
+		// 友盟检测更新
+		UmengUpdateAgent.update(this);
+		UmengUpdateAgent.setUpdateAutoPopup(false);
+		UmengUpdateAgent.setUpdateListener(new UmengUpdateListener() {
+			@Override
+			public void onUpdateReturned(int updateStatus,
+					UpdateResponse updateInfo) {
+				switch (updateStatus) {
+				case 0: // has update
+					UmengUpdateAgent.showUpdateDialog(MainActivity.this,
+							updateInfo);
+					break;
+				}
+			}
+		});
 	}
 
 	private void doLogin() {
@@ -60,6 +142,7 @@ public class MainActivity extends SherlockActivity {
 	}
 
 	public void doSendSMS(View view) {
+		Toast.makeText(this, "    asdfasdf  ", Toast.LENGTH_SHORT).show();
 		curOrder = "";
 		if (TextUtils.isEmpty(etPhone.getText().toString())) {
 			Toast.makeText(this, "请先填写扣费手机号码", Toast.LENGTH_LONG).show();
@@ -91,15 +174,35 @@ public class MainActivity extends SherlockActivity {
 				if (smsObj != null && smsObj.code.equals("000000")) {
 					if (!TextUtils.isEmpty(smsObj.orderId)) {
 						curOrder = smsObj.orderId;
+						btnSMS.setEnabled(false);
+						new Timer().schedule(new TimerTask() {
+							public void run() {
+								Message message = new Message();
+								message.what = 1;
+								handler.sendMessage(message);
+							}
+						}, 30000);
 					}
 				}
 				Toast.makeText(MainActivity.this, smsObj.msg, Toast.LENGTH_LONG)
 						.show();
+
 			}
 
 		});
 
 	}
+
+	Handler handler = new Handler() {
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			case 1:
+				btnSMS.setEnabled(true);
+				break;
+			}
+			super.handleMessage(msg); // 这句话的意思是处理消息队列中的消息
+		}
+	};
 
 	public void doOrder(View view) {
 		if (TextUtils.isEmpty(etQQ.getText().toString())) {
@@ -165,5 +268,41 @@ public class MainActivity extends SherlockActivity {
 			}
 
 		});
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		SubMenu sub = menu.addSubMenu("Setting");
+		sub.add(0, MORE_FEEBACK, 0, "意见反馈");
+		sub.add(0, MORE_SHARE, 0, "分享");
+		sub.add(0, MORE_ABOUT, 0, "关于");
+		MenuItem subMenu1Item = sub.getItem();
+		subMenu1Item.setIcon(R.drawable.align_just_icon);
+		subMenu1Item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS
+				| MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+		case 0:
+			return false;
+		case MORE_ABOUT:
+			startActivity(new Intent(this, AboutActivity.class));
+			overridePendingTransition(R.anim.base_slide_right_in,
+					R.anim.stay_anim);
+			break;
+		case MORE_FEEBACK:
+			agent.startFeedbackActivity();
+			break;
+		case MORE_SHARE:
+			// shareSomethingText(this, "合肥公积金查询", "");
+			break;
+		default:
+			break;
+		}
+		return true;
 	}
 }

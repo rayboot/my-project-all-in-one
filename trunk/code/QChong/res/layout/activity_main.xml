@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:text="Medium Text"
+            android:text="产品单价：1元"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -80,16 +80,16 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:text="Medium Text"
+            android:text="产品折扣：92折"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/tvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/tvDanjia"
-            android:text="Medium Text"
+            android:text="价格总计：0元"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </RelativeLayout>
 
