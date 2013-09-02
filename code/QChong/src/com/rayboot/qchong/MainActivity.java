@@ -29,16 +29,18 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.SubMenu;
+import com.baidu.android.pushservice.PushConstants;
+import com.baidu.android.pushservice.PushManager;
 import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
 import com.umeng.update.UmengUpdateAgent;
 import com.umeng.update.UmengUpdateListener;
 import com.umeng.update.UpdateResponse;
 
 public class MainActivity extends SherlockActivity {
-	final int MORE_CLEAR_CACHE = 1;
 	final int MORE_FEEBACK = 2;
 	final int MORE_ABOUT = 3;
 	final int MORE_SHARE = 4;
@@ -67,7 +69,18 @@ public class MainActivity extends SherlockActivity {
 		Views.inject(this);
 		doLogin();
 		initUMeng();
+		initBaiduPush();
 		etCount.addTextChangedListener(textWatcher);
+
+		etQQ.setText(Util.getInfoFromShared(this, "qq"));
+		etPhone.setText(Util.getInfoFromShared(this, "phone"));
+	}
+
+	private void initBaiduPush() {
+
+		PushManager.startWork(getApplicationContext(),
+				PushConstants.LOGIN_TYPE_API_KEY,
+				Util.getMetaValue(MainActivity.this, "api_key"));
 	}
 
 	private TextWatcher textWatcher = new TextWatcher() {
@@ -142,12 +155,12 @@ public class MainActivity extends SherlockActivity {
 	}
 
 	public void doSendSMS(View view) {
-		Toast.makeText(this, "    asdfasdf  ", Toast.LENGTH_SHORT).show();
 		curOrder = "";
 		if (TextUtils.isEmpty(etPhone.getText().toString())) {
 			Toast.makeText(this, "请先填写扣费手机号码", Toast.LENGTH_LONG).show();
 			return;
 		}
+		Util.setInfoToShared(this, "phone", etPhone.getText().toString());
 		RequestParams rp = new RequestParams();
 		rp.put("mobileNumber", "");
 		rp.put("cityId", "01");
@@ -222,6 +235,9 @@ public class MainActivity extends SherlockActivity {
 			return;
 		}
 
+		Util.setInfoToShared(this, "phone", etPhone.getText().toString());
+		Util.setInfoToShared(this, "qq", etQQ.getText().toString());
+
 		RequestParams rp = new RequestParams();
 		rp.put("mobileNumber", "");
 		rp.put("cityId", "01");
@@ -233,7 +249,7 @@ public class MainActivity extends SherlockActivity {
 		rp.put("smsCode", etSMS.getText().toString());
 		rp.put("fee", Integer.valueOf(etCount.getText().toString()) * 100 + "");
 		rp.put("spAccount", etQQ.getText().toString());
-		HttpUtil.get(HttpUtil.LOGIN, rp, new AsyncHttpResponseHandler() {
+		HttpUtil.get(HttpUtil.DOORDER, rp, new AsyncHttpResponseHandler() {
 
 			@Override
 			public void onFailure(Throwable arg0, String arg1) {
@@ -298,11 +314,22 @@ public class MainActivity extends SherlockActivity {
 			agent.startFeedbackActivity();
 			break;
 		case MORE_SHARE:
-			// shareSomethingText(this, "合肥公积金查询", "");
+			Util.shareSomethingText(MainActivity.this, "分享",
+					"我使用  #Q币九折起#  我找到的全网最低买Q币，知道你喜欢，特意转给你。");
 			break;
 		default:
 			break;
 		}
 		return true;
+	}
+
+	public void onResume() {
+		super.onResume();
+		MobclickAgent.onResume(this);
+	}
+
+	public void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
 	}
 }

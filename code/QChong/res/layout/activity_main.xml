@@ -101,4 +101,11 @@
         android:onClick="doOrder"
         android:text="提交订单" />
 
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="缴费方式：电话直接扣费\n充值限制：每个手机号单词交易上限40，单月交易上限100，每个QQ号每月最多充值80个"
+        android:textColor="#ff0000" />
+
 </LinearLayout>
