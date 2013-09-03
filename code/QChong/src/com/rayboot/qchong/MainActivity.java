@@ -197,6 +197,9 @@ public class MainActivity extends SherlockActivity {
 						}, 30000);
 					}
 				}
+				if (smsObj.msg.contains("安徽")) {
+					smsObj.msg = "该手机号码不支持支付费用。";
+				}
 				Toast.makeText(MainActivity.this, smsObj.msg, Toast.LENGTH_LONG)
 						.show();
 
@@ -237,6 +240,7 @@ public class MainActivity extends SherlockActivity {
 
 		Util.setInfoToShared(this, "phone", etPhone.getText().toString());
 		Util.setInfoToShared(this, "qq", etQQ.getText().toString());
+		setAllInputEnable(false);
 
 		RequestParams rp = new RequestParams();
 		rp.put("mobileNumber", "");
@@ -252,6 +256,13 @@ public class MainActivity extends SherlockActivity {
 		HttpUtil.get(HttpUtil.DOORDER, rp, new AsyncHttpResponseHandler() {
 
 			@Override
+			public void onFinish() {
+				// TODO Auto-generated method stub
+				super.onFinish();
+				setAllInputEnable(true);
+			}
+
+			@Override
 			public void onFailure(Throwable arg0, String arg1) {
 				// TODO Auto-generated method stub
 				super.onFailure(arg0, arg1);
@@ -263,11 +274,15 @@ public class MainActivity extends SherlockActivity {
 			public void onSuccess(String arg0) {
 				// TODO Auto-generated method stub
 				super.onSuccess(arg0);
+				// arg0 =
+				// "{\"actualFee\": \"92\",\"description\": \"充值成功!\",\"code\": \"000000\",\"msg\": \"充值成功\"}";
 				Gson gson = new Gson();
 				OrderObj orderObj = gson.fromJson(arg0, OrderObj.class);
 				if (orderObj != null && orderObj.code.equals("000000")) {
 					AlertDialog.Builder builder = new Builder(MainActivity.this);
-					builder.setMessage(orderObj.msg);
+					builder.setMessage("本次交易共购买Q币"
+							+ etCount.getText().toString() + "个\n总计扣费："
+							+ ((double) orderObj.actualFee / 100) + "元");
 					builder.setTitle("充值成功");
 					builder.setPositiveButton("确认", new OnClickListener() {
 
@@ -284,6 +299,13 @@ public class MainActivity extends SherlockActivity {
 			}
 
 		});
+	}
+
+	private void setAllInputEnable(boolean b) {
+		etCount.setEnabled(b);
+		etQQ.setEnabled(b);
+		etPhone.setEnabled(b);
+		etSMS.setEnabled(b);
 	}
 
 	@Override
