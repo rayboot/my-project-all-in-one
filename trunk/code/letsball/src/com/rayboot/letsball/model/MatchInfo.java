@@ -28,7 +28,7 @@ public class MatchInfo extends Model implements Serializable {
 	@Column(name = "areaLeague")
 	public String areaLeague;
 	@Column(name = "leagueYear")
-	public String leagueYear = "12/13";
+	public String leagueYear = "13/14";
 	@Column(name = "roundNum")
 	public int roundNum;
 	@Column(name = "startTime")
