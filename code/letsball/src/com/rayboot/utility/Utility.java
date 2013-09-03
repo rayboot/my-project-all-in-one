@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import android.content.Context;
 import android.content.Intent;
 
-import com.baidu.mobstat.StatService;
 import com.rayboot.letsball.LetsBallApp;
 import com.umeng.analytics.MobclickAgent;
 
@@ -84,7 +83,6 @@ public class Utility {
 	}
 
 	public static void sendCustomEvent(Context context, String key) {
-		StatService.onEvent(context, key, "pass", 1);
 		MobclickAgent.onEvent(context, key);
 	}
 }

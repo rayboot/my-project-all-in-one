@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-import com.baidu.mobstat.StatService;
 import com.rayboot.letsball.R;
 import com.rayboot.letsball.cache.SampleDataCache;
 import com.rayboot.utility.DataUtility;
@@ -58,7 +57,6 @@ public class SettingActivity extends Activity {
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		StatService.onPause(this);
 		MobclickAgent.onPause(this);
 	}
 
@@ -66,7 +64,6 @@ public class SettingActivity extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		StatService.onResume(this);
 		MobclickAgent.onResume(this);
 	}
 }

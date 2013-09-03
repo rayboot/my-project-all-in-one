@@ -14,7 +14,6 @@ import android.os.Bundle;
 
 import com.baidu.android.pushservice.PushConstants;
 import com.baidu.android.pushservice.PushManager;
-import com.baidu.mobstat.StatService;
 import com.rayboot.letsball.model.AreaInfo;
 import com.rayboot.letsball.model.PairRoundUrl;
 import com.rayboot.letsball.model.TeamMapInfo;
@@ -106,7 +105,6 @@ public class IndexActivity extends Activity {
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		StatService.onPause(this);
 		MobclickAgent.onPause(this);
 	}
 
@@ -114,7 +112,6 @@ public class IndexActivity extends Activity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		StatService.onResume(this);
 		MobclickAgent.onResume(this);
 	}
 

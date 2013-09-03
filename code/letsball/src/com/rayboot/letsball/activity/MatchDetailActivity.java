@@ -19,7 +19,6 @@ import android.widget.TextView;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
-import com.baidu.mobstat.StatService;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.rayboot.letsball.LetsBallApp;
 import com.rayboot.letsball.R;
@@ -132,7 +131,6 @@ public class MatchDetailActivity extends SherlockActivity {
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		StatService.onPause(this);
 		MobclickAgent.onPause(this);
 	}
 
@@ -140,7 +138,6 @@ public class MatchDetailActivity extends SherlockActivity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		StatService.onResume(this);
 		MobclickAgent.onResume(this);
 	}
 
