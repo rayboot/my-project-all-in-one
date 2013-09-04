@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.rayboot.qchong"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="2"
+    android:versionName="1.1" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -24,6 +24,7 @@
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
 
     <application
         android:allowBackup="true"
@@ -36,12 +37,20 @@
         </meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="baidu" />
+            android:value="N" />
 
         <!-- 在百度开发者中心查询应用的API Key -->
         <meta-data
             android:name="api_key"
             android:value="iXSAtsGEcMMIGalPMqz1t53U" />
+        
+        <!-- 万普API Key -->
+        <meta-data
+            android:name="APP_ID"
+            android:value="64c035d89db9259d7d570d57793c8d74" />
+        <meta-data
+            android:name="APP_PID"
+            android:value="WAPS" />
 
         <activity
             android:name="com.rayboot.qchong.MainActivity"
@@ -107,6 +116,10 @@
             android:exported="true"
             android:process=":DownloadingService" >
         </service>
+
+        <activity
+            android:name="cn.waps.OffersWebView"
+            android:configChanges="keyboardHidden|orientation" />
     </application>
 
 </manifest>
