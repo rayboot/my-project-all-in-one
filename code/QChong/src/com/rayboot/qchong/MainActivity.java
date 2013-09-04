@@ -4,8 +4,10 @@ import java.text.DecimalFormat;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.R.integer;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -20,10 +22,14 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.InjectView;
 import butterknife.Views;
+import cn.waps.AdView;
+import cn.waps.AppConnect;
+import cn.waps.UpdatePointsNotifier;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
@@ -41,6 +47,7 @@ import com.umeng.update.UmengUpdateListener;
 import com.umeng.update.UpdateResponse;
 
 public class MainActivity extends SherlockActivity {
+	final int MORE_GET_POINT = 1;
 	final int MORE_FEEBACK = 2;
 	final int MORE_ABOUT = 3;
 	final int MORE_SHARE = 4;
@@ -56,10 +63,14 @@ public class MainActivity extends SherlockActivity {
 	Button btnSMS;
 	@InjectView(R.id.tvPrice)
 	TextView tvPrice;
+	@InjectView(R.id.AdLinearLayout)
+	LinearLayout AdLinearLayout;
 
 	String curOrder = "";
 	FeedbackAgent agent;
 	DecimalFormat df = new DecimalFormat("0.00");
+
+	int app_count = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +85,32 @@ public class MainActivity extends SherlockActivity {
 
 		etQQ.setText(Util.getInfoFromShared(this, "qq"));
 		etPhone.setText(Util.getInfoFromShared(this, "phone"));
+		AppConnect.getInstance(this);
+		AppConnect.getInstance(this).getPoints(updatePointsNotifier);
+		// 初始化自定义广告数据
+		AppConnect.getInstance(this).initAdInfo();
+		// 初始化插屏广告数据
+		AppConnect.getInstance(this).initPopAd(this);
+		AppConnect.getInstance(this).awardPoints(10, updatePointsNotifier);
+		// 禁用错误报告
+		AppConnect.getInstance(this).setCrashReport(false);
+		new AdView(this, AdLinearLayout).DisplayAd();
 	}
+
+	private UpdatePointsNotifier updatePointsNotifier = new UpdatePointsNotifier() {
+
+		@Override
+		public void getUpdatePointsFailed(String arg0) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void getUpdatePoints(String arg0, int arg1) {
+			// TODO Auto-generated method stub
+			app_count = arg1;
+		}
+	};
 
 	private void initBaiduPush() {
 
@@ -155,6 +191,43 @@ public class MainActivity extends SherlockActivity {
 	}
 
 	public void doSendSMS(View view) {
+		if (app_count < 25) {
+			AlertDialog.Builder builder = new Builder(MainActivity.this);
+			builder.setMessage("非常抱歉，您的积分不足，尝试如下方法获取积分。");
+			builder.setTitle("提示");
+			builder.setPositiveButton("软件推荐", new OnClickListener() {
+
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					AppConnect.getInstance(MainActivity.this).showAppOffers(
+							MainActivity.this);
+				}
+			});
+			builder.setNeutralButton("团购推荐", new OnClickListener() {
+
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					AppConnect.getInstance(MainActivity.this).showTuanOffers(
+							MainActivity.this);
+				}
+			});
+			builder.setNegativeButton("取消", new OnClickListener() {
+
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+				}
+			});
+			builder.create().show();
+			return;
+		}
+
+		if (AppConnect.getInstance(this).hasPopAd(this)) {
+			AppConnect.getInstance(this).showPopAd(this);
+		}
+
+		AppConnect.getInstance(this).spendPoints(25, updatePointsNotifier);
+
 		curOrder = "";
 		if (TextUtils.isEmpty(etPhone.getText().toString())) {
 			Toast.makeText(this, "请先填写扣费手机号码", Toast.LENGTH_LONG).show();
@@ -311,6 +384,7 @@ public class MainActivity extends SherlockActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		SubMenu sub = menu.addSubMenu("Setting");
+		sub.add(0, MORE_GET_POINT, 0, "获取积分");
 		sub.add(0, MORE_FEEBACK, 0, "意见反馈");
 		sub.add(0, MORE_SHARE, 0, "分享");
 		sub.add(0, MORE_ABOUT, 0, "关于");
@@ -327,6 +401,9 @@ public class MainActivity extends SherlockActivity {
 		case android.R.id.home:
 		case 0:
 			return false;
+		case MORE_GET_POINT:
+			AppConnect.getInstance(this).showOffers(this);
+			break;
 		case MORE_ABOUT:
 			startActivity(new Intent(this, AboutActivity.class));
 			overridePendingTransition(R.anim.base_slide_right_in,
@@ -353,5 +430,12 @@ public class MainActivity extends SherlockActivity {
 	public void onPause() {
 		super.onPause();
 		MobclickAgent.onPause(this);
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		AppConnect.getInstance(this).close();
 	}
 }
