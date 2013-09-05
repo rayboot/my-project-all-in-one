@@ -88,6 +88,7 @@ public class MainActivity extends BaseActivity {
 		}
 		setContentView(R.layout.activity_main);
 		Views.inject(this);
+		getSlidingMenu().addIgnoredView(mMapView);
 
 		btnInputActivity.setOnClickListener(new OnClickListener() {
 
