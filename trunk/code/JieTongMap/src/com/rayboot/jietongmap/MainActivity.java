@@ -3,7 +3,6 @@ package com.rayboot.jietongmap;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -34,7 +33,13 @@ import com.baidu.platform.comapi.basestruct.GeoPoint;
 import com.rayboot.jietongmap.obj.POIObj;
 import com.rayboot.jietongmap.util.BMapUtil;
 
-public class MainActivity extends Activity {
+public class MainActivity extends BaseActivity {
+
+	public MainActivity() {
+		super(R.string.app_name);
+		// TODO Auto-generated constructor stub
+	}
+
 	// 定位相关
 	LocationClient mLocClient;
 	LocationData locData = null;
@@ -67,9 +72,10 @@ public class MainActivity extends Activity {
 
 	private List<POIObj> allPOIObjs;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+		setSlidingActionBarEnabled(true);
 		/**
 		 * 使用地图sdk前需先初始化BMapManager. BMapManager是全局的，可为多个MapView共用，它需要地图模块创建前创建，
 		 * 并在地图地图模块销毁后销毁，只要还有地图模块在使用，BMapManager就不应该销毁
