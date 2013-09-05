@@ -279,24 +279,4 @@ public class SearchMapActivity extends Activity {
 		startActivity(intent);
 	}
 
-	public void tempUpdateDB(View v) {
-		int count = 0;
-		ActiveAndroid.beginTransaction();
-		try {
-			for (int i = 0; i < poiOverlay.size(); i++) {
-				MKPoiInfo info = poiOverlay.getPoi(i);
-				POIObj poi = POIObj.getOneData(info.name, info.phoneNum,
-						info.address, info.pt.getLatitudeE6());
-				if (poi != null) {
-					poi.lo = info.pt.getLongitudeE6();
-					poi.save();
-					count++;
-				}
-			}
-			ActiveAndroid.setTransactionSuccessful();
-		} finally {
-			ActiveAndroid.endTransaction();
-		}
-		Toast.makeText(this, "更新 " + count + "个", Toast.LENGTH_SHORT).show();
-	}
 }
