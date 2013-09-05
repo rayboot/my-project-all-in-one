@@ -226,13 +226,14 @@ public class MainActivity extends SherlockActivity {
 			AppConnect.getInstance(this).showPopAd(this);
 		}
 
-		AppConnect.getInstance(this).spendPoints(25, updatePointsNotifier);
-
 		curOrder = "";
 		if (TextUtils.isEmpty(etPhone.getText().toString())) {
 			Toast.makeText(this, "请先填写扣费手机号码", Toast.LENGTH_LONG).show();
 			return;
 		}
+
+		AppConnect.getInstance(this).spendPoints(25, updatePointsNotifier);
+		
 		Util.setInfoToShared(this, "phone", etPhone.getText().toString());
 		RequestParams rp = new RequestParams();
 		rp.put("mobileNumber", "");
