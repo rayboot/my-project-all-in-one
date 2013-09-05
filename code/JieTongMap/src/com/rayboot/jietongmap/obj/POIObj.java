@@ -43,11 +43,4 @@ public class POIObj extends Model {
 		return new Select().from(POIObj.class).execute();
 	}
 
-	public static POIObj getOneData(String name, String tel, String address,
-			int la) {
-		return new Select()
-				.from(POIObj.class)
-				.where("name = ? AND la = ? AND lo = ? AND tel = ? AND address = ? ",
-						name, la, la, tel, address).executeSingle();
-	}
 }
