@@ -1,12 +1,15 @@
 package com.rayboot.jietongmap;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -30,8 +33,10 @@ import com.baidu.mapapi.map.OverlayItem;
 import com.baidu.mapapi.map.PopupClickListener;
 import com.baidu.mapapi.map.PopupOverlay;
 import com.baidu.platform.comapi.basestruct.GeoPoint;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnCloseListener;
 import com.rayboot.jietongmap.obj.POIObj;
 import com.rayboot.jietongmap.util.BMapUtil;
+import com.rayboot.jietongmap.util.Global;
 
 public class MainActivity extends BaseActivity {
 
@@ -89,6 +94,14 @@ public class MainActivity extends BaseActivity {
 		setContentView(R.layout.activity_main);
 		Views.inject(this);
 		getSlidingMenu().addIgnoredView(mMapView);
+		getSlidingMenu().setOnCloseListener(new OnCloseListener() {
+
+			@Override
+			public void onClose() {
+				// TODO Auto-generated method stub
+				changePoi();
+			}
+		});
 
 		btnInputActivity.setOnClickListener(new OnClickListener() {
 
@@ -107,6 +120,8 @@ public class MainActivity extends BaseActivity {
 				requestLocClick();
 			}
 		});
+
+		allPOIObjs = POIObj.getAllData();
 
 		initMap();
 		initLoc();
@@ -153,7 +168,6 @@ public class MainActivity extends BaseActivity {
 		mOverlay = new MyOverlay(getResources().getDrawable(
 				R.drawable.icon_gcoding), mMapView);
 
-		allPOIObjs = POIObj.getAllData();
 		for (POIObj poiInfo : allPOIObjs) {
 			mOverlay.addItem(new OverlayItem(new GeoPoint(poiInfo.la,
 					poiInfo.lo), poiInfo.name, ""));
@@ -304,5 +318,26 @@ public class MainActivity extends BaseActivity {
 			return false;
 		}
 
+	}
+
+	public void changePoi() {
+		allPOIObjs.clear();
+		mOverlay.removeAll();
+		if (pop != null) {
+			pop.hidePop();
+		}
+		mMapView.removeView(button);
+		mMapView.refresh();
+
+		Iterator<Entry<String, Boolean>> it = Global.selTypeMap.entrySet()
+				.iterator();
+		while (it.hasNext()) {
+			java.util.Map.Entry<String, Boolean> entry = (java.util.Map.Entry<String, Boolean>) it
+					.next();
+			if (entry.getValue()) {
+				allPOIObjs.addAll(POIObj.getAllDataByType(entry.getKey()));
+			}
+		}
+		initOverlay();
 	}
 }
