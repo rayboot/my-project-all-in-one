@@ -8,12 +8,14 @@ import java.util.Map.Entry;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.InjectView;
@@ -62,17 +64,22 @@ public class MainActivity extends BaseActivity {
 	Button btnInputActivity;
 	@InjectView(R.id.ivLoc)
 	ImageView ivLoc;
+	@InjectView(R.id.llDetail)
+	LinearLayout llDetail;
+	@InjectView(R.id.tvTitle)
+	TextView tvTitle;
+	@InjectView(R.id.btnNav)
+	Button btnNav;
+	@InjectView(R.id.btnTel)
+	Button btnTel;
 
 	private MyOverlay mOverlay = null;
 	private PopupOverlay pop = null;
 	private ArrayList<OverlayItem> mItems = null;
 	private MapView.LayoutParams layoutParam = null;
 	private OverlayItem mCurItem = null;
-	private TextView popupText = null;
 	private View viewCache = null;
 	private View popupInfo = null;
-	private View popupLeft = null;
-	private View popupRight = null;
 	private Button button = null;
 
 	private List<POIObj> allPOIObjs;
@@ -170,7 +177,7 @@ public class MainActivity extends BaseActivity {
 
 		for (POIObj poiInfo : allPOIObjs) {
 			mOverlay.addItem(new OverlayItem(new GeoPoint(poiInfo.la,
-					poiInfo.lo), poiInfo.name, ""));
+					poiInfo.lo), poiInfo.name, poiInfo.tel));
 		}
 
 		/**
@@ -194,12 +201,9 @@ public class MainActivity extends BaseActivity {
 		viewCache = getLayoutInflater()
 				.inflate(R.layout.custom_text_view, null);
 		popupInfo = (View) viewCache.findViewById(R.id.popinfo);
-		popupLeft = (View) viewCache.findViewById(R.id.popleft);
-		popupRight = (View) viewCache.findViewById(R.id.popright);
-		popupText = (TextView) viewCache.findViewById(R.id.textcache);
 
 		button = new Button(this);
-		button.setBackgroundResource(R.drawable.popup);
+		button.setBackgroundResource(R.drawable.icon_loc_sel);
 
 		/**
 		 * 创建一个popupoverlay
@@ -209,7 +213,7 @@ public class MainActivity extends BaseActivity {
 			public void onClickedPopup(int index) {
 				if (index == 0) {
 					// 更新item位置
-					pop.hidePop();
+					showPop(false);
 					GeoPoint p = new GeoPoint(mCurItem.getPoint()
 							.getLatitudeE6() + 5000, mCurItem.getPoint()
 							.getLongitudeE6() + 5000);
@@ -299,20 +303,16 @@ public class MainActivity extends BaseActivity {
 
 		@Override
 		public boolean onTap(int index) {
-			OverlayItem item = getItem(index);
-			mCurItem = item;
-			popupText.setText(getItem(index).getTitle());
-			Bitmap[] bitMaps = { BMapUtil.getBitmapFromView(popupLeft),
-					BMapUtil.getBitmapFromView(popupInfo),
-					BMapUtil.getBitmapFromView(popupRight) };
-			pop.showPopup(bitMaps, item.getPoint(), 32);
+			mCurItem = getItem(index);
+			showPop(true);
+			mMapController.animateTo(mCurItem.getPoint());
 			return true;
 		}
 
 		@Override
 		public boolean onTap(GeoPoint pt, MapView mMapView) {
 			if (pop != null) {
-				pop.hidePop();
+				showPop(false);
 				mMapView.removeView(button);
 			}
 			return false;
@@ -323,9 +323,7 @@ public class MainActivity extends BaseActivity {
 	public void changePoi() {
 		allPOIObjs.clear();
 		mOverlay.removeAll();
-		if (pop != null) {
-			pop.hidePop();
-		}
+		showPop(false);
 		mMapView.removeView(button);
 		mMapView.refresh();
 
@@ -339,5 +337,41 @@ public class MainActivity extends BaseActivity {
 			}
 		}
 		initOverlay();
+	}
+
+	public void showPop(boolean isShow) {
+		if (isShow) {
+			Bitmap[] bitMaps = { BMapUtil.getBitmapFromView(popupInfo) };
+			pop.showPopup(bitMaps, mCurItem.getPoint(), 0);
+			tvTitle.setText(mCurItem.getTitle());
+			btnNav.setTag(mCurItem.getPoint());
+			btnTel.setTag(mCurItem.getSnippet());
+			btnTel.setEnabled(!TextUtils.isEmpty(mCurItem.getSnippet().trim()));
+			llDetail.setVisibility(View.VISIBLE);
+		} else {
+			if (pop != null) {
+				pop.hidePop();
+			}
+			llDetail.setVisibility(View.GONE);
+		}
+	}
+
+	public void onNavClick(View view) {
+		if (locData == null) {
+			Toast.makeText(this, "未获取当前位置", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		Intent intent = new Intent(MainActivity.this, NavActivity.class);
+		intent.putExtra("start_la", (int) (locData.latitude * 1e6));
+		intent.putExtra("start_lo", (int) (locData.longitude * 1e6));
+		intent.putExtra("end_la", mCurItem.getPoint().getLatitudeE6());
+		intent.putExtra("end_lo", mCurItem.getPoint().getLongitudeE6());
+		this.startActivity(intent);
+	}
+
+	public void onTelClick(View view) {
+		Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"
+				+ view.getTag()));
+		MainActivity.this.startActivity(intent);// 内部类
 	}
 }
