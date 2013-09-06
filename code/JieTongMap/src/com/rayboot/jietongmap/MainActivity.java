@@ -21,6 +21,9 @@ import android.widget.Toast;
 import butterknife.InjectView;
 import butterknife.Views;
 
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.view.SubMenu;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -39,6 +42,11 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnCloseListener;
 import com.rayboot.jietongmap.obj.POIObj;
 import com.rayboot.jietongmap.util.BMapUtil;
 import com.rayboot.jietongmap.util.Global;
+import com.rayboot.jietongmap.util.Util;
+import com.umeng.fb.FeedbackAgent;
+import com.umeng.update.UmengUpdateAgent;
+import com.umeng.update.UmengUpdateListener;
+import com.umeng.update.UpdateResponse;
 
 public class MainActivity extends BaseActivity {
 
@@ -47,6 +55,10 @@ public class MainActivity extends BaseActivity {
 		// TODO Auto-generated constructor stub
 	}
 
+	// final int MORE_GET_POINT = 1;
+	final int MORE_FEEBACK = 2;
+	final int MORE_ABOUT = 3;
+	final int MORE_SHARE = 4;
 	// 定位相关
 	LocationClient mLocClient;
 	LocationData locData = null;
@@ -83,6 +95,7 @@ public class MainActivity extends BaseActivity {
 	private Button button = null;
 
 	private List<POIObj> allPOIObjs;
+	FeedbackAgent agent;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -134,6 +147,29 @@ public class MainActivity extends BaseActivity {
 		initLoc();
 		initMyLocOverlay();
 		initOverlay();
+
+		initUMeng();
+	}
+
+	private void initUMeng() {
+		// 友盟意见反馈检索
+		agent = new FeedbackAgent(this);
+		agent.sync();
+		// 友盟检测更新
+		UmengUpdateAgent.update(this);
+		UmengUpdateAgent.setUpdateAutoPopup(false);
+		UmengUpdateAgent.setUpdateListener(new UmengUpdateListener() {
+			@Override
+			public void onUpdateReturned(int updateStatus,
+					UpdateResponse updateInfo) {
+				switch (updateStatus) {
+				case 0: // has update
+					UmengUpdateAgent.showUpdateDialog(MainActivity.this,
+							updateInfo);
+					break;
+				}
+			}
+		});
 	}
 
 	public void initMap() {
@@ -373,5 +409,41 @@ public class MainActivity extends BaseActivity {
 		Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"
 				+ view.getTag()));
 		MainActivity.this.startActivity(intent);// 内部类
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		SubMenu sub = menu.addSubMenu("Setting");
+		// sub.add(0, MORE_GET_POINT, 0, "获取积分");
+		sub.add(0, MORE_FEEBACK, 0, "意见反馈");
+		sub.add(0, MORE_SHARE, 0, "分享");
+		sub.add(0, MORE_ABOUT, 0, "关于");
+		MenuItem subMenu1Item = sub.getItem();
+		subMenu1Item.setIcon(R.drawable.align_just_icon);
+		subMenu1Item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS
+				| MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		// case MORE_GET_POINT:
+		// AppConnect.getInstance(this).showOffers(this);
+		// break;
+		case MORE_ABOUT:
+			startActivity(new Intent(this, AboutActivity.class));
+			break;
+		case MORE_FEEBACK:
+			agent.startFeedbackActivity();
+			break;
+		case MORE_SHARE:
+			Util.shareSomethingText(MainActivity.this, "分享",
+					"我使用  #Q币九折起#  我找到的全网最低买Q币，知道你喜欢，特意转给你。");
+			break;
+		default:
+			break;
+		}
+		return true;
 	}
 }
