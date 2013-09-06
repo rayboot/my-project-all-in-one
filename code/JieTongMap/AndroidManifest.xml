@@ -86,13 +86,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.rayboot.jietongmap.SearchMapActivity"
-            android:label="@string/title_activity_search_map" >
+        <activity android:name="com.rayboot.jietongmap.SearchMapActivity" >
         </activity>
-        <activity
-            android:name="com.rayboot.jietongmap.CenterSaveActivity"
-            android:label="@string/title_activity_center_save" >
+        <activity android:name="com.rayboot.jietongmap.CenterSaveActivity" >
         </activity>
 
         <service
@@ -100,6 +96,9 @@
             android:enabled="true"
             android:process=":remote" >
         </service>
+
+        <activity android:name="com.rayboot.jietongmap.NavActivity" >
+        </activity>
     </application>
 
 </manifest>
