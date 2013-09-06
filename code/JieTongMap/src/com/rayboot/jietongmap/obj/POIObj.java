@@ -43,4 +43,13 @@ public class POIObj extends Model {
 		return new Select().from(POIObj.class).execute();
 	}
 
+	public static List<POIObj> getAllType() {
+		return new Select().from(POIObj.class).groupBy("type").execute();
+	}
+
+	public static List<POIObj> getAllDataByType(String typedata) {
+		return new Select().from(POIObj.class).where("type = ?", typedata)
+				.execute();
+	}
+
 }
