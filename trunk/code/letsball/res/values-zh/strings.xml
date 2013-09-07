@@ -177,5 +177,7 @@
 &#8195;&#8195;无论在任何原因下（包括但不限于疏忽原因），对您或任何人通过使用本程序上的信息所导致的损失或损害（包括直接、间接、特别或后果性的损失或损害），责任均由使用者自行承担（包括但不限于疏忽责任）。\n\n
 &#8195;&#8195;使用者对本程序的使用即表明同意承担使用本软件的一切风险。\n</string>
     <string name="title_activity_statement">StatementActivity</string>
+    <string name="about_content">口袋联赛，联赛利器！\n如果喜欢就支持下！\nV%1$s\n\n\n感谢丫丫小宝宝，下一个程序一定给你做！</string>
+    <string name="share_main_content">我正在使用 口袋联赛 ，查看各大联赛比分信息，很不错，知道你肯定喜欢！</string>
 
 </resources>
