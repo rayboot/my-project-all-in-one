@@ -79,6 +79,8 @@
             android:name="com.rayboot.jietongmap.AboutActivity"
             android:label="@string/title_activity_about" >
         </activity>
+        <activity android:name="com.umeng.fb.ConversationActivity" />
+        <activity android:name="com.umeng.fb.ContactActivity" />
     </application>
 
 </manifest>
