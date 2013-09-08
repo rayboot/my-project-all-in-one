@@ -439,10 +439,10 @@ public class MainActivity extends BaseActivity {
 			break;
 		case MORE_SHARE:
 			Util.shareSomethingText(MainActivity.this, "分享",
-					"我使用  #Q币九折起#  我找到的全网最低买Q币，知道你喜欢，特意转给你。");
+					"我使用  #捷通卡地图#  知道你也有几张捷通卡，知道能使用捷通卡的商户在哪吗？");
 			break;
 		default:
-			break;
+			return super.onOptionsItemSelected(item);
 		}
 		return true;
 	}
