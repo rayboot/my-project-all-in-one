@@ -1,0 +1,1402 @@
+[
+    {
+        "levelid": "1",
+        "song_name": "超人",
+        "file_name": "a0047.png",
+        "tips": "正义联盟",
+        "confuse_word": "超人雷神洛基猫女哪吒琉克千寻琪琪龙猫米奇扎古楪祈"
+    },
+    {
+        "levelid": "2",
+        "song_name": "八神庵",
+        "file_name": "a0109.png",
+        "tips": "拳皇人物",
+        "confuse_word": "八神庵草薙京李逍遥赵灵儿林月如王小虎沈欺霜李忆如"
+    },
+    {
+        "levelid": "3",
+        "song_name": "皮卡丘",
+        "file_name": "a0066.png",
+        "tips": "口袋妖怪",
+        "confuse_word": "皮卡丘无面人喜羊羊灰太郎爱丽儿爱丽丝轻松熊梅莉达"
+    },
+    {
+        "levelid": "4",
+        "song_name": "阿童木",
+        "file_name": "a0044.png",
+        "tips": "日本知名动画片的主角",
+        "confuse_word": "阿童木钢铁侠绿巨人蝙蝠侠绿灯侠闪电侠机器猫阿拉蕾"
+    },
+    {
+        "levelid": "5",
+        "song_name": "董存瑞",
+        "file_name": "a0188.png",
+        "tips": "抗战英雄",
+        "confuse_word": "董存瑞甘道夫加杰特赵本山三角头包租婆暴风女步惊云"
+    },
+    {
+        "levelid": "6",
+        "song_name": "海尔兄弟",
+        "file_name": "a0253.png",
+        "tips": "国产动画片主角",
+        "confuse_word": "海尔兄弟变相怪杰恶灵骑士刀锋战士东方不败哈利波特"
+    },
+    {
+        "levelid": "7",
+        "song_name": "麦当劳",
+        "file_name": "a0165.png",
+        "tips": "与肯德基类似的洋快餐品牌",
+        "confuse_word": "麦当劳郭敬明史玉柱薛蛮子李开复任志强潘石屹芙蓉姐"
+    },
+    {
+        "levelid": "8",
+        "song_name": "钢铁侠",
+        "file_name": "a0048.png",
+        "tips": "复仇者联盟",
+        "confuse_word": "钢铁侠绿巨人蝙蝠侠绿灯侠闪电侠机器猫阿拉蕾雅典娜"
+    },
+    {
+        "levelid": "9",
+        "song_name": "马里奥",
+        "file_name": "a0087.png",
+        "tips": "超级马里奥兄弟",
+        "confuse_word": "马里奥瓦里奥司马懿诸葛亮克劳德奎托斯八神庵草薙京"
+    },
+    {
+        "levelid": "10",
+        "song_name": "柯南",
+        "file_name": "a0025.png",
+        "tips": "名侦探柯南",
+        "confuse_word": "柯南索隆娜美乔巴飞影藏马三笠超人雷神洛基猫女哪吒"
+    },
+    {
+        "levelid": "11",
+        "song_name": "葫芦娃",
+        "file_name": "a0043.png",
+        "tips": "十万个冷笑话",
+        "confuse_word": "葫芦娃阿童木钢铁侠绿巨人蝙蝠侠绿灯侠闪电侠机器猫"
+    },
+    {
+        "levelid": "12",
+        "song_name": "绿巨人",
+        "file_name": "a0051.png",
+        "tips": "复仇者联盟",
+        "confuse_word": "绿巨人蝙蝠侠绿灯侠闪电侠机器猫阿拉蕾雅典娜爱德华"
+    },
+    {
+        "levelid": "13",
+        "song_name": "白素贞",
+        "file_name": "a0102.png",
+        "tips": "新白娘子传奇",
+        "confuse_word": "白素贞史波克董存瑞甘道夫加杰特赵本山三角头包租婆"
+    },
+    {
+        "levelid": "14",
+        "song_name": "机器猫",
+        "file_name": "a0056.png",
+        "tips": "多啦A梦",
+        "confuse_word": "机器猫阿拉蕾雅典娜爱德华远坂凛皮卡丘无面人喜羊羊"
+    },
+    {
+        "levelid": "15",
+        "song_name": "郭敬明",
+        "file_name": "a0228.png",
+        "tips": "绰号“小四”",
+        "confuse_word": "郭敬明史玉柱薛蛮子李开复任志强潘石屹芙蓉姐姐马云"
+    },
+    {
+        "levelid": "16",
+        "song_name": "大力水手",
+        "file_name": "a0155.png",
+        "tips": "吃菠菜会变强壮",
+        "confuse_word": "凉宫春日高坂桐乃鹿目圆香大崎娜娜我妻由乃大力水手"
+    },
+    {
+        "levelid": "17",
+        "song_name": "贝克汉姆",
+        "file_name": "a0202.png",
+        "tips": "“万人迷”，英格兰国脚",
+        "confuse_word": "贝克汉姆诺维茨基菲尔普斯林丹刘翔罗纳尔多马拉多纳"
+    },
+    {
+        "levelid": "18",
+        "song_name": "唐僧",
+        "file_name": "a0142.png",
+        "tips": "西游记",
+        "confuse_word": "唐僧无名武松小青小唯谢逊雄霸许仙杨过耶稣野兽鹰眼"
+    },
+    {
+        "levelid": "19",
+        "song_name": "乔丹",
+        "file_name": "a0200.png",
+        "tips": "篮球之神",
+        "confuse_word": "乔丹梅西林丹刘翔孙杨李娜韦德邓肯纳什贝利麦迪巴乔"
+    },
+    {
+        "levelid": "20",
+        "song_name": "蓝精灵",
+        "file_name": "a0042.png",
+        "tips": "比利时漫画家沛优同名漫画及动画片的主角",
+        "confuse_word": "蓝精灵葫芦娃阿童木钢铁侠绿巨人蝙蝠侠绿灯侠闪电侠"
+    },
+    {
+        "levelid": "21",
+        "song_name": "乔巴",
+        "file_name": "a0031.png",
+        "tips": "ONEPIECE",
+        "confuse_word": "乔巴飞影藏马三笠超人雷神洛基猫女哪吒琉克千寻琪琪"
+    },
+    {
+        "levelid": "22",
+        "song_name": "忍者神龟",
+        "file_name": "a0276.png",
+        "tips": "他们的师父是只老鼠",
+        "confuse_word": "忍者神龟木之本樱凉宫春日高坂桐乃鹿目圆香大崎娜娜"
+    },
+    {
+        "levelid": "23",
+        "song_name": "灰太狼",
+        "file_name": "a0074.png",
+        "tips": "喜羊羊",
+        "confuse_word": "灰太狼爱丽儿爱丽丝轻松熊梅莉达乌贼娘擎天柱流氓兔"
+    },
+    {
+        "levelid": "24",
+        "song_name": "本拉登",
+        "file_name": "a0192.png",
+        "tips": "基地组织的首领",
+        "confuse_word": "本拉登萨达姆普京叶利钦萨科齐安倍晋三奥巴马小布什"
+    },
+    {
+        "levelid": "25",
+        "song_name": "奥特曼",
+        "file_name": "a0036.png",
+        "tips": "日本最著名的特摄片主角",
+        "confuse_word": "奥特曼太公望月野兔孙悟空蓝精灵葫芦娃阿童木钢铁侠"
+    },
+    {
+        "levelid": "26",
+        "song_name": "尤达大师",
+        "file_name": "a0162.png",
+        "tips": "绝地武士长老",
+        "confuse_word": "尤达大师紫霞仙子海尔兄弟变相怪杰恶灵骑士刀锋战士"
+    },
+    {
+        "levelid": "27",
+        "song_name": "樱木花道",
+        "file_name": "a0035.png",
+        "tips": "灌篮高手",
+        "confuse_word": "樱木花道恐山安娜黑猫警长美国队长海绵宝宝武藤游戏"
+    },
+    {
+        "levelid": "28",
+        "song_name": "陈冠希",
+        "file_name": "a0284.png",
+        "tips": "艳照门主角",
+        "confuse_word": "蓝蓝路郭敬明史玉柱薛蛮子李开复任志强陈冠希芙蓉姐"
+    },
+    {
+        "levelid": "29",
+        "song_name": "米奇",
+        "file_name": "a0077.png",
+        "tips": "米老鼠和唐老鸭",
+        "confuse_word": "米奇扎古楪祈星矢一辉冰河紫龙阿宝傻馒呆贼劣人小叽"
+    },
+    {
+        "levelid": "30",
+        "song_name": "美杜莎",
+        "file_name": "a0229.png",
+        "tips": "蛇发蛇尾的美女",
+        "confuse_word": "美杜莎霹雳火沙和尚石头人孙悟空铁拐李万磁王小燕子"
+    },
+    {
+        "levelid": "31",
+        "song_name": "孙悟空",
+        "file_name": "a0141.png",
+        "tips": "西游记",
+        "confuse_word": "孙悟空蓝精灵葫芦娃阿童木钢铁侠绿巨人蝙蝠侠绿灯侠"
+    },
+    {
+        "levelid": "32",
+        "song_name": "赵灵儿",
+        "file_name": "a0152.png",
+        "tips": "仙剑奇侠传1",
+        "confuse_word": "赵灵儿林月如王小虎沈欺霜李忆如韩菱纱云天河柳梦璃"
+    },
+    {
+        "levelid": "33",
+        "song_name": "喜羊羊",
+        "file_name": "a0073.png",
+        "tips": "国产知名动画片主角",
+        "confuse_word": "喜羊羊灰太郎爱丽儿爱丽丝轻松熊梅莉达乌贼娘擎天柱"
+    },
+    {
+        "levelid": "34",
+        "song_name": "初音",
+        "file_name": "a0086.png",
+        "tips": "VOCALOID",
+        "confuse_word": "初音路易貂蝉关羽尤娜但丁林克大蛇春丽阿奴苏媚景天"
+    },
+    {
+        "levelid": "35",
+        "song_name": "雷神",
+        "file_name": "a0049.png",
+        "tips": "复仇者联盟",
+        "confuse_word": "雷神洛基猫女哪吒琉克千寻琪琪龙猫米奇扎古楪祈星矢"
+    },
+    {
+        "levelid": "36",
+        "song_name": "雅典娜",
+        "file_name": "a0059.png",
+        "tips": "圣斗士星矢",
+        "confuse_word": "雅典娜爱德华远坂凛皮卡丘无面人喜羊羊灰太郎爱丽儿"
+    },
+    {
+        "levelid": "37",
+        "song_name": "剑圣",
+        "file_name": "a0182.png",
+        "tips": "魔兽争霸",
+        "confuse_word": "剑圣艾希盖伦赵信劳拉易隆初音路易貂蝉关羽尤娜但丁"
+    },
+    {
+        "levelid": "38",
+        "song_name": "东方不败",
+        "file_name": "a0235.png",
+        "tips": "日月神教教主",
+        "confuse_word": "东方不败哈利波特火云邪神灭绝师太神奇先生释迦牟尼"
+    },
+    {
+        "levelid": "39",
+        "song_name": "不知火舞",
+        "file_name": "a0114.png",
+        "tips": "拳皇人物",
+        "confuse_word": "不知火舞慕容紫英阿尔萨斯玛法里奥神乐千鹤矢吹真吾"
+    },
+    {
+        "levelid": "40",
+        "song_name": "法海",
+        "file_name": "a0146.png",
+        "tips": "新白娘子传奇",
+        "confuse_word": "法海济公酱爆李逵林冲聂风唐僧无名武松小青小唯谢逊"
+    },
+    {
+        "levelid": "41",
+        "song_name": "万磁王",
+        "file_name": "a0132.png",
+        "tips": "X战警",
+        "confuse_word": "万磁王小燕子隐形女张起灵猪八戒达里尔麦克斯白素贞"
+    },
+    {
+        "levelid": "42",
+        "song_name": "李逍遥",
+        "file_name": "a0151.png",
+        "tips": "仙剑奇侠传1",
+        "confuse_word": "李逍遥赵灵儿林月如王小虎沈欺霜李忆如韩菱纱云天河"
+    },
+    {
+        "levelid": "43",
+        "song_name": "美国队长",
+        "file_name": "a0046.png",
+        "tips": "复仇者联盟",
+        "confuse_word": "美国队长海绵宝宝武藤游戏幽灵公主白雪公主忍者神龟"
+    },
+    {
+        "levelid": "44",
+        "song_name": "克劳德",
+        "file_name": "a0094.png",
+        "tips": "最终幻想",
+        "confuse_word": "克劳德奎托斯八神庵草薙京李逍遥赵灵儿林月如王小虎"
+    },
+    {
+        "levelid": "45",
+        "song_name": "黑崎一护",
+        "file_name": "a0022.png",
+        "tips": "BLEACH",
+        "confuse_word": "黑崎一护漩涡鸣人伊丽莎白坂本银时藤原佐为酷拉皮卡"
+    },
+    {
+        "levelid": "46",
+        "song_name": "洛基",
+        "file_name": "a0050.png",
+        "tips": "复仇者联盟",
+        "confuse_word": "洛基猫女哪吒琉克千寻琪琪龙猫米奇扎古楪祈星矢一辉"
+    },
+    {
+        "levelid": "47",
+        "song_name": "哪吒",
+        "file_name": "a0060.png",
+        "tips": "十万个冷笑话",
+        "confuse_word": "哪吒琉克千寻琪琪龙猫米奇扎古楪祈星矢一辉冰河紫龙"
+    },
+    {
+        "levelid": "48",
+        "song_name": "步惊云",
+        "file_name": "a0137.png",
+        "tips": "风云",
+        "confuse_word": "步惊云黑寡妇洪七公金刚狼镭射眼李寻欢鲁智深绿箭侠"
+    },
+    {
+        "levelid": "49",
+        "song_name": "暴风女",
+        "file_name": "a0131.png",
+        "tips": "X战警",
+        "confuse_word": "暴风女步惊云黑寡妇洪七公金刚狼镭射眼李寻欢鲁智深"
+    },
+    {
+        "levelid": "50",
+        "song_name": "幽灵公主",
+        "file_name": "a0071.png",
+        "tips": "宫崎骏动画的主角",
+        "confuse_word": "幽灵公主白雪公主忍者神龟木之本樱凉宫春日高坂桐乃"
+    },
+    {
+        "levelid": "51",
+        "song_name": "奥尼尔",
+        "file_name": "a0201.png",
+        "tips": "绰号“大鲨鱼”",
+        "confuse_word": "奥尼尔詹姆斯齐达内杜兰特加内特霍华德安东尼舒马赫"
+    },
+    {
+        "levelid": "52",
+        "song_name": "林月如",
+        "file_name": "a0153.png",
+        "tips": "仙剑奇侠传1",
+        "confuse_word": "林月如王小虎沈欺霜李忆如韩菱纱云天河柳梦璃伊利丹"
+    },
+    {
+        "levelid": "53",
+        "song_name": "泰森",
+        "file_name": "a0222.png",
+        "tips": "历史上最年轻的重量级拳王",
+        "confuse_word": "泰森姚明科比乔丹梅西林丹刘翔孙杨李娜邓肯韦德纳什"
+    },
+    {
+        "levelid": "54",
+        "song_name": "谢逊",
+        "file_name": "a0248.png",
+        "tips": "绰号“金毛狮王”",
+        "confuse_word": "谢逊雄霸许仙杨过耶稣野兽鹰眼贞子金刚德伦酱爆李逵"
+    },
+    {
+        "levelid": "55",
+        "song_name": "春丽",
+        "file_name": "a0113.png",
+        "tips": "街霸人物",
+        "confuse_word": "春丽阿奴苏媚景天重楼雪见紫萱龙葵蒂法萨尔泰瑞赵云"
+    },
+    {
+        "levelid": "56",
+        "song_name": "巴麻美",
+        "file_name": "a0008.png",
+        "tips": "魔法少女小圆",
+        "confuse_word": "巴麻美犬夜叉拉克丝奥特曼太公望月野兔孙悟空蓝精灵"
+    },
+    {
+        "levelid": "57",
+        "song_name": "甘道夫",
+        "file_name": "a0256.png",
+        "tips": "《指环王》中的人物",
+        "confuse_word": "甘道夫加杰特赵本山三角头包租婆暴风女步惊云黑寡妇"
+    },
+    {
+        "levelid": "58",
+        "song_name": "凉宫春日",
+        "file_name": "a0006.png",
+        "tips": "凉宫春日的忧郁",
+        "confuse_word": "凉宫春日高坂桐乃鹿目圆香大崎娜娜我妻由乃黑子哲也"
+    },
+    {
+        "levelid": "59",
+        "song_name": "凌波丽",
+        "file_name": "a0001.png",
+        "tips": "新世纪福音战士",
+        "confuse_word": "凌波丽明日香泉此方水银灯巴麻美犬夜叉拉克丝奥特曼"
+    },
+    {
+        "levelid": "60",
+        "song_name": "孙尚香",
+        "file_name": "a0180.png",
+        "tips": "三国无双4",
+        "confuse_word": "孙尚香艾达王洛克人洛天依马里奥瓦里奥司马懿诸葛亮"
+    },
+    {
+        "levelid": "61",
+        "song_name": "酷拉皮卡",
+        "file_name": "a0034.png",
+        "tips": "猎人",
+        "confuse_word": "酷拉皮卡樱木花道恐山安娜黑猫警长美国队长海绵宝宝"
+    },
+    {
+        "levelid": "62",
+        "song_name": "恶灵骑士",
+        "file_name": "a0255.png",
+        "tips": "尼古拉斯凯奇主演的魔幻电影主角",
+        "confuse_word": "恶灵骑士刀锋战士东方不败哈利波特火云邪神灭绝师太"
+    },
+    {
+        "levelid": "63",
+        "song_name": "艾希",
+        "file_name": "a0185.png",
+        "tips": "英雄联盟",
+        "confuse_word": "艾希盖伦赵信劳拉易隆初音路易貂蝉关羽尤娜但丁林克"
+    },
+    {
+        "levelid": "64",
+        "song_name": "犬夜叉",
+        "file_name": "a0016.png",
+        "tips": "日本著名漫画家高桥留美子的作品",
+        "confuse_word": "犬夜叉拉克丝奥特曼太公望月野兔孙悟空蓝精灵葫芦娃"
+    },
+    {
+        "levelid": "65",
+        "song_name": "三角头",
+        "file_name": "a0260.png",
+        "tips": "寂静岭",
+        "confuse_word": "三角头包租婆暴风女步惊云黑寡妇洪七公金刚狼镭射眼"
+    },
+    {
+        "levelid": "66",
+        "song_name": "奥巴马",
+        "file_name": "a0189.png",
+        "tips": "美国第56届、57届总统",
+        "confuse_word": "奥巴马小布什克林顿本拉登萨达姆普京叶利钦萨科齐安"
+    },
+    {
+        "levelid": "67",
+        "song_name": "李娜",
+        "file_name": "a0208.png",
+        "tips": "中国首位大满贯网球冠军",
+        "confuse_word": "李娜韦德邓肯纳什麦迪贝利巴乔泰森姚明乔丹科比梅西"
+    },
+    {
+        "levelid": "68",
+        "song_name": "罗纳尔多",
+        "file_name": "a0195.png",
+        "tips": "绰号“外星人”",
+        "confuse_word": "罗纳尔多马拉多纳贝克汉姆诺维茨基菲尔普斯林丹刘翔"
+    },
+    {
+        "levelid": "69",
+        "song_name": "孙杨",
+        "file_name": "a0207.png",
+        "tips": "中国男子游泳奥运第一金",
+        "confuse_word": "孙杨李娜韦德邓肯纳什麦迪贝利巴乔泰森科比姚明乔丹"
+    },
+    {
+        "levelid": "70",
+        "song_name": "哈利波特",
+        "file_name": "a0247.png",
+        "tips": "J.K.罗琳创作系列小说人物",
+        "confuse_word": "哈利波特火云邪神灭绝师太神奇先生释迦牟尼紫霞仙子"
+    },
+    {
+        "levelid": "71",
+        "song_name": "野兽",
+        "file_name": "a0130.png",
+        "tips": "X战警",
+        "confuse_word": "野兽鹰眼贞子金刚德伦酱爆李逵林冲聂风唐僧无名武松"
+    },
+    {
+        "levelid": "72",
+        "song_name": "泰瑞",
+        "file_name": "a0177.png",
+        "tips": "拳皇",
+        "confuse_word": "泰瑞赵云吕布剑圣艾希盖伦赵信劳拉易隆初音路易貂蝉"
+    },
+    {
+        "levelid": "73",
+        "song_name": "乌贼娘",
+        "file_name": "a0081.png",
+        "tips": "侵略！乌贼娘",
+        "confuse_word": "乌贼娘擎天柱流氓兔悠嘻猴丘比龙加菲猫越狱兔维尼熊"
+    },
+    {
+        "levelid": "74",
+        "song_name": "悠嘻猴",
+        "file_name": "a0262.png",
+        "tips": "QQ表情主角",
+        "confuse_word": "悠嘻猴丘比龙加菲猫越狱兔维尼熊贝吉塔龟仙人米老鼠"
+    },
+    {
+        "levelid": "75",
+        "song_name": "七枷社",
+        "file_name": "a0178.png",
+        "tips": "拳皇",
+        "confuse_word": "七枷社孙尚香艾达王洛克人洛天依马里奥瓦里奥司马懿"
+    },
+    {
+        "levelid": "76",
+        "song_name": "藤原佐为",
+        "file_name": "a0028.png",
+        "tips": "棋魂",
+        "confuse_word": "藤原佐为酷拉皮卡樱木花道恐山安娜黑猫警长美国队长"
+    },
+    {
+        "levelid": "77",
+        "song_name": "菲尔普斯",
+        "file_name": "a0221.png",
+        "tips": "游泳天才，绰号“飞鱼”",
+        "confuse_word": "菲尔普斯林丹刘翔罗纳尔多马拉多纳贝克汉姆诺维茨基"
+    },
+    {
+        "levelid": "78",
+        "song_name": "霹雳火",
+        "file_name": "a0135.png",
+        "tips": "神奇四侠",
+        "confuse_word": "霹雳火沙和尚石头人孙悟空铁拐李万磁王小燕子隐形女"
+    },
+    {
+        "levelid": "79",
+        "song_name": "李小龙",
+        "file_name": "a0103.png",
+        "tips": "作品:《唐山大兄》",
+        "confuse_word": "李小龙李宇春史泰龙曾轶可周杰伦郭德纲陈冠希庾澄庆"
+    },
+    {
+        "levelid": "80",
+        "song_name": "丘比龙",
+        "file_name": "a0263.png",
+        "tips": "QQ表情主角",
+        "confuse_word": "丘比龙加菲猫越狱兔维尼熊贝吉塔龟仙人米老鼠唐老鸭"
+    },
+    {
+        "levelid": "81",
+        "song_name": "奎托斯",
+        "file_name": "a0098.png",
+        "tips": "战神",
+        "confuse_word": "奎托斯八神庵草薙京李逍遥赵灵儿林月如王小虎沈欺霜"
+    },
+    {
+        "levelid": "82",
+        "song_name": "木之本樱",
+        "file_name": "a0003.png",
+        "tips": "魔卡少女樱",
+        "confuse_word": "木之本樱凉宫春日高坂桐乃鹿目圆香大崎娜娜我妻由乃"
+    },
+    {
+        "levelid": "83",
+        "song_name": "娜美",
+        "file_name": "a0030.png",
+        "tips": "ONEPIECE",
+        "confuse_word": "娜美乔巴飞影藏马三笠超人雷神洛基猫女哪吒琉克千寻"
+    },
+    {
+        "levelid": "84",
+        "song_name": "舒马赫",
+        "file_name": "a0223.png",
+        "tips": "车王，7届世界冠军",
+        "confuse_word": "舒马赫博尔特艾弗森奥尼尔詹姆斯齐达内杜兰特加内特"
+    },
+    {
+        "levelid": "85",
+        "song_name": "加菲猫",
+        "file_name": "a0264.png",
+        "tips": "电影《加菲猫》的主角",
+        "confuse_word": "加菲猫越狱兔维尼熊贝吉塔龟仙人米老鼠唐老鸭凌波丽"
+    },
+    {
+        "levelid": "86",
+        "song_name": "爱德华",
+        "file_name": "a0062.png",
+        "tips": "钢之炼金术师",
+        "confuse_word": "爱德华远坂凛皮卡丘无面人喜羊羊灰太郎爱丽儿爱丽丝"
+    },
+    {
+        "levelid": "87",
+        "song_name": "越狱兔",
+        "file_name": "a0265.png",
+        "tips": "基里连科和普京",
+        "confuse_word": "越狱兔维尼熊贝吉塔龟仙人米老鼠唐老鸭凌波丽明日香"
+    },
+    {
+        "levelid": "88",
+        "song_name": "隆",
+        "file_name": "a0249.png",
+        "tips": "街霸游戏人物",
+        "confuse_word": "隆初音路易貂蝉关羽尤娜但丁林克大蛇春丽阿奴苏媚景"
+    },
+    {
+        "levelid": "89",
+        "song_name": "神奇先生",
+        "file_name": "a0133.png",
+        "tips": "神奇四侠",
+        "confuse_word": "神奇先生释迦牟尼紫霞仙子海尔兄弟变相怪杰恶灵骑士"
+    },
+    {
+        "levelid": "90",
+        "song_name": "坂田银时",
+        "file_name": "a0027.png",
+        "tips": "银魂",
+        "confuse_word": "坂田银时藤原佐为酷拉皮卡樱木花道恐山安娜黑猫警长"
+    },
+    {
+        "levelid": "91",
+        "song_name": "詹姆斯",
+        "file_name": "a0204.png",
+        "tips": "绰号“小皇帝”",
+        "confuse_word": "詹姆斯齐达内杜兰特加内特霍华德安东尼舒马赫博尔特"
+    },
+    {
+        "levelid": "92",
+        "song_name": "科比",
+        "file_name": "a0198.png",
+        "tips": "湖人队当家球星",
+        "confuse_word": "科比乔丹梅西林丹刘翔孙杨李娜韦德邓肯麦迪纳什贝利"
+    },
+    {
+        "levelid": "93",
+        "song_name": "维尼熊",
+        "file_name": "a0266.png",
+        "tips": "他也叫噗噗熊",
+        "confuse_word": "维尼熊贝吉塔龟仙人米老鼠唐老鸭凌波丽明日香泉此方"
+    },
+    {
+        "levelid": "94",
+        "song_name": "黑子哲也",
+        "file_name": "a0018.png",
+        "tips": "黑子的篮球",
+        "confuse_word": "黑子哲也五更琉璃绯村剑心黑崎一护漩涡鸣人伊丽莎白"
+    },
+    {
+        "levelid": "95",
+        "song_name": "夏娜",
+        "file_name": "a0013.png",
+        "tips": "灼眼的夏娜",
+        "confuse_word": "夏娜路飞柯南索隆娜美乔巴飞影藏马三笠超人雷神洛基"
+    },
+    {
+        "levelid": "96",
+        "song_name": "蒂法",
+        "file_name": "a0168.png",
+        "tips": "最终幻想7",
+        "confuse_word": "蒂法萨尔泰瑞赵云吕布剑圣艾希盖伦赵信劳拉易隆初音"
+    },
+    {
+        "levelid": "97",
+        "song_name": "旗木卡卡西",
+        "file_name": "a0024.png",
+        "tips": "火影忍者",
+        "confuse_word": "旗木卡卡西樱桃小丸子六十米巨人本间芽衣子高坂桐乃"
+    },
+    {
+        "levelid": "98",
+        "song_name": "金刚",
+        "file_name": "a0267.png",
+        "tips": "一部以大猩猩为主角的电影角色",
+        "confuse_word": "金刚德伦酱爆李逵林冲聂风唐僧无名武松小青小唯灯神"
+    },
+    {
+        "levelid": "99",
+        "song_name": "鹿目圆香",
+        "file_name": "a0009.png",
+        "tips": "魔法少女小圆",
+        "confuse_word": "鹿目圆香大崎娜娜我妻由乃黑子哲也五更琉璃绯村剑心"
+    },
+    {
+        "levelid": "100",
+        "song_name": "斯巴达",
+        "file_name": "a0156.png",
+        "tips": "300勇士！",
+        "confuse_word": "斯巴达伦酱爆李逵林冲聂风唐僧无名武松小青小唯灯神"
+    },
+    {
+        "levelid": "101",
+        "song_name": "博尔特",
+        "file_name": "a0196.png",
+        "tips": "奥运短跑冠军",
+        "confuse_word": "博尔特艾弗森奥尼尔詹姆斯齐达内杜兰特加内特霍华德"
+    },
+    {
+        "levelid": "102",
+        "song_name": "明日香",
+        "file_name": "a0002.png",
+        "tips": "新世纪福音战士",
+        "confuse_word": "明日香泉此方水银灯巴麻美犬夜叉拉克丝奥特曼太公望"
+    },
+    {
+        "levelid": "103",
+        "song_name": "史泰龙",
+        "file_name": "a0117.png",
+        "tips": "作品:《第一滴血》",
+        "confuse_word": "史泰龙曾轶可周杰伦郭德纲陈冠希庾澄庆张惠妹吴宗宪"
+    },
+    {
+        "levelid": "104",
+        "song_name": "星矢",
+        "file_name": "a0270.png",
+        "tips": "《圣斗士星矢》中的人物",
+        "confuse_word": "星矢一辉冰河紫龙阿宝傻馒呆贼劣人小叽夏娜路飞柯南"
+    },
+    {
+        "levelid": "105",
+        "song_name": "伊利丹",
+        "file_name": "a0169.png",
+        "tips": "魔兽世界",
+        "confuse_word": "伊利丹泰兰德七枷社孙尚香艾达王洛克人洛天依马里奥"
+    },
+    {
+        "levelid": "106",
+        "song_name": "沙和尚",
+        "file_name": "a0144.png",
+        "tips": "西游记",
+        "confuse_word": "沙和尚石头人孙悟空铁拐李万磁王小燕子隐形女张起灵"
+    },
+    {
+        "levelid": "107",
+        "song_name": "翠星石",
+        "file_name": "a0007.png",
+        "tips": "蔷薇少女",
+        "confuse_word": "翠星石乃鹿目圆香大崎娜娜我妻由乃黑子哲也五更琉璃"
+    },
+    {
+        "levelid": "108",
+        "song_name": "小鸟游六花",
+        "file_name": "a0015.png",
+        "tips": "中二病也要谈恋爱",
+        "confuse_word": "小鸟游六花旗木卡卡其樱桃小丸子六十米巨人凉宫春日"
+    },
+    {
+        "levelid": "109",
+        "song_name": "绿箭侠",
+        "file_name": "a0149.png",
+        "tips": "流行美剧的主角，用弓箭战斗在都市",
+        "confuse_word": "绿箭侠梅超风美杜莎霹雳火沙和尚石头人孙悟空铁拐李"
+    },
+    {
+        "levelid": "110",
+        "song_name": "一辉",
+        "file_name": "a0271.png",
+        "tips": "《圣斗士星矢》中的人物",
+        "confuse_word": "一辉冰河紫龙阿宝傻馒呆贼劣人小叽夏娜路飞柯南索隆"
+    },
+    {
+        "levelid": "111",
+        "song_name": "无面人",
+        "file_name": "a0072.png",
+        "tips": "千与千寻",
+        "confuse_word": "无面人喜羊羊灰太郎爱丽儿爱丽丝轻松熊梅莉达乌贼娘"
+    },
+    {
+        "levelid": "112",
+        "song_name": "爱丽儿",
+        "file_name": "a0076.png",
+        "tips": "海的女儿",
+        "confuse_word": "爱丽儿爱丽丝轻松熊梅莉达乌贼娘擎天柱流氓兔悠嘻猴"
+    },
+    {
+        "levelid": "113",
+        "song_name": "盖伦",
+        "file_name": "a0186.png",
+        "tips": "英雄联盟",
+        "confuse_word": "盖伦赵信劳拉易隆初音路易貂蝉关羽尤娜但丁林克大蛇"
+    },
+    {
+        "levelid": "114",
+        "song_name": "小青",
+        "file_name": "a0148.png",
+        "tips": "新白娘子传奇",
+        "confuse_word": "小青小唯谢逊雄霸许仙杨过耶稣野兽鹰眼贞子金刚德伦"
+    },
+    {
+        "levelid": "115",
+        "song_name": "瞬",
+        "file_name": "a0272.png",
+        "tips": "《圣斗士星矢》中的人物",
+        "confuse_word": "小叽夏娜路瞬柯南索隆娜美乔巴飞影藏马三笠超人雷神"
+    },
+    {
+        "levelid": "116",
+        "song_name": "米妮",
+        "file_name": "a0157.png",
+        "tips": "米奇的女朋友",
+        "confuse_word": "米妮紫龙阿宝傻馒呆贼劣人小叽夏娜路飞柯南索隆娜美"
+    },
+    {
+        "levelid": "117",
+        "song_name": "闪电侠",
+        "file_name": "a0054.png",
+        "tips": "正义联盟",
+        "confuse_word": "闪电侠机器猫阿拉蕾雅典娜爱德华远坂凛皮卡丘无面人"
+    },
+    {
+        "levelid": "118",
+        "song_name": "贞子",
+        "file_name": "a0250.png",
+        "tips": "七夜怪谈",
+        "confuse_word": "贞子金刚德伦酱爆李逵林冲聂风唐僧无名武松小青小唯"
+    },
+    {
+        "levelid": "119",
+        "song_name": "李逵",
+        "file_name": "a0244.png",
+        "tips": "绰号“黑旋风”",
+        "confuse_word": "李逵林冲聂风唐僧无名武松小青小唯谢逊雄霸许仙杨过"
+    },
+    {
+        "levelid": "120",
+        "song_name": "爱丽丝",
+        "file_name": "a0078.png",
+        "tips": "爱丽丝梦游魔境",
+        "confuse_word": "爱丽丝轻松熊梅莉达乌贼娘擎天柱流氓兔悠嘻猴丘比龙"
+    },
+    {
+        "levelid": "121",
+        "song_name": "冰河",
+        "file_name": "a0273.png",
+        "tips": "《圣斗士星矢》中的人物",
+        "confuse_word": "冰河紫龙阿宝傻馒呆贼劣人小叽夏娜路飞柯南索隆娜美"
+    },
+    {
+        "levelid": "122",
+        "song_name": "小燕子",
+        "file_name": "a0150.png",
+        "tips": "还珠格格",
+        "confuse_word": "小燕子隐形女张起灵猪八戒达里尔麦克斯白素贞史波克"
+    },
+    {
+        "levelid": "123",
+        "song_name": "路飞",
+        "file_name": "a0021.png",
+        "tips": "ONEPIECE",
+        "confuse_word": "路飞柯南索隆娜美乔巴飞影藏马三笠超人雷神洛基猫女"
+    },
+    {
+        "levelid": "124",
+        "song_name": "伊泽瑞尔",
+        "file_name": "a0184.png",
+        "tips": "英雄联盟",
+        "confuse_word": "伊泽瑞尔藤崎诗织萨菲罗斯不知火舞慕容紫英阿尔萨斯"
+    },
+    {
+        "levelid": "125",
+        "song_name": "紫龙",
+        "file_name": "a0274.png",
+        "tips": "《圣斗士星矢》中的人物",
+        "confuse_word": "紫龙阿宝傻馒呆贼劣人小叽夏娜路飞柯南索隆娜美乔巴"
+    },
+    {
+        "levelid": "126",
+        "song_name": "赵云",
+        "file_name": "a0179.png",
+        "tips": "三国无双4",
+        "confuse_word": "赵云吕布剑圣艾希盖伦赵信劳拉易隆初音路易貂蝉关羽"
+    },
+    {
+        "levelid": "127",
+        "song_name": "绿灯侠",
+        "file_name": "a0053.png",
+        "tips": "正义联盟",
+        "confuse_word": "绿灯侠闪电侠机器猫阿拉蕾雅典娜爱德华远坂凛皮卡丘"
+    },
+    {
+        "levelid": "128",
+        "song_name": "白雪公主",
+        "file_name": "a0075.png",
+        "tips": "格林童话的主角之一，其中还有七个小矮人",
+        "confuse_word": "白雪公主忍者神龟木之本樱凉宫春日高坂桐乃鹿目圆香"
+    },
+    {
+        "levelid": "129",
+        "song_name": "变相怪杰",
+        "file_name": "a0254.png",
+        "tips": "一部魔幻电影的主角，讲述了一个神秘面具的故事",
+        "confuse_word": "变相怪杰恶灵骑士刀锋战士东方不败哈利波特火云邪神"
+    },
+    {
+        "levelid": "130",
+        "song_name": "洛克人",
+        "file_name": "a0252.png",
+        "tips": "卡普空的游戏主角",
+        "confuse_word": "洛克人洛天依马里奥瓦里奥司马懿诸葛亮克劳德奎托斯"
+    },
+    {
+        "levelid": "131",
+        "song_name": "我妻由乃",
+        "file_name": "a0014.png",
+        "tips": "未来日记",
+        "confuse_word": "我妻由乃黑子哲也五更琉璃绯村剑心黑崎一护漩涡鸣人"
+    },
+    {
+        "levelid": "132",
+        "song_name": "龙猫",
+        "file_name": "a0070.png",
+        "tips": "宫崎骏动画片中的角色",
+        "confuse_word": "龙猫米奇扎古楪祈星矢一辉冰河紫龙阿宝傻馒呆贼劣人"
+    },
+    {
+        "levelid": "133",
+        "song_name": "索隆",
+        "file_name": "a0029.png",
+        "tips": "ONEPIECE",
+        "confuse_word": "索隆娜美乔巴飞影藏马三笠超人雷神洛基猫女哪吒琉克"
+    },
+    {
+        "levelid": "134",
+        "song_name": "龟仙人",
+        "file_name": "a0279.png",
+        "tips": "《七龙珠》的人物",
+        "confuse_word": "龟仙人米老鼠唐老鸭凌波丽明日香泉此方水银灯巴麻美"
+    },
+    {
+        "levelid": "135",
+        "song_name": "洪七公",
+        "file_name": "a0240.png",
+        "tips": "外号“北丐”",
+        "confuse_word": "洪七公金刚狼镭射眼李寻欢鲁智深绿箭侠梅超风美杜莎"
+    },
+    {
+        "levelid": "136",
+        "song_name": "梅超风",
+        "file_name": "a0236.png",
+        "tips": "黄药师的弟子",
+        "confuse_word": "梅超风美杜莎霹雳火沙和尚石头人孙悟空铁拐李万磁王"
+    },
+    {
+        "levelid": "137",
+        "song_name": "琉克",
+        "file_name": "a0065.png",
+        "tips": "死亡笔记",
+        "confuse_word": "琉克千寻琪琪龙猫米奇扎古楪祈星矢一辉冰河紫龙阿宝"
+    },
+    {
+        "levelid": "138",
+        "song_name": "泉此方",
+        "file_name": "a0004.png",
+        "tips": "幸运星",
+        "confuse_word": "泉此方水银灯巴麻美犬夜叉拉克丝奥特曼太公望月野兔"
+    },
+    {
+        "levelid": "139",
+        "song_name": "矢吹真吾",
+        "file_name": "a0176.png",
+        "tips": "拳皇",
+        "confuse_word": "矢吹真吾伊泽瑞尔藤崎诗织萨菲罗斯不知火舞慕容紫英"
+    },
+    {
+        "levelid": "140",
+        "song_name": "蜘蛛侠",
+        "file_name": "a0299.png",
+        "tips": "被某种八条腿的生物咬了一口结果变异成了超级英雄",
+        "confuse_word": "蜘蛛侠霹雳火沙和尚石头人孙悟空铁拐李万磁王小燕子"
+    },
+    {
+        "levelid": "141",
+        "song_name": "林冲",
+        "file_name": "a0245.png",
+        "tips": "绰号“豹子头”",
+        "confuse_word": "林冲聂风唐僧无名武松小青小唯谢逊雄霸许仙杨过耶稣"
+    },
+    {
+        "levelid": "142",
+        "song_name": "琪琪",
+        "file_name": "a0069.png",
+        "tips": "魔女宅急便",
+        "confuse_word": "琪琪龙猫米奇扎古楪祈星矢一辉冰河紫龙阿宝傻馒呆贼"
+    },
+    {
+        "levelid": "143",
+        "song_name": "大崎娜娜",
+        "file_name": "a0010.png",
+        "tips": "NANA",
+        "confuse_word": "大崎娜娜我妻由乃黑子哲也五更琉璃绯村剑心黑崎一护"
+    },
+    {
+        "levelid": "144",
+        "song_name": "伊丽莎白",
+        "file_name": "a0026.png",
+        "tips": "银魂",
+        "confuse_word": "伊丽莎白坂本银时藤原佐为酷拉皮卡樱木花道恐山安娜"
+    },
+    {
+        "levelid": "145",
+        "song_name": "千寻",
+        "file_name": "a0068.png",
+        "tips": "千与千寻",
+        "confuse_word": "千寻琪琪龙猫米奇扎古楪祈星矢一辉冰河紫龙阿宝傻馒"
+    },
+    {
+        "levelid": "146",
+        "song_name": "紫霞仙子",
+        "file_name": "a0140.png",
+        "tips": "大话西游",
+        "confuse_word": "紫霞仙子海尔兄弟变相怪杰恶灵骑士刀锋战士东方不败"
+    },
+    {
+        "levelid": "147",
+        "song_name": "绯村剑心",
+        "file_name": "a0020.png",
+        "tips": "浪客剑心",
+        "confuse_word": "绯村剑心黑崎一护漩涡鸣人伊丽莎白坂本银时藤原佐为"
+    },
+    {
+        "levelid": "148",
+        "song_name": "史波克",
+        "file_name": "a0108.png",
+        "tips": "星际迷航",
+        "confuse_word": "史波克董存瑞甘道夫加杰特赵本山三角头包租婆暴风女"
+    },
+    {
+        "levelid": "149",
+        "song_name": "三笠",
+        "file_name": "a0038.png",
+        "tips": "进击的巨人",
+        "confuse_word": "三笠超人雷神洛基猫女哪吒琉克千寻琪琪龙猫米奇扎古"
+    },
+    {
+        "levelid": "150",
+        "song_name": "艾弗森",
+        "file_name": "a0197.png",
+        "tips": "曾以状元秀身份加盟费城76人",
+        "confuse_word": "艾弗森奥尼尔詹姆斯齐达内杜兰特加内特霍华德安东尼"
+    },
+    {
+        "levelid": "151",
+        "song_name": "月野兔",
+        "file_name": "a0040.png",
+        "tips": "美少女战士",
+        "confuse_word": "月野兔孙悟空蓝精灵葫芦娃阿童木钢铁侠绿巨人蝙蝠侠"
+    },
+    {
+        "levelid": "152",
+        "song_name": "终结者",
+        "file_name": "a0118.png",
+        "tips": "作品:《终结者》",
+        "confuse_word": "终结者甘道夫加杰特赵本山三角头包租婆暴风女步惊云"
+    },
+    {
+        "levelid": "153",
+        "song_name": "无名",
+        "file_name": "a0145.png",
+        "tips": "电影《英雄》",
+        "confuse_word": "无名武松小青小唯谢逊雄霸许仙杨过耶稣野兽鹰眼贞子"
+    },
+    {
+        "levelid": "154",
+        "song_name": "聂风",
+        "file_name": "a0138.png",
+        "tips": "风云",
+        "confuse_word": "聂风唐僧无名武松小青小唯谢逊雄霸许仙杨过耶稣野兽"
+    },
+    {
+        "levelid": "155",
+        "song_name": "恐山安娜",
+        "file_name": "a0037.png",
+        "tips": "通灵王",
+        "confuse_word": "恐山安娜黑猫警长美国队长海绵宝宝武藤游戏幽灵公主"
+    },
+    {
+        "levelid": "156",
+        "song_name": "黑寡妇",
+        "file_name": "a0126.png",
+        "tips": "复仇者联盟",
+        "confuse_word": "黑寡妇洪七公金刚狼镭射眼李寻欢鲁智深绿箭侠梅超风"
+    },
+    {
+        "levelid": "157",
+        "song_name": "马拉多纳",
+        "file_name": "a0199.png",
+        "tips": "1986年世界杯上演上帝之手",
+        "confuse_word": "马拉多纳贝克汉姆诺维茨基菲尔普斯林丹刘翔罗纳尔多"
+    },
+    {
+        "levelid": "158",
+        "song_name": "飞影",
+        "file_name": "a0032.png",
+        "tips": "幽游白书",
+        "confuse_word": "飞影藏马三笠超人雷神洛基猫女哪吒琉克千寻琪琪龙猫"
+    },
+    {
+        "levelid": "159",
+        "song_name": "五更琉璃",
+        "file_name": "a0019.png",
+        "tips": "我的妹妹才没有那么可爱",
+        "confuse_word": "五更琉璃绯村剑心黑崎一护漩涡鸣人伊丽莎白坂本银时"
+    },
+    {
+        "levelid": "160",
+        "song_name": "张起灵",
+        "file_name": "a0099.png",
+        "tips": "盗墓笔记",
+        "confuse_word": "张起灵猪八戒达里尔麦克斯白素贞史波克董存瑞甘道夫"
+    },
+    {
+        "levelid": "161",
+        "song_name": "神乐千鹤",
+        "file_name": "a0174.png",
+        "tips": "拳皇",
+        "confuse_word": "神乐千鹤矢吹真吾伊泽瑞尔藤崎诗织萨菲罗斯不知火舞"
+    },
+    {
+        "levelid": "162",
+        "song_name": "本间芽衣子",
+        "file_name": "a0011.png",
+        "tips": "未闻花名",
+        "confuse_word": "本间芽衣子小鸟游六花旗木卡卡其樱桃小丸子木之本樱"
+    },
+    {
+        "levelid": "163",
+        "song_name": "猪八戒",
+        "file_name": "a0143.png",
+        "tips": "西游记",
+        "confuse_word": "猪八戒达里尔麦克斯白素贞史波克董存瑞甘道夫加杰特"
+    },
+    {
+        "levelid": "164",
+        "song_name": "武松",
+        "file_name": "a0243.png",
+        "tips": "在梁山排行第十四位",
+        "confuse_word": "武松小青小唯谢逊雄霸许仙杨过耶稣野兽鹰眼贞子金刚"
+    },
+    {
+        "levelid": "165",
+        "song_name": "二阶堂红丸",
+        "file_name": "a0111.png",
+        "tips": "拳皇人物",
+        "confuse_word": "二阶堂红丸麻宫雅典娜藤崎诗织萨菲罗斯不知火舞慕容"
+    },
+    {
+        "levelid": "166",
+        "song_name": "鲁智深",
+        "file_name": "a0242.png",
+        "tips": "绰号“花和尚”",
+        "confuse_word": "鲁智深绿箭侠梅超风美杜莎霹雳火沙和尚石头人孙悟空"
+    },
+    {
+        "levelid": "167",
+        "song_name": "灭绝师太",
+        "file_name": "a0238.png",
+        "tips": "峨嵋派第三代掌门",
+        "confuse_word": "灭绝师太神奇先生释迦牟尼紫霞仙子海尔兄弟变相怪杰"
+    },
+    {
+        "levelid": "168",
+        "song_name": "济公",
+        "file_name": "a0239.png",
+        "tips": "人间活佛，南宋高僧",
+        "confuse_word": "济公酱爆李逵林冲聂风唐僧无名武松小青小唯谢逊雄霸"
+    },
+    {
+        "levelid": "169",
+        "song_name": "六十米巨人",
+        "file_name": "a0067.png",
+        "tips": "进击的巨人",
+        "confuse_word": "六十米巨人本间芽衣子小鸟游六花旗木卡卡其大崎娜娜"
+    },
+    {
+        "levelid": "170",
+        "song_name": "小叽",
+        "file_name": "a0012.png",
+        "tips": "人形电脑天使心",
+        "confuse_word": "小叽夏娜路飞柯南索隆娜美乔巴飞影藏马三笠超人雷神"
+    },
+    {
+        "levelid": "171",
+        "song_name": "杨过",
+        "file_name": "a0237.png",
+        "tips": "江湖人称：神雕大侠",
+        "confuse_word": "杨过耶稣野兽鹰眼贞子金刚德伦酱爆李逵林冲聂风唐僧"
+    },
+    {
+        "levelid": "172",
+        "song_name": "石头人",
+        "file_name": "a0136.png",
+        "tips": "神奇四侠",
+        "confuse_word": "石头人孙悟空铁拐李万磁王小燕子隐形女张起灵猪八戒"
+    },
+    {
+        "levelid": "173",
+        "song_name": "武藤游戏",
+        "file_name": "a0064.png",
+        "tips": "游戏王",
+        "confuse_word": "武藤游戏幽灵公主白雪公主忍者神龟木之本樱凉宫春日"
+    },
+    {
+        "levelid": "174",
+        "song_name": "拉克丝",
+        "file_name": "a0017.png",
+        "tips": "高达SEED",
+        "confuse_word": "拉克丝奥特曼太公望月野兔孙悟空蓝精灵葫芦娃阿童木"
+    },
+    {
+        "levelid": "175",
+        "song_name": "水银灯",
+        "file_name": "a0005.png",
+        "tips": "蔷薇少女",
+        "confuse_word": "水银灯巴麻美犬夜叉拉克丝奥特曼太公望月野兔孙悟空"
+    },
+    {
+        "levelid": "176",
+        "song_name": "加杰特",
+        "file_name": "a0257.png",
+        "tips": "《神探加杰特》中的人物",
+        "confuse_word": "加杰特赵本山三角头包租婆暴风女步惊云黑寡妇洪七公"
+    },
+    {
+        "levelid": "177",
+        "song_name": "隐形女",
+        "file_name": "a0134.png",
+        "tips": "神奇四侠",
+        "confuse_word": "隐形女张起灵猪八戒达里尔麦克斯白素贞史波克董存瑞"
+    },
+    {
+        "levelid": "178",
+        "song_name": "释迦牟尼",
+        "file_name": "a0246.png",
+        "tips": "民间信徒称呼他为佛祖",
+        "confuse_word": "释迦牟尼紫霞仙子海尔兄弟变相怪杰恶灵骑士刀锋战士"
+    },
+    {
+        "levelid": "179",
+        "song_name": "艾达王",
+        "file_name": "a0251.png",
+        "tips": "生化危机",
+        "confuse_word": "艾达王洛克人洛天依马里奥瓦里奥司马懿诸葛亮克劳德"
+    },
+    {
+        "levelid": "180",
+        "song_name": "阿奴",
+        "file_name": "a0154.png",
+        "tips": "仙剑奇侠传1",
+        "confuse_word": "阿奴苏媚景天重楼雪见紫萱龙葵蒂法萨尔泰瑞赵云吕布"
+    },
+    {
+        "levelid": "181",
+        "song_name": "蝙蝠侠",
+        "file_name": "a0052.png",
+        "tips": "正义联盟",
+        "confuse_word": "蝙蝠侠绿灯侠闪电侠机器猫阿拉蕾雅典娜爱德华远坂凛"
+    },
+    {
+        "levelid": "182",
+        "song_name": "梅莉达",
+        "file_name": "a0080.png",
+        "tips": "勇敢传说",
+        "confuse_word": "梅莉达乌贼娘擎天柱流氓兔悠嘻猴丘比龙加菲猫越狱兔"
+    },
+    {
+        "levelid": "183",
+        "song_name": "佐罗",
+        "file_name": "a0158.png",
+        "tips": "爱用剑划出Z型",
+        "confuse_word": "隐形女张起灵猪八戒达里尔麦克斯佐罗贞史波克董存瑞"
+    },
+    {
+        "levelid": "184",
+        "song_name": "镭射眼",
+        "file_name": "a0129.png",
+        "tips": "X战警",
+        "confuse_word": "镭射眼李寻欢鲁智深绿箭侠梅超风美杜莎霹雳火沙和尚"
+    },
+    {
+        "levelid": "185",
+        "song_name": "许仙",
+        "file_name": "a0147.png",
+        "tips": "新白娘子传奇",
+        "confuse_word": "许仙杨过耶稣野兽鹰眼贞子金刚德伦酱爆李逵林冲聂风"
+    },
+    {
+        "levelid": "186",
+        "song_name": "铁血战士",
+        "file_name": "a0167.png",
+        "tips": "大战过异形",
+        "confuse_word": "铁血战士镭射眼李寻欢鲁智深绿箭侠梅超风美杜莎霹雳"
+    },
+    {
+        "levelid": "187",
+        "song_name": "安纳金",
+        "file_name": "a0161.png",
+        "tips": "星球大战的悲剧反派，天行者",
+        "confuse_word": "安纳金镭射眼李寻欢鲁智深绿箭侠梅超风美杜莎霹雳火"
+    },
+    {
+        "levelid": "188",
+        "song_name": "漩涡鸣人",
+        "file_name": "a0023.png",
+        "tips": "火影忍者",
+        "confuse_word": "漩涡鸣人伊丽莎白坂本银时藤原佐为酷拉皮卡樱木花道"
+    },
+    {
+        "levelid": "189",
+        "song_name": "但丁",
+        "file_name": "a0097.png",
+        "tips": "鬼泣",
+        "confuse_word": "但丁林克大蛇春丽阿奴苏媚景天重楼雪见紫萱龙葵蒂法"
+    },
+    {
+        "levelid": "190",
+        "song_name": "郭德纲",
+        "file_name": "a0124.png",
+        "tips": "相声演员",
+        "confuse_word": "郭德纲陈冠希庾澄庆张惠妹吴宗宪李小龙李宇春史泰龙"
+    },
+    {
+        "levelid": "191",
+        "song_name": "小布什",
+        "file_name": "a0190.png",
+        "tips": "美国第43任总统",
+        "confuse_word": "小布什克林顿本拉登萨达姆普京叶利钦萨科齐安倍晋三"
+    },
+    {
+        "levelid": "192",
+        "song_name": "梅西",
+        "file_name": "a0203.png",
+        "tips": "阿根廷金童",
+        "confuse_word": "梅西林丹刘翔孙杨李娜韦德邓肯纳什麦迪巴乔贝利泰森"
+    },
+    {
+        "levelid": "193",
+        "song_name": "刘翔",
+        "file_name": "a0206.png",
+        "tips": "中国田径首位男子奥运冠军",
+        "confuse_word": "刘翔孙杨李娜韦德邓肯纳什麦迪贝利巴乔姚明泰森科比"
+    },
+    {
+        "levelid": "194",
+        "song_name": "金刚狼",
+        "file_name": "a0128.png",
+        "tips": "X战警",
+        "confuse_word": "金刚狼镭射眼李寻欢鲁智深绿箭侠梅超风美杜莎霹雳火"
+    },
+    {
+        "levelid": "195",
+        "song_name": "刀锋战士",
+        "file_name": "a0258.png",
+        "tips": "《刀锋战士》中的人物",
+        "confuse_word": "刀锋战士东方不败哈利波特火云邪神灭绝师太神奇先生"
+    },
+    {
+        "levelid": "196",
+        "song_name": "李寻欢",
+        "file_name": "a0241.png",
+        "tips": "江湖人送外号小李飞刀",
+        "confuse_word": "李寻欢鲁智深绿箭侠梅超风美杜莎霹雳火沙和尚石头人"
+    },
+    {
+        "levelid": "197",
+        "song_name": "林丹",
+        "file_name": "a0205.png",
+        "tips": "历史上唯一全满贯羽毛球选手",
+        "confuse_word": "林丹刘翔孙杨李娜韦德邓肯纳什麦迪贝利泰森巴乔姚明"
+    },
+    {
+        "levelid": "198",
+        "song_name": "赵本山",
+        "file_name": "a0259.png",
+        "tips": "小品演员",
+        "confuse_word": "赵本山三角头包租婆暴风女步惊云黑寡妇洪七公金刚狼"
+    },
+    {
+        "levelid": "199",
+        "song_name": "林克",
+        "file_name": "a0107.png",
+        "tips": "塞尔达传说",
+        "confuse_word": "艾达王洛克人洛天林马里奥瓦里奥司马懿诸葛亮克劳德"
+    },
+    {
+        "levelid": "200",
+        "song_name": "达里尔",
+        "file_name": "a0100.png",
+        "tips": "行尸走肉",
+        "confuse_word": "达里尔霹雳火沙和尚石头人孙悟空铁拐李万磁王小燕子"
+    }
+]
