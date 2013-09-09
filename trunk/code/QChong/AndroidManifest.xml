@@ -37,7 +37,7 @@
         </meta-data>
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="N" />
+            android:value="youyi" />
 
         <!-- 在百度开发者中心查询应用的API Key -->
         <meta-data
