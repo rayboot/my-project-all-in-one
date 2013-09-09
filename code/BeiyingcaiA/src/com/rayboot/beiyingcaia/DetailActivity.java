@@ -2,7 +2,10 @@ package com.rayboot.beiyingcaia;
 
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import cn.waps.AdView;
+import cn.waps.AppConnect;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
@@ -13,6 +16,7 @@ import com.rayboot.beiyingcaia.obj.AObj;
 public class DetailActivity extends SherlockActivity {
 	AObj curAObj;
 	Gson gson = new Gson();
+	LinearLayout AdLinearLayout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +31,9 @@ public class DetailActivity extends SherlockActivity {
 		tvAnswer.setText(curAObj.song_name);
 		TextView tvTip = (TextView) findViewById(R.id.tvTip);
 		tvTip.setText(curAObj.tips);
+		AdLinearLayout = (LinearLayout) findViewById(R.id.AdLinearLayout);
+		AppConnect.getInstance(this).showPopAd(this);
+		new AdView(this, AdLinearLayout).DisplayAd();
 	}
 
 	@Override

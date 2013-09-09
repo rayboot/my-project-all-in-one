@@ -9,7 +9,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import cn.waps.AdView;
+import cn.waps.AppConnect;
+import cn.waps.UpdatePointsNotifier;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
@@ -29,7 +33,7 @@ import com.umeng.update.UpdateResponse;
 
 public class MainActivity extends SherlockActivity {
 
-	// final int MORE_GET_POINT = 1;
+	final int MORE_GET_POINT = 1;
 	final int MORE_FEEBACK = 2;
 	final int MORE_ABOUT = 3;
 	final int MORE_SHARE = 4;
@@ -41,6 +45,8 @@ public class MainActivity extends SherlockActivity {
 	List<AObj> allObjs = null;
 	List<String> indexData = new ArrayList<String>();
 	FeedbackAgent agent;
+	int app_count = 0;
+	LinearLayout AdLinearLayout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +95,37 @@ public class MainActivity extends SherlockActivity {
 			}
 		});
 		initUMeng();
+		initWAPS();
 	}
+
+	private void initWAPS() {
+		AdLinearLayout = (LinearLayout) findViewById(R.id.AdLinearLayout);
+		AppConnect.getInstance(this);
+		AppConnect.getInstance(this).getPoints(updatePointsNotifier);
+		// 初始化自定义广告数据
+		AppConnect.getInstance(this).initAdInfo();
+		// 初始化插屏广告数据
+		AppConnect.getInstance(this).initPopAd(this);
+		// AppConnect.getInstance(this).awardPoints(10, updatePointsNotifier);
+		// 禁用错误报告
+		AppConnect.getInstance(this).setCrashReport(false);
+		new AdView(this, AdLinearLayout).DisplayAd();
+	}
+
+	private UpdatePointsNotifier updatePointsNotifier = new UpdatePointsNotifier() {
+
+		@Override
+		public void getUpdatePointsFailed(String arg0) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void getUpdatePoints(String arg0, int arg1) {
+			// TODO Auto-generated method stub
+			app_count = arg1;
+		}
+	};
 
 	private void initUMeng() {
 		// 友盟意见反馈检索
@@ -131,7 +167,7 @@ public class MainActivity extends SherlockActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		SubMenu sub = menu.addSubMenu("Setting");
-		// sub.add(0, MORE_GET_POINT, 0, "获取积分");
+		sub.add(0, MORE_GET_POINT, 0, "获取积分");
 		sub.add(0, MORE_FEEBACK, 0, "意见反馈");
 		sub.add(0, MORE_SHARE, 0, "分享");
 		sub.add(0, MORE_ABOUT, 0, "关于");
@@ -145,9 +181,9 @@ public class MainActivity extends SherlockActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		// case MORE_GET_POINT:
-		// AppConnect.getInstance(this).showOffers(this);
-		// break;
+		case MORE_GET_POINT:
+			AppConnect.getInstance(this).showOffers(this);
+			break;
 		case MORE_ABOUT:
 			startActivity(new Intent(this, AboutActivity.class));
 			break;
@@ -162,5 +198,12 @@ public class MainActivity extends SherlockActivity {
 			break;
 		}
 		return true;
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		AppConnect.getInstance(this).close();
 	}
 }
