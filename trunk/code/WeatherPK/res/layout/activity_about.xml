@@ -60,20 +60,6 @@
             android:text="当前版本："
             android:textColor="@color/white" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:text="出品人：rayboot"
-            android:textColor="@color/white" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="感谢@丫丫小 @丸子"
-            android:textColor="@color/white" />
     </LinearLayout>
 
     <Button
