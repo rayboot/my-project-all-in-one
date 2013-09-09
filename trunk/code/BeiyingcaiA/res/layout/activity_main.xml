@@ -18,28 +18,42 @@
         android:id="@+id/gvContent"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/AdLinearLayout"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/view1"
         android:horizontalSpacing="2dp"
         android:numColumns="4"
         android:verticalSpacing="2dp" >
+
     </GridView>
 
     <ListView
         android:id="@+id/lvIndex"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/gvContent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true" >
+
     </ListView>
 
     <View
         android:id="@+id/view1"
         android:layout_width="2px"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/AdLinearLayout"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/lvIndex"
         android:background="#e8e8e8" />
+
+    <LinearLayout
+        android:id="@+id/AdLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical" >
+    </LinearLayout>
 
 </RelativeLayout>
