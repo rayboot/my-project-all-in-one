@@ -85,6 +85,10 @@ public class MainActivity extends SherlockActivity {
 
 		etQQ.setText(Util.getInfoFromShared(this, "qq"));
 		etPhone.setText(Util.getInfoFromShared(this, "phone"));
+		initWAPS();
+	}
+	
+	private void initWAPS(){
 		AppConnect.getInstance(this);
 		AppConnect.getInstance(this).getPoints(updatePointsNotifier);
 		// 初始化自定义广告数据
