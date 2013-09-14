@@ -45,6 +45,10 @@
             android:name="com.rayboot.ahjiaotong.TestActivity"
             android:label="@string/title_activity_test" >
         </activity>
+        <activity
+            android:name="com.rayboot.ahjiaotong.AboutActivity"
+            android:label="@string/title_activity_about" >
+        </activity>
     </application>
 
 </manifest>

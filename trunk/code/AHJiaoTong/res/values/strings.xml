@@ -8,5 +8,6 @@
     <string name="title_activity_type_sel">TypeSelActivity</string>
     <string name="title_activity_result">ResultActivity</string>
     <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_about">AboutActivity</string>
 
 </resources>
