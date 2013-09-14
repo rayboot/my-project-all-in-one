@@ -42,7 +42,7 @@
         android:layout_width="fill_parent"
         android:layout_height="40dp"
         android:layout_below="@id/umeng_fb_conversation_header"
-        android:background="@color/umeng_fb_color_btn_pressed" >
+        android:background="#1495F7" >
 
         <TextView
             android:layout_width="wrap_content"
