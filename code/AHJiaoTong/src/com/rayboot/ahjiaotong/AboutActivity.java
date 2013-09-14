@@ -17,6 +17,8 @@ public class AboutActivity extends SherlockActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_about);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		
+		tvVersion = (TextView) findViewById(R.id.tvVersion);
 
 		tvVersion.setText("当前版本：v" + Util.getVersionName(this));
 	}
