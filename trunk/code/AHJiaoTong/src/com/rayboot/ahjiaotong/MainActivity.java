@@ -12,6 +12,7 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.SubMenu;
 import com.rayboot.ahjiaotong.util.Util;
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
 import com.umeng.update.UmengUpdateAgent;
 import com.umeng.update.UmengUpdateListener;
@@ -49,6 +50,7 @@ public class MainActivity extends SherlockActivity {
 	}
 
 	private void initUMeng() {
+		MobclickAgent.setDebugMode(false);
 		// 友盟意见反馈检索
 		agent = new FeedbackAgent(this);
 		agent.sync();
@@ -73,10 +75,16 @@ public class MainActivity extends SherlockActivity {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+		MobclickAgent.onResume(this);
 
 		btnHead.setText(Global.headNum);
 		btnType.setText(Global.carType);
 		btnType.setTag(Global.carTypeNum);
+	}
+
+	public void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
 	}
 
 	private OnClickListener onClickListener = new OnClickListener() {
@@ -111,7 +119,7 @@ public class MainActivity extends SherlockActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		SubMenu sub = menu.addSubMenu("Setting");
-		sub.add(0, MORE_GET_POINT, 0, "获取积分");
+		// sub.add(0, MORE_GET_POINT, 0, "获取积分");
 		sub.add(0, MORE_FEEBACK, 0, "意见反馈");
 		sub.add(0, MORE_SHARE, 0, "分享");
 		sub.add(0, MORE_ABOUT, 0, "关于");

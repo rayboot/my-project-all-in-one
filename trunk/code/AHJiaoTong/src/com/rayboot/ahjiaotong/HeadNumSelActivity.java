@@ -10,6 +10,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.MenuItem;
 
 public class HeadNumSelActivity extends SherlockActivity {
 
@@ -21,6 +22,7 @@ public class HeadNumSelActivity extends SherlockActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_head_num_sel);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		gvContent = (GridView) findViewById(R.id.gvContent);
 
@@ -40,5 +42,14 @@ public class HeadNumSelActivity extends SherlockActivity {
 				HeadNumSelActivity.this.finish();
 			}
 		});
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			this.finish();
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }

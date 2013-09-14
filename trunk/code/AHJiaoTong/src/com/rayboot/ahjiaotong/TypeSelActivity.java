@@ -10,6 +10,7 @@ import android.widget.GridView;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.MenuItem;
 
 public class TypeSelActivity extends SherlockActivity {
 
@@ -21,6 +22,7 @@ public class TypeSelActivity extends SherlockActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_type_sel);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		gvContent = (GridView) findViewById(R.id.gvContent);
 
@@ -69,6 +71,15 @@ public class TypeSelActivity extends SherlockActivity {
 		dataList.add("警用摩托");
 		dataList.add("武警汽车");
 		dataList.add("军车");
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			this.finish();
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 }

@@ -76,6 +76,16 @@ public class ResultActivity extends SherlockActivity {
 		lvContentListView.setAdapter(adapter);
 	}
 
+	public void onResume() {
+		super.onResume();
+		MobclickAgent.onResume(this);
+	}
+
+	public void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
+	}
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
