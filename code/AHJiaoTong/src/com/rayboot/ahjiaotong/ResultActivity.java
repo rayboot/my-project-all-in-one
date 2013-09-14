@@ -11,6 +11,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.rayboot.ahjiaotong.ResultObj.ViolateObj;
 import com.rayboot.ahjiaotong.util.HttpUtil;
+import com.umeng.analytics.MobclickAgent;
 
 public class ResultActivity extends SherlockActivity {
 
