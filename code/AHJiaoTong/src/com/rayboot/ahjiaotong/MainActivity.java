@@ -1,11 +1,16 @@
 package com.rayboot.ahjiaotong;
 
+import java.util.List;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
@@ -23,6 +28,7 @@ public class MainActivity extends SherlockActivity {
 	final int MORE_FEEBACK = 2;
 	final int MORE_ABOUT = 3;
 	final int MORE_SHARE = 4;
+	final int MORE_CLEAR_DB = 5;
 	FeedbackAgent agent;
 
 	Button btnHead;
@@ -30,6 +36,10 @@ public class MainActivity extends SherlockActivity {
 	Button btnSearch;
 	EditText etNum;
 	EditText etFrameNum;
+
+	ListView lvContent;
+	MyBaseAdapter<HistoryObj> adapter;
+	List<HistoryObj> historyObjs;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +49,7 @@ public class MainActivity extends SherlockActivity {
 		btnHead = (Button) findViewById(R.id.btnHead);
 		btnType = (Button) findViewById(R.id.btnType);
 		btnSearch = (Button) findViewById(R.id.btnSearch);
+		lvContent = (ListView) findViewById(R.id.lvContent);
 
 		etNum = (EditText) findViewById(R.id.etNum);
 		etFrameNum = (EditText) findViewById(R.id.etFrameNum);
@@ -47,6 +58,28 @@ public class MainActivity extends SherlockActivity {
 		btnType.setOnClickListener(onClickListener);
 		btnSearch.setOnClickListener(onClickListener);
 		initUMeng();
+		initHistory();
+		lvContent.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				// TODO Auto-generated method stub
+				HistoryObj historyObj = (HistoryObj) arg1.getTag(R.string.tag1);
+
+				btnHead.setText(historyObj.license.subSequence(0, 2));
+				etNum.setText(historyObj.license.substring(2));
+				etFrameNum.setText(historyObj.frameNumber);
+				btnType.setTag(historyObj.model);
+				btnType.setText(historyObj.modelName);
+				btnSearch.performClick();
+			}
+		});
+	}
+
+	private void initHistory() {
+		adapter = new HistoryAdapter<HistoryObj>(this, HistoryObj.getAllData());
+		lvContent.setAdapter(adapter);
 	}
 
 	private void initUMeng() {
@@ -76,10 +109,14 @@ public class MainActivity extends SherlockActivity {
 		// TODO Auto-generated method stub
 		super.onResume();
 		MobclickAgent.onResume(this);
-
 		btnHead.setText(Global.headNum);
 		btnType.setText(Global.carType);
 		btnType.setTag(Global.carTypeNum);
+
+		if (adapter != null) {
+			adapter.setDatas(HistoryObj.getAllData());
+			adapter.notifyDataSetChanged();
+		}
 	}
 
 	public void onPause() {
@@ -104,10 +141,13 @@ public class MainActivity extends SherlockActivity {
 				break;
 			case R.id.btnSearch:
 				intent = new Intent(MainActivity.this, ResultActivity.class);
-				intent.putExtra("license", btnHead.getText().toString()
-						+ etNum.getText().toString());
-				intent.putExtra("frameNumber", etFrameNum.getText().toString());
+				intent.putExtra("license", btnHead.getText().toString().trim()
+						+ etNum.getText().toString().trim());
+				intent.putExtra("frameNumber", etFrameNum.getText().toString()
+						.trim());
 				intent.putExtra("model", btnType.getTag() + "");
+				intent.putExtra("modelName", btnType.getText().toString()
+						.trim());
 				MainActivity.this.startActivity(intent);
 				break;
 			default:
@@ -119,6 +159,7 @@ public class MainActivity extends SherlockActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		SubMenu sub = menu.addSubMenu("Setting");
+		sub.add(0, MORE_CLEAR_DB, 0, "清空历史记录");
 		// sub.add(0, MORE_GET_POINT, 0, "获取积分");
 		sub.add(0, MORE_FEEBACK, 0, "意见反馈");
 		sub.add(0, MORE_SHARE, 0, "分享");
@@ -148,6 +189,11 @@ public class MainActivity extends SherlockActivity {
 		case MORE_SHARE:
 			Util.shareSomethingText(MainActivity.this, "分享",
 					"我使用  #安徽交通违章查询#  试了，确实可以查到，知道你需要，特意发给你！");
+			break;
+		case MORE_CLEAR_DB:
+			HistoryObj.removeAllData();
+			adapter.setDatas(HistoryObj.getAllData());
+			adapter.notifyDataSetChanged();
 			break;
 		default:
 			break;

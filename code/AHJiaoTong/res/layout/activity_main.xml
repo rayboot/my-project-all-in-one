@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,6 +6,7 @@
     tools:context=".MainActivity" >
 
     <LinearLayout
+        android:id="@+id/ll1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -36,11 +37,14 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ll1"
+        android:layout_alignRight="@+id/ll1"
+        android:layout_below="@+id/ll1"
         android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp" >
+        android:layout_marginTop="10dp" >
 
         <Button
             android:id="@+id/btnType"
@@ -58,9 +62,7 @@
             android:layout_marginLeft="5dp"
             android:layout_weight="4"
             android:ems="10"
-            android:hint="车架号后六位" >
-
-        </EditText>
+            android:hint="车架号后六位" />
     </LinearLayout>
 
     <Button
@@ -68,7 +70,28 @@
         style="@style/AppTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_alignLeft="@+id/ll2"
+        android:layout_alignRight="@+id/ll2"
+        android:layout_below="@+id/ll2"
         android:text="违章查询" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnSearch"
+        android:layout_below="@+id/btnSearch"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:text="搜索历史" />
+
+    <ListView
+        android:id="@+id/lvContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignRight="@+id/btnSearch"
+        android:layout_below="@+id/textView1" >
+    </ListView>
+
+</RelativeLayout>

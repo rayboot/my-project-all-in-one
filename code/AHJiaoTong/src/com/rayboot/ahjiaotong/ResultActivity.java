@@ -1,11 +1,14 @@
 package com.rayboot.ahjiaotong;
 
 import android.os.Bundle;
+import android.text.Html;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.view.Window;
 import com.google.gson.Gson;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -18,6 +21,7 @@ public class ResultActivity extends SherlockActivity {
 	String license;
 	String frameNumber;
 	String model;
+	String modelName;
 
 	TextView tvResult;
 	ListView lvContentListView;
@@ -27,6 +31,7 @@ public class ResultActivity extends SherlockActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.activity_result);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -38,6 +43,8 @@ public class ResultActivity extends SherlockActivity {
 		license = getIntent().getStringExtra("license").toUpperCase();
 		frameNumber = getIntent().getStringExtra("frameNumber");
 		model = getIntent().getStringExtra("model");
+		modelName = getIntent().getStringExtra("modelName");
+
 		RequestParams params = new RequestParams();
 		params.put("license", license);
 		params.put("frameNumber", frameNumber);
@@ -50,6 +57,7 @@ public class ResultActivity extends SherlockActivity {
 					public void onFinish() {
 						// TODO Auto-generated method stub
 						super.onFinish();
+						setSupportProgressBarIndeterminateVisibility(false);
 					}
 
 					@Override
@@ -61,13 +69,19 @@ public class ResultActivity extends SherlockActivity {
 						if (resultObj.violate.size() == 0) {
 							tvResult.setText("恭喜您，没有查到违章记录！");
 						} else {
-							tvResult.setText("系统中查到您有 "
-									+ resultObj.violate.size() + " 条违章记录");
+							tvResult.setText(Html
+									.fromHtml("系统中查到您有 <font color=\"red\">"
+											+ resultObj.violate.size()
+											+ "</font> 条违章记录"));
 							loadContent();
 						}
 					}
 
 				});
+		setSupportProgressBarIndeterminateVisibility(true);
+
+		HistoryObj.removeData(license);
+		new HistoryObj(license, frameNumber, model, modelName).save();
 
 	}
 
