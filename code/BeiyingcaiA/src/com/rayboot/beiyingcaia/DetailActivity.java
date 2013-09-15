@@ -12,6 +12,7 @@ import com.actionbarsherlock.view.MenuItem;
 import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.rayboot.beiyingcaia.obj.AObj;
+import com.umeng.analytics.MobclickAgent;
 
 public class DetailActivity extends SherlockActivity {
 	AObj curAObj;
@@ -47,6 +48,16 @@ public class DetailActivity extends SherlockActivity {
 			break;
 		}
 		return true;
+	}
+
+	public void onResume() {
+		super.onResume();
+		MobclickAgent.onResume(this);
+	}
+
+	public void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
 	}
 
 }
