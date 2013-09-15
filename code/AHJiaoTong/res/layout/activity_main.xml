@@ -31,8 +31,6 @@
             android:layout_weight="4"
             android:ems="10"
             android:hint="车牌号" >
-
-            <requestFocus />
         </EditText>
     </LinearLayout>
 

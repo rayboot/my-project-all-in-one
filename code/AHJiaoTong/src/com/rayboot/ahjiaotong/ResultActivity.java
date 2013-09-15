@@ -66,14 +66,18 @@ public class ResultActivity extends SherlockActivity {
 						super.onSuccess(arg0);
 						Gson gson = new Gson();
 						resultObj = gson.fromJson(arg0, ResultObj.class);
-						if (resultObj.violate.size() == 0) {
-							tvResult.setText("恭喜您，没有查到违章记录！");
+						if (resultObj.result.equals("0")) {
+							if (resultObj.violate.size() == 0) {
+								tvResult.setText("恭喜您，没有查到违章记录！");
+							} else {
+								tvResult.setText(Html
+										.fromHtml("系统中查到您有 <font color=\"red\">"
+												+ resultObj.violate.size()
+												+ "</font> 条违章记录"));
+								loadContent();
+							}
 						} else {
-							tvResult.setText(Html
-									.fromHtml("系统中查到您有 <font color=\"red\">"
-											+ resultObj.violate.size()
-											+ "</font> 条违章记录"));
-							loadContent();
+							tvResult.setText("输入有误，请检查您的车辆信息。");
 						}
 					}
 
