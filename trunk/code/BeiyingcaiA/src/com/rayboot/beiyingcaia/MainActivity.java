@@ -26,6 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import com.rayboot.beiyingcaia.obj.AObj;
 import com.rayboot.beiyingcaia.util.DataUtil;
 import com.rayboot.beiyingcaia.util.Util;
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
 import com.umeng.update.UmengUpdateAgent;
 import com.umeng.update.UmengUpdateListener;
@@ -128,6 +129,7 @@ public class MainActivity extends SherlockActivity {
 	};
 
 	private void initUMeng() {
+		MobclickAgent.setDebugMode(false);
 		// 友盟意见反馈检索
 		agent = new FeedbackAgent(this);
 		agent.sync();
@@ -205,5 +207,15 @@ public class MainActivity extends SherlockActivity {
 		// TODO Auto-generated method stub
 		super.onDestroy();
 		AppConnect.getInstance(this).close();
+	}
+
+	public void onResume() {
+		super.onResume();
+		MobclickAgent.onResume(this);
+	}
+
+	public void onPause() {
+		super.onPause();
+		MobclickAgent.onPause(this);
 	}
 }
