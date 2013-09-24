@@ -66,7 +66,7 @@ public class ResultActivity extends SherlockActivity {
 						super.onSuccess(arg0);
 						Gson gson = new Gson();
 						resultObj = gson.fromJson(arg0, ResultObj.class);
-						if (resultObj.result.equals("0")) {
+						if (resultObj.result != null && resultObj.result.equals("0")) {
 							if (resultObj.violate.size() == 0) {
 								tvResult.setText("恭喜您，没有查到违章记录！");
 							} else {
