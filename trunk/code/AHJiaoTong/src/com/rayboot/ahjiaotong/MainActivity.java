@@ -11,6 +11,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
@@ -140,6 +141,12 @@ public class MainActivity extends SherlockActivity {
 				MainActivity.this.startActivity(intent);
 				break;
 			case R.id.btnSearch:
+				if (etNum.getText().toString().trim().length() != 5
+						|| etFrameNum.getText().toString().length() != 6) {
+					Toast.makeText(MainActivity.this, "您的输入有误，请检查您的输入信息。",
+							Toast.LENGTH_SHORT).show();
+					return;
+				}
 				intent = new Intent(MainActivity.this, ResultActivity.class);
 				intent.putExtra("license", btnHead.getText().toString().trim()
 						+ etNum.getText().toString().trim());
