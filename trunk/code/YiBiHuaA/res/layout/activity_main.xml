@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <GridView
+        android:id="@+id/gvContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/AdLinearLayout"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/ll1"
+        android:horizontalSpacing="2dp"
+        android:numColumns="4"
+        android:verticalSpacing="2dp" >
+    </GridView>
+
+    <LinearLayout
+        android:id="@+id/AdLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/gvContent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" >
+
+        <Button
+            android:id="@+id/btnBlue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="蓝" />
+
+        <Button
+            android:id="@+id/btnGreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="绿" />
+
+        <Button
+            android:id="@+id/btnRed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="红" />
+    </LinearLayout>
+
+</RelativeLayout>
