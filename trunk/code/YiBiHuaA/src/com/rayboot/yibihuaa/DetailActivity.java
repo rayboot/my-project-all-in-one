@@ -1,9 +1,15 @@
 package com.rayboot.yibihuaa;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+import uk.co.senab.photoview.PhotoViewAttacher;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.ImageView.ScaleType;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
@@ -13,6 +19,8 @@ import com.umeng.analytics.MobclickAgent;
 public class DetailActivity extends SherlockActivity {
 	String curAObj;
 	String curType;
+	private PhotoViewAttacher mAttacher;
+	ImageView ivContent;
 
 	// LinearLayout AdLinearLayout;
 
@@ -23,9 +31,22 @@ public class DetailActivity extends SherlockActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		curAObj = getIntent().getStringExtra("content_detail");
 		curType = getIntent().getStringExtra("content_type");
-		ImageLoader.getInstance().displayImage(
-				"assets://" + curType + "/" + curAObj + ".jpg",
-				(ImageView) findViewById(R.id.ivImg));
+
+		ivContent = (ImageView) findViewById(R.id.ivImg);
+		AssetManager assetManager = getAssets();
+
+		try {
+			InputStream istr = assetManager.open("" + curType + "/" + curAObj + ".jpg");
+		    Bitmap bitmap = BitmapFactory.decodeStream(istr);
+		    ivContent.setImageBitmap(bitmap);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+//			ImageLoader.getInstance().displayImage(
+//					"assets://" + curType + "/" + curAObj + ".jpg", ivContent);
+		}
+		mAttacher = new PhotoViewAttacher(ivContent);
+		mAttacher.setScaleType(ScaleType.CENTER_INSIDE);
 		// AdLinearLayout = (LinearLayout) findViewById(R.id.AdLinearLayout);
 		// AppConnect.getInstance(this).showPopAd(this);
 		// new AdView(this, AdLinearLayout).DisplayAd();

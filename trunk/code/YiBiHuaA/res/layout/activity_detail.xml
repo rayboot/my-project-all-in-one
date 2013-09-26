@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="10dp"
     tools:context=".DetailActivity" >
 
     <LinearLayout
@@ -24,6 +23,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:scaleType="centerInside"
         android:src="@drawable/ic_launcher" />
 
 </RelativeLayout>
