@@ -24,6 +24,6 @@
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#ffffff"
-        android:textSize="50sp" />
+        android:textSize="40sp" />
 
 </RelativeLayout>
