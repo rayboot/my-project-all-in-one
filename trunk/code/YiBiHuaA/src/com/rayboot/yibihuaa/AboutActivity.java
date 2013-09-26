@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.rayboot.yibihuaa.util.Util;
+import com.umeng.analytics.MobclickAgent;
 
 public class AboutActivity extends SherlockActivity {
 
@@ -42,11 +43,14 @@ public class AboutActivity extends SherlockActivity {
 				"我使用  #一笔画答案#  知道你也玩，能通关吗？试试这个吧");
 	}
 
+
 	public void onResume() {
 		super.onResume();
+		MobclickAgent.onResume(this);
 	}
 
 	public void onPause() {
 		super.onPause();
+		MobclickAgent.onPause(this);
 	}
 }
