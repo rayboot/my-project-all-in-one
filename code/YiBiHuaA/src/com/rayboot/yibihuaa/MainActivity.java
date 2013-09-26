@@ -18,6 +18,7 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.SubMenu;
+import com.rayboot.yibihuaa.util.Util;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
 import com.umeng.update.UmengUpdateAgent;
@@ -168,6 +169,9 @@ public class MainActivity extends SherlockActivity {
 
 	private void initUMeng() {
 		MobclickAgent.setDebugMode(false);
+		// 在线参数
+		MobclickAgent.updateOnlineConfig(this);
+		String isShowAD = MobclickAgent.getConfigParams(this, "isShowAD");
 		// 友盟意见反馈检索
 		agent = new FeedbackAgent(this);
 		agent.sync();
@@ -193,12 +197,13 @@ public class MainActivity extends SherlockActivity {
 		SubMenu sub = menu.addSubMenu("Setting");
 		// sub.add(0, MORE_GET_POINT, 0, "获取积分");
 		sub.add(0, MORE_FEEBACK, 0, "意见反馈");
-		// sub.add(0, MORE_SHARE, 0, "分享");
+		sub.add(0, MORE_SHARE, 0, "分享");
 		sub.add(0, MORE_ABOUT, 0, "关于");
 		MenuItem subMenu1Item = sub.getItem();
 		subMenu1Item.setIcon(R.drawable.align_just_icon);
 		subMenu1Item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS
 				| MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+
 		return true;
 	}
 
@@ -214,10 +219,10 @@ public class MainActivity extends SherlockActivity {
 		case MORE_FEEBACK:
 			agent.startFeedbackActivity();
 			break;
-		// case MORE_SHARE:
-		// Util.shareSomethingText(MainActivity.this, "分享",
-		// "我使用  #我是谁背影猜答案#  知道你也玩，能通关吗？试试这个吧");
-		// break;
+		case MORE_SHARE:
+			Util.shareSomethingText(MainActivity.this, "分享",
+					"我使用  #一笔画答案#  知道你也玩，能通关吗？试试这个吧");
+			break;
 		default:
 			break;
 		}
