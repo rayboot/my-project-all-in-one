@@ -27,29 +27,46 @@
 
     <LinearLayout
         android:id="@+id/ll1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
         android:layout_alignLeft="@+id/gvContent"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" >
+        android:layout_alignParentTop="true"
+        android:layout_weight="1"
+        android:padding="2dp" >
 
         <Button
             android:id="@+id/btnBlue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="蓝" />
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#8ac3f2"
+            android:text="蓝"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/btnGreen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="绿" />
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:background="#b7dd57"
+            android:text="绿"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/btnRed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="红" />
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#de6362"
+            android:text="红"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
     </LinearLayout>
 
 </RelativeLayout>

@@ -7,16 +7,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AbsListView.RecyclerListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.SubMenu;
-import com.rayboot.yibihuaa.util.Util;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
 import com.umeng.update.UmengUpdateAgent;
@@ -73,9 +74,21 @@ public class MainActivity extends SherlockActivity {
 						DetailActivity.class);
 				intent.putExtra("content_detail",
 						(String) adapter.getItem(arg2));
-				intent.putExtra("content_type",
-						curType);
+				intent.putExtra("content_type", curType);
 				MainActivity.this.startActivity(intent);
+			}
+		});
+
+		gvContent.setRecyclerListener(new RecyclerListener() {
+
+			@Override
+			public void onMovedToScrapHeap(View view) {
+				// TODO Auto-generated method stub
+				ImageView imageView = (ImageView) view.findViewById(R.id.ivImg);
+				if (imageView != null) {
+					imageView.setImageBitmap(null);
+				}
+
 			}
 		});
 
@@ -123,25 +136,33 @@ public class MainActivity extends SherlockActivity {
 		@Override
 		public void onClick(View v) {
 			// TODO Auto-generated method stub
+			String curWorld = "蓝色世界";
 			switch (v.getId()) {
 			case R.id.btnBlue:
 				adapter = new ContentAdapter<String>(MainActivity.this,
 						blueListDatas, "blue");
 				curType = "blue";
+				curWorld = "蓝色世界";
 				break;
 			case R.id.btnGreen:
 				adapter = new ContentAdapter<String>(MainActivity.this,
 						greenListDatas, "green");
 				curType = "green";
+				curWorld = "绿色世界";
 				break;
 			case R.id.btnRed:
 				adapter = new ContentAdapter<String>(MainActivity.this,
 						redListDatas, "red");
 				curType = "red";
+				curWorld = "红色世界";
 				break;
 			}
 			gvContent.setAdapter(adapter);
+
 			adapter.notifyDataSetChanged();
+			setTitle(MainActivity.this.getResources().getString(
+					R.string.app_name)
+					+ "-" + curWorld);
 		}
 	};
 
@@ -172,7 +193,7 @@ public class MainActivity extends SherlockActivity {
 		SubMenu sub = menu.addSubMenu("Setting");
 		// sub.add(0, MORE_GET_POINT, 0, "获取积分");
 		sub.add(0, MORE_FEEBACK, 0, "意见反馈");
-		sub.add(0, MORE_SHARE, 0, "分享");
+		// sub.add(0, MORE_SHARE, 0, "分享");
 		sub.add(0, MORE_ABOUT, 0, "关于");
 		MenuItem subMenu1Item = sub.getItem();
 		subMenu1Item.setIcon(R.drawable.align_just_icon);
@@ -193,10 +214,10 @@ public class MainActivity extends SherlockActivity {
 		case MORE_FEEBACK:
 			agent.startFeedbackActivity();
 			break;
-		case MORE_SHARE:
-			Util.shareSomethingText(MainActivity.this, "分享",
-					"我使用  #我是谁背影猜答案#  知道你也玩，能通关吗？试试这个吧");
-			break;
+		// case MORE_SHARE:
+		// Util.shareSomethingText(MainActivity.this, "分享",
+		// "我使用  #我是谁背影猜答案#  知道你也玩，能通关吗？试试这个吧");
+		// break;
 		default:
 			break;
 		}

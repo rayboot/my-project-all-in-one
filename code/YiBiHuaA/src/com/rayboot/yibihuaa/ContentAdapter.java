@@ -21,7 +21,7 @@ public class ContentAdapter<T> extends MyBaseAdapter<T> {
 		super(context, datas);
 		// TODO Auto-generated constructor stub
 		options = new DisplayImageOptions.Builder().showStubImage(
-				R.drawable.ic_launcher).build();
+				android.R.color.transparent).build();
 		this.path = path;
 	}
 
