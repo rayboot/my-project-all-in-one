@@ -11,6 +11,7 @@ import com.rayboot.yibihuaa.util.Util;
 public class AboutActivity extends SherlockActivity {
 
 	TextView tvVersion;
+	TextView tvAppname;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,8 @@ public class AboutActivity extends SherlockActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		tvVersion = (TextView) findViewById(R.id.tvVersion);
 		tvVersion.setText("当前版本：v" + Util.getVersionName(this));
+		tvAppname = (TextView) findViewById(R.id.tvAppname);
+		tvAppname.setText(R.string.app_name);
 	}
 
 	@Override
@@ -36,7 +39,7 @@ public class AboutActivity extends SherlockActivity {
 
 	public void onShareClick(View view) {
 		Util.shareSomethingText(AboutActivity.this, "分享",
-				"我使用  #我是谁背影猜答案#  知道你也玩，能通关吗？试试这个吧");
+				"我使用  #一笔画答案#  知道你也玩，能通关吗？试试这个吧");
 	}
 
 	public void onResume() {

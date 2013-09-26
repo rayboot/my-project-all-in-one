@@ -32,18 +32,30 @@ public class DetailActivity extends SherlockActivity {
 		curAObj = getIntent().getStringExtra("content_detail");
 		curType = getIntent().getStringExtra("content_type");
 
+		String tempString = "蓝色世界";
+		if (curType.equals("blue")) {
+			tempString = "蓝色世界";
+		} else if (curType.equals("green")) {
+			tempString = "绿色世界";
+		} else if (curType.equals("red")) {
+			tempString = "红色世界";
+		}
+
+		setTitle(tempString + " - 第" + curAObj + "关");
+
 		ivContent = (ImageView) findViewById(R.id.ivImg);
 		AssetManager assetManager = getAssets();
 
 		try {
-			InputStream istr = assetManager.open("" + curType + "/" + curAObj + ".jpg");
-		    Bitmap bitmap = BitmapFactory.decodeStream(istr);
-		    ivContent.setImageBitmap(bitmap);
+			InputStream istr = assetManager.open("" + curType + "/" + curAObj
+					+ ".jpg");
+			Bitmap bitmap = BitmapFactory.decodeStream(istr);
+			ivContent.setImageBitmap(bitmap);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-//			ImageLoader.getInstance().displayImage(
-//					"assets://" + curType + "/" + curAObj + ".jpg", ivContent);
+			// ImageLoader.getInstance().displayImage(
+			// "assets://" + curType + "/" + curAObj + ".jpg", ivContent);
 		}
 		mAttacher = new PhotoViewAttacher(ivContent);
 		mAttacher.setScaleType(ScaleType.CENTER_INSIDE);
