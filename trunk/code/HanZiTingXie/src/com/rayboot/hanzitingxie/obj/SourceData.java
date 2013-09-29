@@ -18,4 +18,11 @@ public class SourceData extends Model {
 		// TODO Auto-generated constructor stub
 	}
 
+	public SourceData(String title, String pinyin, String url) {
+		super();
+		this.title = title;
+		this.pinyin = pinyin;
+		this.url = url;
+	}
+
 }
