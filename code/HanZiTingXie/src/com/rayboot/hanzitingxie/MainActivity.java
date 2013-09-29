@@ -4,16 +4,20 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.iflytek.speech.SpeechConstant;
 import com.iflytek.speech.SpeechSynthesizer;
 import com.iflytek.speech.SpeechUtility;
 import com.iflytek.speech.SynthesizerListener;
+import com.rayboot.hanzitingxie.obj.SourceData;
 import com.rayboot.hanzitingxie.util.ApkInstaller;
 
 public class MainActivity extends Activity {
@@ -21,16 +25,47 @@ public class MainActivity extends Activity {
 	// 语音合成对象
 	private SpeechSynthesizer mTts;
 
+	private SourceData curData;
+	TextView tvPinyin;
+	EditText et1;
+	EditText et2;
+	EditText et3;
+	EditText et4;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		// 初始化合成对象
 		mTts = new SpeechSynthesizer(this, null);
+
+		tvPinyin = (TextView) findViewById(R.id.tvPinyin);
+		et1 = (EditText) findViewById(R.id.et1);
+		et2 = (EditText) findViewById(R.id.et2);
+		et3 = (EditText) findViewById(R.id.et3);
+		et4 = (EditText) findViewById(R.id.et4);
+
+		setHanzi();
+	}
+
+	public void setHanzi() {
+		curData = SourceData.getRandomData();
+		tvPinyin.setText(curData.pinyin);
+
+	}
+
+	public void onTip(View view) {
+		Intent intent = new Intent(this, TipActivity.class);
+		intent.putExtra("data_answer", curData.title);
+		intent.putExtra("data_tip", curData.url);
+		startActivity(intent);
+	}
+
+	public void onFinish(View view) {
+
 	}
 
 	public void onVoice(View view) {
-
 		// 没有可用的引擎
 		if (SpeechUtility.getUtility(this).queryAvailableEngines() == null
 				|| SpeechUtility.getUtility(this).queryAvailableEngines().length <= 0) {
@@ -54,15 +89,15 @@ public class MainActivity extends Activity {
 		SpeechUtility.getUtility(MainActivity.this).setAppid("5244f7f4");
 
 		mTts.setParameter(SpeechConstant.ENGINE_TYPE, "local");
-		//  发音人。
+		// 发音人。
 		mTts.setParameter(SpeechSynthesizer.VOICE_NAME, "xiaoyan");
 		// 语速（0~100）。
 		mTts.setParameter(SpeechSynthesizer.SPEED, "20");
 		// 音调（0~100）。
 		mTts.setParameter(SpeechSynthesizer.PITCH, "50");
-		//音量（0~100）。
+		// 音量（0~100）。
 		mTts.setParameter(SpeechSynthesizer.VOLUME, "50");
-		mTts.startSpeaking("关关雎鸠在河之洲", mTtsListener);
+		mTts.startSpeaking(curData.title, mTtsListener);
 	}
 
 	/**
