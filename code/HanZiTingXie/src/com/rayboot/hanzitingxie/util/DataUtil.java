@@ -1,5 +1,6 @@
 package com.rayboot.hanzitingxie.util;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.jsoup.Jsoup;
@@ -7,39 +8,62 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class DataUtil {
+import android.content.Context;
+import android.text.TextUtils;
 
-	public static void saveInitData(String url) throws IOException {
+import com.rayboot.hanzitingxie.obj.SourceData;
+
+public class DataUtil {
+	
+	//从html.txt里读取原信息
+	//"http://baike.baidu.com/link?url=4ppxyv-jM3B5fZy8dHVNJl1mlZ0vPWN6bitUYH_liqUNvekTCq-7gaDH2ZcvjxYDoScgWEuraW7HE2HavmxEiq"
+
+	public static void saveInitData(Context context)
+			throws IOException {
+		Document doc = Jsoup.parse(
+				context.getResources().getAssets().open("html.txt"), "UTF-8",
+				"http://example.com/");
 		// 从 URL 直接加载 HTML 文档
-		Document doc = Jsoup.connect(url).get();
+		// Document doc = Jsoup.connect(url).get();
 		Elements elements = doc.body().getElementsByAttributeValue("class",
 				"table-view log-set-param");
 		for (Element element : elements) {
 
 			Elements trsElements = element.getElementsByTag("tr");
 			for (Element tr : trsElements) {
+				String href = "";
+				String title = "";
+				String pinyin = "";
 
 				Elements tdsElements = tr.getElementsByTag("td");
 				if (tdsElements.size() == 4) {
 					for (int i = 0; i < tdsElements.size(); i++) {
-						JsoupUtility.getAtagAttr(tdsElements.get(1), "a", "href")
-						.trim();
-						if (i == 1) {
-							
-						}else if (i == 2) {
-							
-						}
+						href = getAtagAttr(tdsElements.get(1), "a", "href")
+								.trim();
+						title = tdsElements.get(1).text().trim();
+						pinyin = tdsElements.get(2).text().trim();
 					}
-				}else if (tdsElements.size() == 5) {
+				} else if (tdsElements.size() == 5) {
 					for (int i = 0; i < tdsElements.size(); i++) {
-						if (i == 2) {
-							
-						}else if (i == 3) {
-							
-						}
+						href = getAtagAttr(tdsElements.get(2), "a", "href")
+								.trim();
+						title = tdsElements.get(2).text().trim();
+						pinyin = tdsElements.get(3).text().trim();
 					}
+				}
+				if (!TextUtils.isEmpty(href) && !TextUtils.isEmpty(title)
+						&& !TextUtils.isEmpty(pinyin)) {
+					new SourceData(title, pinyin, href).save();
 				}
 			}
 		}
+	}
+
+	public static String getAtagAttr(Element ele, String tag, String attr) {
+		Elements someElements = ele.getElementsByTag(tag);
+		if (someElements.size() > 0) {
+			return someElements.get(0).attr(attr);
+		}
+		return "";
 	}
 }
