@@ -2,14 +2,17 @@ package com.rayboot.hanzitingxie;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,11 +29,9 @@ public class MainActivity extends Activity {
 	private SpeechSynthesizer mTts;
 
 	private SourceData curData;
-	TextView tvPinyin;
-	EditText et1;
-	EditText et2;
-	EditText et3;
-	EditText et4;
+	EditText[] ets = new EditText[4];
+	TextView[] tvs = new TextView[4];
+	LinearLayout[] lls = new LinearLayout[4];
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,19 +40,35 @@ public class MainActivity extends Activity {
 		// 初始化合成对象
 		mTts = new SpeechSynthesizer(this, null);
 
-		tvPinyin = (TextView) findViewById(R.id.tvPinyin);
-		et1 = (EditText) findViewById(R.id.et1);
-		et2 = (EditText) findViewById(R.id.et2);
-		et3 = (EditText) findViewById(R.id.et3);
-		et4 = (EditText) findViewById(R.id.et4);
+		ets[0] = (EditText) findViewById(R.id.et1);
+		ets[1] = (EditText) findViewById(R.id.et2);
+		ets[2] = (EditText) findViewById(R.id.et3);
+		ets[3] = (EditText) findViewById(R.id.et4);
+		tvs[0] = (TextView) findViewById(R.id.tv1);
+		tvs[1] = (TextView) findViewById(R.id.tv2);
+		tvs[2] = (TextView) findViewById(R.id.tv3);
+		tvs[3] = (TextView) findViewById(R.id.tv4);
+		lls[0] = (LinearLayout) findViewById(R.id.ll1);
+		lls[1] = (LinearLayout) findViewById(R.id.ll2);
+		lls[2] = (LinearLayout) findViewById(R.id.ll3);
+		lls[3] = (LinearLayout) findViewById(R.id.ll4);
 
 		setHanzi();
 	}
 
 	public void setHanzi() {
 		curData = SourceData.getRandomData();
-		tvPinyin.setText(curData.pinyin);
 
+		int count = curData.title.length();
+		for (int i = 0; i < lls.length; i++) {
+			lls[i].setVisibility(i >= count ? View.GONE : View.VISIBLE);
+			ets[i].setText("");
+		}
+
+		String[] pinyinStrings = curData.pinyin.split(" ");
+		for (int i = 0; i < pinyinStrings.length; i++) {
+			tvs[i].setText(pinyinStrings[i]);
+		}
 	}
 
 	public void onTip(View view) {
@@ -62,7 +79,35 @@ public class MainActivity extends Activity {
 	}
 
 	public void onFinish(View view) {
+		boolean isRight = true;
+		for (int i = 0; i < curData.title.length(); i++) {
+			if (curData.title.subSequence(i, i + 1).equals(
+					ets[i].getText().toString())) {
+//				ets[i].setBackgroundColor(getResources().getColor(
+//						R.color.answer_right));
+			} else {
+//				ets[i].setBackgroundColor(getResources().getColor(
+//						R.color.answer_wrong));
+				isRight = false;
+			}
+		}
 
+		String temp = "恭喜你，回答正确！";
+		if (!isRight) {
+			temp = "回答错误，正确答案为：" + curData.title;
+		}
+
+		AlertDialog.Builder builder = new Builder(MainActivity.this);
+		builder.setMessage(temp);
+		builder.setTitle("提示");
+		builder.setNegativeButton("下一个", new OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				setHanzi();
+			}
+		});
+		builder.create().show();
 	}
 
 	public void onVoice(View view) {
@@ -96,7 +141,7 @@ public class MainActivity extends Activity {
 		// 音调（0~100）。
 		mTts.setParameter(SpeechSynthesizer.PITCH, "50");
 		// 音量（0~100）。
-		mTts.setParameter(SpeechSynthesizer.VOLUME, "50");
+		mTts.setParameter(SpeechSynthesizer.VOLUME, "80");
 		mTts.startSpeaking(curData.title, mTtsListener);
 	}
 
@@ -147,6 +192,14 @@ public class MainActivity extends Activity {
 			Toast.makeText(MainActivity.this, "安装失败", Toast.LENGTH_SHORT)
 					.show();
 		}
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		mTts.stopSpeaking(mTtsListener);
+		// 退出时释放连接
+		mTts.destory();
 	}
 
 }
