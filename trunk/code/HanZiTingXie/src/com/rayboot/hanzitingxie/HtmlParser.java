@@ -46,7 +46,7 @@ public class HtmlParser extends AsyncTask<Void, Void, String> {
 
 		if (doc == null)
 			return null;
-		String htmlText = doc.text();
+		String htmlText = doc.html();
 
 		int titleCount = mTitle.length();
 		for (int i = 0; i < titleCount; i++) {
@@ -55,9 +55,6 @@ public class HtmlParser extends AsyncTask<Void, Void, String> {
 		return htmlText;
 	}
 
-	protected String handleDocument(Document doc) {
-		return null;
-	}
 
 	@Override
 	protected void onPostExecute(String result) {

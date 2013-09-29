@@ -24,7 +24,7 @@ public class TipActivity extends Activity {
 		url = getIntent().getStringExtra("data_tip");
 
 		if (!url.contains("http")) {
-			url = "http://baike.baidu.com/" + url;
+			url = "http://wapbaike.baidu.com" + url;
 		}
 
 		mWebView = (WebView) findViewById(R.id.wvTip);
@@ -33,14 +33,9 @@ public class TipActivity extends Activity {
 		webSettings.setAllowFileAccess(true);// 设置允许访问文件数据
 		webSettings.setJavaScriptEnabled(true);// 设置支持javascript脚本
 		webSettings.setBuiltInZoomControls(true);// 设置支持缩放
-		// mWebView.loadUrl(url);
 		mWebView.setWebViewClient(new WebViewClient() {
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
-				if (url.equals("about:blank")) {
-					return false;
-				}
-				view.loadUrl(url);// 点击超链接的时候重新在原来进程上加载URL
-				return true;
+				return false;
 			}
 		});
 		HtmlParser parser = new HtmlParser(mWebView, url, title, this);
