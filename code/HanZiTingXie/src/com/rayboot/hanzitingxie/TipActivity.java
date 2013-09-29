@@ -33,7 +33,7 @@ public class TipActivity extends Activity {
 		webSettings.setAllowFileAccess(true);// 设置允许访问文件数据
 		webSettings.setJavaScriptEnabled(true);// 设置支持javascript脚本
 		webSettings.setBuiltInZoomControls(true);// 设置支持缩放
-		mWebView.loadUrl(url);
+		// mWebView.loadUrl(url);
 		mWebView.setWebViewClient(new WebViewClient() {
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
 				if (url.equals("about:blank")) {
@@ -43,6 +43,8 @@ public class TipActivity extends Activity {
 				return true;
 			}
 		});
+		HtmlParser parser = new HtmlParser(mWebView, url, title, this);
+		parser.execute((Void) null);
 	}
 
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
