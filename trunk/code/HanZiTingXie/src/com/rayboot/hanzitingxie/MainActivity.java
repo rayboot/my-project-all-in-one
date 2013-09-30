@@ -9,11 +9,17 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.RemoteException;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
 import com.iflytek.speech.SpeechConstant;
@@ -23,7 +29,7 @@ import com.iflytek.speech.SynthesizerListener;
 import com.rayboot.hanzitingxie.obj.SourceData;
 import com.rayboot.hanzitingxie.util.ApkInstaller;
 
-public class MainActivity extends Activity {
+public class MainActivity extends MyBaseActivity {
 	String TAG = "MainActivity";
 	// 语音合成对象
 	private SpeechSynthesizer mTts;
@@ -32,12 +38,15 @@ public class MainActivity extends Activity {
 	EditText[] ets = new EditText[4];
 	TextView[] tvs = new TextView[4];
 	LinearLayout[] lls = new LinearLayout[4];
+	int curPlayType = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		// 初始化合成对象
+		curPlayType = getIntent().getIntExtra("cur_play_type",
+				MyApplication.PLAY_TYPE_CHUANGGUAN);
 		mTts = new SpeechSynthesizer(this, null);
 
 		ets[0] = (EditText) findViewById(R.id.et1);
@@ -52,17 +61,41 @@ public class MainActivity extends Activity {
 		lls[1] = (LinearLayout) findViewById(R.id.ll2);
 		lls[2] = (LinearLayout) findViewById(R.id.ll3);
 		lls[3] = (LinearLayout) findViewById(R.id.ll4);
+		for (EditText et : ets) {
+			et.addTextChangedListener(watcher);
+			et.setOnEditorActionListener(onEditorActionListener);
+		}
 
 		setHanzi();
 	}
 
 	public void setHanzi() {
-		curData = SourceData.getRandomData();
+		if (MyApplication.PLAY_TYPE_CHUANGGUAN == curPlayType) {
+			curData = SourceData.getChuangGuanRandomData();
+			if (curData == null) {
+
+				AlertDialog.Builder builder = new Builder(MainActivity.this);
+				builder.setMessage("恭喜您已通关！可更新版本获得更多新词，或者尝试其他模式。");
+				builder.setTitle("提示");
+				builder.setNegativeButton("尝试其他模式", new OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						MainActivity.this.finish();
+					}
+				});
+				builder.create().show();
+				return;
+			}
+		} else if (MyApplication.PLAY_TYPE_WUJIN == curPlayType) {
+			curData = SourceData.getRandomData();
+		}
 
 		int count = curData.title.length();
 		for (int i = 0; i < lls.length; i++) {
 			lls[i].setVisibility(i >= count ? View.GONE : View.VISIBLE);
 			ets[i].setText("");
+			ets[0].requestFocus();
 		}
 
 		String[] pinyinStrings = curData.pinyin.split(" ");
@@ -70,6 +103,62 @@ public class MainActivity extends Activity {
 			tvs[i].setText(pinyinStrings[i]);
 		}
 	}
+
+	private OnEditorActionListener onEditorActionListener = new OnEditorActionListener() {
+
+		@Override
+		public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+			// TODO Auto-generated method stub
+			if (actionId == EditorInfo.IME_ACTION_DONE
+					|| actionId == EditorInfo.IME_ACTION_UNSPECIFIED) {
+				boolean isFinish = true;
+				for (int i = 0; i < ets.length; i++) {
+					if (TextUtils.isEmpty(ets[i].getText().toString())
+							&& ets[i].isShown()) {
+						isFinish = false;
+					}
+				}
+				if (isFinish) {
+					onFinish(findViewById(R.id.btnFinish));
+				} else {
+					Toast.makeText(MainActivity.this, "您还没有写完，不能提交。",
+							Toast.LENGTH_SHORT).show();
+				}
+			}
+			return false;
+		}
+	};
+
+	private TextWatcher watcher = new TextWatcher() {
+
+		@Override
+		public void afterTextChanged(Editable s) {
+			// TODO Auto-generated method stub
+			if (TextUtils.isEmpty(s.toString())) {
+				return;
+			}
+			int realnext = 0;
+			for (int i = 0; i < ets.length; i++) {
+				int next = i < curData.title.length() - 1 ? i + 1 : i;
+				if (ets[i].hasFocus() && ets[next].isShown()) {
+					realnext = next;
+				}
+			}
+			ets[realnext].requestFocus();
+		}
+
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,
+				int after) {
+			// TODO Auto-generated method stub
+		}
+
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before,
+				int count) {
+		}
+
+	};
 
 	public void onTip(View view) {
 		Intent intent = new Intent(this, TipActivity.class);
@@ -83,14 +172,24 @@ public class MainActivity extends Activity {
 		for (int i = 0; i < curData.title.length(); i++) {
 			if (curData.title.subSequence(i, i + 1).equals(
 					ets[i].getText().toString())) {
-//				ets[i].setBackgroundColor(getResources().getColor(
-//						R.color.answer_right));
+				// ets[i].setBackgroundColor(getResources().getColor(
+				// R.color.answer_right));
 			} else {
-//				ets[i].setBackgroundColor(getResources().getColor(
-//						R.color.answer_wrong));
+				// ets[i].setBackgroundColor(getResources().getColor(
+				// R.color.answer_wrong));
 				isRight = false;
 			}
 		}
+
+		if (isRight) {
+			curData.right += 1;
+			if (MyApplication.PLAY_TYPE_CHUANGGUAN == curPlayType) {
+				curData.isRight = 1;
+			}
+		} else {
+			curData.wrong += 1;
+		}
+		curData.save();
 
 		String temp = "恭喜你，回答正确！";
 		if (!isRight) {

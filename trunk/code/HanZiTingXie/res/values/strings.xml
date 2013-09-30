@@ -8,5 +8,8 @@
     <string name="dialog_cancel_button">取消</string>
     <string name="title_activity_tip">TipActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_jump">JumpActivity</string>
+    <string name="title_activity_rank">RankActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
 
 </resources>
