@@ -1,5 +1,7 @@
 package com.rayboot.hanzitingxie.obj;
 
+import java.util.List;
+
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
@@ -13,6 +15,12 @@ public class SourceData extends Model {
 	public String pinyin;
 	@Column(name = "url")
 	public String url;
+	@Column(name = "right")
+	public int right = 0;
+	@Column(name = "wrong")
+	public int wrong = 0;
+	@Column(name = "isRight")
+	public int isRight = 0;
 
 	public SourceData() {
 		super();
@@ -29,6 +37,16 @@ public class SourceData extends Model {
 	public static SourceData getRandomData() {
 		return new Select().from(SourceData.class).orderBy("RANDOM()")
 				.executeSingle();
+	}
+
+	public static SourceData getChuangGuanRandomData() {
+		return new Select().from(SourceData.class).where("isRight = ?", 0)
+				.orderBy("RANDOM()").executeSingle();
+	}
+
+	public static List<SourceData> getAllWrongDatas() {
+		return new Select().from(SourceData.class).where("wrong > ?", 0)
+				.orderBy("wrong").execute();
 	}
 
 }

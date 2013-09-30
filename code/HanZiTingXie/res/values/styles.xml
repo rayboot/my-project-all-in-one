@@ -4,11 +4,17 @@
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
-    <style name="AppBaseTheme" parent="@android:style/Theme.NoTitleBar">
+    <style name="AppBaseTheme" parent="@style/Holo.Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+            09-30 16:34:36.445: E/AndroidRuntime(8353): java.lang.RuntimeException: Unable to st
+            art activity ComponentInfo{com.rayboot.hanzitingxie/com.rayboot.hanzitingxie.Ju
+            mpActivity}: android.support.v4.app._HoloActivity$HoloThemeException: You must
+             apply Holo.Theme, Holo.Theme.Light or Holo.Theme.Light.DarkActionBar the
+             me on the activity (JumpActivity) for using HoloEverywhere
+            
         -->
     </style>
 

@@ -55,6 +55,14 @@
         <activity
             android:name="com.rayboot.hanzitingxie.MainActivity"
             android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.rayboot.hanzitingxie.TipActivity"
+            android:label="@string/title_activity_tip" >
+        </activity>
+        <activity
+            android:name="com.rayboot.hanzitingxie.JumpActivity"
+            android:label="@string/title_activity_jump" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -62,8 +70,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.rayboot.hanzitingxie.TipActivity"
-            android:label="@string/title_activity_tip" >
+            android:name="com.rayboot.hanzitingxie.RankActivity"
+            android:label="@string/title_activity_rank" >
+        </activity>
+        <activity
+            android:name="com.rayboot.hanzitingxie.SettingsActivity"
+            android:label="@string/title_activity_settings" >
         </activity>
     </application>
 
