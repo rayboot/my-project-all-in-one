@@ -1,14 +1,19 @@
 package com.rayboot.hanzitingxie;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
+import java.util.Random;
+
+import org.holoeverywhere.app.AlertDialog;
+import org.holoeverywhere.app.AlertDialogFragment;
+
+import android.R.integer;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.RemoteException;
+import android.provider.ContactsContract.DataUsageFeedback;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -28,6 +33,7 @@ import com.iflytek.speech.SpeechUtility;
 import com.iflytek.speech.SynthesizerListener;
 import com.rayboot.hanzitingxie.obj.SourceData;
 import com.rayboot.hanzitingxie.util.ApkInstaller;
+import com.rayboot.hanzitingxie.util.DataUtil;
 
 public class MainActivity extends MyBaseActivity {
 	String TAG = "MainActivity";
@@ -35,6 +41,7 @@ public class MainActivity extends MyBaseActivity {
 	private SpeechSynthesizer mTts;
 
 	private SourceData curData;
+	TextView tvBi;
 	EditText[] ets = new EditText[4];
 	TextView[] tvs = new TextView[4];
 	LinearLayout[] lls = new LinearLayout[4];
@@ -49,6 +56,7 @@ public class MainActivity extends MyBaseActivity {
 				MyApplication.PLAY_TYPE_CHUANGGUAN);
 		mTts = new SpeechSynthesizer(this, null);
 
+		tvBi = (TextView) findViewById(R.id.tvBi);
 		ets[0] = (EditText) findViewById(R.id.et1);
 		ets[1] = (EditText) findViewById(R.id.et2);
 		ets[2] = (EditText) findViewById(R.id.et3);
@@ -67,24 +75,27 @@ public class MainActivity extends MyBaseActivity {
 		}
 
 		setHanzi();
+		changeWenZiBi(0);
 	}
 
 	public void setHanzi() {
 		if (MyApplication.PLAY_TYPE_CHUANGGUAN == curPlayType) {
 			curData = SourceData.getChuangGuanRandomData();
 			if (curData == null) {
+				DialogsAlertDialogFragment dialog = new DialogsAlertDialogFragment();
+				dialog.getBuilder(this).setMessage(
+						"恭喜您已通关！可更新版本获得更多新词，或者尝试其他模式。");
+				dialog.getBuilder(this).setTitle("提示");
+				dialog.getBuilder(this).setNegativeButton("尝试其他模式",
+						new OnClickListener() {
 
-				AlertDialog.Builder builder = new Builder(MainActivity.this);
-				builder.setMessage("恭喜您已通关！可更新版本获得更多新词，或者尝试其他模式。");
-				builder.setTitle("提示");
-				builder.setNegativeButton("尝试其他模式", new OnClickListener() {
-
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						MainActivity.this.finish();
-					}
-				});
-				builder.create().show();
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								MainActivity.this.finish();
+							}
+						});
+				dialog.show(this);
 				return;
 			}
 		} else if (MyApplication.PLAY_TYPE_WUJIN == curPlayType) {
@@ -167,6 +178,58 @@ public class MainActivity extends MyBaseActivity {
 		startActivity(intent);
 	}
 
+	public void onZhengQue(View view) {
+		DialogsAlertDialogFragment dialog = new DialogsAlertDialogFragment();
+		dialog.getBuilder(this).setMessage("显示一个正确的汉字会扣除20个文字币，是否确认？");
+		dialog.getBuilder(this).setTitle("提示");
+		dialog.getBuilder(this).setNegativeButton("再想想", new OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+			}
+		});
+		dialog.getBuilder(this).setPositiveButton("好的", new OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				int count = DataUtil.getInfoFromShared(MainActivity.this,
+						"wenzibi");
+				if (count - 20 > 0) {
+					changeWenZiBi(-20);
+
+					boolean finishTip = false;
+					for (int i = 0; i < ets.length; i++) {
+						if (TextUtils.isEmpty(ets[i].getText().toString())
+								&& ets[i].isShown()) {
+							ets[i].setText(curData.title.subSequence(i, i + 1));
+							finishTip = true;
+							break;
+						}
+					}
+					if (!finishTip) {
+						int ram = new Random().nextInt(curData.title.length());
+						ets[ram].setText(curData.title.subSequence(ram, ram + 1));
+						
+					}
+					
+				} else {
+					dialog.dismiss();
+					org.holoeverywhere.widget.Toast.makeText(MainActivity.this,
+							"您的游戏币不足20个",
+							org.holoeverywhere.widget.Toast.LENGTH_SHORT)
+							.show();
+				}
+
+			}
+		});
+		dialog.show(this);
+	}
+
+	public void onHelp(View view) {
+
+	}
+
 	public void onFinish(View view) {
 		boolean isRight = true;
 		for (int i = 0; i < curData.title.length(); i++) {
@@ -186,37 +249,47 @@ public class MainActivity extends MyBaseActivity {
 			if (MyApplication.PLAY_TYPE_CHUANGGUAN == curPlayType) {
 				curData.isRight = 1;
 			}
+			changeWenZiBi(5);
 		} else {
 			curData.wrong += 1;
 		}
-		curData.save();
+		SourceData.updateItem(curData);
 
 		String temp = "恭喜你，回答正确！";
 		if (!isRight) {
 			temp = "回答错误，正确答案为：" + curData.title;
 		}
 
-		AlertDialog.Builder builder = new Builder(MainActivity.this);
-		builder.setMessage(temp);
-		builder.setTitle("提示");
-		builder.setNegativeButton("下一个", new OnClickListener() {
+		DialogsAlertDialogFragment dialog = new DialogsAlertDialogFragment();
+		dialog.getBuilder(this).setMessage(temp);
+		dialog.getBuilder(this).setTitle("提示");
+		dialog.getBuilder(this).setNegativeButton("下一个", new OnClickListener() {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				setHanzi();
 			}
 		});
-		builder.create().show();
+		dialog.show(this);
+	}
+
+	private void changeWenZiBi(int cnt) {
+		int count = DataUtil.getInfoFromShared(this, "wenzibi");
+		DataUtil.setInfoToShared(this, "wenzibi", count + cnt);
+		tvBi.setText("文字币：" + DataUtil.getInfoFromShared(this, "wenzibi"));
 	}
 
 	public void onVoice(View view) {
 		// 没有可用的引擎
 		if (SpeechUtility.getUtility(this).queryAvailableEngines() == null
 				|| SpeechUtility.getUtility(this).queryAvailableEngines().length <= 0) {
-			AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-			dialog.setMessage(getString(R.string.download_confirm_msg));
-			dialog.setNegativeButton(R.string.dialog_cancel_button, null);
-			dialog.setPositiveButton(getString(R.string.dialog_confirm_button),
+			DialogsAlertDialogFragment dialog = new DialogsAlertDialogFragment();
+			dialog.getBuilder(this).setMessage(
+					getString(R.string.download_confirm_msg));
+			dialog.getBuilder(this).setNegativeButton(
+					R.string.dialog_cancel_button, null);
+			dialog.getBuilder(this).setPositiveButton(
+					getString(R.string.dialog_confirm_button),
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialoginterface,
 								int i) {
@@ -226,7 +299,8 @@ public class MainActivity extends MyBaseActivity {
 							processInstall(MainActivity.this, url, assetsApk);
 						}
 					});
-			dialog.show();
+
+			dialog.show(this);
 			return;
 		}
 		// 设置你申请的应用appid
@@ -236,11 +310,11 @@ public class MainActivity extends MyBaseActivity {
 		// 发音人。
 		mTts.setParameter(SpeechSynthesizer.VOICE_NAME, "xiaoyan");
 		// 语速（0~100）。
-		mTts.setParameter(SpeechSynthesizer.SPEED, "20");
+		mTts.setParameter(SpeechSynthesizer.SPEED, DataUtil.YU_SU + "");
 		// 音调（0~100）。
-		mTts.setParameter(SpeechSynthesizer.PITCH, "50");
+		mTts.setParameter(SpeechSynthesizer.PITCH, DataUtil.YIN_DIAO + "");
 		// 音量（0~100）。
-		mTts.setParameter(SpeechSynthesizer.VOLUME, "80");
+		mTts.setParameter(SpeechSynthesizer.VOLUME, DataUtil.YIN_LIANG + "");
 		mTts.startSpeaking(curData.title, mTtsListener);
 	}
 

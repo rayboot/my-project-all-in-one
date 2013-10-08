@@ -5,7 +5,9 @@ import java.util.List;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
+import com.activeandroid.query.Update;
 
 @Table(name = "SourceDataTable")
 public class SourceData extends Model {
@@ -47,6 +49,11 @@ public class SourceData extends Model {
 	public static List<SourceData> getAllWrongDatas() {
 		return new Select().from(SourceData.class).where("wrong > ?", 0)
 				.orderBy("wrong").execute();
+	}
+
+	public static void updateItem(SourceData sData) {
+		new Delete().from(SourceData.class).where("Id = ?", sData.getId()).execute();
+		sData.save();
 	}
 
 }
