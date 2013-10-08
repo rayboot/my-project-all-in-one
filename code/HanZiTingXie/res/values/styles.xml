@@ -16,6 +16,10 @@
              me on the activity (JumpActivity) for using HoloEverywhere
             
         -->
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
     <!-- Application theme. -->

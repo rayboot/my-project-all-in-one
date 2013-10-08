@@ -8,18 +8,24 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import android.R.integer;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 
 import com.rayboot.hanzitingxie.obj.SourceData;
 
 public class DataUtil {
-	
-	//从html.txt里读取原信息
-	//"http://baike.baidu.com/link?url=4ppxyv-jM3B5fZy8dHVNJl1mlZ0vPWN6bitUYH_liqUNvekTCq-7gaDH2ZcvjxYDoScgWEuraW7HE2HavmxEiq"
 
-	public static void saveInitData(Context context)
-			throws IOException {
+	public static int YU_SU = 20;
+	public static int YIN_DIAO = 50;
+	public static int YIN_LIANG = 80;
+
+	// 从html.txt里读取原信息
+	// "http://baike.baidu.com/link?url=4ppxyv-jM3B5fZy8dHVNJl1mlZ0vPWN6bitUYH_liqUNvekTCq-7gaDH2ZcvjxYDoScgWEuraW7HE2HavmxEiq"
+
+	public static void saveInitData(Context context) throws IOException {
 		Document doc = Jsoup.parse(
 				context.getResources().getAssets().open("html.txt"), "UTF-8",
 				"http://example.com/");
@@ -65,5 +71,21 @@ public class DataUtil {
 			return someElements.get(0).attr(attr);
 		}
 		return "";
+	}
+
+	public static int getInfoFromShared(Context context, String key) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				"hanzitingxie", Context.MODE_PRIVATE);
+		return preferences.getInt(key, 0);
+	}
+
+	public static boolean setInfoToShared(Context context, String key,
+			int value) {
+		SharedPreferences preferences = context.getSharedPreferences(
+				"hanzitingxie", Context.MODE_PRIVATE);
+		Editor editor = preferences.edit();
+		editor.putInt(key, value);
+		editor.commit();
+		return true;
 	}
 }
