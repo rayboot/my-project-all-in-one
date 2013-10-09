@@ -18,7 +18,7 @@ public class JumpActivity extends MyBaseActivity {
 		if (count == 0) {
 			DataUtil.setInfoToShared(this, "wenzibi", 20);
 		} else {
-			DataUtil.setInfoToShared(this, "wenzibi", count + 200);
+			DataUtil.setInfoToShared(this, "wenzibi", count + 2);
 		}
 	}
 
