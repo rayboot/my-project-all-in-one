@@ -2,30 +2,29 @@ package com.rayboot.hanzitingxie;
 
 import java.util.Random;
 
-import org.holoeverywhere.app.AlertDialog;
-import org.holoeverywhere.app.AlertDialogFragment;
+import org.holoeverywhere.widget.Toast;
 
-import android.R.integer;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.RemoteException;
-import android.provider.ContactsContract.DataUsageFeedback;
+import android.support.v7.widget.PopupMenu;
+import android.support.v7.widget.PopupMenu.OnMenuItemClickListener;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import android.widget.Toast;
 
 import com.iflytek.speech.SpeechConstant;
 import com.iflytek.speech.SpeechSynthesizer;
@@ -39,7 +38,6 @@ public class MainActivity extends MyBaseActivity {
 	String TAG = "MainActivity";
 	// 语音合成对象
 	private SpeechSynthesizer mTts;
-
 	private SourceData curData;
 	TextView tvBi;
 	EditText[] ets = new EditText[4];
@@ -171,14 +169,14 @@ public class MainActivity extends MyBaseActivity {
 
 	};
 
-	public void onTip(View view) {
+	public void onTip() {
 		Intent intent = new Intent(this, TipActivity.class);
 		intent.putExtra("data_answer", curData.title);
 		intent.putExtra("data_tip", curData.url);
 		startActivity(intent);
 	}
 
-	public void onZhengQue(View view) {
+	public void onZhengQue() {
 		DialogsAlertDialogFragment dialog = new DialogsAlertDialogFragment();
 		dialog.getBuilder(this).setMessage("显示一个正确的汉字会扣除20个文字币，是否确认？");
 		dialog.getBuilder(this).setTitle("提示");
@@ -209,10 +207,11 @@ public class MainActivity extends MyBaseActivity {
 					}
 					if (!finishTip) {
 						int ram = new Random().nextInt(curData.title.length());
-						ets[ram].setText(curData.title.subSequence(ram, ram + 1));
-						
+						ets[ram].setText(curData.title
+								.subSequence(ram, ram + 1));
+
 					}
-					
+
 				} else {
 					dialog.dismiss();
 					org.holoeverywhere.widget.Toast.makeText(MainActivity.this,
@@ -226,11 +225,14 @@ public class MainActivity extends MyBaseActivity {
 		dialog.show(this);
 	}
 
-	public void onHelp(View view) {
-
-	}
 
 	public void onFinish(View view) {
+		if (getCurrentFocus() != null) {
+			((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
+					.hideSoftInputFromWindow(
+							getCurrentFocus().getWindowToken(),
+							InputMethodManager.HIDE_NOT_ALWAYS);
+		}
 		boolean isRight = true;
 		for (int i = 0; i < curData.title.length(); i++) {
 			if (curData.title.subSequence(i, i + 1).equals(
@@ -244,6 +246,7 @@ public class MainActivity extends MyBaseActivity {
 			}
 		}
 
+		String temp = "恭喜你，回答正确！\n正确答案：" + curData.title;
 		if (isRight) {
 			curData.right += 1;
 			if (MyApplication.PLAY_TYPE_CHUANGGUAN == curPlayType) {
@@ -252,24 +255,41 @@ public class MainActivity extends MyBaseActivity {
 			changeWenZiBi(5);
 		} else {
 			curData.wrong += 1;
+			temp = "非常抱歉，回答错误。";
 		}
 		SourceData.updateItem(curData);
-
-		String temp = "恭喜你，回答正确！";
-		if (!isRight) {
-			temp = "回答错误，正确答案为：" + curData.title;
-		}
 
 		DialogsAlertDialogFragment dialog = new DialogsAlertDialogFragment();
 		dialog.getBuilder(this).setMessage(temp);
 		dialog.getBuilder(this).setTitle("提示");
-		dialog.getBuilder(this).setNegativeButton("下一个", new OnClickListener() {
+		if (isRight) {
+			dialog.getBuilder(this).setNegativeButton("下一个",
+					new OnClickListener() {
 
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				setHanzi();
-			}
-		});
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							setHanzi();
+						}
+					});
+		} else {
+			dialog.getBuilder(this).setNegativeButton("再看看",
+					new OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.dismiss();
+						}
+					});
+			dialog.getBuilder(this).setPositiveButton("正确答案",
+					new OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							showAnswer();
+							dialog.dismiss();
+						}
+					});
+		}
 		dialog.show(this);
 	}
 
@@ -277,6 +297,27 @@ public class MainActivity extends MyBaseActivity {
 		int count = DataUtil.getInfoFromShared(this, "wenzibi");
 		DataUtil.setInfoToShared(this, "wenzibi", count + cnt);
 		tvBi.setText("文字币：" + DataUtil.getInfoFromShared(this, "wenzibi"));
+	}
+	
+	private void showAnswer(){
+		int count = DataUtil.getInfoFromShared(
+				MainActivity.this, "wenzibi");
+		if (count - 50 > 0) {
+			for (int i = 0; i < ets.length; i++) {
+				if (TextUtils.isEmpty(ets[i].getText()
+						.toString()) && ets[i].isShown()) {
+					ets[i].setText(curData.title
+							.subSequence(i, i + 1));
+				}
+			}
+			Toast.makeText(MainActivity.this, "正确答案已经显示。",
+					Toast.LENGTH_SHORT).show();
+			changeWenZiBi(-50);
+		} else {
+			Toast.makeText(MainActivity.this,
+					"非常抱歉您的文字币不足50.", Toast.LENGTH_SHORT)
+					.show();
+		}
 	}
 
 	public void onVoice(View view) {
@@ -374,5 +415,35 @@ public class MainActivity extends MyBaseActivity {
 		// 退出时释放连接
 		mTts.destory();
 	}
+	
+	public void onShowHelp(View view) {
+        PopupMenu menu = new PopupMenu(this, view);
+        menu.setOnMenuItemClickListener(onMenuItemClickListener);
+        menu.inflate(R.menu.menu);
+        menu.show();
+	}
+	
+	private OnMenuItemClickListener onMenuItemClickListener = new OnMenuItemClickListener() {
+		
+		@Override
+		public boolean onMenuItemClick(MenuItem item) {
+			// TODO Auto-generated method stub
+			switch (item.getItemId()) {
+			case R.id.item_tip:
+				onTip();
+				break;
+			case R.id.item_oneright:
+				onZhengQue();
+				break;
+			case R.id.item_final:
+				showAnswer();
+				break;
+
+			default:
+				break;
+			}
+			return false;
+		}
+	};
 
 }
