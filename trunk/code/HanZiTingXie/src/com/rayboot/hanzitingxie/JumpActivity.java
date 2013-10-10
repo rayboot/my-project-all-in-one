@@ -1,13 +1,16 @@
 package com.rayboot.hanzitingxie;
 
+import org.holoeverywhere.widget.Toast;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.rayboot.hanzitingxie.util.DataUtil;
 
 public class JumpActivity extends MyBaseActivity {
+	private long exitTime = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,25 @@ public class JumpActivity extends MyBaseActivity {
 	public void onSettings(View view) {
 		Intent intent = new Intent(this, SettingsActivity.class);
 		startActivity(intent);
+	}
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK
+				&& event.getAction() == KeyEvent.ACTION_DOWN) {
+
+			if ((System.currentTimeMillis() - exitTime) > 2000) {
+				Toast.makeText(getApplicationContext(), "再按一次退出程序",
+						Toast.LENGTH_SHORT).show();
+				exitTime = System.currentTimeMillis();
+			} else {
+				finish();
+				System.exit(0);
+			}
+
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 
 }
