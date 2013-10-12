@@ -6,11 +6,12 @@
     <string name="download_confirm_msg">检测到您尚未安装语音组件，是否现在安装？</string>
     <string name="dialog_confirm_button">确定</string>
     <string name="dialog_cancel_button">取消</string>
+    <string name="title_activity_settings">设置</string>
+    <string name="title_activity_more">更多</string>
     <string name="title_activity_tip">TipActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_jump">JumpActivity</string>
     <string name="title_activity_rank">RankActivity</string>
-    <string name="title_activity_settings">SettingsActivity</string>
     <string name="title_activity_loading">LoadingActivity</string>
 
 </resources>
