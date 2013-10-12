@@ -8,6 +8,7 @@
     <string name="dialog_cancel_button">取消</string>
     <string name="title_activity_settings">设置</string>
     <string name="title_activity_more">更多</string>
+    <string name="title_activity_feedback">意见反馈</string>
     <string name="title_activity_tip">TipActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_jump">JumpActivity</string>
