@@ -1,5 +1,6 @@
 package com.rayboot.hanzitingxie;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -133,6 +134,17 @@ public class JumpActivity extends MyBaseActivity {
 	public void onData() {
 		Intent intent = new Intent(this, RankActivity.class);
 		startActivity(intent);
+//		doInitData();
+	}
+
+	public void doInitData() {
+		try {
+			DataUtil.saveInitData(this);
+			Toast.makeText(this, "finish", Toast.LENGTH_SHORT).show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
