@@ -45,6 +45,13 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5258f55e56240b56c100680d" >
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="baidu" />
+        <meta-data
             android:name="AA_DB_NAME"
             android:value="hanzitingxie.db" />
         <meta-data
@@ -84,6 +91,15 @@
             android:name="com.rayboot.hanzitingxie.MoreActivity"
             android:label="@string/title_activity_more" >
         </activity>
+        <activity
+            android:name="com.umeng.fb.ConversationActivity"
+            android:label="@string/title_activity_feedback" />
+        <activity android:name="com.umeng.fb.ContactActivity" />
+
+        <service
+            android:name="com.umeng.common.net.DownloadingService"
+            android:process=":DownloadingService" >
+        </service>
     </application>
 
 </manifest>

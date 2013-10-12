@@ -3,21 +3,23 @@ package com.rayboot.hanzitingxie;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.holoeverywhere.ThemeManager;
 import org.holoeverywhere.widget.ListView;
 import org.holoeverywhere.widget.Toast;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.RelativeLayout;
 
 import com.rayboot.hanzitingxie.util.DataUtil;
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.fb.FeedbackAgent;
+import com.umeng.update.UmengUpdateAgent;
+import com.umeng.update.UmengUpdateListener;
+import com.umeng.update.UpdateResponse;
 
 public class JumpActivity extends MyBaseActivity {
 	private long exitTime = 0;
@@ -25,6 +27,7 @@ public class JumpActivity extends MyBaseActivity {
 	ListView lvMode;
 	BaseAdapter adapter;
 	boolean isLoading = false;
+	FeedbackAgent agent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +45,37 @@ public class JumpActivity extends MyBaseActivity {
 			DataUtil.setInfoToShared(this, "wenzibi", count + 2);
 		}
 		loadMode();
+		initUMeng();
 		if (!isLoading) {
 			this.startActivity(new Intent(this, LoadingActivity.class));
 			return;
 		}
+	}
+
+	private void initUMeng() {
+		MobclickAgent.setDebugMode(false);
+		agent = new FeedbackAgent(this);
+		agent.sync();
+		UmengUpdateAgent.update(this);
+		UmengUpdateAgent.setUpdateAutoPopup(false);
+		UmengUpdateAgent.setUpdateListener(new UmengUpdateListener() {
+			@Override
+			public void onUpdateReturned(int updateStatus,
+					UpdateResponse updateInfo) {
+				switch (updateStatus) {
+				case 0: // has update
+					UmengUpdateAgent.showUpdateDialog(JumpActivity.this,
+							updateInfo);
+					break;
+				case 1: // has no update
+					break;
+				case 2: // none wifi
+					break;
+				case 3: // time out
+					break;
+				}
+			}
+		});
 	}
 
 	private void loadMode() {
