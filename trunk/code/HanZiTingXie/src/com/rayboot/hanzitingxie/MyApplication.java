@@ -17,11 +17,9 @@ public class MyApplication extends org.holoeverywhere.app.Application {
 	static {
 		HoloEverywhere.DEBUG = true;
 		HoloEverywhere.PREFERENCE_IMPL = PreferenceImpl.JSON;
-
 		LayoutInflater.registerPackage(PACKAGE + ".widget");
-
-		ThemeManager.setDefaultTheme(ThemeManager.LIGHT | ThemeManager.NO_ACTION_BAR);
-
+		ThemeManager.setDefaultTheme(ThemeManager.LIGHT
+				| ThemeManager.NO_ACTION_BAR);
 	}
 
 	@Override
