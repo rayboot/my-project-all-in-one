@@ -2,6 +2,7 @@ package com.rayboot.hanzitingxie;
 
 import java.util.Random;
 
+import org.holoeverywhere.ThemeManager;
 import org.holoeverywhere.widget.Toast;
 
 import android.content.Context;
@@ -225,7 +226,6 @@ public class MainActivity extends MyBaseActivity {
 		dialog.show(this);
 	}
 
-
 	public void onFinish(View view) {
 		if (getCurrentFocus() != null) {
 			((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
@@ -298,25 +298,22 @@ public class MainActivity extends MyBaseActivity {
 		DataUtil.setInfoToShared(this, "wenzibi", count + cnt);
 		tvBi.setText("文字币：" + DataUtil.getInfoFromShared(this, "wenzibi"));
 	}
-	
-	private void showAnswer(){
-		int count = DataUtil.getInfoFromShared(
-				MainActivity.this, "wenzibi");
+
+	private void showAnswer() {
+		int count = DataUtil.getInfoFromShared(MainActivity.this, "wenzibi");
 		if (count - 50 > 0) {
 			for (int i = 0; i < ets.length; i++) {
-				if (TextUtils.isEmpty(ets[i].getText()
-						.toString()) && ets[i].isShown()) {
-					ets[i].setText(curData.title
-							.subSequence(i, i + 1));
+				if (TextUtils.isEmpty(ets[i].getText().toString())
+						&& ets[i].isShown()) {
+					ets[i].setText(curData.title.subSequence(i, i + 1));
 				}
 			}
-			Toast.makeText(MainActivity.this, "正确答案已经显示。",
-					Toast.LENGTH_SHORT).show();
+			Toast.makeText(MainActivity.this, "正确答案已经显示。", Toast.LENGTH_SHORT)
+					.show();
 			changeWenZiBi(-50);
 		} else {
-			Toast.makeText(MainActivity.this,
-					"非常抱歉您的文字币不足50.", Toast.LENGTH_SHORT)
-					.show();
+			Toast.makeText(MainActivity.this, "非常抱歉您的文字币不足50.",
+					Toast.LENGTH_SHORT).show();
 		}
 	}
 
@@ -415,16 +412,16 @@ public class MainActivity extends MyBaseActivity {
 		// 退出时释放连接
 		mTts.destory();
 	}
-	
+
 	public void onShowHelp(View view) {
-        PopupMenu menu = new PopupMenu(this, view);
-        menu.setOnMenuItemClickListener(onMenuItemClickListener);
-        menu.inflate(R.menu.menu);
-        menu.show();
+		PopupMenu menu = new PopupMenu(this, view);
+		menu.setOnMenuItemClickListener(onMenuItemClickListener);
+		menu.inflate(R.menu.menu);
+		menu.show();
 	}
-	
+
 	private OnMenuItemClickListener onMenuItemClickListener = new OnMenuItemClickListener() {
-		
+
 		@Override
 		public boolean onMenuItemClick(MenuItem item) {
 			// TODO Auto-generated method stub

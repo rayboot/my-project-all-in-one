@@ -28,6 +28,7 @@ public class JumpActivity extends MyBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		setTheme(R.style.Holo_Theme_Light_DarkActionBar);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_jump);
 
@@ -52,6 +53,7 @@ public class JumpActivity extends MyBaseActivity {
 		datas.add("闯关");
 		datas.add("无尽");
 		datas.add("数据");
+		datas.add("设置");
 		datas.add("更多");
 		adapter = new ModeAdapter<String>(this, datas);
 		lvMode.setAdapter(adapter);
@@ -75,6 +77,9 @@ public class JumpActivity extends MyBaseActivity {
 				break;
 			case 3:
 				onSettings();
+				break;
+			case 4:
+				onMore();
 				break;
 			default:
 				break;
@@ -103,6 +108,11 @@ public class JumpActivity extends MyBaseActivity {
 
 	public void onSettings() {
 		Intent intent = new Intent(this, SettingsActivity.class);
+		startActivity(intent);
+	}
+
+	public void onMore() {
+		Intent intent = new Intent(this, MoreActivity.class);
 		startActivity(intent);
 	}
 

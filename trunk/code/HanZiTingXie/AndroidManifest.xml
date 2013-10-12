@@ -80,6 +80,10 @@
             android:name="com.rayboot.hanzitingxie.LoadingActivity"
             android:label="@string/title_activity_loading" >
         </activity>
+        <activity
+            android:name="com.rayboot.hanzitingxie.MoreActivity"
+            android:label="@string/title_activity_more" >
+        </activity>
     </application>
 
 </manifest>

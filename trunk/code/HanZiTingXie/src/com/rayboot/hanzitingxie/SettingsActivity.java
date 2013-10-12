@@ -16,6 +16,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,15 +24,15 @@ public class SettingsActivity extends MyBaseActivity {
 	SeekBar sb1;
 	SeekBar sb2;
 	SeekBar sb3;
-	TextView tvTitle;
 	// 语音合成对象
 	private SpeechSynthesizer mTts;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		setTheme(R.style.Holo_Theme_Light_DarkActionBar);
 		super.onCreate(savedInstanceState);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		setContentView(R.layout.activity_settings);
-		tvTitle = (TextView) findViewById(R.id.tvTitle);
 		sb1 = (SeekBar) findViewById(R.id.seekBar1);
 		sb2 = (SeekBar) findViewById(R.id.seekBar2);
 		sb3 = (SeekBar) findViewById(R.id.seekBar3);
@@ -41,7 +42,7 @@ public class SettingsActivity extends MyBaseActivity {
 		sb1.setProgress(DataUtil.YU_SU);
 		sb2.setProgress(DataUtil.YIN_DIAO);
 		sb3.setProgress(DataUtil.YIN_LIANG);
-		
+
 		mTts = new SpeechSynthesizer(this, null);
 
 		// 没有可用的引擎
@@ -60,9 +61,10 @@ public class SettingsActivity extends MyBaseActivity {
 							String url = SpeechUtility.getUtility(
 									SettingsActivity.this).getComponentUrl();
 							String assetsApk = "SpeechService.apk";
-							if (!ApkInstaller.installFromAssets(SettingsActivity.this, assetsApk)) {
-								Toast.makeText(SettingsActivity.this, "安装失败", Toast.LENGTH_SHORT)
-										.show();
+							if (!ApkInstaller.installFromAssets(
+									SettingsActivity.this, assetsApk)) {
+								Toast.makeText(SettingsActivity.this, "安装失败",
+										Toast.LENGTH_SHORT).show();
 							}
 						}
 					});
@@ -85,7 +87,8 @@ public class SettingsActivity extends MyBaseActivity {
 				DataUtil.YIN_LIANG = seekBar.getProgress();
 			}
 			// 设置你申请的应用appid
-			SpeechUtility.getUtility(SettingsActivity.this).setAppid("5244f7f4");
+			SpeechUtility.getUtility(SettingsActivity.this)
+					.setAppid("5244f7f4");
 
 			mTts.setParameter(SpeechConstant.ENGINE_TYPE, "local");
 			// 发音人。
@@ -96,7 +99,7 @@ public class SettingsActivity extends MyBaseActivity {
 			mTts.setParameter(SpeechSynthesizer.PITCH, DataUtil.YIN_DIAO + "");
 			// 音量（0~100）。
 			mTts.setParameter(SpeechSynthesizer.VOLUME, DataUtil.YIN_LIANG + "");
-			mTts.startSpeaking(tvTitle.getText().toString(), mTtsListener);
+			mTts.startSpeaking("汉字听写", mTtsListener);
 		}
 
 		@Override
@@ -148,5 +151,18 @@ public class SettingsActivity extends MyBaseActivity {
 		mTts.stopSpeaking(mTtsListener);
 		// 退出时释放连接
 		mTts.destory();
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// This uses the imported MenuItem from ActionBarSherlock
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			finish();
+			break;
+		default:
+			break;
+		}
+		return true;
 	}
 }
