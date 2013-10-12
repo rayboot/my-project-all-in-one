@@ -43,7 +43,7 @@
         android:name="com.rayboot.hanzitingxie.MyApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name">
+        android:label="@string/app_name" >
         <meta-data
             android:name="AA_DB_NAME"
             android:value="hanzitingxie.db" />
@@ -75,6 +75,10 @@
         <activity
             android:name="com.rayboot.hanzitingxie.SettingsActivity"
             android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name="com.rayboot.hanzitingxie.LoadingActivity"
+            android:label="@string/title_activity_loading" >
         </activity>
     </application>
 
