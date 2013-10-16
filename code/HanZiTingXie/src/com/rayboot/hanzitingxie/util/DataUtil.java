@@ -47,6 +47,10 @@ public class DataUtil {
 						href = getAtagAttr(tdsElements.get(1), "a", "href")
 								.trim();
 						title = tdsElements.get(1).text().trim();
+						title = title.replace("(注)", "");
+						if (title.contains("/")) {
+							title = title.substring(0, title.indexOf("/"));
+						}
 						pinyin = tdsElements.get(2).text().trim();
 					}
 				} else if (tdsElements.size() == 5) {
@@ -54,6 +58,10 @@ public class DataUtil {
 						href = getAtagAttr(tdsElements.get(2), "a", "href")
 								.trim();
 						title = tdsElements.get(2).text().trim();
+						title = title.replace("(注)", "");
+						if (title.contains("/")) {
+							title = title.substring(0, title.indexOf("/"));
+						}
 						pinyin = tdsElements.get(3).text().trim();
 					}
 				}

@@ -12,7 +12,7 @@
     <string name="title_activity_tip">TipActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_jump">JumpActivity</string>
-    <string name="title_activity_rank">RankActivity</string>
+    <string name="title_activity_rank">数据</string>
     <string name="title_activity_loading">LoadingActivity</string>
 
 </resources>

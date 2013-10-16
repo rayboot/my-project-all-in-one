@@ -27,7 +27,6 @@ public class JumpActivity extends MyBaseActivity {
 
 	ListView lvMode;
 	BaseAdapter adapter;
-	boolean isLoading = false;
 	FeedbackAgent agent;
 
 	@Override
@@ -35,6 +34,8 @@ public class JumpActivity extends MyBaseActivity {
 		setTheme(R.style.Holo_Theme_Light_DarkActionBar);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_jump);
+		getSupportActionBar().setTitle(
+				getResources().getString(R.string.app_name));
 
 		lvMode = (ListView) findViewById(R.id.lvMode);
 		lvMode.setOnItemClickListener(onItemClickListener);
@@ -47,10 +48,6 @@ public class JumpActivity extends MyBaseActivity {
 		}
 		loadMode();
 		initUMeng();
-		if (!isLoading) {
-			this.startActivity(new Intent(this, LoadingActivity.class));
-			return;
-		}
 	}
 
 	private void initUMeng() {
@@ -134,7 +131,7 @@ public class JumpActivity extends MyBaseActivity {
 	public void onData() {
 		Intent intent = new Intent(this, RankActivity.class);
 		startActivity(intent);
-//		doInitData();
+		// doInitData();
 	}
 
 	public void doInitData() {
@@ -169,7 +166,6 @@ public class JumpActivity extends MyBaseActivity {
 				exitTime = System.currentTimeMillis();
 			} else {
 				finish();
-				System.exit(0);
 			}
 
 			return true;
