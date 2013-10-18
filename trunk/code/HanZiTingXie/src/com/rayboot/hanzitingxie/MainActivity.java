@@ -53,7 +53,6 @@ public class MainActivity extends MyBaseActivity {
 		// 初始化合成对象
 		curPlayType = getIntent().getIntExtra("cur_play_type",
 				MyApplication.PLAY_TYPE_CHUANGGUAN);
-		mTts = new SpeechSynthesizer(this, null);
 
 		tvBi = (TextView) findViewById(R.id.tvBi);
 		ets[0] = (EditText) findViewById(R.id.et1);
@@ -403,6 +402,13 @@ public class MainActivity extends MyBaseActivity {
 			Toast.makeText(MainActivity.this, "安装失败", Toast.LENGTH_SHORT)
 					.show();
 		}
+	}
+
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		mTts = new SpeechSynthesizer(this, null);
 	}
 
 	@Override

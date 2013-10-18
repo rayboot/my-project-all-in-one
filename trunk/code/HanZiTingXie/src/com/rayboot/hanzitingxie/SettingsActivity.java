@@ -43,8 +43,6 @@ public class SettingsActivity extends MyBaseActivity {
 		sb2.setProgress(DataUtil.YIN_DIAO);
 		sb3.setProgress(DataUtil.YIN_LIANG);
 
-		mTts = new SpeechSynthesizer(this, null);
-
 		// 没有可用的引擎
 		if (SpeechUtility.getUtility(this).queryAvailableEngines() == null
 				|| SpeechUtility.getUtility(this).queryAvailableEngines().length <= 0) {
@@ -72,6 +70,14 @@ public class SettingsActivity extends MyBaseActivity {
 			dialog.show(this);
 			return;
 		}
+	}
+
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+
+		mTts = new SpeechSynthesizer(this, null);
 	}
 
 	private OnSeekBarChangeListener onSeekBarChangeListener = new OnSeekBarChangeListener() {
