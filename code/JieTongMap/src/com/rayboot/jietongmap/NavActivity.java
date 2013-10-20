@@ -74,6 +74,8 @@ public class NavActivity extends SherlockActivity {
 		mMapView.getController().setZoom(12);
 		mMapView.getController().enableClick(true);
 
+		mMapView.getController().setCenter(new GeoPoint(31837179, 117247589));
+
 		// 初始化按键
 		mBtnDrive = (Button) findViewById(R.id.drive);
 		mBtnTransit = (Button) findViewById(R.id.transit);

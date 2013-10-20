@@ -1,9 +1,11 @@
 package com.rayboot.providentsearch;
 
 import android.os.Bundle;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.InjectView;
 import butterknife.Views;
+import cn.waps.AdView;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
@@ -35,6 +37,8 @@ public class DetailActivity extends SherlockActivity {
 	TextView tvZHYE;
 	@InjectView(R.id.tvDWMC)
 	TextView tvDWMC;
+	@InjectView(R.id.AdLinearLayout)
+	LinearLayout AdLinearLayout;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,7 @@ public class DetailActivity extends SherlockActivity {
 				SearchDataObj.class);
 
 		fillContent();
+		new AdView(this, AdLinearLayout).DisplayAd();
 	}
 
 	private void fillContent() {

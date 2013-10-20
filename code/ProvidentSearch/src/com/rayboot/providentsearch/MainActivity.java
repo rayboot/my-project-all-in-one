@@ -12,11 +12,14 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.InjectView;
 import butterknife.Views;
+import cn.waps.AdView;
+import cn.waps.AppConnect;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
@@ -50,6 +53,8 @@ public class MainActivity extends SherlockActivity {
 	ListView listHistory;
 	@InjectView(R.id.tvHistory)
 	TextView tvHistory;
+	@InjectView(R.id.AdLinearLayout)
+	LinearLayout AdLinearLayout;
 
 	List<ProvidentObj> historyDatas;
 	HistoryAdapter historyAdapter;
@@ -86,6 +91,14 @@ public class MainActivity extends SherlockActivity {
 				doSearch(card, psd);
 			}
 		});
+		initWAPS();
+	}
+
+	private void initWAPS() {
+		AppConnect.getInstance(this);
+		// 禁用错误报告
+		AppConnect.getInstance(this).setCrashReport(false);
+		new AdView(this, AdLinearLayout).DisplayAd();
 	}
 
 	private void initUMeng() {
@@ -168,8 +181,7 @@ public class MainActivity extends SherlockActivity {
 								SearchDataObj.class);
 						if (sdo.resultCode.equals("0000")) {
 							if (TextUtils.isEmpty(sdo.zgxm)) {
-								Toast.makeText(MainActivity.this,
-										"查询结果为空，可能您的公积金不在世本级营业部。 ",
+								Toast.makeText(MainActivity.this, sdo.tip,
 										Toast.LENGTH_SHORT).show();
 								return;
 							}
@@ -221,8 +233,8 @@ public class MainActivity extends SherlockActivity {
 			UMFeedbackService.openUmengFeedbackSDK(this);
 			break;
 		case MORE_SHARE:
-			shareSomethingText(this, "合肥公积金查询", getResources()
-					.getString(R.string.share_main_content));
+			shareSomethingText(this, "合肥公积金查询",
+					getResources().getString(R.string.share_main_content));
 			break;
 		default:
 			break;

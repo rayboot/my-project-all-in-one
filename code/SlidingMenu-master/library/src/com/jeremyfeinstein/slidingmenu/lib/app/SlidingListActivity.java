@@ -7,9 +7,10 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ListView;
 
+import com.actionbarsherlock.app.SherlockListActivity;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
-public class SlidingListActivity extends ListActivity implements SlidingActivityBase {
+public class SlidingListActivity extends SherlockListActivity implements SlidingActivityBase {
 
 	private SlidingActivityHelper mHelper;
 

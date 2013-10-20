@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -149,6 +150,12 @@ public class MainActivity extends BaseActivity {
 		initOverlay();
 
 		initUMeng();
+		new Handler().postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				toggle();
+			}
+		}, 1000);
 	}
 
 	private void initUMeng() {
@@ -177,6 +184,7 @@ public class MainActivity extends BaseActivity {
 		mMapView.getController().setZoom(14);
 		mMapView.getController().enableClick(true);
 		mMapView.setBuiltInZoomControls(true);
+		mMapController.setCenter(new GeoPoint(31837179, 117247589));
 	}
 
 	public void initLoc() {

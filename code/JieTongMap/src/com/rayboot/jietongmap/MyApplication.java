@@ -14,6 +14,8 @@ public class MyApplication extends com.activeandroid.app.Application {
 
 	public static final String strKey = "A7e52c52aef83a3af9bc116d74b88640";
 
+	// public static final String strKey = "03c12f92f264b2b7d20748f127826af3";
+
 	/*
 	 * 注意：为了给用户提供更安全的服务，Android SDK自v2.1.3版本开始采用了全新的Key验证体系。
 	 * 因此，当您选择使用v2.1.3及之后版本的SDK时，需要到新的Key申请页面进行全新Key的申请， 申请及配置流程请参考开发指南的对应章节
@@ -63,8 +65,7 @@ public class MyApplication extends com.activeandroid.app.Application {
 				// 授权Key错误：
 				Toast.makeText(
 						MyApplication.getInstance().getApplicationContext(),
-						"请在 DemoApplication.java文件输入正确的授权Key！",
-						Toast.LENGTH_LONG).show();
+						"请输入正确的授权Key！", Toast.LENGTH_LONG).show();
 			}
 		}
 	}
