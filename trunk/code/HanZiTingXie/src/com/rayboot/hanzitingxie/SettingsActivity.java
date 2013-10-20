@@ -1,12 +1,15 @@
 package com.rayboot.hanzitingxie;
 
+import org.holoeverywhere.widget.Button;
 import org.holoeverywhere.widget.SeekBar;
 import org.holoeverywhere.widget.SeekBar.OnSeekBarChangeListener;
+import org.holoeverywhere.widget.Toast;
 
 import com.iflytek.speech.SpeechConstant;
 import com.iflytek.speech.SpeechSynthesizer;
 import com.iflytek.speech.SpeechUtility;
 import com.iflytek.speech.SynthesizerListener;
+import com.rayboot.hanzitingxie.obj.SourceData;
 import com.rayboot.hanzitingxie.util.ApkInstaller;
 import com.rayboot.hanzitingxie.util.DataUtil;
 
@@ -17,8 +20,8 @@ import android.content.DialogInterface;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class SettingsActivity extends MyBaseActivity {
 	SeekBar sb1;
@@ -170,5 +173,18 @@ public class SettingsActivity extends MyBaseActivity {
 			break;
 		}
 		return true;
+	}
+
+	public void onExport(View view) {
+		if (SourceData.getChuangGuanRandomData() != null) {
+			Toast.makeText(this, "您还未通关，不能导入自定义词语", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		int wenzibi = DataUtil.getInfoFromShared(this, "wenzibi");
+		if (wenzibi < 200) {
+			Toast.makeText(this, "文字币至少需要200，才能导入自定义词语", Toast.LENGTH_SHORT)
+					.show();
+			return;
+		}
 	}
 }

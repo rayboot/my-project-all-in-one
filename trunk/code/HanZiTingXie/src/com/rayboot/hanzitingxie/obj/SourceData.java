@@ -53,6 +53,16 @@ public class SourceData extends Model {
 				.orderBy("wrong DESC").execute();
 	}
 
+	public static List<SourceData> getAllDatas() {
+		return new Select().from(SourceData.class).orderBy("wrong DESC")
+				.execute();
+	}
+
+	public static List<SourceData> getAllRightDatas() {
+		return new Select().from(SourceData.class).where("isRight = ?", 1)
+				.execute();
+	}
+
 	public static void updateItem(SourceData sData) {
 		sData.save();
 	}

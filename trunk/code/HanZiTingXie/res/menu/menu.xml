@@ -13,4 +13,8 @@
         android:id="@+id/item_final"
         android:title="直接显示答案"
         holo:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/item_frend_help"
+        android:title="求助好友"
+        holo:showAsAction="ifRoom|withText" />
 </menu>

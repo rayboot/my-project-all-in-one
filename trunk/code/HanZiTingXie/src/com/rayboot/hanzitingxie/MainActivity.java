@@ -2,7 +2,6 @@ package com.rayboot.hanzitingxie;
 
 import java.util.Random;
 
-import org.holoeverywhere.ThemeManager;
 import org.holoeverywhere.widget.Toast;
 
 import android.content.Context;
@@ -34,6 +33,8 @@ import com.iflytek.speech.SynthesizerListener;
 import com.rayboot.hanzitingxie.obj.SourceData;
 import com.rayboot.hanzitingxie.util.ApkInstaller;
 import com.rayboot.hanzitingxie.util.DataUtil;
+import com.rayboot.hanzitingxie.util.ScreenShot;
+import com.rayboot.hanzitingxie.util.Util;
 
 public class MainActivity extends MyBaseActivity {
 	String TAG = "MainActivity";
@@ -41,10 +42,12 @@ public class MainActivity extends MyBaseActivity {
 	private SpeechSynthesizer mTts;
 	private SourceData curData;
 	TextView tvBi;
+	TextView tvLevel;
 	EditText[] ets = new EditText[4];
 	TextView[] tvs = new TextView[4];
 	LinearLayout[] lls = new LinearLayout[4];
 	int curPlayType = 0;
+	int allCount = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +70,7 @@ public class MainActivity extends MyBaseActivity {
 		lls[1] = (LinearLayout) findViewById(R.id.ll2);
 		lls[2] = (LinearLayout) findViewById(R.id.ll3);
 		lls[3] = (LinearLayout) findViewById(R.id.ll4);
+		tvLevel = (TextView) findViewById(R.id.tvLevel);
 		for (EditText et : ets) {
 			et.addTextChangedListener(watcher);
 			et.setOnEditorActionListener(onEditorActionListener);
@@ -96,6 +100,12 @@ public class MainActivity extends MyBaseActivity {
 				dialog.show(this);
 				return;
 			}
+			if (allCount == 0) {
+				allCount = SourceData.getAllDatas().size();
+			}
+			tvLevel.setText(SourceData.getAllRightDatas().size() + 1 + "/"
+					+ allCount);
+
 		} else if (MyApplication.PLAY_TYPE_WUJIN == curPlayType) {
 			curData = SourceData.getRandomData();
 		}
@@ -441,12 +451,25 @@ public class MainActivity extends MyBaseActivity {
 			case R.id.item_final:
 				showAnswer();
 				break;
-
+			case R.id.item_frend_help:
+				onFrendHelp();
+				break;
 			default:
 				break;
 			}
 			return false;
 		}
 	};
+
+	private void onFrendHelp() {
+		String file = ScreenShot.shoot(MainActivity.this);
+		if (TextUtils.isEmpty(file)) {
+			Util.shareSomethingText(MainActivity.this, "分享",
+					"我使用  #汉字听写#  谁能告诉我 " + curData.pinyin + " 这个词语怎么写？");
+		} else {
+			Util.shareSomethingTextPhoto(MainActivity.this, "分享",
+					"我使用  #汉字听写#  谁能告诉我 " + curData.pinyin + " 这个词语怎么写？", file);
+		}
+	}
 
 }
