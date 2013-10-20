@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">合肥公积金查询</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_detail">公积金详情</string>
+    <string name="title_activity_about">关于</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="share_main_content">我正在使用 合肥公积金查询应用，知道你需要，特地通知你，赶快去各大应用市场下载吧！</string>
+    <string name="about_content">合肥公积金查询，手机上就能查询公积金信息！\n如果喜欢就支持下！\nV%1$s</string>
+
+</resources>

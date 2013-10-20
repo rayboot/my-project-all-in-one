@@ -2,6 +2,7 @@ package com.rayboot.ahjiaotong;
 
 import java.util.List;
 
+import android.R.integer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,8 +11,12 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
+import cn.waps.AdView;
+import cn.waps.AppConnect;
+import cn.waps.UpdatePointsNotifier;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
@@ -37,6 +42,7 @@ public class MainActivity extends SherlockActivity {
 	Button btnSearch;
 	EditText etNum;
 	EditText etFrameNum;
+	LinearLayout AdLinearLayout;
 
 	ListView lvContent;
 	MyBaseAdapter<HistoryObj> adapter;
@@ -76,7 +82,41 @@ public class MainActivity extends SherlockActivity {
 				btnSearch.performClick();
 			}
 		});
+
+		if (Global.isShowAD.equals("1")) {
+			initWAPS();
+		}
 	}
+
+	private void initWAPS() {
+		AdLinearLayout = (LinearLayout) findViewById(R.id.AdLinearLayout);
+		AppConnect.getInstance(this);
+		AppConnect.getInstance(this).getPoints(updatePointsNotifier);
+		AppConnect.getInstance(this).awardPoints(2, updatePointsNotifier);
+		// 初始化自定义广告数据
+		AppConnect.getInstance(this).initAdInfo();
+		// 初始化插屏广告数据
+		AppConnect.getInstance(this).initPopAd(this);
+		// AppConnect.getInstance(this).awardPoints(10, updatePointsNotifier);
+		// 禁用错误报告
+		AppConnect.getInstance(this).setCrashReport(false);
+		new AdView(this, AdLinearLayout).DisplayAd();
+	}
+
+	private UpdatePointsNotifier updatePointsNotifier = new UpdatePointsNotifier() {
+
+		@Override
+		public void getUpdatePointsFailed(String arg0) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void getUpdatePoints(String arg0, int arg1) {
+			// TODO Auto-generated method stub
+			Global.app_count = arg1;
+		}
+	};
 
 	private void initHistory() {
 		adapter = new HistoryAdapter<HistoryObj>(this, HistoryObj.getAllData());
@@ -85,6 +125,9 @@ public class MainActivity extends SherlockActivity {
 
 	private void initUMeng() {
 		MobclickAgent.setDebugMode(false);
+		// 在线参数
+		MobclickAgent.updateOnlineConfig(this);
+		Global.isShowAD = MobclickAgent.getConfigParams(this, "isShowAD");
 		// 友盟意见反馈检索
 		agent = new FeedbackAgent(this);
 		agent.sync();
@@ -117,6 +160,9 @@ public class MainActivity extends SherlockActivity {
 		if (adapter != null) {
 			adapter.setDatas(HistoryObj.getAllData());
 			adapter.notifyDataSetChanged();
+		}
+		if (Global.isShowAD.equals("1")) {
+			AppConnect.getInstance(this).getPoints(updatePointsNotifier);
 		}
 	}
 
@@ -167,7 +213,9 @@ public class MainActivity extends SherlockActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		SubMenu sub = menu.addSubMenu("Setting");
 		sub.add(0, MORE_CLEAR_DB, 0, "清空历史记录");
-		// sub.add(0, MORE_GET_POINT, 0, "获取积分");
+		if (Global.isShowAD.equals("1")) {
+			sub.add(0, MORE_GET_POINT, 0, "获取积分");
+		}
 		sub.add(0, MORE_FEEBACK, 0, "意见反馈");
 		sub.add(0, MORE_SHARE, 0, "分享");
 		sub.add(0, MORE_ABOUT, 0, "关于");
@@ -184,9 +232,9 @@ public class MainActivity extends SherlockActivity {
 		case android.R.id.home:
 		case 0:
 			return false;
-			// case MORE_GET_POINT:
-			// AppConnect.getInstance(this).showOffers(this);
-			// break;
+		case MORE_GET_POINT:
+			AppConnect.getInstance(this).showOffers(this);
+			break;
 		case MORE_ABOUT:
 			startActivity(new Intent(this, AboutActivity.class));
 			break;

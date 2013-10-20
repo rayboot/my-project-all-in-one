@@ -2,6 +2,7 @@ package com.rayboot.providentsearch;
 
 public class SearchDataObj {
 	public String resultCode; // 返回码
+	public String tip; // 
 	public String zgxm; // 姓名
 	public String gjd;// 归结点
 	public String ygz;// 工资基数
