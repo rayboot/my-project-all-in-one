@@ -7,6 +7,7 @@ import java.util.List;
 import org.holoeverywhere.widget.ListView;
 import org.holoeverywhere.widget.Toast;
 
+import android.R.integer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -15,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 
+import com.rayboot.hanzitingxie.obj.SourceData;
 import com.rayboot.hanzitingxie.util.DataUtil;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
@@ -123,6 +125,15 @@ public class JumpActivity extends MyBaseActivity {
 	}
 
 	public void onWuJin() {
+		if (SourceData.getChuangGuanRandomData() != null) {
+			Toast.makeText(this, "您还未通关，不能进入无尽模式", Toast.LENGTH_SHORT).show();
+			return;
+		}
+		int wenzibi = DataUtil.getInfoFromShared(this, "wenzibi");
+		if (wenzibi < 200) {
+			Toast.makeText(this, "文字币大于200才能进入", Toast.LENGTH_SHORT).show();
+			return;
+		}
 		Intent intent = new Intent(this, MainActivity.class);
 		intent.putExtra("cur_play_type", MyApplication.PLAY_TYPE_WUJIN);
 		startActivity(intent);
