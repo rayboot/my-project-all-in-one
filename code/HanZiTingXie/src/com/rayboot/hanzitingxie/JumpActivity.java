@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 
+import com.activeandroid.util.SQLiteUtils;
 import com.rayboot.hanzitingxie.obj.SourceData;
 import com.rayboot.hanzitingxie.util.DataUtil;
 import com.umeng.analytics.MobclickAgent;
@@ -140,9 +141,12 @@ public class JumpActivity extends MyBaseActivity {
 	}
 
 	public void onData() {
-		Intent intent = new Intent(this, RankActivity.class);
-		startActivity(intent);
-		// doInitData();
+//		Intent intent = new Intent(this, RankActivity.class);
+//		startActivity(intent);
+		 doInitData();
+	}
+	
+	public void loadData(){
 	}
 
 	public void doInitData() {

@@ -48,6 +48,7 @@ public class DataUtil {
 								.trim();
 						title = tdsElements.get(1).text().trim();
 						title = title.replace("(注)", "");
+						title = title.replace("（注）", "");
 						if (title.contains("/")) {
 							title = title.substring(0, title.indexOf("/"));
 						}
@@ -59,6 +60,7 @@ public class DataUtil {
 								.trim();
 						title = tdsElements.get(2).text().trim();
 						title = title.replace("(注)", "");
+						title = title.replace("（注）", "");
 						if (title.contains("/")) {
 							title = title.substring(0, title.indexOf("/"));
 						}
