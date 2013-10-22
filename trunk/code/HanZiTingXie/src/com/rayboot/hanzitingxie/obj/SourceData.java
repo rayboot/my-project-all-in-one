@@ -2,18 +2,14 @@ package com.rayboot.hanzitingxie.obj;
 
 import java.util.List;
 
-import android.util.Log;
-
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
-import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
-import com.activeandroid.query.Update;
 
 @Table(name = "SourceDataTable")
 public class SourceData extends Model {
-	@Column(name = "title")
+	@Column(name = "title",unique=true,onUniqueConflict=Column.ConflictAction.IGNORE)
 	public String title;
 	@Column(name = "pinyin")
 	public String pinyin;
