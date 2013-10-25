@@ -9,7 +9,7 @@ import com.activeandroid.query.Select;
 
 @Table(name = "SourceDataTable")
 public class SourceData extends Model {
-	@Column(name = "title",unique=true,onUniqueConflict=Column.ConflictAction.IGNORE)
+	@Column(name = "title")
 	public String title;
 	@Column(name = "pinyin")
 	public String pinyin;
@@ -56,6 +56,11 @@ public class SourceData extends Model {
 
 	public static List<SourceData> getAllRightDatas() {
 		return new Select().from(SourceData.class).where("isRight = ?", 1)
+				.execute();
+	}
+
+	public static List<SourceData> getAllDataByWrong() {
+		return new Select().from(SourceData.class).orderBy("wrong DESC")
 				.execute();
 	}
 
