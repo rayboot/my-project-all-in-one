@@ -1,6 +1,5 @@
 package com.rayboot.hanzitingxie.util;
 
-import java.io.File;
 import java.io.IOException;
 
 import org.jsoup.Jsoup;
@@ -8,13 +7,14 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import android.R.integer;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 
+import com.activeandroid.ActiveAndroid;
 import com.rayboot.hanzitingxie.obj.SourceData;
+import com.rayboot.hanzitingxie.obj.WordData;
 
 public class DataUtil {
 
@@ -33,45 +33,52 @@ public class DataUtil {
 		// Document doc = Jsoup.connect(url).get();
 		Elements elements = doc.body().getElementsByAttributeValue("class",
 				"table-view log-set-param");
-		for (Element element : elements) {
+		ActiveAndroid.beginTransaction();
+		try {
+			for (Element element : elements) {
 
-			Elements trsElements = element.getElementsByTag("tr");
-			for (Element tr : trsElements) {
-				String href = "";
-				String title = "";
-				String pinyin = "";
+				Elements trsElements = element.getElementsByTag("tr");
+				for (Element tr : trsElements) {
+					String href = "";
+					String title = "";
+					String pinyin = "";
 
-				Elements tdsElements = tr.getElementsByTag("td");
-				if (tdsElements.size() == 4) {
-					for (int i = 0; i < tdsElements.size(); i++) {
-						href = getAtagAttr(tdsElements.get(1), "a", "href")
-								.trim();
-						title = tdsElements.get(1).text().trim();
-						title = title.replace("(注)", "");
-						title = title.replace("（注）", "");
-						if (title.contains("/")) {
-							title = title.substring(0, title.indexOf("/"));
+					Elements tdsElements = tr.getElementsByTag("td");
+					if (tdsElements.size() == 4) {
+						for (int i = 0; i < tdsElements.size(); i++) {
+							href = getAtagAttr(tdsElements.get(1), "a", "href")
+									.trim();
+							title = tdsElements.get(1).text().trim();
+							title = title.replace("(注)", "");
+							title = title.replace("（注）", "");
+							if (title.contains("/")) {
+								title = title.substring(0, title.indexOf("/"));
+							}
+							pinyin = tdsElements.get(2).text().trim();
 						}
-						pinyin = tdsElements.get(2).text().trim();
-					}
-				} else if (tdsElements.size() == 5) {
-					for (int i = 0; i < tdsElements.size(); i++) {
-						href = getAtagAttr(tdsElements.get(2), "a", "href")
-								.trim();
-						title = tdsElements.get(2).text().trim();
-						title = title.replace("(注)", "");
-						title = title.replace("（注）", "");
-						if (title.contains("/")) {
-							title = title.substring(0, title.indexOf("/"));
+					} else if (tdsElements.size() == 5) {
+						for (int i = 0; i < tdsElements.size(); i++) {
+							href = getAtagAttr(tdsElements.get(2), "a", "href")
+									.trim();
+							title = tdsElements.get(2).text().trim();
+							title = title.replace("(注)", "");
+							title = title.replace("（注）", "");
+							if (title.contains("/")) {
+								title = title.substring(0, title.indexOf("/"));
+							}
+							pinyin = tdsElements.get(3).text().trim();
 						}
-						pinyin = tdsElements.get(3).text().trim();
 					}
-				}
-				if (!TextUtils.isEmpty(href) && !TextUtils.isEmpty(title)
-						&& !TextUtils.isEmpty(pinyin)) {
-					new SourceData(title, pinyin, href).save();
+					if (!TextUtils.isEmpty(href) && !TextUtils.isEmpty(title)
+							&& !TextUtils.isEmpty(pinyin)) {
+						new WordData(title, pinyin, href).save();
+//						new SourceData(title, pinyin, href).save();
+					}
 				}
 			}
+			ActiveAndroid.setTransactionSuccessful();
+		} finally {
+			ActiveAndroid.endTransaction();
 		}
 	}
 
@@ -89,8 +96,7 @@ public class DataUtil {
 		return preferences.getInt(key, 0);
 	}
 
-	public static boolean setInfoToShared(Context context, String key,
-			int value) {
+	public static boolean setInfoToShared(Context context, String key, int value) {
 		SharedPreferences preferences = context.getSharedPreferences(
 				"hanzitingxie", Context.MODE_PRIVATE);
 		Editor editor = preferences.edit();

@@ -146,8 +146,6 @@ public class JumpActivity extends MyBaseActivity {
 		 doInitData();
 	}
 	
-	public void loadData(){
-	}
 
 	public void doInitData() {
 		try {
