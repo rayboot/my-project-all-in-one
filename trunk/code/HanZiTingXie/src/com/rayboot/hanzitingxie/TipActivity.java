@@ -13,6 +13,7 @@ public class TipActivity extends MyBaseActivity {
 
 	String title;
 	String url;
+	String pinyin;
 
 	WebView mWebView;
 
@@ -23,6 +24,7 @@ public class TipActivity extends MyBaseActivity {
 
 		title = getIntent().getStringExtra("data_answer");
 		url = getIntent().getStringExtra("data_tip");
+		pinyin = getIntent().getStringExtra("data_pinyin");
 
 		if (!url.contains("http")) {
 			url = "http://wapbaike.baidu.com" + url;
@@ -43,8 +45,13 @@ public class TipActivity extends MyBaseActivity {
 
 			@Override
 			public void onPageFinished(WebView view, String url) {
-				view.loadUrl("javascript:var orgHtml = document.getElementsByTagName('body')[0].innerHTML;document.getElementsByTagName('body')[0].innerHTML=orgHtml.replace(/"
-						+ title + "/g,'*');");
+				String jsString = "";
+				String [] pinyinStrings = pinyin.split(" ");
+				for (int i = 0; i < title.length(); i++) {
+					jsString += "javascript:var orgHtml = document.getElementsByTagName('body')[0].innerHTML;document.getElementsByTagName('body')[0].innerHTML=orgHtml.replace(/\\"
+							+ title.substring(i, i+1) + "/g,' "+ pinyinStrings[i]+ "');";
+				}
+				view.loadUrl(jsString);
 			}
 
 		});

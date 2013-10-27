@@ -14,40 +14,40 @@
         android:gravity="center_horizontal" >
 
         <TextView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/settings_rect_bg"
+            android:layout_height="@dimen/settings_rect_bg"
             android:background="@drawable/et_bg"
             android:gravity="center"
             android:text="汉"
             android:textColor="#000000"
-            android:textSize="50sp" />
+            android:textSize="@dimen/settings_rect_text_size" />
 
         <TextView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/settings_rect_bg"
+            android:layout_height="@dimen/settings_rect_bg"
             android:background="@drawable/et_bg"
             android:gravity="center"
             android:text="字"
             android:textColor="#000000"
-            android:textSize="50sp" />
+            android:textSize="@dimen/settings_rect_text_size" />
 
         <TextView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/settings_rect_bg"
+            android:layout_height="@dimen/settings_rect_bg"
             android:background="@drawable/et_bg"
             android:gravity="center"
             android:text="听"
             android:textColor="#000000"
-            android:textSize="50sp" />
+            android:textSize="@dimen/settings_rect_text_size" />
 
         <TextView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/settings_rect_bg"
+            android:layout_height="@dimen/settings_rect_bg"
             android:background="@drawable/et_bg"
             android:gravity="center"
             android:text="写"
             android:textColor="#000000"
-            android:textSize="50sp" />
+            android:textSize="@dimen/settings_rect_text_size" />
     </LinearLayout>
 
     <LinearLayout

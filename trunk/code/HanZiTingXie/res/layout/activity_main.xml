@@ -84,12 +84,12 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#000000"
-                        android:textSize="30sp" />
+                        android:textSize="@dimen/main_pinyin_size" />
 
                     <EditText
                         android:id="@+id/et1"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="@dimen/main_rect_bg"
+                        android:layout_height="@dimen/main_rect_bg"
                         android:background="@drawable/et_bg"
                         android:ems="1"
                         android:gravity="center"
@@ -97,7 +97,7 @@
                         android:lines="1"
                         android:maxLength="1"
                         android:maxLines="1"
-                        android:textSize="100sp" >
+                        android:textSize="@dimen/main_rect_text_size" >
 
                         <requestFocus />
                     </EditText>
@@ -116,12 +116,12 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#000000"
-                        android:textSize="30sp" />
+                        android:textSize="@dimen/main_pinyin_size" />
 
                     <EditText
                         android:id="@+id/et2"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="@dimen/main_rect_bg"
+                        android:layout_height="@dimen/main_rect_bg"
                         android:background="@drawable/et_bg"
                         android:ems="1"
                         android:gravity="center"
@@ -129,7 +129,7 @@
                         android:lines="1"
                         android:maxLength="1"
                         android:maxLines="1"
-                        android:textSize="100sp" />
+                        android:textSize="@dimen/main_rect_text_size"  />
                 </LinearLayout>
             </LinearLayout>
 
@@ -151,12 +151,12 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#000000"
-                        android:textSize="30sp" />
+                        android:textSize="@dimen/main_pinyin_size"  />
 
                     <EditText
                         android:id="@+id/et3"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="@dimen/main_rect_bg"
+                        android:layout_height="@dimen/main_rect_bg"
                         android:background="@drawable/et_bg"
                         android:ems="1"
                         android:gravity="center"
@@ -164,7 +164,7 @@
                         android:lines="1"
                         android:maxLength="1"
                         android:maxLines="1"
-                        android:textSize="100sp" />
+                        android:textSize="@dimen/main_rect_text_size"  />
                 </LinearLayout>
 
                 <LinearLayout
@@ -180,12 +180,12 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="#000000"
-                        android:textSize="30sp" />
+                        android:textSize="@dimen/main_pinyin_size"  />
 
                     <EditText
                         android:id="@+id/et4"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
+                        android:layout_width="@dimen/main_rect_bg"
+                        android:layout_height="@dimen/main_rect_bg"
                         android:background="@drawable/et_bg"
                         android:ems="1"
                         android:gravity="center"
@@ -193,7 +193,7 @@
                         android:lines="1"
                         android:maxLength="1"
                         android:maxLines="1"
-                        android:textSize="100sp" />
+                        android:textSize="@dimen/main_rect_text_size"  />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
