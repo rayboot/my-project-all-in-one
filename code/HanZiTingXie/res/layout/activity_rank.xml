@@ -34,7 +34,7 @@
             android:text="词组"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#000000"
-            android:textSize="30sp" />
+            android:textSize="@dimen/main_pinyin_size" />
 
         <TextView
             android:layout_width="0dp"
@@ -44,7 +44,7 @@
             android:text="错误次数"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#000000"
-            android:textSize="30sp" />
+            android:textSize="@dimen/main_pinyin_size" />
     </LinearLayout>
 
 </RelativeLayout>

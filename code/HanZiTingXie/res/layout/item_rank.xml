@@ -15,7 +15,7 @@
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#000000"
-        android:textSize="30sp" />
+        android:textSize="@dimen/main_pinyin_size" />
 
     <TextView
         android:id="@+id/tvWrong"
@@ -26,6 +26,6 @@
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#000000"
-        android:textSize="30sp" />
+        android:textSize="@dimen/main_pinyin_size" />
 
 </LinearLayout>

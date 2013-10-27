@@ -183,6 +183,7 @@ public class MainActivity extends MyBaseActivity {
 		Intent intent = new Intent(this, TipActivity.class);
 		intent.putExtra("data_answer", curData.title);
 		intent.putExtra("data_tip", curData.url);
+		intent.putExtra("data_pinyin", curData.pinyin);
 		startActivity(intent);
 	}
 
