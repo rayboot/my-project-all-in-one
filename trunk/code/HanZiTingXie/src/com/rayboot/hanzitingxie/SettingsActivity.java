@@ -1,27 +1,22 @@
 package com.rayboot.hanzitingxie;
 
-import org.holoeverywhere.widget.Button;
 import org.holoeverywhere.widget.SeekBar;
 import org.holoeverywhere.widget.SeekBar.OnSeekBarChangeListener;
 import org.holoeverywhere.widget.Toast;
+
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.os.RemoteException;
+import android.view.MenuItem;
+import android.view.View;
 
 import com.iflytek.speech.SpeechConstant;
 import com.iflytek.speech.SpeechSynthesizer;
 import com.iflytek.speech.SpeechUtility;
 import com.iflytek.speech.SynthesizerListener;
-import com.rayboot.hanzitingxie.obj.SourceData;
+import com.rayboot.hanzitingxie.obj.WordData;
 import com.rayboot.hanzitingxie.util.ApkInstaller;
 import com.rayboot.hanzitingxie.util.DataUtil;
-
-import android.os.Bundle;
-import android.os.RemoteException;
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
 
 public class SettingsActivity extends MyBaseActivity {
 	SeekBar sb1;
@@ -176,7 +171,7 @@ public class SettingsActivity extends MyBaseActivity {
 	}
 
 	public void onExport(View view) {
-		if (SourceData.getChuangGuanRandomData() != null) {
+		if (WordData.getChuangGuanRandomData() != null) {
 			Toast.makeText(this, "您还未通关，不能导入自定义词语", Toast.LENGTH_SHORT).show();
 			return;
 		}

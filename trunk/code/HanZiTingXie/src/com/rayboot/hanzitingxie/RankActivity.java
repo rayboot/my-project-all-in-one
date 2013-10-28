@@ -1,19 +1,15 @@
 package com.rayboot.hanzitingxie;
 
-import java.util.List;
-
-import com.rayboot.hanzitingxie.obj.SourceData;
-
 import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+
+import com.rayboot.hanzitingxie.obj.WordData;
 
 public class RankActivity extends MyBaseActivity {
 
 	ListView lvRank;
-	MyBaseAdapter<SourceData> adapter;
+	MyBaseAdapter<WordData> adapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +19,8 @@ public class RankActivity extends MyBaseActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		lvRank = (ListView) findViewById(R.id.lvRank);
-		adapter = new RankAdapter<SourceData>(this,
-				SourceData.getAllWrongDatas());
+		adapter = new RankAdapter<WordData>(this,
+				WordData.getAllWrongDatas());
 		lvRank.setAdapter(adapter);
 
 	}

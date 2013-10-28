@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.rayboot.hanzitingxie.util.Util;
-import com.umeng.fb.FeedbackAgent;
 
 public class MoreActivity extends MyBaseActivity {
 

@@ -7,7 +7,6 @@ import java.util.List;
 import org.holoeverywhere.widget.ListView;
 import org.holoeverywhere.widget.Toast;
 
-import android.R.integer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -16,8 +15,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 
-import com.activeandroid.util.SQLiteUtils;
-import com.rayboot.hanzitingxie.obj.SourceData;
+import com.rayboot.hanzitingxie.obj.WordData;
 import com.rayboot.hanzitingxie.util.DataUtil;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
@@ -126,7 +124,7 @@ public class JumpActivity extends MyBaseActivity {
 	}
 
 	public void onWuJin() {
-		if (SourceData.getChuangGuanRandomData() != null) {
+		if (WordData.getChuangGuanRandomData() != null) {
 			Toast.makeText(this, "您还未通关，不能进入无尽模式", Toast.LENGTH_SHORT).show();
 			return;
 		}
@@ -141,11 +139,10 @@ public class JumpActivity extends MyBaseActivity {
 	}
 
 	public void onData() {
-//		Intent intent = new Intent(this, RankActivity.class);
-//		startActivity(intent);
-		 doInitData();
+		Intent intent = new Intent(this, RankActivity.class);
+		startActivity(intent);
+		// doInitData();
 	}
-	
 
 	public void doInitData() {
 		try {
@@ -155,7 +152,6 @@ public class JumpActivity extends MyBaseActivity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 	}
 
 	public void onSettings() {

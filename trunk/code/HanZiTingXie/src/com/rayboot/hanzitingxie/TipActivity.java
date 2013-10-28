@@ -1,6 +1,5 @@
 package com.rayboot.hanzitingxie;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
