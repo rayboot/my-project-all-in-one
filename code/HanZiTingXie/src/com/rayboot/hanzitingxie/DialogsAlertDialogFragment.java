@@ -2,7 +2,6 @@
 package com.rayboot.hanzitingxie;
 
 import org.holoeverywhere.app.AlertDialog;
-import org.holoeverywhere.app.AlertDialog.Builder;
 import org.holoeverywhere.app.DialogFragment;
 
 import android.content.Context;

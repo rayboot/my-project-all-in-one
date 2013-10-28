@@ -35,6 +35,7 @@ import com.activeandroid.serializer.TypeSerializer;
 import com.activeandroid.serializer.UtilDateSerializer;
 import com.activeandroid.util.Log;
 import com.activeandroid.util.ReflectionUtils;
+
 import dalvik.system.DexFile;
 
 final class ModelInfo {

@@ -6,7 +6,6 @@ import org.holoeverywhere.LayoutInflater;
 import org.holoeverywhere.ThemeManager;
 
 import com.activeandroid.ActiveAndroid;
-import com.umeng.analytics.MobclickAgent;
 
 public class MyApplication extends org.holoeverywhere.app.Application {
 	private static final String PACKAGE = MyApplication.class.getPackage()

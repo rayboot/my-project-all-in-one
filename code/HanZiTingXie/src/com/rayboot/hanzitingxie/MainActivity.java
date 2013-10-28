@@ -30,7 +30,7 @@ import com.iflytek.speech.SpeechConstant;
 import com.iflytek.speech.SpeechSynthesizer;
 import com.iflytek.speech.SpeechUtility;
 import com.iflytek.speech.SynthesizerListener;
-import com.rayboot.hanzitingxie.obj.SourceData;
+import com.rayboot.hanzitingxie.obj.WordData;
 import com.rayboot.hanzitingxie.util.ApkInstaller;
 import com.rayboot.hanzitingxie.util.DataUtil;
 import com.rayboot.hanzitingxie.util.ScreenShot;
@@ -40,7 +40,7 @@ public class MainActivity extends MyBaseActivity {
 	String TAG = "MainActivity";
 	// 语音合成对象
 	private SpeechSynthesizer mTts;
-	private SourceData curData;
+	private WordData curData;
 	TextView tvBi;
 	TextView tvLevel;
 	EditText[] ets = new EditText[4];
@@ -82,7 +82,7 @@ public class MainActivity extends MyBaseActivity {
 
 	public void setHanzi() {
 		if (MyApplication.PLAY_TYPE_CHUANGGUAN == curPlayType) {
-			curData = SourceData.getChuangGuanRandomData();
+			curData = WordData.getChuangGuanRandomData();
 			if (curData == null) {
 				DialogsAlertDialogFragment dialog = new DialogsAlertDialogFragment();
 				dialog.getBuilder(this).setMessage(
@@ -101,13 +101,13 @@ public class MainActivity extends MyBaseActivity {
 				return;
 			}
 			if (allCount == 0) {
-				allCount = SourceData.getAllDatas().size();
+				allCount = WordData.getAllDatas().size();
 			}
-			tvLevel.setText(SourceData.getAllRightDatas().size() + 1 + "/"
+			tvLevel.setText(WordData.getAllRightDatas().size() + 1 + "/"
 					+ allCount);
 
 		} else if (MyApplication.PLAY_TYPE_WUJIN == curPlayType) {
-			curData = SourceData.getRandomData();
+			curData = WordData.getRandomData();
 		}
 
 		int count = curData.title.length();
@@ -258,16 +258,14 @@ public class MainActivity extends MyBaseActivity {
 
 		String temp = "恭喜你，回答正确！\n正确答案：" + curData.title;
 		if (isRight) {
-			curData.right += 1;
 			if (MyApplication.PLAY_TYPE_CHUANGGUAN == curPlayType) {
 				curData.isRight = 1;
 			}
-			changeWenZiBi(5);
 		} else {
 			curData.wrong += 1;
 			temp = "非常抱歉，回答错误。";
 		}
-		SourceData.updateItem(curData);
+		WordData.updateItem(curData);
 
 		DialogsAlertDialogFragment dialog = new DialogsAlertDialogFragment();
 		dialog.getBuilder(this).setMessage(temp);
@@ -278,6 +276,7 @@ public class MainActivity extends MyBaseActivity {
 
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
+							changeWenZiBi(5);
 							setHanzi();
 						}
 					});

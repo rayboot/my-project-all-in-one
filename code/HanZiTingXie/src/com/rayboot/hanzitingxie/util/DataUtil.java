@@ -1,6 +1,8 @@
 package com.rayboot.hanzitingxie.util;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -13,7 +15,6 @@ import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 
 import com.activeandroid.ActiveAndroid;
-import com.rayboot.hanzitingxie.obj.SourceData;
 import com.rayboot.hanzitingxie.obj.WordData;
 
 public class DataUtil {
@@ -77,6 +78,20 @@ public class DataUtil {
 				}
 			}
 			ActiveAndroid.setTransactionSuccessful();
+			
+//			List<WordData> datas = WordData.getAllDatas();
+//			StringBuffer data = new StringBuffer();
+//			data.append("[");
+//			for (WordData wordData : datas) {
+//				data.append("{");
+//				data.append("\"title\": \"" + wordData.title + "\",");
+//				data.append("\"pinyin\": \"" + wordData.pinyin + "\",");
+//				data.append("\"url\": \"" + wordData.url + "\"");
+//				data.append("},");
+//			}
+//			data.append("]");
+//			new FileUtils().write2SDFromString("/", "data.json", data.toString());
+//			Log.i("11111111111111", data.toString());
 		} finally {
 			ActiveAndroid.endTransaction();
 		}
@@ -103,5 +118,21 @@ public class DataUtil {
 		editor.putInt(key, value);
 		editor.commit();
 		return true;
+	}
+
+	public static String getFromAssets(Context context, String fileName) {
+		try {
+			InputStreamReader inputReader = new InputStreamReader(context
+					.getResources().getAssets().open(fileName));
+			BufferedReader bufReader = new BufferedReader(inputReader);
+			String line = "";
+			String Result = "";
+			while ((line = bufReader.readLine()) != null)
+				Result += line;
+			return Result;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.rayboot.hanzitingxie.obj.SourceData;
+import com.rayboot.hanzitingxie.obj.WordData;
 
 public class RankAdapter<T> extends MyBaseAdapter<T> {
 
@@ -31,7 +31,7 @@ public class RankAdapter<T> extends MyBaseAdapter<T> {
 			convertView.setTag(holder);
 		}
 
-		SourceData sd = (SourceData) getItem(position);
+		WordData sd = (WordData) getItem(position);
 
 		holder.tvWord.setText(sd.isRight == 1 ? sd.title : sd.pinyin);
 		holder.tvWrong.setText(sd.wrong + "");
