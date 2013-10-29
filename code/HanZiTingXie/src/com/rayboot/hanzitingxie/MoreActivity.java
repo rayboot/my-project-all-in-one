@@ -5,6 +5,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.rayboot.hanzitingxie.util.DataUtil;
 import com.rayboot.hanzitingxie.util.Util;
 
 public class MoreActivity extends MyBaseActivity {

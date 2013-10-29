@@ -22,6 +22,7 @@ import com.umeng.fb.FeedbackAgent;
 import com.umeng.update.UmengUpdateAgent;
 import com.umeng.update.UmengUpdateListener;
 import com.umeng.update.UpdateResponse;
+import com.wanpu.pay.PayConnect;
 
 public class JumpActivity extends MyBaseActivity {
 	private long exitTime = 0;
@@ -49,8 +50,13 @@ public class JumpActivity extends MyBaseActivity {
 		}
 		loadMode();
 		initUMeng();
+		initWaps();
 	}
 
+	private void initWaps(){
+		PayConnect.getInstance("d17140e585412eb323b5312a303b166a", "WAPS", this);
+	}
+	
 	private void initUMeng() {
 		MobclickAgent.setDebugMode(false);
 		agent = new FeedbackAgent(this);
@@ -180,6 +186,13 @@ public class JumpActivity extends MyBaseActivity {
 			return true;
 		}
 		return super.onKeyDown(keyCode, event);
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		PayConnect.getInstance(this).close();
+		super.onDestroy();
 	}
 
 }

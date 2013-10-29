@@ -14,5 +14,6 @@
     <string name="title_activity_jump">JumpActivity</string>
     <string name="title_activity_rank">数据</string>
     <string name="title_activity_loading">LoadingActivity</string>
+    <string name="title_activity_pay_wen_zi_bi">购买文字币</string>
 
 </resources>
