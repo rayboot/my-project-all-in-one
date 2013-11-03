@@ -16,12 +16,6 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.SubMenu;
-import com.activeandroid.ActiveAndroid;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-import com.rayboot.disneya.obj.AObj;
-import com.rayboot.disneya.util.DataUtil;
 import com.rayboot.disneya.util.Util;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
@@ -31,16 +25,16 @@ import com.umeng.update.UpdateResponse;
 
 public class MainActivity extends SherlockActivity {
 
-//	final int MORE_GET_POINT = 1;
+	// final int MORE_GET_POINT = 1;
 	final int MORE_FEEBACK = 2;
 	final int MORE_ABOUT = 3;
 	final int MORE_SHARE = 4;
 
 	GridView gvContent;
-	MyBaseAdapter<AObj> adapter;
+	MyBaseAdapter<Integer> adapter;
 	ListView lvIndex;
 	MyBaseAdapter<String> adapterIndex;
-	List<AObj> allObjs = null;
+	List<Integer> allObjs = new ArrayList<Integer>();
 	List<String> indexData = new ArrayList<String>();
 	FeedbackAgent agent;
 	int app_count = 0;
@@ -51,10 +45,12 @@ public class MainActivity extends SherlockActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		allObjs = AObj.getAllData();
+		for (int i = 1; i <= 280; i++) {
+			allObjs.add(i);
+		}
 
 		gvContent = (GridView) findViewById(R.id.gvContent);
-		adapter = new ContentAdapter<AObj>(this, allObjs);
+		adapter = new ContentAdapter<Integer>(this, allObjs);
 		gvContent.setAdapter(adapter);
 
 		gvContent.setOnItemClickListener(new OnItemClickListener() {
@@ -63,12 +59,9 @@ public class MainActivity extends SherlockActivity {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				// TODO Auto-generated method stub
-				Gson gson = new GsonBuilder()
-						.excludeFieldsWithoutExposeAnnotation().create();
 				Intent intent = new Intent(MainActivity.this,
 						DetailActivity.class);
-				intent.putExtra("content_detail",
-						gson.toJson(((AObj) adapter.getItem(arg2))));
+				intent.putExtra("content_detail", allObjs.get(arg2));
 				MainActivity.this.startActivity(intent);
 			}
 		});
@@ -87,43 +80,47 @@ public class MainActivity extends SherlockActivity {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
 				// TODO Auto-generated method stub
-				adapter.setDatas(AObj.getDataByRank(arg2 * 20 + 1,
-						(arg2 + 1) * 20));
+				List<Integer> rankData = new ArrayList<Integer>();
+				for (int i = arg2 * 20 + 1; i <= (arg2 + 1) * 20; i++) {
+					rankData.add(i);
+				}
+				adapter.setDatas(rankData);
 				adapter.notifyDataSetChanged();
 			}
 		});
 		initUMeng();
-//		initWAPS();
+		// initWAPS();
 	}
 
-//	private void initWAPS() {
-//		AdLinearLayout = (LinearLayout) findViewById(R.id.AdLinearLayout);
-//		AppConnect.getInstance(this);
-//		AppConnect.getInstance(this).getPoints(updatePointsNotifier);
-//		// 初始化自定义广告数据
-//		AppConnect.getInstance(this).initAdInfo();
-//		// 初始化插屏广告数据
-//		AppConnect.getInstance(this).initPopAd(this);
-//		// AppConnect.getInstance(this).awardPoints(10, updatePointsNotifier);
-//		// 禁用错误报告
-//		AppConnect.getInstance(this).setCrashReport(false);
-//		new AdView(this, AdLinearLayout).DisplayAd();
-//	}
+	// private void initWAPS() {
+	// AdLinearLayout = (LinearLayout) findViewById(R.id.AdLinearLayout);
+	// AppConnect.getInstance(this);
+	// AppConnect.getInstance(this).getPoints(updatePointsNotifier);
+	// // 初始化自定义广告数据
+	// AppConnect.getInstance(this).initAdInfo();
+	// // 初始化插屏广告数据
+	// AppConnect.getInstance(this).initPopAd(this);
+	// // AppConnect.getInstance(this).awardPoints(10, updatePointsNotifier);
+	// // 禁用错误报告
+	// AppConnect.getInstance(this).setCrashReport(false);
+	// new AdView(this, AdLinearLayout).DisplayAd();
+	// }
 
-//	private UpdatePointsNotifier updatePointsNotifier = new UpdatePointsNotifier() {
-//
-//		@Override
-//		public void getUpdatePointsFailed(String arg0) {
-//			// TODO Auto-generated method stub
-//
-//		}
-//
-//		@Override
-//		public void getUpdatePoints(String arg0, int arg1) {
-//			// TODO Auto-generated method stub
-//			app_count = arg1;
-//		}
-//	};
+	// private UpdatePointsNotifier updatePointsNotifier = new
+	// UpdatePointsNotifier() {
+	//
+	// @Override
+	// public void getUpdatePointsFailed(String arg0) {
+	// // TODO Auto-generated method stub
+	//
+	// }
+	//
+	// @Override
+	// public void getUpdatePoints(String arg0, int arg1) {
+	// // TODO Auto-generated method stub
+	// app_count = arg1;
+	// }
+	// };
 
 	private void initUMeng() {
 		MobclickAgent.setDebugMode(false);
@@ -147,26 +144,10 @@ public class MainActivity extends SherlockActivity {
 		});
 	}
 
-	public void onSaveToDB(View view) {
-		Gson gson = new Gson();
-		String data = DataUtil.getFromAssets(this, "leveljson");
-		List<AObj> aObjs = gson.fromJson(data, new TypeToken<List<AObj>>() {
-		}.getType());
-		ActiveAndroid.beginTransaction();
-		try {
-			for (AObj aObj : aObjs) {
-				aObj.save();
-			}
-			ActiveAndroid.setTransactionSuccessful();
-		} finally {
-			ActiveAndroid.endTransaction();
-		}
-	}
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		SubMenu sub = menu.addSubMenu("Setting");
-//		sub.add(0, MORE_GET_POINT, 0, "获取积分");
+		// sub.add(0, MORE_GET_POINT, 0, "获取积分");
 		sub.add(0, MORE_FEEBACK, 0, "意见反馈");
 		sub.add(0, MORE_SHARE, 0, "分享");
 		sub.add(0, MORE_ABOUT, 0, "关于");
@@ -180,9 +161,9 @@ public class MainActivity extends SherlockActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-//		case MORE_GET_POINT:
-//			AppConnect.getInstance(this).showOffers(this);
-//			break;
+		// case MORE_GET_POINT:
+		// AppConnect.getInstance(this).showOffers(this);
+		// break;
 		case MORE_ABOUT:
 			startActivity(new Intent(this, AboutActivity.class));
 			break;
@@ -191,7 +172,7 @@ public class MainActivity extends SherlockActivity {
 			break;
 		case MORE_SHARE:
 			Util.shareSomethingText(MainActivity.this, "分享",
-					"我使用  #我是谁背影猜答案#  知道你也玩，能通关吗？试试这个吧");
+					"我使用  #迪士尼疯狂猜图答案#  知道你也玩，能通关吗？试试这个吧");
 			break;
 		default:
 			break;
@@ -203,7 +184,7 @@ public class MainActivity extends SherlockActivity {
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-//		AppConnect.getInstance(this).close();
+		// AppConnect.getInstance(this).close();
 	}
 
 	public void onResume() {
