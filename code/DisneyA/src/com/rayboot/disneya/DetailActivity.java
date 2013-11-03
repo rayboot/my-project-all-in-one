@@ -7,14 +7,11 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
-import com.google.gson.Gson;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.rayboot.disneya.obj.AObj;
+import com.squareup.picasso.Picasso;
 import com.umeng.analytics.MobclickAgent;
 
 public class DetailActivity extends SherlockActivity {
-	AObj curAObj;
-	Gson gson = new Gson();
+	int curAObj;
 	LinearLayout AdLinearLayout;
 
 	@Override
@@ -22,15 +19,13 @@ public class DetailActivity extends SherlockActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_detail);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		curAObj = gson.fromJson(getIntent().getStringExtra("content_detail"),
-				AObj.class);
-		ImageLoader.getInstance().displayImage("asse"
-				+ "ts://" + curAObj.file_name,
-				(ImageView) findViewById(R.id.ivImg));
+		curAObj = getIntent().getIntExtra("content_detail", 1);
+		Picasso.with(this)
+				.load("http://61.191.44.170/clt/publish/clt/resource/images/temp/"
+						+ curAObj + ".png").placeholder(R.drawable.ic_launcher)
+				.into((ImageView) findViewById(R.id.ivImg));
 		TextView tvAnswer = (TextView) findViewById(R.id.tvAnswer);
-		tvAnswer.setText(curAObj.song_name);
-		TextView tvTip = (TextView) findViewById(R.id.tvTip);
-		tvTip.setText(curAObj.tips);
+		tvAnswer.setText(curAObj + "");
 		AdLinearLayout = (LinearLayout) findViewById(R.id.AdLinearLayout);
 		// AppConnect.getInstance(this).showPopAd(this);
 		// new AdView(this, AdLinearLayout).DisplayAd();

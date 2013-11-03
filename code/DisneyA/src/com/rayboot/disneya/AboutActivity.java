@@ -35,7 +35,7 @@ public class AboutActivity extends SherlockActivity {
 
 	public void onShareClick(View view) {
 		Util.shareSomethingText(AboutActivity.this, "分享",
-				"我使用  #我是谁背影猜答案#  知道你也玩，能通关吗？试试这个吧");
+				"我使用  #迪士尼疯狂猜图答案#  知道你也玩，能通关吗？试试这个吧");
 	}
 
 	public void onResume() {

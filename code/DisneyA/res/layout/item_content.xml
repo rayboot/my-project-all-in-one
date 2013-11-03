@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.rayboot.disneya.util.SquareLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
     <ImageView
         android:id="@+id/ivContent"
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_alignParentTop="true"
-        android:scaleType="fitCenter"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
         android:src="@drawable/ic_launcher" />
 
     <TextView
@@ -20,9 +19,11 @@
         android:layout_alignBottom="@+id/ivContent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
+        android:background="#88000000"
         android:gravity="center_horizontal"
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="35sp" />
+        android:textColor="#ffffff"
+        android:textSize="20sp" />
 
-</RelativeLayout>
+</com.rayboot.disneya.util.SquareLayout>

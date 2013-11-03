@@ -8,19 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.rayboot.disneya.obj.AObj;
+import com.squareup.picasso.Picasso;
 
 public class ContentAdapter<T> extends MyBaseAdapter<T> {
-
-	private DisplayImageOptions options;
 
 	public ContentAdapter(Context context, List<T> datas) {
 		super(context, datas);
 		// TODO Auto-generated constructor stub
-		options = new DisplayImageOptions.Builder().showStubImage(
-				R.drawable.ic_launcher).build();
 	}
 
 	@Override
@@ -40,10 +34,16 @@ public class ContentAdapter<T> extends MyBaseAdapter<T> {
 			convertView.setTag(holder);
 		}
 
-		AObj ao = (AObj) getItem(position);
-		ImageLoader.getInstance().displayImage("assets://" + ao.file_name,
-				holder.ivContent, options);
-		holder.tvContent.setText(ao.levelid + "");
+		int ao = (Integer) getItem(position);
+		// "http://61.191.44.170/clt/publish/clt/resource/images/temp/1.png";
+		// ImageLoader.getInstance().displayImage(
+		// "http://61.191.44.170/clt/publish/clt/resource/images/temp/"
+		// + ao + ".png", holder.ivContent, options);
+		Picasso.with(mContext)
+				.load("http://61.191.44.170/clt/publish/clt/resource/images/temp/"
+						+ ao + ".png").fit()
+				.placeholder(R.drawable.ic_launcher).into(holder.ivContent);
+		holder.tvContent.setText(ao + "");
 		return convertView;
 	}
 

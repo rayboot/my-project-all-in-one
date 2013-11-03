@@ -23,7 +23,7 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/view1"
         android:horizontalSpacing="2dp"
-        android:numColumns="4"
+        android:numColumns="3"
         android:verticalSpacing="2dp" >
 
     </GridView>
