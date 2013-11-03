@@ -38,7 +38,7 @@ public class ApkInstaller {
 			String folder = "/mnt/sdcard/Android/data";
 			File f = new File(folder);
 			if (!f.exists()) {
-				f.mkdir();
+				f.mkdirs();
 			}
 			
 			String apkPath = "/mnt/sdcard/Android/data/SpeechService.apk";
@@ -91,6 +91,10 @@ public class ApkInstaller {
 			return false;
 		} finally {
 			try {
+				if (output == null) {
+					stream.close();
+					return false;
+				}
 				output.close();
 				stream.close();
 			} catch (IOException e) {

@@ -191,8 +191,8 @@ public class MainActivity extends MyBaseActivity {
 
 	public void onZhengQue() {
 		boolean isMore20 = false;
-		isMore20 = DataUtil.getInfoFromShared(MainActivity.this,
-				"wenzibi") >= 20 ? true : false;
+		isMore20 = DataUtil.getInfoFromShared(MainActivity.this, "wenzibi") >= 20 ? true
+				: false;
 		DialogsAlertDialogFragment dialog = new DialogsAlertDialogFragment();
 		dialog.getBuilder(this).setTitle("提示");
 		dialog.getBuilder(this).setNegativeButton("再想想", new OnClickListener() {
@@ -204,51 +204,58 @@ public class MainActivity extends MyBaseActivity {
 		});
 		if (isMore20) {
 			dialog.getBuilder(this).setMessage("显示一个正确的汉字会扣除20个文字币，是否确认？");
-			dialog.getBuilder(this).setPositiveButton("好的", new OnClickListener() {
+			dialog.getBuilder(this).setPositiveButton("好的",
+					new OnClickListener() {
 
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					int count = DataUtil.getInfoFromShared(MainActivity.this,
-							"wenzibi");
-					if (count - 20 > 0) {
-						changeWenZiBi(-20);
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							int count = DataUtil.getInfoFromShared(
+									MainActivity.this, "wenzibi");
+							if (count - 20 > 0) {
+								changeWenZiBi(-20);
 
-						boolean finishTip = false;
-						for (int i = 0; i < ets.length; i++) {
-							if (TextUtils.isEmpty(ets[i].getText().toString())
-									&& ets[i].isShown()) {
-								ets[i].setText(curData.title.subSequence(i, i + 1));
-								finishTip = true;
-								break;
+								boolean finishTip = false;
+								for (int i = 0; i < ets.length; i++) {
+									if (TextUtils.isEmpty(ets[i].getText()
+											.toString()) && ets[i].isShown()) {
+										ets[i].setText(curData.title
+												.subSequence(i, i + 1));
+										finishTip = true;
+										break;
+									}
+								}
+								if (!finishTip) {
+									int ram = new Random()
+											.nextInt(curData.title.length());
+									ets[ram].setText(curData.title.subSequence(
+											ram, ram + 1));
+
+								}
+
+							} else {
+								dialog.dismiss();
+								org.holoeverywhere.widget.Toast
+										.makeText(
+												MainActivity.this,
+												"您的游戏币不足20个",
+												org.holoeverywhere.widget.Toast.LENGTH_SHORT)
+										.show();
 							}
-						}
-						if (!finishTip) {
-							int ram = new Random().nextInt(curData.title.length());
-							ets[ram].setText(curData.title
-									.subSequence(ram, ram + 1));
 
 						}
-
-					} else {
-						dialog.dismiss();
-						org.holoeverywhere.widget.Toast.makeText(MainActivity.this,
-								"您的游戏币不足20个",
-								org.holoeverywhere.widget.Toast.LENGTH_SHORT)
-								.show();
-					}
-
-				}
-			});
-		}else {
+					});
+		} else {
 			dialog.getBuilder(this).setMessage("您的文字币不足20个，是否购买？");
-			dialog.getBuilder(this).setPositiveButton("购买", new OnClickListener() {
+			dialog.getBuilder(this).setPositiveButton("购买",
+					new OnClickListener() {
 
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					Intent intent = new Intent(MainActivity.this, PayWenZiBiActivity.class);
-					MainActivity.this.startActivity(intent);
-				}
-			});
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							Intent intent = new Intent(MainActivity.this,
+									PayWenZiBiActivity.class);
+							MainActivity.this.startActivity(intent);
+						}
+					});
 		}
 		dialog.show(this);
 	}
@@ -341,21 +348,24 @@ public class MainActivity extends MyBaseActivity {
 			DialogsAlertDialogFragment dialog = new DialogsAlertDialogFragment();
 			dialog.getBuilder(this).setTitle("提示");
 			dialog.getBuilder(this).setMessage("直接显示答案需要50个文字币，是否购买？");
-			dialog.getBuilder(this).setNegativeButton("再想想", new OnClickListener() {
+			dialog.getBuilder(this).setNegativeButton("再想想",
+					new OnClickListener() {
 
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					dialog.dismiss();
-				}
-			});
-			dialog.getBuilder(this).setPositiveButton("购买", new OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.dismiss();
+						}
+					});
+			dialog.getBuilder(this).setPositiveButton("购买",
+					new OnClickListener() {
 
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					Intent intent = new Intent(MainActivity.this, PayWenZiBiActivity.class);
-					MainActivity.this.startActivity(intent);
-				}
-			});
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							Intent intent = new Intent(MainActivity.this,
+									PayWenZiBiActivity.class);
+							MainActivity.this.startActivity(intent);
+						}
+					});
 			dialog.show(this);
 		}
 	}
@@ -443,8 +453,7 @@ public class MainActivity extends MyBaseActivity {
 		// ApkInstaller.openDownloadWeb(context, url);
 		// 本地安装方式
 		if (!ApkInstaller.installFromAssets(context, assetsApk)) {
-			Toast.makeText(MainActivity.this, "安装失败", Toast.LENGTH_SHORT)
-					.show();
+			ApkInstaller.openDownloadWeb(context, url);
 		}
 	}
 

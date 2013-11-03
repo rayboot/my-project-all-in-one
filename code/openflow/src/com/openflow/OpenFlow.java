@@ -349,8 +349,10 @@ public class OpenFlow {
 		//18955195519
 		//安庆 556
 		//宣称 563
-		
-		open.openflowBy150("18005604778","551");
+
+		open.openflowBy300("18955182906","551");
+		open.openflowBy150("18955182906","551");
+		open.openflowBy60("18955182906","551");
 
 	}
 
