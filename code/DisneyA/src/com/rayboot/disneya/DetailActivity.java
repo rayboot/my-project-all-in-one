@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
+import com.rayboot.disneya.util.DataUtil;
 import com.squareup.picasso.Picasso;
 import com.umeng.analytics.MobclickAgent;
 
@@ -21,7 +22,7 @@ public class DetailActivity extends SherlockActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		curAObj = getIntent().getIntExtra("content_detail", 1);
 		Picasso.with(this)
-				.load("http://61.191.44.170/clt/publish/clt/resource/images/temp/"
+				.load(DataUtil.getDomain()
 						+ curAObj + ".png").placeholder(R.drawable.ic_launcher)
 				.into((ImageView) findViewById(R.id.ivImg));
 		TextView tvAnswer = (TextView) findViewById(R.id.tvAnswer);

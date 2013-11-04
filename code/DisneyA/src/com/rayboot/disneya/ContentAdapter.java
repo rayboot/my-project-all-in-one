@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.rayboot.disneya.util.DataUtil;
 import com.squareup.picasso.Picasso;
 
 public class ContentAdapter<T> extends MyBaseAdapter<T> {
@@ -39,9 +40,7 @@ public class ContentAdapter<T> extends MyBaseAdapter<T> {
 		// ImageLoader.getInstance().displayImage(
 		// "http://61.191.44.170/clt/publish/clt/resource/images/temp/"
 		// + ao + ".png", holder.ivContent, options);
-		Picasso.with(mContext)
-				.load("http://61.191.44.170/clt/publish/clt/resource/images/temp/"
-						+ ao + ".png").fit()
+		Picasso.with(mContext).load(DataUtil.getDomain() + ao + ".png").fit()
 				.placeholder(R.drawable.ic_launcher).into(holder.ivContent);
 		holder.tvContent.setText(ao + "");
 		return convertView;

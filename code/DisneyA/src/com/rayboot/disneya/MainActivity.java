@@ -1,5 +1,6 @@
 package com.rayboot.disneya;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,7 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.SubMenu;
+import com.rayboot.disneya.util.Base64;
 import com.rayboot.disneya.util.Util;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
@@ -61,7 +63,7 @@ public class MainActivity extends SherlockActivity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(MainActivity.this,
 						DetailActivity.class);
-				intent.putExtra("content_detail", allObjs.get(arg2));
+				intent.putExtra("content_detail", (Integer)adapter.getItem(arg2));
 				MainActivity.this.startActivity(intent);
 			}
 		});
