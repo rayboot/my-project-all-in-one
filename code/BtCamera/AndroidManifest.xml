@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.rayboot.btcamera"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="18" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" android:name="MyApplication">
+        <activity
+            android:name="com.rayboot.btcamera.GuideActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.rayboot.btcamera.MainActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
+        <activity
+            android:name="com.rayboot.btcamera.MyCameraActivity"
+            android:label="@string/title_activity_my_camera" >
+        </activity>
+        <activity
+            android:name="com.rayboot.btcamera.BluetoothDevicesActivity"
+            android:label="@string/title_activity_bluetooth_devices" >
+        </activity>
+        <activity
+            android:name="com.rayboot.btcamera.BluetoothShotActivity"
+            android:label="@string/title_activity_bluetooth_shot" >
+        </activity>
+    </application>
+
+</manifest>
