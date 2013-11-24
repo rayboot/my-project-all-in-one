@@ -43,6 +43,7 @@ public class MainActivity extends MyBaseActivity {
 	private SpeechSynthesizer mTts;
 	private WordData curData;
 	TextView tvBi;
+	TextView tvCount;
 	TextView tvLevel;
 	EditText[] ets = new EditText[4];
 	TextView[] tvs = new TextView[4];
@@ -71,6 +72,7 @@ public class MainActivity extends MyBaseActivity {
 		lls[1] = (LinearLayout) findViewById(R.id.ll2);
 		lls[2] = (LinearLayout) findViewById(R.id.ll3);
 		lls[3] = (LinearLayout) findViewById(R.id.ll4);
+		tvCount = (TextView) findViewById(R.id.tvCount);
 		tvLevel = (TextView) findViewById(R.id.tvLevel);
 		for (EditText et : ets) {
 			et.addTextChangedListener(watcher);
@@ -105,8 +107,9 @@ public class MainActivity extends MyBaseActivity {
 			if (allCount == 0) {
 				allCount = WordData.getAllDatas().size();
 			}
-			tvLevel.setText(WordData.getAllRightDatas().size() + 1 + "/"
+			tvCount.setText(WordData.getAllRightDatas().size() + 1 + "/"
 					+ allCount);
+			tvLevel.setText("难度：" + curData.level);
 
 		} else if (MyApplication.PLAY_TYPE_WUJIN == curPlayType) {
 			curData = WordData.getRandomData();
@@ -261,6 +264,7 @@ public class MainActivity extends MyBaseActivity {
 	}
 
 	public void onFinish(View view) {
+		MobclickAgent.onEvent(MainActivity.this, "100");
 		if (getCurrentFocus() != null) {
 			((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
 					.hideSoftInputFromWindow(
@@ -407,6 +411,7 @@ public class MainActivity extends MyBaseActivity {
 		// 音量（0~100）。
 		mTts.setParameter(SpeechSynthesizer.VOLUME, DataUtil.YIN_LIANG + "");
 		mTts.startSpeaking(curData.title, mTtsListener);
+		MobclickAgent.onEvent(this, "101");
 	}
 
 	/**
@@ -450,11 +455,11 @@ public class MainActivity extends MyBaseActivity {
 	 */
 	private void processInstall(Context context, String url, String assetsApk) {
 		// 直接下载方式
-		// ApkInstaller.openDownloadWeb(context, url);
+		 ApkInstaller.openDownloadWeb(context, url);
 		// 本地安装方式
-		if (!ApkInstaller.installFromAssets(context, assetsApk)) {
-			ApkInstaller.openDownloadWeb(context, url);
-		}
+//		if (!ApkInstaller.installFromAssets(context, assetsApk)) {
+//			ApkInstaller.openDownloadWeb(context, url);
+//		}
 	}
 
 	@Override
@@ -486,16 +491,24 @@ public class MainActivity extends MyBaseActivity {
 			// TODO Auto-generated method stub
 			switch (item.getItemId()) {
 			case R.id.item_tip:
+				MobclickAgent.onEvent(MainActivity.this, "102");
 				onTip();
 				break;
 			case R.id.item_oneright:
+				MobclickAgent.onEvent(MainActivity.this, "103");
 				onZhengQue();
 				break;
 			case R.id.item_final:
+				MobclickAgent.onEvent(MainActivity.this, "104");
 				showAnswer();
 				break;
 			case R.id.item_frend_help:
+				MobclickAgent.onEvent(MainActivity.this, "105");
 				onFrendHelp();
+				break;
+			case R.id.item_jump_next:
+				MobclickAgent.onEvent(MainActivity.this, "106");
+				setHanzi();
 				break;
 			case R.id.item_pay_wenzibi:
 				Intent intent = new Intent(MainActivity.this,
