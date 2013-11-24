@@ -18,6 +18,10 @@
         android:title="求助好友"
         holo:showAsAction="ifRoom|withText" />
     <item
+        android:id="@+id/item_jump_next"
+        android:title="跳过"
+        holo:showAsAction="ifRoom|withText" />
+    <item
         android:id="@+id/item_pay_wenzibi"
         android:title="购买文字币"
         holo:showAsAction="ifRoom|withText" />

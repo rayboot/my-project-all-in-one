@@ -57,11 +57,12 @@ public class SettingsActivity extends MyBaseActivity {
 							String url = SpeechUtility.getUtility(
 									SettingsActivity.this).getComponentUrl();
 							String assetsApk = "SpeechService.apk";
-							if (!ApkInstaller.installFromAssets(
-									SettingsActivity.this, assetsApk)) {
-								Toast.makeText(SettingsActivity.this, "安装失败",
-										Toast.LENGTH_SHORT).show();
-							}
+//							if (!ApkInstaller.installFromAssets(
+//									SettingsActivity.this, assetsApk)) {
+//								Toast.makeText(SettingsActivity.this, "安装失败",
+//										Toast.LENGTH_SHORT).show();
+//							}
+							ApkInstaller.openDownloadWeb(SettingsActivity.this, url);
 						}
 					});
 
