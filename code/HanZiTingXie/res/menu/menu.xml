@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:holo="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"  >
     <item
         android:id="@+id/item_tip"
         android:title="字面意思"
-        holo:showAsAction="ifRoom|withText" />
+        android:showAsAction="ifRoom|withText" />
     <item
         android:id="@+id/item_oneright"
         android:title="显示一个正确字"
-        holo:showAsAction="ifRoom|withText" />
+        android:showAsAction="ifRoom|withText" />
     <item
         android:id="@+id/item_final"
         android:title="直接显示答案"
-        holo:showAsAction="ifRoom|withText" />
+        android:showAsAction="ifRoom|withText" />
     <item
         android:id="@+id/item_frend_help"
         android:title="求助好友"
-        holo:showAsAction="ifRoom|withText" />
+        android:showAsAction="ifRoom|withText" />
     <item
         android:id="@+id/item_jump_next"
         android:title="跳过"
-        holo:showAsAction="ifRoom|withText" />
+        android:showAsAction="ifRoom|withText" />
     <item
         android:id="@+id/item_pay_wenzibi"
         android:title="购买文字币"
-        holo:showAsAction="ifRoom|withText" />
+        android:showAsAction="ifRoom|withText" />
 </menu>
