@@ -5,7 +5,7 @@
 	<groupId>org.holoeverywhere</groupId>
 	<artifactId>parent</artifactId>
 	<packaging>pom</packaging>
-	<version>2.0.0-SNAPSHOT</version>
+	<version>2.1.1-SNAPSHOT</version>
 
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
@@ -28,7 +28,7 @@
 		<url>https://github.com/Prototik/HoloEverywhere</url>
 		<connection>scm:git:git://github.com/Prototik/HoloEverywhere.git</connection>
 		<developerConnection>scm:git:git@github.com:Prototik/HoloEverywhere.git</developerConnection>
-		<tag>v1.6.8</tag>
+		<tag>v2.1.0</tag>
 	</scm>
 
 	<ciManagement>
@@ -72,24 +72,11 @@
 
 	<distributionManagement>
 		<repository>
-			<id>holoeverywhere-repo</id>
+			<id>holoeverywhereRepo</id>
 			<name>HoloEverywhere Repo</name>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+			<url>https://raw.github.com/Prototik/HoloEverywhere/repo</url>
 			<uniqueVersion>true</uniqueVersion>
 		</repository>
-
-		<snapshotRepository>
-			<id>holoeverywhere-repo-snapshots</id>
-			<name>HoloEverywhere Repo Snapshots</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-			<uniqueVersion>false</uniqueVersion>
-		</snapshotRepository>
-
-		<site>
-			<id>holoeverywhere-website</id>
-			<name>HoloEverywhere Website</name>
-			<url>http://holoeverywhere.org/</url>
-		</site>
 	</distributionManagement>
 
 	<licenses>
@@ -124,37 +111,23 @@
 				<scope>provided</scope>
 			</dependency>
 
-			<dependency>
-				<groupId>com.android.support</groupId>
-				<artifactId>support-v4</artifactId>
-				<version>18.0.1</version>
-			</dependency>
+            <dependency>
+                <groupId>com.android.support</groupId>
+                <artifactId>support-v4</artifactId>
+                <version>18.0.4</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.nineoldandroids</groupId>
+                <artifactId>library</artifactId>
+                <version>2.4.0</version>
+            </dependency>
 		</dependencies>
 	</dependencyManagement>
 
 	<build>
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<groupId>org.holoeverywhere</groupId>
-					<artifactId>resbuilder</artifactId>
-					<version>2.1.1</version>
-					<inherited>true</inherited>
-					<executions>
-						<execution>
-							<goals>
-								<goal>build</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<verbose>false</verbose>
-						<includeDirs>
-							<dir>${project.basedir}/resbuilder</dir>
-						</includeDirs>
-					</configuration>
-				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -170,16 +143,6 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
 					<version>2.9</version>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-release-plugin</artifactId>
-					<version>2.4.1</version>
-					<configuration>
-						<autoVersionSubmodules>true</autoVersionSubmodules>
-						<tagNameFormat>v@{project.version}</tagNameFormat>
-					</configuration>
 				</plugin>
 
 				<plugin>
@@ -214,52 +177,24 @@
 				<plugin>
 					<groupId>com.jayway.maven.plugins.android.generation2</groupId>
 					<artifactId>android-maven-plugin</artifactId>
-					<version>3.6.1</version>
+					<version>3.8.0</version>
 					<inherited>true</inherited>
 					<extensions>true</extensions>
 					<configuration>
+						<sdk>
+							<platform>18</platform>
+						</sdk>
 						<sign>
 							<debug>false</debug>
 						</sign>
 						<zipalign>
-							<skip>true</skip>
+							<skip>false</skip>
 						</zipalign>
 						<undeployBeforeDeploy>true</undeployBeforeDeploy>
 						<proguard>
 							<skip>true</skip>
 						</proguard>
 					</configuration>
-				</plugin>
-
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.holoeverywhere</groupId>
-										<artifactId>resbuilder</artifactId>
-										<versionRange>${project.version}</versionRange>
-										<goals>
-											<goal>build</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<execute />
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-checkstyle-plugin</artifactId>
-					<version>2.10</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
