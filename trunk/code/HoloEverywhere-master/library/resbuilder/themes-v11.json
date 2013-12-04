@@ -1,22 +1,18 @@
 {
     "blocks": {
-        "Holo": {
-            "android:activatedBackgroundIndicator": "?activatedBackgroundIndicator",
-            "android:dialogTheme": "?dialogTheme",
-            "android:dividerHorizontal": "?dividerHorizontal",
-            "android:dividerVertical": "?dividerVertical",
-            "android:textAppearanceLargePopupMenu": "?textAppearanceLargePopupMenu",
-            "android:textAppearanceSmallPopupMenu": "?textAppearanceSmallPopupMenu",
-            "android:windowMinWidthMajor": "?windowMinWidthMajor",
-            "android:windowMinWidthMinor": "?windowMinWidthMinor"
-        },
+        "Holo": {},
         "HoloBar": {},
-        "HoloBarDark | HoloBar": {},
-        "HoloBarLight | HoloBar": {},
+        "HoloBarDark | HoloBar": {
+            "android:actionBarWidgetTheme": "@style/Holo.Theme"
+        },
+        "HoloBarLight | HoloBar": {
+            "android:actionBarWidgetTheme": "@style/Holo.Theme.Light"
+        },
         "HoloDark | Holo": {},
         "HoloLight | Holo": {}
     },
     "data": {
+        "Holo.ListView.Base < @android:Widget.Holo.ListView": {},
         "Holo.Theme | HoloDark HoloBarDark < Holo.Base.Theme": {
             "holoTheme": "dark"
         },

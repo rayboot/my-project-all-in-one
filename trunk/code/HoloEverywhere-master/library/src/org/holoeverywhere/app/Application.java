@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.support.v4.app._HoloFragmentInflater;
 
 import org.holoeverywhere.HoloEverywhere;
 import org.holoeverywhere.HoloEverywhere.PreferenceImpl;
@@ -21,17 +22,16 @@ import org.holoeverywhere.addon.IAddonBasicAttacher;
 import org.holoeverywhere.preference.PreferenceManagerHelper;
 import org.holoeverywhere.preference.SharedPreferences;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 public class Application extends android.app.Application implements
         SuperStartActivity, SuperSystemService, IAddonAttacher<IAddonApplication> {
-    private static List<Class<? extends IAddon>> sInitialAddons;
     private static Application sLastInstance;
 
     static {
         SystemServiceManager.register(LayoutInflaterCreator.class);
+        
+        _HoloFragmentInflater.init();
     }
 
     private final IAddonBasicAttacher<IAddonApplication, Application> mAttacher =
@@ -39,13 +39,6 @@ public class Application extends android.app.Application implements
 
     public Application() {
         Application.sLastInstance = this;
-    }
-
-    public static void addInitialAddon(Class<? extends IAddon> clazz) {
-        if (sInitialAddons == null) {
-            sInitialAddons = new ArrayList<Class<? extends IAddon>>();
-        }
-        sInitialAddons.add(clazz);
     }
 
     public static Application getLastInstance() {
@@ -124,7 +117,7 @@ public class Application extends android.app.Application implements
             setTheme(ThemeManager.getThemeResource(ThemeManager.getDefaultTheme()));
         }
 
-        addon(sInitialAddons);
+        IAddonBasicAttacher.attachAnnotations(this);
         performAddonAction(new AddonCallback<IAddonApplication>() {
             @Override
             public void justAction(IAddonApplication addon) {

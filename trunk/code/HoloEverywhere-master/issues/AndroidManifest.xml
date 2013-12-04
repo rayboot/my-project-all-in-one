@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.holoeverywhere.issues"
-    android:versionCode="2000000"
-    android:versionName="2.0.0">
-
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.holoeverywhere.issues">
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="18" />
+        android:minSdkVersion="8" />
 
     <permission
         android:name="org.holoeverywhere.issues.permission.MAPS_RECEIVE"
@@ -35,6 +30,24 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".i511.MainActivity"
+            android:label="Issue #511">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="org.holoeverywhere.category.ISSUE_LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".i569.MainActivity"
+            android:label="Issue #569">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="org.holoeverywhere.category.ISSUE_LAUNCHER" />
             </intent-filter>
         </activity>
 
@@ -77,6 +90,42 @@
         <activity
             android:name=".i641.MainActivity"
             android:label="Issue #641">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="org.holoeverywhere.category.ISSUE_LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".i653.MainActivity"
+            android:label="Issue #653">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="org.holoeverywhere.category.ISSUE_LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".i655.MainActivity"
+            android:label="Issue #655">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="org.holoeverywhere.category.ISSUE_LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".i681.MainActivity"
+            android:label="Issue #681">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="org.holoeverywhere.category.ISSUE_LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".i682.MainActivity"
+            android:label="Issue #682">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="org.holoeverywhere.category.ISSUE_LAUNCHER" />

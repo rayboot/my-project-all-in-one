@@ -2,7 +2,9 @@
 package android.support.v4.app;
 
 import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
@@ -16,10 +18,11 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.internal.view.menu.ContextMenuCallbackGetter;
 import android.support.v7.internal.view.menu.ContextMenuDecorView.ContextMenuListenersProvider;
 import android.support.v7.internal.view.menu.ContextMenuListener;
+import android.test.mock.MockApplication;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
@@ -39,11 +42,11 @@ import org.holoeverywhere.addon.IAddonAttacher;
 import org.holoeverywhere.app.Activity;
 import org.holoeverywhere.app.Application;
 import org.holoeverywhere.app.ContextThemeWrapperPlus;
-import org.holoeverywhere.internal.WindowDecorView;
 import org.holoeverywhere.preference.PreferenceManagerHelper;
 import org.holoeverywhere.preference.SharedPreferences;
 import org.holoeverywhere.util.SparseIntArray;
 import org.holoeverywhere.util.WeaklyMap;
+import org.holoeverywhere.widget.WindowDecorView;
 
 import java.util.Map;
 
@@ -58,6 +61,22 @@ public abstract class _HoloActivity extends ActionBarActivity implements SuperSt
     private boolean mInited = false;
     private int mLastThemeResourceId = 0;
     private Handler mUserHandler;
+    private MenuInflater mMenuInflater;
+
+    public static FragmentActivity extract(Context context, boolean exceptionWhenNotFound) {
+        FragmentActivity fa = null;
+        while (fa == null && context instanceof ContextWrapper) {
+            if (context instanceof FragmentActivity) {
+                fa = (FragmentActivity) context;
+                break;
+            }
+            context = ((ContextWrapper) context).getBaseContext();
+        }
+        if (fa == null && exceptionWhenNotFound) {
+            throw new ActivityNotFoundException();
+        }
+        return fa;
+    }
 
     @Override
     public void addContentView(View view, LayoutParams params) {
@@ -192,14 +211,6 @@ public abstract class _HoloActivity extends ActionBarActivity implements SuperSt
     }
 
     @Override
-    @SuppressLint("NewApi")
-    public void onBackPressed() {
-        if (!getSupportFragmentManager().popBackStackImmediate()) {
-            finish();
-        }
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         forceInit(savedInstanceState);
         super.onCreate(savedInstanceState);
@@ -233,10 +244,6 @@ public abstract class _HoloActivity extends ActionBarActivity implements SuperSt
         LayoutInflater.removeInstance(this);
     }
 
-    public boolean onHomePressed() {
-        return false;
-    }
-
     /**
      * Do not override this method. Use {@link #onPreInit(Holo, Bundle)} and
      * {@link #onPostInit(Holo, Bundle)}
@@ -254,25 +261,31 @@ public abstract class _HoloActivity extends ActionBarActivity implements SuperSt
         }
         onPreInit(config, savedInstanceState);
         if (!config.ignoreApplicationInstanceCheck && !(getApplication() instanceof Application)) {
-            String text = "Application instance isn't HoloEverywhere.\n";
-            if (getApplication().getClass() == android.app.Application.class) {
-                text += "Put attr 'android:name=\"org.holoeverywhere.app.Application\"'" +
-                        " in <application> tag of AndroidManifest.xml";
-            } else {
-                text += "Please sure that you extend " + getApplication().getClass() +
-                        " from a org.holoeverywhere.app.Application";
+            boolean throwError = true;
+            if (config.allowMockApplicationInstance) {
+                try {
+                    throwError = !(getApplication() instanceof MockApplication);
+                    if (!throwError) {
+                        Log.w("HoloEverywhere", "Application instance is MockApplication. Wow. Let's begin tests...");
+                    }
+                } catch (Exception e) {
+                }
             }
-            throw new IllegalStateException(text);
+            if (throwError) {
+                String text = "Application instance isn't HoloEverywhere.\n";
+                if (getApplication().getClass() == android.app.Application.class) {
+                    text += "Put attr 'android:name=\"org.holoeverywhere.app.Application\"'" +
+                            " in <application> tag of AndroidManifest.xml";
+                } else {
+                    text += "Please sure that you extend " + getApplication().getClass() +
+                            " from a org.holoeverywhere.app.Application";
+                }
+                throw new IllegalStateException(text);
+            }
         }
         getLayoutInflater().setFragmentActivity(this);
         if (this instanceof Activity) {
             Activity activity = (Activity) this;
-            if (config.requireRoboguice) {
-                activity.addon(Activity.ADDON_ROBOGUICE);
-            }
-            if (config.requireSlider) {
-                activity.addon(Activity.ADDON_SLIDER);
-            }
             final SparseIntArray windowFeatures = config.windowFeatures;
             if (windowFeatures != null) {
                 for (int i = 0; i < windowFeatures.size(); i++) {
@@ -298,14 +311,6 @@ public abstract class _HoloActivity extends ActionBarActivity implements SuperSt
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home && onHomePressed()) {
-            return true;
-        }
-        return false;
-    }
-
-    @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         requestDecorView(null, null, -1);
         super.onPostCreate(savedInstanceState);
@@ -317,11 +322,6 @@ public abstract class _HoloActivity extends ActionBarActivity implements SuperSt
 
     protected void onPreInit(Holo config, Bundle savedInstanceState) {
 
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        return true;
     }
 
     @Override
@@ -549,9 +549,7 @@ public abstract class _HoloActivity extends ActionBarActivity implements SuperSt
         };
         public boolean ignoreApplicationInstanceCheck = false;
         public boolean ignoreThemeCheck = false;
-        public boolean requireRoboguice = false;
-        public boolean requireSlider = false;
-        public boolean requireTabber = false;
+        public boolean allowMockApplicationInstance = false;
         private SparseIntArray windowFeatures;
 
         public Holo() {
@@ -561,9 +559,7 @@ public abstract class _HoloActivity extends ActionBarActivity implements SuperSt
         private Holo(Parcel source) {
             ignoreThemeCheck = source.readInt() == 1;
             ignoreApplicationInstanceCheck = source.readInt() == 1;
-            requireSlider = source.readInt() == 1;
-            requireRoboguice = source.readInt() == 1;
-            requireTabber = source.readInt() == 1;
+            allowMockApplicationInstance = source.readInt() == 1;
             windowFeatures = source.readParcelable(SparseIntArray.class.getClassLoader());
         }
 
@@ -587,9 +583,7 @@ public abstract class _HoloActivity extends ActionBarActivity implements SuperSt
         public void writeToParcel(Parcel dest, int flags) {
             dest.writeInt(ignoreThemeCheck ? 1 : 0);
             dest.writeInt(ignoreApplicationInstanceCheck ? 1 : 0);
-            dest.writeInt(requireSlider ? 1 : 0);
-            dest.writeInt(requireRoboguice ? 1 : 0);
-            dest.writeInt(requireTabber ? 1 : 0);
+            dest.writeInt(allowMockApplicationInstance ? 1 : 0);
             dest.writeParcelable(windowFeatures, flags);
         }
     }
