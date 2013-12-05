@@ -9,6 +9,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.RemoteException;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.PopupMenu.OnMenuItemClickListener;
@@ -308,7 +310,7 @@ public class MainActivity extends MyBaseActivity {
 
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
-							changeWenZiBi(5);
+							changeWenZiBi(3);
 							setHanzi();
 						}
 					});
@@ -336,12 +338,17 @@ public class MainActivity extends MyBaseActivity {
 
 	private void changeWenZiBi(int cnt) {
 		if (cnt > 0) {
-			AppConnect.getInstance(this).awardPoints(cnt, updatePointsNotifier);
+			AppConnect.getInstance(this).awardPoints(cnt,
+					myUpdatePointsNotifier);
 		} else if (cnt < 0) {
 			AppConnect.getInstance(this).spendPoints(Math.abs(cnt),
-					updatePointsNotifier);
+					myUpdatePointsNotifier);
 		}
-		tvBi.setText("文字币：" + DataUtil.g_wenzibi);
+		if (DataUtil.g_wenzibi == -100) {
+			tvBi.setText("文字币：未知");
+		}else{
+			tvBi.setText("文字币：" + DataUtil.g_wenzibi);
+		}
 	}
 
 	private void showAnswer() {
@@ -474,7 +481,7 @@ public class MainActivity extends MyBaseActivity {
 		// TODO Auto-generated method stub
 		super.onResume();
 		mTts = new SpeechSynthesizer(this, null);
-		AppConnect.getInstance(this).getPoints(updatePointsNotifier);
+		AppConnect.getInstance(this).getPoints(myUpdatePointsNotifier);
 		if (DataUtil.getInfoFromShared(MainActivity.this, "wenzibi") > 0) {
 			AppConnect.getInstance(this).awardPoints(
 					DataUtil.getInfoFromShared(MainActivity.this, "wenzibi"),
@@ -568,5 +575,29 @@ public class MainActivity extends MyBaseActivity {
 					"我使用  #汉字听写#  谁能告诉我 " + curData.pinyin + " 这个词语怎么写？", file);
 		}
 	}
+
+	private UpdatePointsNotifier myUpdatePointsNotifier = new UpdatePointsNotifier() {
+
+		@Override
+		public void getUpdatePointsFailed(String arg0) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void getUpdatePoints(String arg0, int arg1) {
+			// TODO Auto-generated method stub
+			DataUtil.g_wenzibi = arg1;
+			changeUIWenZiBiHandler.sendEmptyMessage(1);
+		}
+	};
+
+	private Handler changeUIWenZiBiHandler = new Handler() {
+		public void handleMessage(Message msg) {
+			if (msg.what == 1) {
+				tvBi.setText("文字币：" + DataUtil.g_wenzibi);
+			}
+		}
+	};
 
 }

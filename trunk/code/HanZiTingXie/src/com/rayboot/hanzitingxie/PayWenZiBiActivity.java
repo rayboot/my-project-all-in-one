@@ -4,6 +4,8 @@ import org.holoeverywhere.widget.Toast;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
@@ -60,6 +62,8 @@ public class PayWenZiBiActivity extends MyBaseActivity {
 			goodsDesc = "购买1100个文字币";
 		} else if (count.equals("4")) {
 			goodsDesc = "购买1500个文字币";
+		} else if (count.equals("5")) {
+			goodsDesc = "购买2500个文字币";
 		}
 		try {
 			// // 游戏商自定义支付订单号，保证该订单号的唯一性，建议在执行支付操作时才进行该订单号的生成
@@ -120,6 +124,9 @@ public class PayWenZiBiActivity extends MyBaseActivity {
 				} else if (amount == 4.0) {
 					MobclickAgent.onEvent(PayWenZiBiActivity.this, "4");
 					changeWenZiBi(1500);
+				} else if (amount == 5.0) {
+					MobclickAgent.onEvent(PayWenZiBiActivity.this, "5");
+					changeWenZiBi(2500);
 				}
 
 			} else {
@@ -154,7 +161,7 @@ public class PayWenZiBiActivity extends MyBaseActivity {
 							// TODO Auto-generated method stub
 							DataUtil.g_wenzibi += DataUtil.getInfoFromShared(
 									PayWenZiBiActivity.this, "wenzibi");
-							tvBi.setText("文字币：" + DataUtil.g_wenzibi);
+							changeUIWenZiBiHandler.sendEmptyMessage(1);
 						}
 
 						@Override
@@ -163,14 +170,25 @@ public class PayWenZiBiActivity extends MyBaseActivity {
 							DataUtil.g_wenzibi = arg1;
 							DataUtil.setInfoToShared(PayWenZiBiActivity.this,
 									"wenzibi", 0);
-							tvBi.setText("文字币：" + DataUtil.g_wenzibi);
+							changeUIWenZiBiHandler.sendEmptyMessage(1);
 						}
 					});
 		} else if (cnt < 0) {
 			AppConnect.getInstance(this).spendPoints(Math.abs(cnt),
 					updatePointsNotifier);
 		}
-		tvBi.setText("文字币：" + (DataUtil.g_wenzibi + cnt));
+		if (DataUtil.g_wenzibi == -100) {
+			tvBi.setText("文字币：未知");
+		} else {
+			tvBi.setText("文字币：" + (DataUtil.g_wenzibi + cnt));
+		}
 	}
 
+	private Handler changeUIWenZiBiHandler = new Handler() {
+		public void handleMessage(Message msg) {
+			if (msg.what == 1) {
+				tvBi.setText("文字币：" + DataUtil.g_wenzibi);
+			}
+		}
+	};
 }
