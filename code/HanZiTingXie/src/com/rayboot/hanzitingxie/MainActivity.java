@@ -25,6 +25,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import cn.waps.AppConnect;
+import cn.waps.UpdatePointsNotifier;
 
 import com.iflytek.speech.SpeechConstant;
 import com.iflytek.speech.SpeechSynthesizer;
@@ -212,9 +214,7 @@ public class MainActivity extends MyBaseActivity {
 
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
-							int count = DataUtil.getInfoFromShared(
-									MainActivity.this, "wenzibi");
-							if (count - 20 > 0) {
+							if (DataUtil.g_wenzibi - 20 > 0) {
 								changeWenZiBi(-20);
 
 								boolean finishTip = false;
@@ -264,6 +264,14 @@ public class MainActivity extends MyBaseActivity {
 	}
 
 	public void onFinish(View view) {
+		if (DataUtil.getInfoFromShared(MainActivity.this, "isShowAD") == 1) {
+			Random random = new Random();
+			if (random.nextInt(5) > 2 ? true : false) {
+				AppConnect.getInstance(MainActivity.this).showPopAd(
+						MainActivity.this);
+			}
+		}
+
 		MobclickAgent.onEvent(MainActivity.this, "100");
 		if (getCurrentFocus() != null) {
 			((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE))
@@ -275,11 +283,7 @@ public class MainActivity extends MyBaseActivity {
 		for (int i = 0; i < curData.title.length(); i++) {
 			if (curData.title.subSequence(i, i + 1).equals(
 					ets[i].getText().toString())) {
-				// ets[i].setBackgroundColor(getResources().getColor(
-				// R.color.answer_right));
 			} else {
-				// ets[i].setBackgroundColor(getResources().getColor(
-				// R.color.answer_wrong));
 				isRight = false;
 			}
 		}
@@ -331,14 +335,17 @@ public class MainActivity extends MyBaseActivity {
 	}
 
 	private void changeWenZiBi(int cnt) {
-		int count = DataUtil.getInfoFromShared(this, "wenzibi");
-		DataUtil.setInfoToShared(this, "wenzibi", count + cnt);
-		tvBi.setText("文字币：" + DataUtil.getInfoFromShared(this, "wenzibi"));
+		if (cnt > 0) {
+			AppConnect.getInstance(this).awardPoints(cnt, updatePointsNotifier);
+		} else if (cnt < 0) {
+			AppConnect.getInstance(this).spendPoints(Math.abs(cnt),
+					updatePointsNotifier);
+		}
+		tvBi.setText("文字币：" + DataUtil.g_wenzibi);
 	}
 
 	private void showAnswer() {
-		int count = DataUtil.getInfoFromShared(MainActivity.this, "wenzibi");
-		if (count - 50 >= 0) {
+		if (DataUtil.g_wenzibi - 50 >= 0) {
 			for (int i = 0; i < ets.length; i++) {
 				if (TextUtils.isEmpty(ets[i].getText().toString())
 						&& ets[i].isShown()) {
@@ -455,11 +462,11 @@ public class MainActivity extends MyBaseActivity {
 	 */
 	private void processInstall(Context context, String url, String assetsApk) {
 		// 直接下载方式
-		 ApkInstaller.openDownloadWeb(context, url);
+		ApkInstaller.openDownloadWeb(context, url);
 		// 本地安装方式
-//		if (!ApkInstaller.installFromAssets(context, assetsApk)) {
-//			ApkInstaller.openDownloadWeb(context, url);
-//		}
+		// if (!ApkInstaller.installFromAssets(context, assetsApk)) {
+		// ApkInstaller.openDownloadWeb(context, url);
+		// }
 	}
 
 	@Override
@@ -467,6 +474,27 @@ public class MainActivity extends MyBaseActivity {
 		// TODO Auto-generated method stub
 		super.onResume();
 		mTts = new SpeechSynthesizer(this, null);
+		AppConnect.getInstance(this).getPoints(updatePointsNotifier);
+		if (DataUtil.getInfoFromShared(MainActivity.this, "wenzibi") > 0) {
+			AppConnect.getInstance(this).awardPoints(
+					DataUtil.getInfoFromShared(MainActivity.this, "wenzibi"),
+					new UpdatePointsNotifier() {
+
+						@Override
+						public void getUpdatePointsFailed(String arg0) {
+							// TODO Auto-generated method stub
+
+						}
+
+						@Override
+						public void getUpdatePoints(String arg0, int arg1) {
+							// TODO Auto-generated method stub
+							DataUtil.setInfoToShared(MainActivity.this,
+									"wenzibi", 0);
+							DataUtil.g_wenzibi = arg1;
+						}
+					});
+		}
 	}
 
 	@Override
@@ -507,6 +535,10 @@ public class MainActivity extends MyBaseActivity {
 				onFrendHelp();
 				break;
 			case R.id.item_jump_next:
+				if (DataUtil.getInfoFromShared(MainActivity.this, "isShowAD") == 1) {
+					AppConnect.getInstance(MainActivity.this).showPopAd(
+							MainActivity.this);
+				}
 				MobclickAgent.onEvent(MainActivity.this, "106");
 				setHanzi();
 				break;
@@ -514,6 +546,10 @@ public class MainActivity extends MyBaseActivity {
 				Intent intent = new Intent(MainActivity.this,
 						PayWenZiBiActivity.class);
 				MainActivity.this.startActivity(intent);
+				break;
+			case R.id.item_free_wenzibi:
+				AppConnect.getInstance(MainActivity.this).showOffers(
+						MainActivity.this);
 				break;
 			default:
 				break;

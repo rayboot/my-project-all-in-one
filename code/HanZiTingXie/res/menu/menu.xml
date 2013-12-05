@@ -24,4 +24,8 @@
         android:id="@+id/item_pay_wenzibi"
         android:title="购买文字币"
         android:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/item_free_wenzibi"
+        android:title="免费文字币"
+        android:showAsAction="ifRoom|withText" />
 </menu>

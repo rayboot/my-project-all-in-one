@@ -6,14 +6,18 @@ import java.util.List;
 
 import org.holoeverywhere.widget.ListView;
 import org.holoeverywhere.widget.Toast;
+import org.jsoup.helper.StringUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import cn.waps.AppConnect;
+import cn.waps.UpdatePointsNotifier;
 
 import com.rayboot.hanzitingxie.obj.WordData;
 import com.rayboot.hanzitingxie.util.DataUtil;
@@ -42,25 +46,64 @@ public class JumpActivity extends MyBaseActivity {
 		lvMode = (ListView) findViewById(R.id.lvMode);
 		lvMode.setOnItemClickListener(onItemClickListener);
 
-		int count = DataUtil.getInfoFromShared(this, "wenzibi");
-		if (count == 0) {
-			DataUtil.setInfoToShared(this, "wenzibi", 20);
-		} else {
-			DataUtil.setInfoToShared(this, "wenzibi", count + 2);
-		}
 		loadMode();
 		initUMeng();
 		initWaps();
 	}
 
-	private void initWaps(){
-		PayConnect.getInstance("d17140e585412eb323b5312a303b166a", "WAPS", this);
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		if (DataUtil.getInfoFromShared(JumpActivity.this, "wenzibi") > 0) {
+			AppConnect.getInstance(this).awardPoints(
+					DataUtil.getInfoFromShared(JumpActivity.this, "wenzibi"),
+					new UpdatePointsNotifier() {
+
+						@Override
+						public void getUpdatePointsFailed(String arg0) {
+							// TODO Auto-generated method stub
+
+						}
+
+						@Override
+						public void getUpdatePoints(String arg0, int arg1) {
+							// TODO Auto-generated method stub
+							DataUtil.setInfoToShared(JumpActivity.this,
+									"wenzibi", 0);
+							DataUtil.g_wenzibi = arg1;
+						}
+					});
+		}
 	}
-	
+
+	private void initWaps() {
+		PayConnect
+				.getInstance("d17140e585412eb323b5312a303b166a", "WAPS", this);
+		AppConnect.getInstance(this);
+		AppConnect.getInstance(this).initPopAd(this);
+
+		AppConnect.getInstance(this).getPoints(updatePointsNotifier);
+		AppConnect.getInstance(this).awardPoints(2, updatePointsNotifier);
+
+		int count = DataUtil.getInfoFromShared(this, "wenzibi");
+		if (count > 0) {
+			AppConnect.getInstance(this).awardPoints(count,
+					updatePointsNotifier);
+		}
+
+	}
+
 	private void initUMeng() {
 		MobclickAgent.setDebugMode(false);
 		agent = new FeedbackAgent(this);
 		agent.sync();
+		MobclickAgent.updateOnlineConfig(this);
+		String value = MobclickAgent.getConfigParams(this, "isShowAD");
+		if (TextUtils.isEmpty(value)) {
+			value = "0";
+		}
+		DataUtil.setInfoToShared(this, "isShowAD", Integer.valueOf(value));
 		UmengUpdateAgent.update(this);
 		UmengUpdateAgent.setUpdateAutoPopup(false);
 		UmengUpdateAgent.setUpdateListener(new UmengUpdateListener() {
@@ -192,7 +235,7 @@ public class JumpActivity extends MyBaseActivity {
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		PayConnect.getInstance(this).close();
+		AppConnect.getInstance(this).close();
 		super.onDestroy();
 	}
-
 }

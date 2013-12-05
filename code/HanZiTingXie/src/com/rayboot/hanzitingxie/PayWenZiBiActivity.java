@@ -8,6 +8,8 @@ import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import cn.waps.AppConnect;
+import cn.waps.UpdatePointsNotifier;
 
 import com.rayboot.hanzitingxie.util.DataUtil;
 import com.umeng.analytics.MobclickAgent;
@@ -119,7 +121,7 @@ public class PayWenZiBiActivity extends MyBaseActivity {
 					MobclickAgent.onEvent(PayWenZiBiActivity.this, "4");
 					changeWenZiBi(1500);
 				}
-				
+
 			} else {
 				Toast.makeText(getApplicationContext(), resultString,
 						Toast.LENGTH_LONG).show();
@@ -143,7 +145,32 @@ public class PayWenZiBiActivity extends MyBaseActivity {
 	private void changeWenZiBi(int cnt) {
 		int count = DataUtil.getInfoFromShared(this, "wenzibi");
 		DataUtil.setInfoToShared(this, "wenzibi", count + cnt);
-		tvBi.setText("文字币：" + DataUtil.getInfoFromShared(this, "wenzibi"));
+		if (cnt > 0) {
+			AppConnect.getInstance(this).awardPoints(cnt,
+					new UpdatePointsNotifier() {
+
+						@Override
+						public void getUpdatePointsFailed(String arg0) {
+							// TODO Auto-generated method stub
+							DataUtil.g_wenzibi += DataUtil.getInfoFromShared(
+									PayWenZiBiActivity.this, "wenzibi");
+							tvBi.setText("文字币：" + DataUtil.g_wenzibi);
+						}
+
+						@Override
+						public void getUpdatePoints(String arg0, int arg1) {
+							// TODO Auto-generated method stub
+							DataUtil.g_wenzibi = arg1;
+							DataUtil.setInfoToShared(PayWenZiBiActivity.this,
+									"wenzibi", 0);
+							tvBi.setText("文字币：" + DataUtil.g_wenzibi);
+						}
+					});
+		} else if (cnt < 0) {
+			AppConnect.getInstance(this).spendPoints(Math.abs(cnt),
+					updatePointsNotifier);
+		}
+		tvBi.setText("文字币：" + (DataUtil.g_wenzibi + cnt));
 	}
 
 }

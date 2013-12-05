@@ -57,6 +57,12 @@
         <meta-data
             android:name="AA_DB_VERSION"
             android:value="5" />
+        <meta-data
+            android:name="APP_ID"
+            android:value="d17140e585412eb323b5312a303b166a" />
+        <meta-data
+            android:name="APP_PID"
+            android:value="mumayi" />
 
         <activity
             android:name="com.rayboot.hanzitingxie.MainActivity"
