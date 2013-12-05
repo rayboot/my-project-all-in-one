@@ -84,12 +84,28 @@ public class JumpActivity extends MyBaseActivity {
 		AppConnect.getInstance(this).initPopAd(this);
 
 		AppConnect.getInstance(this).getPoints(updatePointsNotifier);
-		AppConnect.getInstance(this).awardPoints(2, updatePointsNotifier);
+		AppConnect.getInstance(this).awardPoints(1, updatePointsNotifier);
 
 		int count = DataUtil.getInfoFromShared(this, "wenzibi");
 		if (count > 0) {
 			AppConnect.getInstance(this).awardPoints(count,
-					updatePointsNotifier);
+					new UpdatePointsNotifier() {
+
+						@Override
+						public void getUpdatePointsFailed(String arg0) {
+							// TODO Auto-generated method stub
+							DataUtil.g_wenzibi += DataUtil.getInfoFromShared(
+									JumpActivity.this, "wenzibi");
+						}
+
+						@Override
+						public void getUpdatePoints(String arg0, int arg1) {
+							// TODO Auto-generated method stub
+							DataUtil.setInfoToShared(JumpActivity.this,
+									"wenzibi", 0);
+							DataUtil.g_wenzibi = arg1;
+						}
+					});
 		}
 
 	}
