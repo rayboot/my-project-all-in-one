@@ -22,6 +22,7 @@ public class DataUtil {
 	public static int YU_SU = 20;
 	public static int YIN_DIAO = 50;
 	public static int YIN_LIANG = 80;
+	public static int g_wenzibi = -100;
 
 	// 从html.txt里读取原信息
 	// "http://baike.baidu.com/link?url=4ppxyv-jM3B5fZy8dHVNJl1mlZ0vPWN6bitUYH_liqUNvekTCq-7gaDH2ZcvjxYDoScgWEuraW7HE2HavmxEiq"
@@ -73,25 +74,26 @@ public class DataUtil {
 					if (!TextUtils.isEmpty(href) && !TextUtils.isEmpty(title)
 							&& !TextUtils.isEmpty(pinyin)) {
 						new WordData(title, pinyin, href).save();
-//						new SourceData(title, pinyin, href).save();
+						// new SourceData(title, pinyin, href).save();
 					}
 				}
 			}
 			ActiveAndroid.setTransactionSuccessful();
-			
-//			List<WordData> datas = WordData.getAllDatas();
-//			StringBuffer data = new StringBuffer();
-//			data.append("[");
-//			for (WordData wordData : datas) {
-//				data.append("{");
-//				data.append("\"title\": \"" + wordData.title + "\",");
-//				data.append("\"pinyin\": \"" + wordData.pinyin + "\",");
-//				data.append("\"url\": \"" + wordData.url + "\"");
-//				data.append("},");
-//			}
-//			data.append("]");
-//			new FileUtils().write2SDFromString("/", "data.json", data.toString());
-//			Log.i("11111111111111", data.toString());
+
+			// List<WordData> datas = WordData.getAllDatas();
+			// StringBuffer data = new StringBuffer();
+			// data.append("[");
+			// for (WordData wordData : datas) {
+			// data.append("{");
+			// data.append("\"title\": \"" + wordData.title + "\",");
+			// data.append("\"pinyin\": \"" + wordData.pinyin + "\",");
+			// data.append("\"url\": \"" + wordData.url + "\"");
+			// data.append("},");
+			// }
+			// data.append("]");
+			// new FileUtils().write2SDFromString("/", "data.json",
+			// data.toString());
+			// Log.i("11111111111111", data.toString());
 		} finally {
 			ActiveAndroid.endTransaction();
 		}

@@ -209,9 +209,9 @@ public class OpenFlow {
 								+ "\",\"serviceNbr\":\"" + number + "\"}}]}},")
 						.append("\"PUB_REQ\": {\"TYPE\": \"ADD_TEST_BEAN\"}}],");
 				sb.append(last("SUBS01002")).append("}");
-				//System.out.println("开通请求报文:"+sb.toString());
+				System.out.println("开通请求报文:"+sb.toString());
 				resultStr = getJsonData(URL, sb.toString());
-				//System.out.println("结果是:" + resultStr);
+				System.out.println("结果是:" + resultStr);
 			}
 
 		} catch (Exception e) {
@@ -349,11 +349,7 @@ public class OpenFlow {
 		//18955195519
 		//安庆 556
 		//宣称 563
-
-		open.openflowBy300("18955182906","551");
-		open.openflowBy150("18955182906","551");
-		open.openflowBy60("18955182906","551");
-
+		open.openflowBy300("15305514900","551");
 	}
 
 }

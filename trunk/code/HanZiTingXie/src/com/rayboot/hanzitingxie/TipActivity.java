@@ -1,5 +1,8 @@
 package com.rayboot.hanzitingxie;
 
+import com.rayboot.hanzitingxie.util.DataUtil;
+
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -7,6 +10,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import cn.waps.AppConnect;
 
 public class TipActivity extends MyBaseActivity {
 
@@ -20,6 +24,11 @@ public class TipActivity extends MyBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tip);
+
+		if (DataUtil.getInfoFromShared(TipActivity.this, "isShowAD") == 1) {
+			AppConnect.getInstance(TipActivity.this)
+					.showPopAd(TipActivity.this);
+		}
 
 		title = getIntent().getStringExtra("data_answer");
 		url = getIntent().getStringExtra("data_tip");
@@ -45,10 +54,12 @@ public class TipActivity extends MyBaseActivity {
 			@Override
 			public void onPageFinished(WebView view, String url) {
 				String jsString = "";
-				String [] pinyinStrings = pinyin.split(" ");
+				String[] pinyinStrings = pinyin.split(" ");
 				for (int i = 0; i < title.length(); i++) {
 					jsString += "javascript:var orgHtml = document.getElementsByTagName('body')[0].innerHTML;document.getElementsByTagName('body')[0].innerHTML=orgHtml.replace(/\\"
-							+ title.substring(i, i+1) + "/g,' "+ pinyinStrings[i]+ "');";
+							+ title.substring(i, i + 1)
+							+ "/g,' "
+							+ pinyinStrings[i] + "');";
 				}
 				view.loadUrl(jsString);
 			}
@@ -61,6 +72,11 @@ public class TipActivity extends MyBaseActivity {
 				// TODO Auto-generated method stub
 				super.onProgressChanged(view, newProgress);
 				if (newProgress >= 100) {
+					Dialog popAdDialog = AppConnect.getInstance(
+							TipActivity.this).getPopAdDialog();
+					if (popAdDialog != null) {
+						popAdDialog.dismiss();
+					}
 					mWebView.setVisibility(View.VISIBLE);
 				}
 			}

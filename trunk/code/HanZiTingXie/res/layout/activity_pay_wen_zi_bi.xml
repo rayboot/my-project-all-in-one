@@ -18,9 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:clickable="true" 
+            android:clickable="true"
             android:onClick="doPay"
-            android:tag="1">
+            android:tag="1" >
 
             <Button
                 android:id="@+id/button1"
@@ -57,10 +57,10 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp" 
-            android:clickable="true" 
+            android:layout_margin="5dp"
+            android:clickable="true"
             android:onClick="doPay"
-            android:tag="2">
+            android:tag="2" >
 
             <Button
                 android:id="@+id/button1"
@@ -98,7 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:clickable="true" 
+            android:clickable="true"
             android:onClick="doPay"
             android:tag="3" >
 
@@ -133,14 +133,14 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000000" />
         </RelativeLayout>
-        
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp" 
-            android:clickable="true" 
+            android:layout_margin="5dp"
+            android:clickable="true"
             android:onClick="doPay"
-            android:tag="4">
+            android:tag="4" >
 
             <Button
                 android:id="@+id/button1"
@@ -181,7 +181,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:text="" />
+        android:text=""
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/textView1"
@@ -190,7 +191,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/linearLayout1"
         android:layout_margin="5dp"
-        android:text="注意：\n本程序卸载过后，文字币也会主动清空。\n覆盖安装，不会清空文字币。"
+        android:text="注意：文字币不会丢失。"
         android:textColor="#ff0000" />
 
 </RelativeLayout>
