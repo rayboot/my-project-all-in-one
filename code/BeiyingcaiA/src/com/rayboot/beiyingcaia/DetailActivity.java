@@ -10,8 +10,8 @@ import cn.waps.AppConnect;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
 import com.google.gson.Gson;
-import com.nostra13.universalimageloader.core.ImageLoader;
 import com.rayboot.beiyingcaia.obj.AObj;
+import com.squareup.picasso.Picasso;
 import com.umeng.analytics.MobclickAgent;
 
 public class DetailActivity extends SherlockActivity {
@@ -26,8 +26,11 @@ public class DetailActivity extends SherlockActivity {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		curAObj = gson.fromJson(getIntent().getStringExtra("content_detail"),
 				AObj.class);
-		ImageLoader.getInstance().displayImage("assets://" + curAObj.file_name,
-				(ImageView) findViewById(R.id.ivImg));
+		String urlString  = "http://61.191.44.170/clt/publish/clt/resource/images/temp/"
+				+ curAObj.file_name;
+		Picasso.with(this)
+				.load(urlString)
+				.into((ImageView) findViewById(R.id.ivImg));
 		TextView tvAnswer = (TextView) findViewById(R.id.tvAnswer);
 		tvAnswer.setText(curAObj.song_name);
 		TextView tvTip = (TextView) findViewById(R.id.tvTip);
