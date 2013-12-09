@@ -13,7 +13,7 @@ import android.widget.ImageView.ScaleType;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.MenuItem;
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.squareup.picasso.Picasso;
 import com.umeng.analytics.MobclickAgent;
 
 public class DetailActivity extends SherlockActivity {
@@ -44,19 +44,9 @@ public class DetailActivity extends SherlockActivity {
 		setTitle(tempString + " - 第" + curAObj + "关");
 
 		ivContent = (ImageView) findViewById(R.id.ivImg);
-		AssetManager assetManager = getAssets();
-
-		try {
-			InputStream istr = assetManager.open("" + curType + "/" + curAObj
-					+ ".jpg");
-			Bitmap bitmap = BitmapFactory.decodeStream(istr);
-			ivContent.setImageBitmap(bitmap);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			// ImageLoader.getInstance().displayImage(
-			// "assets://" + curType + "/" + curAObj + ".jpg", ivContent);
-		}
+		String urlString = "http://61.191.44.170/clt/publish/clt/resource/images/temp/"
+				+ curType + "/" + curAObj + ".jpg";
+		Picasso.with(this).load(urlString).into(ivContent);
 		mAttacher = new PhotoViewAttacher(ivContent);
 		mAttacher.setScaleType(ScaleType.CENTER_INSIDE);
 		// AdLinearLayout = (LinearLayout) findViewById(R.id.AdLinearLayout);

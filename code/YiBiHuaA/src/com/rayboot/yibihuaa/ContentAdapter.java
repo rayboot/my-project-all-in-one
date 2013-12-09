@@ -8,20 +8,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
+import com.squareup.picasso.Picasso;
 
 public class ContentAdapter<T> extends MyBaseAdapter<T> {
 
 	private String path;
 
-	private DisplayImageOptions options;
-
 	public ContentAdapter(Context context, List<T> datas, String path) {
 		super(context, datas);
 		// TODO Auto-generated constructor stub
-		options = new DisplayImageOptions.Builder().showStubImage(
-				android.R.color.transparent).build();
 		this.path = path;
 	}
 
@@ -43,9 +38,10 @@ public class ContentAdapter<T> extends MyBaseAdapter<T> {
 		}
 
 		String ao = (String) getItem(position);
-		ImageLoader.getInstance().displayImage(
-				"assets://" + path + "/" + ao + ".jpg", holder.ivContent,
-				options);
+
+		String urlString = "http://61.191.44.170/clt/publish/clt/resource/images/temp/"
+				+ path + "/" + ao + ".jpg";
+		Picasso.with(mContext).load(urlString).into(holder.ivContent);
 		holder.tvContent.setText(ao + "");
 		return convertView;
 	}
