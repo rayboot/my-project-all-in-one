@@ -128,7 +128,7 @@ public class MainActivity extends MyBaseActivity {
 
 		String[] pinyinStrings = curData.pinyin.split(" ");
 		for (int i = 0; i < pinyinStrings.length; i++) {
-			tvs[i].setText(pinyinStrings[i]);
+			tvs[i].setText(pinyinStrings[i].toLowerCase());
 		}
 	}
 
