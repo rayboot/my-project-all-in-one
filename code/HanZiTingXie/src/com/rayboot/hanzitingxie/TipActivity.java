@@ -72,11 +72,11 @@ public class TipActivity extends MyBaseActivity {
 				// TODO Auto-generated method stub
 				super.onProgressChanged(view, newProgress);
 				if (newProgress >= 100) {
-					Dialog popAdDialog = AppConnect.getInstance(
-							TipActivity.this).getPopAdDialog();
-					if (popAdDialog != null) {
-						popAdDialog.dismiss();
-					}
+//					Dialog popAdDialog = AppConnect.getInstance(
+//							TipActivity.this).getPopAdDialog();
+//					if (popAdDialog != null) {
+//						popAdDialog.dismiss();
+//					}
 					mWebView.setVisibility(View.VISIBLE);
 				}
 			}
