@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.holoeverywhere.widget.ListView;
 
+import android.R.integer;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import butterknife.ButterKnife;
@@ -38,6 +40,25 @@ public class MainActivity extends MyBaseActivity {
 	}
 
 	public void mainItemClick(View view) {
-		
+		int index = (Integer) view.getTag(R.string.tag_1);
+		Intent intent = null;
+		switch (index) {
+		case MainDataObj.MAIN_GAME:
+			intent = new Intent(MainActivity.this, GameActivity.class);
+			MainActivity.this.startActivity(intent);
+			break;
+		case MainDataObj.MAIN_RANK:
+			intent = new Intent(MainActivity.this, RankActivity.class);
+			MainActivity.this.startActivity(intent);
+			break;
+		case MainDataObj.MAIN_SETTING:
+			intent = new Intent(MainActivity.this, SettingActivity.class);
+			MainActivity.this.startActivity(intent);
+			break;
+		case MainDataObj.MAIN_MORE:
+			intent = new Intent(MainActivity.this, MoreActivity.class);
+			MainActivity.this.startActivity(intent);
+			break;
+		}
 	}
 }

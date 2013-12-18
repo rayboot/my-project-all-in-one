@@ -9,5 +9,7 @@
     <string name="title_activity_setting">MainActivity</string>
     <string name="title_activity_rank">MainActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="tag_1">tag_1</string>
+    <string name="title_activity_tip">TipActivity</string>
 
 </resources>

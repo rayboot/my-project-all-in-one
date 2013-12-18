@@ -2,7 +2,547 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     tools:context=".GameActivity" >
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/llAnswer"
+        android:layout_alignParentTop="true" >
+
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/button2"
+            android:layout_alignBottom="@+id/button2"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/btn_1_selector"
+            android:drawableTop="@drawable/ic_jump"
+            android:onClick="onHelpClick"
+            android:tag="4"
+            android:text="跳过该题"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvTip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/tvTip"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/et_bg"
+            android:gravity="center"
+            android:text="测"
+            android:textColor="#000000"
+            android:textSize="100sp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/tvTitle"
+            android:background="@drawable/btn_1_selector"
+            android:drawableTop="@drawable/ic_help"
+            android:onClick="onHelpClick"
+            android:tag="1"
+            android:text="求助好友"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/button2"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/btn_1_selector"
+            android:drawableTop="@drawable/ic_key"
+            android:onClick="onHelpClick"
+            android:tag="2"
+            android:text="显示答案"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/button5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/button3"
+            android:background="@drawable/btn_1_selector"
+            android:drawableTop="@drawable/ic_listene"
+            android:onClick="onHelpClick"
+            android:tag="3"
+            android:text="听一听"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/tvTip"
+            android:layout_toRightOf="@+id/tvTip"
+            android:background="@drawable/btn_1_selector"
+            android:src="@drawable/ic_alert" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llKeyBoard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#f8f8f8"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp" >
+
+            <Button
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onToneClick"
+                android:tag="0"
+                android:text="轻声"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <Button
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onToneClick"
+                android:tag="1"
+                android:text="―"
+                android:textColor="#000000" />
+
+            <Button
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onToneClick"
+                android:tag="2"
+                android:text="╱"
+                android:textColor="#000000" />
+
+            <Button
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onToneClick"
+                android:tag="3"
+                android:text="∨"
+                android:textColor="#000000" />
+
+            <Button
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onToneClick"
+                android:tag="4"
+                android:text="╲"
+                android:textColor="#000000" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp" >
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="q"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="w"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="e"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="r"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="t"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="y"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="u"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="i"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="o"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="p"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp" >
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="V"
+                android:textColor="#000000"
+                android:visibility="invisible" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="a"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="s"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="d"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="f"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="g"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="h"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="j"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="k"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="l"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="V"
+                android:textColor="#000000"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_weight="2" >
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onClearClick"
+                android:text="清空"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="z"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="x"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="c"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="v"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="b"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="n"
+                android:textColor="#000000" />
+
+            <com.rayboot.pinyincrazy.views.KeyButtonView
+                android:id="@+id/keyButtonView1"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onKeyClick"
+                android:text="m"
+                android:textColor="#000000" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/key_btn_selector"
+                android:onClick="onOKClick"
+                android:text="完成"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llAnswer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/llKeyBoard"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="5dp"
+        android:gravity="center" >
+
+        <ImageButton
+            android:background="@drawable/btn_1_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClearClick"
+            android:src="@drawable/ic_refresh" />
+
+
+        <TextView
+            android:id="@+id/tvKeyword"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="asdf"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/tvTone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="0"
+            android:text="L"
+            android:textColor="#000000" />
+        <ImageButton
+            android:background="@drawable/btn_1_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onOKClick"
+            android:src="@drawable/ic_ok" />
+
+    </LinearLayout>
 
 </RelativeLayout>
