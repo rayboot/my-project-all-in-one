@@ -33,6 +33,7 @@ public class MainAdapter<T> extends MyBaseAdapter<T> {
 		}
 		MainDataObj mdo = (MainDataObj) getItem(position);
 		holder.tvName.setText(mdo.name);
+		convertView.setTag(R.string.tag_1, position);
 		return convertView;
 	}
 
