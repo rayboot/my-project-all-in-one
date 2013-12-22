@@ -1,20 +1,17 @@
 package com.rayboot.pinyincrazy;
 
-import org.holoeverywhere.app.Dialog;
-
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
-public class TipActivity extends Activity {
+public class TipActivity extends MyBaseActivity {
 
 	String title;
 	String url;
@@ -30,8 +27,10 @@ public class TipActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		setTheme(R.style.Holo_Theme_Light_DarkActionBar);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tip);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		ButterKnife.inject(this);
 
 		keypinyin = getIntent().getStringExtra("data_key_pinyin");
@@ -91,5 +90,18 @@ public class TipActivity extends Activity {
 			return true;
 		}
 		return super.onKeyDown(keyCode, event);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// This uses the imported MenuItem from ActionBarSherlock
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			finish();
+			break;
+		default:
+			break;
+		}
+		return true;
 	}
 }

@@ -10,22 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/llAnswer"
-        android:layout_alignParentTop="true" >
-
-        <Button
-            android:id="@+id/button6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/button2"
-            android:layout_alignBottom="@+id/button2"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/btn_1_selector"
-            android:drawableTop="@drawable/ic_jump"
-            android:onClick="onHelpClick"
-            android:tag="4"
-            android:text="跳过该题"
-            android:textColor="#ffffff"
-            android:textSize="14sp" />
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical" >
 
         <TextView
             android:id="@+id/tvTip"
@@ -38,60 +24,183 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="#000000" />
 
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_below="@+id/tvTip"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/et_bg"
-            android:gravity="center"
-            android:text="测"
-            android:textColor="#000000"
-            android:textSize="100sp" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_alignTop="@+id/tvTitle"
-            android:background="@drawable/btn_1_selector"
-            android:drawableTop="@drawable/ic_help"
-            android:onClick="onHelpClick"
-            android:tag="1"
-            android:text="求助好友"
-            android:textColor="#ffffff"
-            android:textSize="14sp" />
+            android:layout_below="@+id/tvTip" >
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/button2"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/btn_1_selector"
-            android:drawableTop="@drawable/ic_key"
-            android:onClick="onHelpClick"
-            android:tag="2"
-            android:text="显示答案"
-            android:textColor="#ffffff"
-            android:textSize="14sp" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/button3"
-            android:background="@drawable/btn_1_selector"
-            android:drawableTop="@drawable/ic_listene"
-            android:onClick="onHelpClick"
-            android:tag="3"
-            android:text="听一听"
-            android:textColor="#ffffff"
-            android:textSize="14sp" />
+                <com.rayboot.pinyincrazy.views.SquaredLinearLayoutView
+                    android:id="@+id/h2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_1_selector"
+                    android:gravity="center"
+                    android:onClick="onHelpClick"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:tag="2" >
+
+                    <ImageView
+                        android:id="@+id/ImageView01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_key" />
+
+                    <TextView
+                        android:id="@+id/TextView01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/imageView1"
+                        android:text="显示答案"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="#ffffff"
+                        android:textSize="11sp" />
+                </com.rayboot.pinyincrazy.views.SquaredLinearLayoutView>
+
+                <com.rayboot.pinyincrazy.views.SquaredLinearLayoutView
+                    android:id="@+id/h1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_1_selector"
+                    android:gravity="center"
+                    android:onClick="onHelpClick"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:tag="1" >
+
+                    <ImageView
+                        android:id="@+id/ImageView01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_help" />
+
+                    <TextView
+                        android:id="@+id/TextView01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/imageView1"
+                        android:text="求助好友"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="#ffffff"
+                        android:textSize="11sp" />
+                </com.rayboot.pinyincrazy.views.SquaredLinearLayoutView>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_weight="4"
+                android:background="@drawable/et_bg"
+                android:gravity="center"
+                android:text="测"
+                android:textColor="#000000"
+                android:textSize="100sp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <com.rayboot.pinyincrazy.views.SquaredLinearLayoutView
+                    android:id="@+id/h3"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_1_selector"
+                    android:gravity="center"
+                    android:onClick="onHelpClick"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:tag="3" >
+
+                    <ImageView
+                        android:id="@+id/imageView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_listene" />
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/imageView1"
+                        android:text="听一听"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="#ffffff"
+                        android:textSize="11sp" />
+                </com.rayboot.pinyincrazy.views.SquaredLinearLayoutView>
+
+                <com.rayboot.pinyincrazy.views.SquaredLinearLayoutView
+                    android:id="@+id/h4"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_1_selector"
+                    android:gravity="center"
+                    android:onClick="onHelpClick"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:tag="4" >
+
+                    <ImageView
+                        android:id="@+id/imageView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_jump" />
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/imageView1"
+                        android:text="跳过该题"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="#ffffff"
+                        android:textSize="11sp" />
+                </com.rayboot.pinyincrazy.views.SquaredLinearLayoutView>
+            </LinearLayout>
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/imageButton1"
@@ -100,8 +209,9 @@
             android:layout_alignBottom="@+id/tvTip"
             android:layout_toRightOf="@+id/tvTip"
             android:background="@drawable/btn_1_selector"
-            android:src="@drawable/ic_alert" />
-
+            android:onClick="onHelpClick"
+            android:src="@drawable/ic_alert"
+            android:tag="5" />
     </RelativeLayout>
 
     <LinearLayout
@@ -112,7 +222,9 @@
         android:layout_centerHorizontal="true"
         android:background="#f8f8f8"
         android:gravity="center_horizontal"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:paddingBottom="3dp"
+        android:paddingTop="2dp" >
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -129,7 +241,7 @@
                 android:onClick="onToneClick"
                 android:tag="0"
                 android:text="轻声"
-                android:textColor="#000000"
+                android:textColor="@drawable/key_btn_textcolor_selector"
                 android:textSize="14sp" />
 
             <Button
@@ -141,7 +253,7 @@
                 android:onClick="onToneClick"
                 android:tag="1"
                 android:text="―"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <Button
                 android:layout_width="42dp"
@@ -152,7 +264,7 @@
                 android:onClick="onToneClick"
                 android:tag="2"
                 android:text="╱"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <Button
                 android:layout_width="42dp"
@@ -163,7 +275,7 @@
                 android:onClick="onToneClick"
                 android:tag="3"
                 android:text="∨"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <Button
                 android:layout_width="42dp"
@@ -174,8 +286,7 @@
                 android:onClick="onToneClick"
                 android:tag="4"
                 android:text="╲"
-                android:textColor="#000000" />
-
+                android:textColor="@drawable/key_btn_textcolor_selector" />
         </LinearLayout>
 
         <LinearLayout
@@ -192,7 +303,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="q"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -202,7 +313,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="w"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -212,7 +323,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="e"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -222,7 +333,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="r"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -232,7 +343,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="t"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -242,7 +353,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="y"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -252,7 +363,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="u"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -262,7 +373,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="i"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -272,7 +383,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="o"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -282,7 +393,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="p"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
         </LinearLayout>
 
         <LinearLayout
@@ -299,7 +410,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="V"
-                android:textColor="#000000"
+                android:textColor="@drawable/key_btn_textcolor_selector"
                 android:visibility="invisible" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
@@ -310,7 +421,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="a"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -320,7 +431,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="s"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -330,7 +441,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="d"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -340,7 +451,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="f"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -350,7 +461,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="g"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -360,7 +471,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="h"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -370,7 +481,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="j"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -380,7 +491,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="k"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -390,7 +501,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="l"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -400,7 +511,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="V"
-                android:textColor="#000000"
+                android:textColor="@drawable/key_btn_textcolor_selector"
                 android:visibility="invisible" />
         </LinearLayout>
 
@@ -418,7 +529,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onClearClick"
                 android:text="清空"
-                android:textColor="#000000"
+                android:textColor="@drawable/key_btn_textcolor_selector"
                 android:textSize="14sp" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
@@ -429,7 +540,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="z"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -439,7 +550,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="x"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -449,7 +560,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="c"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -459,7 +570,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="v"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -469,7 +580,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="b"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -479,7 +590,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="n"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView
                 android:id="@+id/keyButtonView1"
@@ -489,7 +600,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
                 android:text="m"
-                android:textColor="#000000" />
+                android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -498,7 +609,7 @@
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onOKClick"
                 android:text="完成"
-                android:textColor="#000000"
+                android:textColor="@drawable/key_btn_textcolor_selector"
                 android:textSize="14sp" />
         </LinearLayout>
     </LinearLayout>
@@ -514,35 +625,42 @@
         android:gravity="center" >
 
         <ImageButton
-            android:background="@drawable/btn_1_selector"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="4dp"
+            android:background="@drawable/btn_1_selector"
             android:onClick="onClearClick"
             android:src="@drawable/ic_refresh" />
 
-
         <TextView
             android:id="@+id/tvKeyword"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/pinyin_ed_bg"
             android:gravity="center"
-            android:text="asdf"
-            android:textColor="#000000" />
+            android:lines="1"
+            android:textColor="#000000"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tvTone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="1dp"
+            android:background="@drawable/pinyin_ed_bg"
+            android:gravity="center"
+            android:lines="1"
             android:tag="0"
-            android:text="L"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            android:textSize="15sp" />
+
         <ImageButton
-            android:background="@drawable/btn_1_selector"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:background="@drawable/btn_1_selector"
             android:onClick="onOKClick"
             android:src="@drawable/ic_ok" />
-
     </LinearLayout>
 
 </RelativeLayout>

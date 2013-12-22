@@ -1,17 +1,15 @@
 package com.rayboot.pinyincrazy;
 
 import org.holoeverywhere.widget.Toast;
-import android.annotation.SuppressLint;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+
 import com.rayboot.pinyincrazy.obj.PinyinDataObj;
 
 public class GameActivity extends MyBaseActivity {
@@ -26,6 +24,7 @@ public class GameActivity extends MyBaseActivity {
 	TextView tvTitle;
 
 	String[] toneArray = { " ", "―", "╱", "∨", "╲" };
+	int rightCount = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +33,18 @@ public class GameActivity extends MyBaseActivity {
 		setContentView(R.layout.activity_game);
 		ButterKnife.inject(this);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		getSupportActionBar().setTitle("第几关");
-		getSupportActionBar().setSubtitle("第几关");
+		rightCount = PinyinDataObj.getAllRightDatas().size();
+		getSupportActionBar().setSubtitle(
+				"共" + PinyinDataObj.getAllDatas().size() + "");
+		getSupportActionBar().setTitle("第" + (rightCount + 1) + "关");
 		setGameData();
+	}
+
+	@Override
+	public void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		getSupportActionBar().setTitle("第" + (rightCount + 1) + "关");
 	}
 
 	public void setGameData() {
@@ -64,14 +72,24 @@ public class GameActivity extends MyBaseActivity {
 				&& pinyinData.keytone == Integer.valueOf((String) tvTone
 						.getTag())) {
 			Toast.makeText(this, "恭喜你答对了", Toast.LENGTH_SHORT).show();
+			pinyinData.isRight = 1;
+			pinyinData.save();
+			rightCount++;
+			getSupportActionBar().setTitle("第" + (rightCount + 1) + "关");
 			setGameData();
 			return;
+		} else {
+			Toast.makeText(this, "回答错误。", Toast.LENGTH_SHORT).show();
+			pinyinData.wrong += 1;
+			pinyinData.save();
 		}
-		Toast.makeText(this, "回答错误！！！！！！", Toast.LENGTH_SHORT).show();
 	}
 
 	public void onToneClick(View view) {
 		String toneString = ((TextView) view).getText().toString();
+		if (toneString.equals("轻声")) {
+			toneString = "";
+		}
 		tvTone.setText(toneString);
 		tvTone.setTag(view.getTag());
 	}
@@ -105,5 +123,18 @@ public class GameActivity extends MyBaseActivity {
 			this.startActivity(intent);
 			break;
 		}
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// This uses the imported MenuItem from ActionBarSherlock
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			finish();
+			break;
+		default:
+			break;
+		}
+		return true;
 	}
 }
