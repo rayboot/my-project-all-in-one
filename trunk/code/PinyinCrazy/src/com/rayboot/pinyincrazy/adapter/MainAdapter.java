@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -33,6 +34,7 @@ public class MainAdapter<T> extends MyBaseAdapter<T> {
 		}
 		MainDataObj mdo = (MainDataObj) getItem(position);
 		holder.tvName.setText(mdo.name);
+		holder.ivLogo.setBackgroundResource(mdo.imageId);
 		convertView.setTag(R.string.tag_1, position);
 		return convertView;
 	}
@@ -40,6 +42,8 @@ public class MainAdapter<T> extends MyBaseAdapter<T> {
 	static class ViewHolder {
 		@InjectView(R.id.tvName)
 		TextView tvName;
+		@InjectView(R.id.ivLogo)
+		ImageView ivLogo;
 
 		public ViewHolder(View view) {
 			ButterKnife.inject(this, view);

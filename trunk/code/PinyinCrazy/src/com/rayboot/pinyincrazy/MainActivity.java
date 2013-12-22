@@ -5,13 +5,14 @@ import java.util.List;
 
 import org.holoeverywhere.widget.ListView;
 
-import android.R.integer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
+import com.haarman.listviewanimations.swinginadapters.AnimationAdapter;
+import com.haarman.listviewanimations.swinginadapters.prepared.SwingLeftInAnimationAdapter;
 import com.rayboot.pinyincrazy.adapter.MainAdapter;
 import com.rayboot.pinyincrazy.obj.MainDataObj;
 
@@ -28,7 +29,6 @@ public class MainActivity extends MyBaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		ButterKnife.inject(this);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		mainDatas.add(new MainDataObj(MainDataObj.MAIN_GAME, "闯关"));
 		mainDatas.add(new MainDataObj(MainDataObj.MAIN_RANK, "数据"));
@@ -36,7 +36,9 @@ public class MainActivity extends MyBaseActivity {
 		mainDatas.add(new MainDataObj(MainDataObj.MAIN_MORE, "更多"));
 
 		adapter = new MainAdapter<MainDataObj>(this, mainDatas);
-		lvMain.setAdapter(adapter);
+		AnimationAdapter animAdapter = new SwingLeftInAnimationAdapter(adapter);
+		animAdapter.setAbsListView(lvMain);
+		lvMain.setAdapter(animAdapter);
 	}
 
 	public void mainItemClick(View view) {
