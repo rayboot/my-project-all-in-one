@@ -2,6 +2,7 @@ package com.rayboot.pinyincrazy.adapter;
 
 import java.util.List;
 
+import android.R.integer;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,13 @@ public class RankAdapter<T> extends MyBaseAdapter<T> {
 
 		PinyinDataObj pdo = (PinyinDataObj) getItem(position);
 
-		holder.tvWord.setText(pdo.keychar + "--" + pdo.title);
+		if (pdo.isRight == 1) {
+			holder.tvWord.setText(pdo.keychar + "("
+					+ pdo.pinyin.split(" ")[pdo.title.indexOf(pdo.keychar)]
+					+ ")" + "--" + pdo.title);
+		} else {
+			holder.tvWord.setText(pdo.keychar + "--" + pdo.title);
+		}
 		holder.tvWrong.setText(pdo.wrong + "");
 		return convertView;
 	}

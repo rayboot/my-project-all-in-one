@@ -35,7 +35,7 @@ public class MainAdapter<T> extends MyBaseAdapter<T> {
 		MainDataObj mdo = (MainDataObj) getItem(position);
 		holder.tvName.setText(mdo.name);
 		holder.ivLogo.setBackgroundResource(mdo.imageId);
-		convertView.setTag(R.string.tag_1, position);
+		convertView.setTag(R.string.tag_1, mdo.key);
 		return convertView;
 	}
 

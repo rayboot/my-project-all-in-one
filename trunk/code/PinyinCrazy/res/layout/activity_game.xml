@@ -210,6 +210,7 @@
             android:layout_toRightOf="@+id/tvTip"
             android:background="@drawable/btn_1_selector"
             android:onClick="onHelpClick"
+            android:padding="7dp"
             android:src="@drawable/ic_alert"
             android:tag="5" />
     </RelativeLayout>
@@ -630,6 +631,7 @@
             android:layout_marginRight="4dp"
             android:background="@drawable/btn_1_selector"
             android:onClick="onClearClick"
+            android:padding="7dp"
             android:src="@drawable/ic_refresh" />
 
         <TextView
@@ -660,6 +662,7 @@
             android:layout_marginLeft="4dp"
             android:background="@drawable/btn_1_selector"
             android:onClick="onOKClick"
+            android:padding="7dp"
             android:src="@drawable/ic_ok" />
     </LinearLayout>
 

@@ -10,5 +10,9 @@
     <string name="title_activity_rank">数据</string>
     <string name="tag_1">tag_1</string>
     <string name="title_activity_tip">字面意思</string>
+    <string name="iflytek_app_id">52b83f23</string>
+    <string name="download_confirm_msg">检测到您尚未安装语音组件，是否现在安装？</string>
+    <string name="dialog_confirm_button">确定</string>
+    <string name="dialog_cancel_button">取消</string>
 
 </resources>
