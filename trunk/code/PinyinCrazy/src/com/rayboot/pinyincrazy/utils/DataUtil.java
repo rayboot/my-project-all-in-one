@@ -14,15 +14,25 @@ public class DataUtil {
 	public static int YIN_LIANG = 80;
 	public static int g_wenzibi = -100;
 
+	public static boolean changeCoin(Context context, int count) {
+		int now = getInfoFromShared(context, "pinyin_coin");
+		if (count > 0 || now + count >= 0) {
+			setInfoToShared(context, "pinyin_coin", now + count);
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public static int getInfoFromShared(Context context, String key) {
 		SharedPreferences preferences = context.getSharedPreferences(
-				"hanzitingxie", Context.MODE_PRIVATE);
+				"pinyincrazy", Context.MODE_PRIVATE);
 		return preferences.getInt(key, 0);
 	}
 
 	public static boolean setInfoToShared(Context context, String key, int value) {
 		SharedPreferences preferences = context.getSharedPreferences(
-				"hanzitingxie", Context.MODE_PRIVATE);
+				"pinyincrazy", Context.MODE_PRIVATE);
 		Editor editor = preferences.edit();
 		editor.putInt(key, value);
 		editor.commit();

@@ -50,6 +50,7 @@ public class MainActivity extends MyBaseActivity {
 		SpeechUtility.getUtility(this).setAppid(
 				getString(R.string.iflytek_app_id));
 		initUMeng();
+		DataUtil.changeCoin(this, 1);
 	}
 	private void initUMeng() {
 		MobclickAgent.setDebugMode(false);

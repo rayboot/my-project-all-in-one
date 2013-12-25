@@ -2,12 +2,15 @@ package com.rayboot.pinyincrazy;
 
 import org.holoeverywhere.widget.Toast;
 
+import android.R.integer;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -21,7 +24,11 @@ import com.iflytek.speech.SpeechUtility;
 import com.iflytek.speech.SynthesizerListener;
 import com.rayboot.pinyincrazy.obj.PinyinDataObj;
 import com.rayboot.pinyincrazy.utils.ApkInstaller;
+import com.rayboot.pinyincrazy.utils.DataUtil;
 import com.rayboot.pinyincrazy.utils.Util;
+
+import de.keyboardsurfer.android.widget.crouton.Crouton;
+import de.keyboardsurfer.android.widget.crouton.Style;
 
 public class GameActivity extends MyBaseActivity {
 	private PinyinDataObj pinyinData;
@@ -33,10 +40,15 @@ public class GameActivity extends MyBaseActivity {
 	TextView tvTip;
 	@InjectView(R.id.tvTitle)
 	TextView tvTitle;
+	@InjectView(R.id.llAddCoin)
+	LinearLayout llAddCoin;
+	@InjectView(R.id.tvCoinCount)
+	TextView tvCoinCount;
 
 	String[] toneArray = { " ", "―", "╱", "∨", "╲" };
 	int rightCount = 0;
 	private SpeechSynthesizer mTts = null;
+	DialogsAlertDialogFragment dialog = new DialogsAlertDialogFragment();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +62,8 @@ public class GameActivity extends MyBaseActivity {
 				"共" + PinyinDataObj.getAllDatas().size() + "");
 		getSupportActionBar().setTitle("第" + (rightCount + 1) + "关");
 		setGameData();
+		dialog.getBuilder(this).setTitle("提示");
+		changeCoin(0);
 	}
 
 	@Override
@@ -86,7 +100,9 @@ public class GameActivity extends MyBaseActivity {
 				tvKeyword.getText().toString().trim())
 				&& pinyinData.keytone == Integer.valueOf((String) tvTone
 						.getTag())) {
-			Toast.makeText(this, "恭喜你答对了", Toast.LENGTH_SHORT).show();
+			changeCoin(3);
+			Crouton.makeText(this, "恭喜你答对了", Style.CONFIRM).show();
+			// Toast.makeText(this, "恭喜你答对了", Toast.LENGTH_SHORT).show();
 			pinyinData.isRight = 1;
 			pinyinData.save();
 			rightCount++;
@@ -94,7 +110,9 @@ public class GameActivity extends MyBaseActivity {
 			setGameData();
 			return;
 		} else {
-			Toast.makeText(this, "回答错误。", Toast.LENGTH_SHORT).show();
+			changeCoin(-2);
+			Crouton.makeText(this, "回答错误", Style.ALERT).show();
+			// Toast.makeText(this, "回答错误。", Toast.LENGTH_SHORT).show();
 			pinyinData.wrong += 1;
 			pinyinData.save();
 		}
@@ -113,18 +131,27 @@ public class GameActivity extends MyBaseActivity {
 		switch (Integer.valueOf((String) view.getTag())) {
 		case 1:
 			// 求助好友
+			changeCoin(1);
 			String shareInfo = "我在使用 #拼音达人# 问你个事，" + pinyinData.title + "的"
 					+ pinyinData.keychar + "字怎么读，知道吗？";
 			Util.shareSomethingText(this, "分享", shareInfo);
 			break;
 		case 2:
 			// 显示答案
+			if (!changeCoin(-50)) {
+				Toast.makeText(this, "非常抱歉，您的金币不足。", Toast.LENGTH_LONG).show();
+				return;
+			}
 			tvKeyword.setText(pinyinData.keypinyin);
 			tvTone.setText(toneArray[pinyinData.keytone]);
 			tvTone.setTag(pinyinData.keytone + "");
 			break;
 		case 3:
 			// 听一听
+			if (!changeCoin(-10)) {
+				Toast.makeText(this, "非常抱歉，您的金币不足。", Toast.LENGTH_LONG).show();
+				return;
+			}
 			if (checkIsInstall() && mTts != null) {
 				int code = mTts.startSpeaking(pinyinData.title, mTtsListener);
 				if (code != 0) {
@@ -136,10 +163,15 @@ public class GameActivity extends MyBaseActivity {
 			break;
 		case 4:
 			// 跳过该题
+			if (!changeCoin(-5)) {
+				Toast.makeText(this, "非常抱歉，您的金币不足。", Toast.LENGTH_LONG).show();
+				return;
+			}
 			setGameData();
 			break;
 		case 5:
 			// 字面意思
+			changeCoin(-1);
 			Intent intent = new Intent(this, TipActivity.class);
 			intent.putExtra("data_answer", pinyinData.title);
 			intent.putExtra("data_tip", pinyinData.url);
@@ -170,6 +202,7 @@ public class GameActivity extends MyBaseActivity {
 		mTts.stopSpeaking(mTtsListener);
 		// 退出时释放连接
 		mTts.destory();
+		Crouton.cancelAllCroutons();
 	}
 
 	/**
@@ -243,5 +276,12 @@ public class GameActivity extends MyBaseActivity {
 			return false;
 		}
 		return true;
+	}
+
+	public boolean changeCoin(int count) {
+		boolean res = DataUtil.changeCoin(this, count);
+		tvCoinCount.setText(" "
+				+ DataUtil.getInfoFromShared(this, "pinyin_coin") + " 金币 ");
+		return res;
 	}
 }
