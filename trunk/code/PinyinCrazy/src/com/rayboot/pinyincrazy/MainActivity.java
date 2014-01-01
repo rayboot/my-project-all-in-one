@@ -17,6 +17,7 @@ import com.haarman.listviewanimations.swinginadapters.prepared.SwingLeftInAnimat
 import com.iflytek.speech.SpeechUtility;
 import com.rayboot.pinyincrazy.adapter.MainAdapter;
 import com.rayboot.pinyincrazy.obj.MainDataObj;
+import com.rayboot.pinyincrazy.obj.PinyinDataObj;
 import com.rayboot.pinyincrazy.utils.DataUtil;
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.fb.FeedbackAgent;
@@ -39,7 +40,11 @@ public class MainActivity extends MyBaseActivity {
 		setContentView(R.layout.activity_main);
 		ButterKnife.inject(this);
 
-		mainDatas.add(new MainDataObj(MainDataObj.MAIN_GAME, "闯关"));
+		if (PinyinDataObj.getChuangGuanRandomData() == null) {
+			mainDatas.add(new MainDataObj(MainDataObj.MAIN_WUJIN, "无尽挑战"));
+		}else {
+			mainDatas.add(new MainDataObj(MainDataObj.MAIN_GAME, "闯关"));
+		}
 		mainDatas.add(new MainDataObj(MainDataObj.MAIN_RANK, "数据"));
 		mainDatas.add(new MainDataObj(MainDataObj.MAIN_MORE, "更多"));
 
@@ -51,6 +56,7 @@ public class MainActivity extends MyBaseActivity {
 				getString(R.string.iflytek_app_id));
 		initUMeng();
 		DataUtil.changeCoin(this, 1);
+		
 	}
 	private void initUMeng() {
 		MobclickAgent.setDebugMode(false);
@@ -90,6 +96,12 @@ public class MainActivity extends MyBaseActivity {
 		switch (index) {
 		case MainDataObj.MAIN_GAME:
 			intent = new Intent(MainActivity.this, GameActivity.class);
+			intent.putExtra("is_wujin", 0);
+			MainActivity.this.startActivity(intent);
+			break;
+		case MainDataObj.MAIN_WUJIN:
+			intent = new Intent(MainActivity.this, GameActivity.class);
+			intent.putExtra("is_wujin", 1);
 			MainActivity.this.startActivity(intent);
 			break;
 		case MainDataObj.MAIN_RANK:

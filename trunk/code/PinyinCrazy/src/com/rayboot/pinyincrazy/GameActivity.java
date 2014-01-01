@@ -49,6 +49,7 @@ public class GameActivity extends MyBaseActivity {
 	int rightCount = 0;
 	private SpeechSynthesizer mTts = null;
 	DialogsAlertDialogFragment dialog = new DialogsAlertDialogFragment();
+	int curType = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +58,15 @@ public class GameActivity extends MyBaseActivity {
 		setContentView(R.layout.activity_game);
 		ButterKnife.inject(this);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		rightCount = PinyinDataObj.getAllRightDatas().size();
-		getSupportActionBar().setSubtitle(
-				"共" + PinyinDataObj.getAllDatas().size() + "");
-		getSupportActionBar().setTitle("第" + (rightCount + 1) + "关");
+		curType = getIntent().getIntExtra("is_wujin", 0);
+		if (curType == 0) {
+			rightCount = PinyinDataObj.getAllRightDatas().size();
+			getSupportActionBar().setSubtitle(
+					"共" + PinyinDataObj.getAllDatas().size() + "");
+			getSupportActionBar().setTitle("第" + (rightCount + 1) + "关");
+		}else {
+			getSupportActionBar().setTitle("无尽挑战");
+		}
 		setGameData();
 		dialog.getBuilder(this).setTitle("提示");
 		changeCoin(0);
@@ -73,11 +79,24 @@ public class GameActivity extends MyBaseActivity {
 			mTts = new SpeechSynthesizer(this, mTtsInitListener);
 		}
 		super.onResume();
-		getSupportActionBar().setTitle("第" + (rightCount + 1) + "关");
+		if (curType == 0) {
+			getSupportActionBar().setTitle("第" + (rightCount + 1) + "关");
+		}else {
+			getSupportActionBar().setTitle("无尽挑战");
+		}
 	}
 
 	public void setGameData() {
-		pinyinData = PinyinDataObj.getChuangGuanRandomData();
+		if (curType == 0) {
+			pinyinData = PinyinDataObj.getChuangGuanRandomData();
+		}else {
+			pinyinData = PinyinDataObj.getRandomData();
+		}
+		if (pinyinData == null) {
+			Toast.makeText(this, "您已通关，先试试无尽模式吧", Toast.LENGTH_SHORT).show();
+			finish();
+			return;
+		}
 		tvTitle.setText(pinyinData.keychar);
 		tvTip.setText(pinyinData.title);
 		onClearClick(null);
@@ -101,8 +120,8 @@ public class GameActivity extends MyBaseActivity {
 				&& pinyinData.keytone == Integer.valueOf((String) tvTone
 						.getTag())) {
 			changeCoin(3);
-			Crouton.makeText(this, "恭喜你答对了", Style.CONFIRM).show();
-			// Toast.makeText(this, "恭喜你答对了", Toast.LENGTH_SHORT).show();
+			// Crouton.makeText(this, "恭喜你答对了", Style.CONFIRM).show();
+			Toast.makeText(this, "恭喜你答对了", Toast.LENGTH_SHORT).show();
 			pinyinData.isRight = 1;
 			pinyinData.save();
 			rightCount++;
@@ -111,8 +130,8 @@ public class GameActivity extends MyBaseActivity {
 			return;
 		} else {
 			changeCoin(-2);
-			Crouton.makeText(this, "回答错误", Style.ALERT).show();
-			// Toast.makeText(this, "回答错误。", Toast.LENGTH_SHORT).show();
+			// Crouton.makeText(this, "回答错误", Style.ALERT).show();
+			Toast.makeText(this, "回答错误。", Toast.LENGTH_SHORT).show();
 			pinyinData.wrong += 1;
 			pinyinData.save();
 		}
@@ -199,9 +218,11 @@ public class GameActivity extends MyBaseActivity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
-		mTts.stopSpeaking(mTtsListener);
-		// 退出时释放连接
-		mTts.destory();
+		if (mTts != null) {
+			mTts.stopSpeaking(mTtsListener);
+			// 退出时释放连接
+			mTts.destory();
+		}
 		Crouton.cancelAllCroutons();
 	}
 
