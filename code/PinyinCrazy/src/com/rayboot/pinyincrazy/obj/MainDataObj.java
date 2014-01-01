@@ -7,6 +7,7 @@ public class MainDataObj {
 	public static final int MAIN_RANK= 1;
 	public static final int MAIN_SETTING = 2;
 	public static final int MAIN_MORE = 3;
+	public static final int MAIN_WUJIN = 4;
 
 	public String name;
 	public int key;
@@ -18,6 +19,9 @@ public class MainDataObj {
 		this.key = key;
 		switch (key) {
 		case MAIN_GAME:
+			imageId = R.drawable.ic_game;
+			break;
+		case MAIN_WUJIN:
 			imageId = R.drawable.ic_game;
 			break;
 		case MAIN_RANK:
