@@ -57,16 +57,20 @@ public class TipActivity extends MyBaseActivity {
 
 			@Override
 			public void onPageFinished(WebView view, String url) {
-				String jsString = "";
+				StringBuffer jsString = new StringBuffer();
 				String[] pinyinStrings = pinyin.split(" ");
 
+				jsString.append("javascript:var searchbar = document.getElementById('toolbar-search');searchbar.parentNode.removeChild(searchbar);");
+				jsString.append("javascript:var btnconfig = document.getElementById('btn-config');btnconfig.parentNode.removeChild(btnconfig);");
 				for (int i = 0; i < title.length(); i++) {
-					jsString += "javascript:var orgHtml = document.getElementsByTagName('body')[0].innerHTML;document.getElementsByTagName('body')[0].innerHTML=orgHtml.replace(/"
-							+ pinyinStrings[i]
-							+ "/gi,'"
-							+ title.substring(i, i + 1).trim() + "');";
+					jsString.append("javascript:var orgHtml = document.getElementsByTagName('body')[0].innerHTML;document.getElementsByTagName('body')[0].innerHTML=orgHtml.replace(/");
+					jsString.append(pinyinStrings[i]);
+					jsString.append("/gi,'");
+					jsString.append(title.substring(i, i + 1).trim());
+					jsString.append("');");
+
 				}
-				view.loadUrl(jsString);
+				view.loadUrl(jsString.toString());
 			}
 
 		});
