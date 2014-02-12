@@ -572,7 +572,7 @@
                 android:layout_weight="2"
                 android:background="@drawable/key_btn_selector"
                 android:onClick="onKeyClick"
-                android:text="v"
+                android:text="ü"
                 android:textColor="@drawable/key_btn_textcolor_selector" />
 
             <com.rayboot.pinyincrazy.views.KeyButtonView

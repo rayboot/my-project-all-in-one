@@ -6,10 +6,12 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
+import com.fourmob.tilteffect.TiltEffectAttacher;
 import com.rayboot.pinyincrazy.R;
 import com.rayboot.pinyincrazy.obj.MainDataObj;
 
@@ -44,9 +46,12 @@ public class MainAdapter<T> extends MyBaseAdapter<T> {
 		TextView tvName;
 		@InjectView(R.id.ivLogo)
 		ImageView ivLogo;
+		@InjectView(R.id.rlMain)
+		RelativeLayout rlMain;
 
 		public ViewHolder(View view) {
 			ButterKnife.inject(this, view);
+			TiltEffectAttacher.attach(rlMain);
 		}
 	}
 }
