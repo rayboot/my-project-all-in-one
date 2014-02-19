@@ -18,7 +18,7 @@ public class TiltEffectAttacher implements View.OnTouchListener {
 
 	private static final String TAG = "com.fourmob.tilteffect.TiltView";
 
-	private static int TILT_VALUE = 1;
+	private static float TILT_VALUE = (float) 1.5;
 
 	private TouchPart mTouchPart = TouchPart.MIDDLE;
 

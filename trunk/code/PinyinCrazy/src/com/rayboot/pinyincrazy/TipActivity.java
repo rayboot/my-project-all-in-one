@@ -62,6 +62,8 @@ public class TipActivity extends MyBaseActivity {
 
 				jsString.append("javascript:var searchbar = document.getElementById('toolbar-search');searchbar.parentNode.removeChild(searchbar);");
 				jsString.append("javascript:var btnconfig = document.getElementById('btn-config');btnconfig.parentNode.removeChild(btnconfig);");
+				jsString.append("javascript:var settingbar1 = document.getElementById('btn-catalog');settingbar1.parentNode.removeChild(settingbar1);");
+				jsString.append("javascript:var settingbar2 = document.getElementById('gotop');settingbar2.parentNode.removeChild(settingbar2);");
 				for (int i = 0; i < title.length(); i++) {
 					jsString.append("javascript:var orgHtml = document.getElementsByTagName('body')[0].innerHTML;document.getElementsByTagName('body')[0].innerHTML=orgHtml.replace(/");
 					jsString.append(pinyinStrings[i]);
