@@ -2,10 +2,11 @@ package com.rayboot.pinyincrazy;
 
 import org.holoeverywhere.widget.Toast;
 
-import android.R.integer;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.DialogInterface.OnClickListener;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.view.MenuItem;
@@ -26,9 +27,9 @@ import com.rayboot.pinyincrazy.obj.PinyinDataObj;
 import com.rayboot.pinyincrazy.utils.ApkInstaller;
 import com.rayboot.pinyincrazy.utils.DataUtil;
 import com.rayboot.pinyincrazy.utils.Util;
+import com.umeng.analytics.MobclickAgent;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
-import de.keyboardsurfer.android.widget.crouton.Style;
 
 public class GameActivity extends MyBaseActivity {
 	private PinyinDataObj pinyinData;
@@ -64,7 +65,7 @@ public class GameActivity extends MyBaseActivity {
 			getSupportActionBar().setSubtitle(
 					"共" + PinyinDataObj.getAllDatas().size() + "");
 			getSupportActionBar().setTitle("第" + (rightCount + 1) + "关");
-		}else {
+		} else {
 			getSupportActionBar().setTitle("无尽挑战");
 		}
 		setGameData();
@@ -81,7 +82,7 @@ public class GameActivity extends MyBaseActivity {
 		super.onResume();
 		if (curType == 0) {
 			getSupportActionBar().setTitle("第" + (rightCount + 1) + "关");
-		}else {
+		} else {
 			getSupportActionBar().setTitle("无尽挑战");
 		}
 	}
@@ -89,7 +90,7 @@ public class GameActivity extends MyBaseActivity {
 	public void setGameData() {
 		if (curType == 0) {
 			pinyinData = PinyinDataObj.getChuangGuanRandomData();
-		}else {
+		} else {
 			pinyinData = PinyinDataObj.getRandomData();
 		}
 		if (pinyinData == null) {
@@ -109,16 +110,19 @@ public class GameActivity extends MyBaseActivity {
 	}
 
 	public void onClearClick(View view) {
+		MobclickAgent.onEvent(this, "101");
 		tvKeyword.setText("");
 		tvTone.setText("");
 		tvTone.setTag("0");
 	}
 
 	public void onOKClick(View view) {
+		MobclickAgent.onEvent(this, "100");
 		if (pinyinData.keypinyin.trim().equals(
 				tvKeyword.getText().toString().trim())
 				&& pinyinData.keytone == Integer.valueOf((String) tvTone
 						.getTag())) {
+			MobclickAgent.onEvent(this, "1000");
 			changeCoin(3);
 			// Crouton.makeText(this, "恭喜你答对了", Style.CONFIRM).show();
 			Toast.makeText(this, "恭喜你答对了", Toast.LENGTH_SHORT).show();
@@ -129,6 +133,7 @@ public class GameActivity extends MyBaseActivity {
 			setGameData();
 			return;
 		} else {
+			MobclickAgent.onEvent(this, "1001");
 			changeCoin(-2);
 			// Crouton.makeText(this, "回答错误", Style.ALERT).show();
 			Toast.makeText(this, "回答错误。", Toast.LENGTH_SHORT).show();
@@ -150,6 +155,7 @@ public class GameActivity extends MyBaseActivity {
 		switch (Integer.valueOf((String) view.getTag())) {
 		case 1:
 			// 求助好友
+			MobclickAgent.onEvent(this, "103");
 			changeCoin(1);
 			String shareInfo = "我在使用 #拼音达人# 问你个事，" + pinyinData.title + "的"
 					+ pinyinData.keychar + "字怎么读，知道吗？";
@@ -157,6 +163,7 @@ public class GameActivity extends MyBaseActivity {
 			break;
 		case 2:
 			// 显示答案
+			MobclickAgent.onEvent(this, "102");
 			if (!changeCoin(-50)) {
 				Toast.makeText(this, "非常抱歉，您的金币不足。", Toast.LENGTH_LONG).show();
 				return;
@@ -167,9 +174,21 @@ public class GameActivity extends MyBaseActivity {
 			break;
 		case 3:
 			// 听一听
-			if (!changeCoin(-10)) {
-				Toast.makeText(this, "非常抱歉，您的金币不足。", Toast.LENGTH_LONG).show();
-				return;
+			MobclickAgent.onEvent(this, "104");
+			try {
+				ApplicationInfo appInfo = this.getPackageManager()
+						.getApplicationInfo(getPackageName(),
+								PackageManager.GET_META_DATA);
+				String channelName = appInfo.metaData
+						.getString("UMENG_CHANNEL");
+				if (!channelName.equals("mmw") && !changeCoin(-10)) {
+					Toast.makeText(this, "非常抱歉，您的金币不足。", Toast.LENGTH_LONG)
+							.show();
+					return;
+				}
+			} catch (NameNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			if (checkIsInstall() && mTts != null) {
 				int code = mTts.startSpeaking(pinyinData.title, mTtsListener);
@@ -182,6 +201,7 @@ public class GameActivity extends MyBaseActivity {
 			break;
 		case 4:
 			// 跳过该题
+			MobclickAgent.onEvent(this, "105");
 			if (!changeCoin(-5)) {
 				Toast.makeText(this, "非常抱歉，您的金币不足。", Toast.LENGTH_LONG).show();
 				return;
@@ -190,6 +210,7 @@ public class GameActivity extends MyBaseActivity {
 			break;
 		case 5:
 			// 字面意思
+			MobclickAgent.onEvent(this, "106");
 			changeCoin(-1);
 			Intent intent = new Intent(this, TipActivity.class);
 			intent.putExtra("data_answer", pinyinData.title);
