@@ -1,15 +1,14 @@
 package com.rayboot.hanzitingxie;
 
-import org.holoeverywhere.widget.SeekBar;
-import org.holoeverywhere.widget.SeekBar.OnSeekBarChangeListener;
-import org.holoeverywhere.widget.Toast;
-
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.RemoteException;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.Toast;
 
+import com.actionbarsherlock.view.MenuItem;
 import com.iflytek.speech.SpeechConstant;
 import com.iflytek.speech.SpeechSynthesizer;
 import com.iflytek.speech.SpeechUtility;
@@ -27,7 +26,7 @@ public class SettingsActivity extends MyBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setTheme(R.style.Holo_Theme_Light_DarkActionBar);
+		setTheme(R.style.Theme_Sherlock_Light);
 		super.onCreate(savedInstanceState);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		setContentView(R.layout.activity_settings);
@@ -158,9 +157,10 @@ public class SettingsActivity extends MyBaseActivity {
 		mTts.destory();
 	}
 
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// This uses the imported MenuItem from ActionBarSherlock
+		// TODO Auto-generated method stub
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			finish();
@@ -168,7 +168,7 @@ public class SettingsActivity extends MyBaseActivity {
 		default:
 			break;
 		}
-		return true;
+		return super.onOptionsItemSelected(item);
 	}
 
 	public void onExport(View view) {

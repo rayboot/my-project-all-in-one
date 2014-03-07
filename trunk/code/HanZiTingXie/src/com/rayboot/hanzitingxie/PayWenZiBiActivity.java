@@ -1,18 +1,17 @@
 package com.rayboot.hanzitingxie;
 
-import org.holoeverywhere.widget.Toast;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 import cn.waps.AppConnect;
 import cn.waps.UpdatePointsNotifier;
 
+import com.actionbarsherlock.view.MenuItem;
 import com.rayboot.hanzitingxie.util.DataUtil;
 import com.umeng.analytics.MobclickAgent;
 import com.wanpu.pay.PayConnect;
@@ -37,7 +36,7 @@ public class PayWenZiBiActivity extends MyBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setTheme(R.style.Holo_Theme_Light_DarkActionBar);
+		setTheme(R.style.Theme_Sherlock_Light);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_pay_wen_zi_bi);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -136,9 +135,10 @@ public class PayWenZiBiActivity extends MyBaseActivity {
 		}
 	}
 
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// This uses the imported MenuItem from ActionBarSherlock
+		// TODO Auto-generated method stub
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			finish();
@@ -146,7 +146,7 @@ public class PayWenZiBiActivity extends MyBaseActivity {
 		default:
 			break;
 		}
-		return true;
+		return super.onOptionsItemSelected(item);
 	}
 
 	private void changeWenZiBi(int cnt) {

@@ -1,12 +1,12 @@
 package com.rayboot.hanzitingxie;
 
-import android.widget.Toast;
 import cn.waps.UpdatePointsNotifier;
 
+import com.actionbarsherlock.app.SherlockActivity;
 import com.rayboot.hanzitingxie.util.DataUtil;
 import com.umeng.analytics.MobclickAgent;
 
-public class MyBaseActivity extends org.holoeverywhere.app.Activity {
+public class MyBaseActivity extends SherlockActivity {
 
 	public void onResume() {
 		super.onResume();
@@ -23,8 +23,8 @@ public class MyBaseActivity extends org.holoeverywhere.app.Activity {
 		@Override
 		public void getUpdatePointsFailed(String arg0) {
 			// TODO Auto-generated method stub
-			Toast.makeText(MyBaseActivity.this, "获取文字币失败", Toast.LENGTH_SHORT)
-					.show();
+//			Toast.makeText(MyBaseActivity.this, "获取文字币失败", Toast.LENGTH_SHORT)
+//					.show();
 		}
 
 		@Override
