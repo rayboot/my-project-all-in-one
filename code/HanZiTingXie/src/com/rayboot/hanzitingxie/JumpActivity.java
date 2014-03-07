@@ -1,21 +1,13 @@
 package com.rayboot.hanzitingxie;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.holoeverywhere.widget.ListView;
-import org.holoeverywhere.widget.Toast;
-import org.jsoup.helper.StringUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.BaseAdapter;
+import android.widget.Toast;
 import cn.waps.AppConnect;
 import cn.waps.UpdatePointsNotifier;
 
@@ -31,22 +23,14 @@ import com.wanpu.pay.PayConnect;
 public class JumpActivity extends MyBaseActivity {
 	private long exitTime = 0;
 
-	ListView lvMode;
-	BaseAdapter adapter;
 	FeedbackAgent agent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setTheme(R.style.Holo_Theme_Light_DarkActionBar);
+		setTheme(R.style.AppTheme);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_jump);
-		getSupportActionBar().setTitle(
-				getResources().getString(R.string.app_name));
 
-		lvMode = (ListView) findViewById(R.id.lvMode);
-		lvMode.setOnItemClickListener(onItemClickListener);
-
-		loadMode();
 		initUMeng();
 		initWaps();
 	}
@@ -142,45 +126,27 @@ public class JumpActivity extends MyBaseActivity {
 		});
 	}
 
-	private void loadMode() {
-		List<String> datas = new ArrayList<String>();
-		datas.add("闯关");
-		datas.add("无尽");
-		datas.add("数据");
-		datas.add("设置");
-		datas.add("更多");
-		adapter = new ModeAdapter<String>(this, datas);
-		lvMode.setAdapter(adapter);
-	}
-
-	private OnItemClickListener onItemClickListener = new OnItemClickListener() {
-
-		@Override
-		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-				long arg3) {
-			// TODO Auto-generated method stub
-			switch (arg2) {
-			case 0:
-				onChuangGuan();
-				break;
-			case 1:
-				onWuJin();
-				break;
-			case 2:
-				onData();
-				break;
-			case 3:
-				onSettings();
-				break;
-			case 4:
-				onMore();
-				break;
-			default:
-				break;
-			}
-
+	public void doSelect(View view) {
+		switch (view.getId()) {
+		case R.id.ivSetting:
+			onSettings();
+			break;
+		case R.id.ivAbout:
+			onMore();
+			break;
+		case R.id.llChuangGuan:
+			onChuangGuan();
+			break;
+		case R.id.llLiShi:
+			onData();
+			break;
+		case R.id.llWuJin:
+			onWuJin();
+			break;
+		default:
+			break;
 		}
-	};
+	}
 
 	public void onChuangGuan() {
 		Intent intent = new Intent(this, MainActivity.class);

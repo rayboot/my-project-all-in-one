@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.holoeverywhere.widget.ListView;
+import org.holoeverywhere.widget.Toast;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -117,5 +119,25 @@ public class MainActivity extends MyBaseActivity {
 			MainActivity.this.startActivity(intent);
 			break;
 		}
+	}
+	
+	
+	private long exitTime = 0;
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK
+				&& event.getAction() == KeyEvent.ACTION_DOWN) {
+
+			if ((System.currentTimeMillis() - exitTime) > 2000) {
+				Toast.makeText(getApplicationContext(), "再按一次退出程序",
+						Toast.LENGTH_SHORT).show();
+				exitTime = System.currentTimeMillis();
+			} else {
+				finish();
+			}
+
+			return true;
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 }

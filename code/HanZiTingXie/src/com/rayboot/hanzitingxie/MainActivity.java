@@ -2,8 +2,6 @@ package com.rayboot.hanzitingxie;
 
 import java.util.Random;
 
-import org.holoeverywhere.widget.Toast;
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -12,8 +10,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.RemoteException;
-import android.support.v7.widget.PopupMenu;
-import android.support.v7.widget.PopupMenu.OnMenuItemClickListener;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -25,8 +21,11 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
+import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import android.widget.Toast;
 import cn.waps.AppConnect;
 import cn.waps.UpdatePointsNotifier;
 
@@ -239,11 +238,11 @@ public class MainActivity extends MyBaseActivity {
 
 							} else {
 								dialog.dismiss();
-								org.holoeverywhere.widget.Toast
+								Toast
 										.makeText(
 												MainActivity.this,
 												"您的游戏币不足20个",
-												org.holoeverywhere.widget.Toast.LENGTH_SHORT)
+												Toast.LENGTH_SHORT)
 										.show();
 							}
 

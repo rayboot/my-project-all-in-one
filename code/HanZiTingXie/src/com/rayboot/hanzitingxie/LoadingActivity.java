@@ -3,11 +3,10 @@ package com.rayboot.hanzitingxie;
 import java.lang.reflect.Type;
 import java.util.List;
 
-import org.holoeverywhere.widget.Toast;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.Toast;
 
 import com.activeandroid.ActiveAndroid;
 import com.activeandroid.query.Delete;

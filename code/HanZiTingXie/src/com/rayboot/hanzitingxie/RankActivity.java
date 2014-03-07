@@ -1,9 +1,9 @@
 package com.rayboot.hanzitingxie;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.ListView;
 
+import com.actionbarsherlock.view.MenuItem;
 import com.rayboot.hanzitingxie.obj.WordData;
 
 public class RankActivity extends MyBaseActivity {
@@ -13,7 +13,7 @@ public class RankActivity extends MyBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setTheme(R.style.Holo_Theme_Light_DarkActionBar);
+		setTheme(R.style.Theme_Sherlock_Light);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rank);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -25,9 +25,10 @@ public class RankActivity extends MyBaseActivity {
 
 	}
 
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// This uses the imported MenuItem from ActionBarSherlock
+		// TODO Auto-generated method stub
 		switch (item.getItemId()) {
 		case android.R.id.home:
 			finish();
@@ -35,7 +36,7 @@ public class RankActivity extends MyBaseActivity {
 		default:
 			break;
 		}
-		return true;
+		return super.onOptionsItemSelected(item);
 	}
 
 }
