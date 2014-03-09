@@ -36,7 +36,6 @@ public class PayWenZiBiActivity extends MyBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setTheme(R.style.Theme_Sherlock_Light);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_pay_wen_zi_bi);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);

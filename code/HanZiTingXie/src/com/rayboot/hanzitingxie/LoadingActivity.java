@@ -23,6 +23,7 @@ public class LoadingActivity extends MyBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.Theme_Sherlock_Light_NoActionBar);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_loading);
 		new Handler().postDelayed(new Runnable() {

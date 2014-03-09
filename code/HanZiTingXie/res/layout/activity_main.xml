@@ -4,215 +4,307 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:gravity="center_horizontal"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/llTemp"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true" >
+        android:layout_alignParentStart="true"
+        android:id="@+id/rlTop">
 
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+        <ImageButton
+            android:layout_width="@dimen/main_function_w_h"
+            android:layout_height="@dimen/main_function_w_h"
+            android:id="@+id/btnVoice"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:onClick="onVoice"
-            android:text="发音" />
+            android:src="@drawable/ic_voice"
+            android:background="@drawable/selector_left_orange" />
 
-        <Button
-            android:id="@+id/btnFinish"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_weight="1"
-            android:onClick="onFinish"
-            android:text="完成" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="onShowHelp"
-            android:text="求助" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tvBi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="" />
-
-    <ScrollView
-        android:id="@+id/scrollView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/llTemp" >
+        <ImageButton
+            android:layout_width="@dimen/main_function_w_h"
+            android:layout_height="@dimen/main_function_w_h"
+            android:id="@+id/btnFriend"
+            android:layout_centerVertical="true"
+            android:layout_alignBottom="@+id/btnVoice"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_friend"
+            android:onClick="onFriendHelp"
+            android:background="@drawable/selector_right_orange" />
 
         <LinearLayout
-            android:id="@+id/linearLayout3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal|center"
-            android:orientation="vertical" >
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/btnVoice"
+            android:layout_toLeftOf="@+id/btnFriend"
+            android:layout_marginBottom="10dp">
 
             <LinearLayout
-                android:id="@+id/linearLayout2"
+                android:id="@+id/ll1"
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal" >
+                android:gravity="center"
+                android:onClick="onCiClick"
+                android:layout_margin="2dp">
 
-                <LinearLayout
-                    android:id="@+id/ll1"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical" >
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="yi"
+                    android:id="@+id/tvPinyin1" />
 
-                    <TextView
-                        android:id="@+id/tv1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="#000000"
-                        android:textSize="@dimen/main_pinyin_size" />
-
-                    <EditText
-                        android:id="@+id/et1"
-                        android:layout_width="@dimen/main_rect_bg"
-                        android:layout_height="@dimen/main_rect_bg"
-                        android:background="@drawable/et_bg"
-                        android:ems="1"
-                        android:gravity="center"
-                        android:imeOptions="actionDone"
-                        android:lines="1"
-                        android:maxLength="1"
-                        android:maxLines="1"
-                        android:textSize="@dimen/main_rect_text_size" >
-
-                        <requestFocus />
-                    </EditText>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll2"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical" >
-
-                    <TextView
-                        android:id="@+id/tv2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="#000000"
-                        android:textSize="@dimen/main_pinyin_size" />
-
-                    <EditText
-                        android:id="@+id/et2"
-                        android:layout_width="@dimen/main_rect_bg"
-                        android:layout_height="@dimen/main_rect_bg"
-                        android:background="@drawable/et_bg"
-                        android:ems="1"
-                        android:gravity="center"
-                        android:imeOptions="actionDone"
-                        android:lines="1"
-                        android:maxLength="1"
-                        android:maxLines="1"
-                        android:textSize="@dimen/main_rect_text_size"  />
-                </LinearLayout>
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/tvCi1"
+                    android:background="@drawable/selector_top_keyword"
+                    android:gravity="center" />
             </LinearLayout>
 
             <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal" >
+                android:gravity="center"
+                android:id="@+id/ll2"
+                android:onClick="onCiClick"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="2dp">
 
-                <LinearLayout
-                    android:id="@+id/ll3"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical" >
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="ge"
+                    android:id="@+id/tvPinyin2" />
 
-                    <TextView
-                        android:id="@+id/tv3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="#000000"
-                        android:textSize="@dimen/main_pinyin_size"  />
-
-                    <EditText
-                        android:id="@+id/et3"
-                        android:layout_width="@dimen/main_rect_bg"
-                        android:layout_height="@dimen/main_rect_bg"
-                        android:background="@drawable/et_bg"
-                        android:ems="1"
-                        android:gravity="center"
-                        android:imeOptions="actionDone"
-                        android:lines="1"
-                        android:maxLength="1"
-                        android:maxLines="1"
-                        android:textSize="@dimen/main_rect_text_size"  />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll4"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical" >
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:background="@drawable/selector_top_keyword"
+                    android:gravity="center"
+                    android:id="@+id/tvCi2" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/tv4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="#000000"
-                        android:textSize="@dimen/main_pinyin_size"  />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:id="@+id/ll3"
+                android:onClick="onCiClick"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="2dp">
 
-                    <EditText
-                        android:id="@+id/et4"
-                        android:layout_width="@dimen/main_rect_bg"
-                        android:layout_height="@dimen/main_rect_bg"
-                        android:background="@drawable/et_bg"
-                        android:ems="1"
-                        android:gravity="center"
-                        android:imeOptions="actionDone"
-                        android:lines="1"
-                        android:maxLength="1"
-                        android:maxLines="1"
-                        android:textSize="@dimen/main_rect_text_size"  />
-                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="ci"
+                    android:id="@+id/tvPinyin3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selector_top_keyword"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/tvCi3" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:id="@+id/ll4"
+                android:onClick="onCiClick"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="tiao"
+                    android:id="@+id/tvPinyin4" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/selector_top_keyword"
+                    android:gravity="center"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/tvCi4" />
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/tvCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:text="" />
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/rlTop"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:background="#d5d5d5">
 
-    <TextView
-        android:id="@+id/tvLevel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivArrow"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_arrow" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivArrow"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/relativeLayout">
+
+            <LinearLayout
+                android:id="@+id/llLeft"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:gravity="center_vertical|left"
+                android:layout_centerVertical="true">
+
+                <ImageButton
+                    android:layout_width="@dimen/main_function_w_h"
+                    android:layout_height="@dimen/main_function_w_h"
+                    android:id="@+id/btnShowOne"
+                    android:onClick="onShowOne"
+                    android:src="@drawable/ic_show_one"
+                    android:background="@drawable/selector_left_orange"
+                    android:layout_marginBottom="4dp" />
+
+                <ImageButton
+                    android:layout_width="@dimen/main_function_w_h"
+                    android:layout_height="@dimen/main_function_w_h"
+                    android:id="@+id/btnOK"
+                    android:src="@drawable/ic_answer"
+                    android:onClick="onShowAnswer"
+                    android:background="@drawable/selector_left_green"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llRight"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:gravity="center_vertical|right"
+                android:layout_centerVertical="true">
+
+                <ImageButton
+                    android:layout_width="@dimen/main_function_w_h"
+                    android:layout_height="@dimen/main_function_w_h"
+                    android:id="@+id/btnJump"
+                    android:src="@drawable/ic_next"
+                    android:onClick="onJumpNext"
+                    android:background="@drawable/selector_right_orange"
+                    android:layout_marginBottom="4dp" />
+
+                <ImageButton
+                    android:layout_width="@dimen/main_function_w_h"
+                    android:layout_height="@dimen/main_function_w_h"
+                    android:id="@+id/btnOK"
+                    android:src="@drawable/ic_ok"
+                    android:background="@drawable/selector_right_green"
+                    android:onClick="onFinish"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="@dimen/main_rect_bg"
+                android:layout_height="@dimen/main_rect_bg"
+                android:id="@+id/etInput"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/input_big"
+                android:gravity="center"
+                android:textSize="@dimen/main_item_rect_text_size"
+                android:maxLength="1"
+                android:lines="1"
+                android:singleLine="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/relativeLayout"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/shape_tip_content"
+            android:layout_alignParentStart="true"
+            android:layout_margin="10dp"
+            android:layout_alignParentBottom="true">
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/shape_tip_title"
+                android:layout_alignParentStart="true"
+                android:id="@+id/relativeLayout2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="字面意思"
+                    android:id="@+id/textView"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textColor="#ffffff"
+                    android:layout_marginLeft="10dp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_network"
+                    android:onClick="onTip"
+                    android:layout_marginRight="10dp" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/tvShortTip"
+                android:layout_below="@+id/relativeLayout2"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_margin="10dp"
+                android:ellipsize="end" />
+
+        </RelativeLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

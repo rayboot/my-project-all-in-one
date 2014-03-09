@@ -13,7 +13,6 @@ public class RankActivity extends MyBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setTheme(R.style.Theme_Sherlock_Light);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rank);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
