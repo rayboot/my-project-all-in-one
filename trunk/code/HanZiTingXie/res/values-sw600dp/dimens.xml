@@ -5,10 +5,11 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="settings_rect_bg">150dp</dimen>
     <dimen name="settings_rect_text_size">130sp</dimen>
-    <dimen name="main_rect_text_size">200sp</dimen>
-    <dimen name="main_rect_bg">280dp</dimen>
     <dimen name="main_pinyin_size">60sp</dimen>
     <dimen name="main_item_rect_text_size">120sp</dimen>
     <dimen name="main_item_rect_bg">160dp</dimen>
 
+    <dimen name="main_function_w_h">80dp</dimen>
+    <dimen name="main_rect_text_size">200sp</dimen>
+    <dimen name="main_rect_bg">280dp</dimen>
 </resources>

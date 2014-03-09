@@ -116,11 +116,11 @@
             android:max="100" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnExport"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onExport"
-        android:text="导入自定义词库" />
+   <!--<Button-->
+        <!--android:id="@+id/btnExport"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:onClick="onExport"-->
+        <!--android:text="导入自定义词库" />-->
 
 </LinearLayout>
