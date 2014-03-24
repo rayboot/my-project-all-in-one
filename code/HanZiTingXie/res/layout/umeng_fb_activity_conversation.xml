@@ -39,6 +39,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:visibility="gone"
         android:id="@+id/umeng_fb_conversation_contact_entry"
         android:layout_width="fill_parent"
         android:layout_height="40dp"

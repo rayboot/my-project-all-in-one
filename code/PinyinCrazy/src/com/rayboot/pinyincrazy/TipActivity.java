@@ -2,7 +2,6 @@ package com.rayboot.pinyincrazy;
 
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -10,6 +9,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import com.actionbarsherlock.view.MenuItem;
 
 public class TipActivity extends MyBaseActivity {
 
@@ -27,7 +27,6 @@ public class TipActivity extends MyBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setTheme(R.style.Holo_Theme_Light_DarkActionBar);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tip);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);

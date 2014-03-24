@@ -1,5 +1,6 @@
 package com.rayboot.hanzitingxie;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -8,7 +9,10 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import cn.waps.AppConnect;
+import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.view.Window;
 import com.rayboot.hanzitingxie.util.DataUtil;
+import java.util.Random;
 
 public class TipActivity extends MyBaseActivity
 {
@@ -22,9 +26,10 @@ public class TipActivity extends MyBaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        setTheme(R.style.Theme_Sherlock_Light_NoActionBar);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tip);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (DataUtil.getInfoFromShared(TipActivity.this, "isShowAD") == 1)
         {
@@ -111,5 +116,21 @@ public class TipActivity extends MyBaseActivity
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        // TODO Auto-generated method stub
+        int ids = item.getItemId();
+        switch (item.getItemId())
+        {
+        case android.R.id.home:
+            finish();
+            break;
+        default:
+            break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

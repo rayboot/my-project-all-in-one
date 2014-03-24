@@ -86,4 +86,16 @@ public class Util {
 		agent.startFeedbackActivity();
 	}
 
+    public static void sendEmail(Context context, String subject, String text)
+    {
+
+        // 给someone@domain.com发邮件发送内容为“Hello”的邮件
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_EMAIL,
+                new String[] { "rayboot.work@gmail.com" });
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, text);
+        intent.setType("text/plain");
+        context.startActivity(intent);
+    }
 }

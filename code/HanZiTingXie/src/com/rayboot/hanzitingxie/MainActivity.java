@@ -149,6 +149,7 @@ public class MainActivity extends MyBaseActivity
             tvCi[i].setPressed(
                     TextUtils.isEmpty(tvCi[i].getText()) ? false : true);
         }
+
     }
 
     public void setHanzi()

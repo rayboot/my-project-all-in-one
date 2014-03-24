@@ -1,24 +1,11 @@
 package com.rayboot.pinyincrazy;
 
-import org.holoeverywhere.HoloEverywhere;
-import org.holoeverywhere.LayoutInflater;
-import org.holoeverywhere.ThemeManager;
-import org.holoeverywhere.HoloEverywhere.PreferenceImpl;
+import android.app.Application;
 
 import com.activeandroid.ActiveAndroid;
 
-public class MyApplication extends org.holoeverywhere.app.Application {
-	private static final String PACKAGE = MyApplication.class.getPackage()
-			.getName();
-
-	static {
-		HoloEverywhere.DEBUG = true;
-		HoloEverywhere.PREFERENCE_IMPL = PreferenceImpl.JSON;
-		LayoutInflater.registerPackage(PACKAGE + ".widget");
-		ThemeManager.setDefaultTheme(ThemeManager.LIGHT
-				| ThemeManager.NO_ACTION_BAR);
-	}
-
+public class MyApplication extends Application
+{
 	@Override
 	public void onCreate() {
 		super.onCreate();

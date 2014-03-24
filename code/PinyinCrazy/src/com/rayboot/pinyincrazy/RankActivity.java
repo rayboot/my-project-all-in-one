@@ -2,11 +2,11 @@ package com.rayboot.pinyincrazy;
 
 
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.widget.ListView;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
+import com.actionbarsherlock.view.MenuItem;
 import com.rayboot.pinyincrazy.adapter.MyBaseAdapter;
 import com.rayboot.pinyincrazy.adapter.RankAdapter;
 import com.rayboot.pinyincrazy.obj.PinyinDataObj;
@@ -18,7 +18,6 @@ public class RankActivity extends MyBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setTheme(R.style.Holo_Theme_Light_DarkActionBar);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rank);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);

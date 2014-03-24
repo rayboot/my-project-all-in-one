@@ -1,25 +1,24 @@
 package com.rayboot.hanzitingxie;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.rayboot.hanzitingxie.util.Util;
 
-public class MoreActivity extends MyBaseActivity
+/**
+ * @author rayboot
+ * @from 14-3-21 15:34
+ * @TODO
+ */
+public class DisclaimerActivity extends MyBaseActivity
 {
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_more);
+        setContentView(R.layout.activity_disclaimer);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        TextView tvVersion = (TextView) findViewById(R.id.tvVersion);
-        tvVersion.setText("当前版本：v" + Util.getVersionName(this));
     }
 
     @Override
@@ -33,7 +32,7 @@ public class MoreActivity extends MyBaseActivity
             finish();
             break;
         case 0:
-            this.startActivity(new Intent(this, DisclaimerActivity.class));
+            Util.openFeedbackActivity(this);
             break;
         default:
             break;
@@ -41,22 +40,11 @@ public class MoreActivity extends MyBaseActivity
         return super.onOptionsItemSelected(item);
     }
 
-    public void onShareClick(View view)
-    {
-        Util.shareSomethingText(MoreActivity.this, "分享",
-                "我使用  #汉字听写#  确实，汉字我们还会写多少呢？ 你试试？");
-    }
-
-    public void onFeebackClick(View view)
-    {
-        Util.openFeedbackActivity(this);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
         //Used to put dark icons on light action bar
-        menu.add("免责声明")
+        menu.add("联系我们")
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM
                         | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
