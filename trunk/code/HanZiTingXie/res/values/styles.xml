@@ -25,12 +25,34 @@
 
         <item name="homeAsUpIndicator">@drawable/actionbar_indicator</item>
         <item name="android:homeAsUpIndicator" >@drawable/actionbar_indicator</item>
+        <item name="android:actionMenuTextColor" >#ffffff</item>
+        <item name="actionMenuTextColor" >#ffffff</item>
+        <item name="android:windowAnimationStyle">@style/Animation.Activity</item>
     </style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
+    <style name="Animation.Activity" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/umeng_fb_slide_in_from_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/umeng_fb_slide_out_from_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/umeng_fb_slide_in_from_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/umeng_fb_slide_out_from_right</item>
+
+        <item name="android:taskOpenEnterAnimation">@anim/umeng_fb_slide_in_from_right</item>
+        <item name="android:taskOpenExitAnimation">@anim/umeng_fb_slide_out_from_left</item>
+        <item name="android:taskCloseEnterAnimation">@anim/umeng_fb_slide_in_from_left</item>
+        <item name="android:taskCloseExitAnimation">@anim/umeng_fb_slide_out_from_right</item>
+
+        <item name="android:taskToFrontEnterAnimation">@anim/umeng_fb_slide_in_from_right</item>
+        <item name="android:taskToFrontExitAnimation">@anim/umeng_fb_slide_out_from_left</item>
+        <item name="android:taskToBackEnterAnimation">@anim/umeng_fb_slide_in_from_left</item>
+        <item name="android:taskToBackExitAnimation">@anim/umeng_fb_slide_out_from_right</item>
+
+    </style>
+
+
     <style name="Widget.Styled.ActionBar" parent="Widget.Sherlock.Light.ActionBar.Solid.Inverse">
         <item name="background">#f97425</item>
         <item name="android:background">#f97425</item>

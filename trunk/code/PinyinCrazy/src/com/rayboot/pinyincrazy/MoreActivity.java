@@ -1,17 +1,16 @@
 package com.rayboot.pinyincrazy;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.actionbarsherlock.view.MenuItem;
 import com.rayboot.pinyincrazy.utils.Util;
 
 public class MoreActivity extends MyBaseActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		setTheme(R.style.Holo_Theme_Light_DarkActionBar);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_more);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);

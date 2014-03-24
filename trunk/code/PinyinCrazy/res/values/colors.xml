@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="main_bg_1">#df20a2</color>
+    <color name="main_bg_2">#ee6d4d</color>
+    <color name="main_bg_3">#48aae9</color>
+    <color name="main_bg_4">#06c15a</color>
+
+    <color name="main_pinyin_color1">#e848b6</color>
+    <color name="main_pinyin_color2">#dddddd</color>
+
+    <color name="main_subname_color1">#e15b38</color>
+    <color name="main_subname_color2">#3c92cb</color>
+    <color name="main_subname_color3">#09a750</color>
+
+</resources>

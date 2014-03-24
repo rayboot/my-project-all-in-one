@@ -9,10 +9,10 @@
     <string name="title_activity_settings">设置</string>
     <string name="title_activity_more">更多</string>
     <string name="title_activity_feedback">意见反馈</string>
-    <string name="title_activity_tip">TipActivity</string>
+    <string name="title_activity_tip">字面意思</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_jump">JumpActivity</string>
-    <string name="title_activity_rank">数据</string>
+    <string name="title_activity_rank">历史数据</string>
     <string name="title_activity_loading">LoadingActivity</string>
 
 </resources>

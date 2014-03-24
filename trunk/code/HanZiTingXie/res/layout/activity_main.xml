@@ -200,7 +200,7 @@
                 <ImageButton
                     android:layout_width="@dimen/main_function_w_h"
                     android:layout_height="@dimen/main_function_w_h"
-                    android:id="@+id/btnOK"
+                    android:id="@+id/btnAnswer"
                     android:src="@drawable/ic_answer"
                     android:onClick="onShowAnswer"
                     android:background="@drawable/selector_left_green"

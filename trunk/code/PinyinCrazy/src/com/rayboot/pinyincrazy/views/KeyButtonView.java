@@ -1,15 +1,15 @@
 package com.rayboot.pinyincrazy.views;
 
-import org.holoeverywhere.widget.Button;
-
 import android.R.integer;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 
+import android.widget.Button;
 import com.rayboot.pinyincrazy.R;
 
-public class KeyButtonView extends Button {
+public class KeyButtonView extends Button
+{
 
 	public KeyButtonView(Context context) {
 		super(context);

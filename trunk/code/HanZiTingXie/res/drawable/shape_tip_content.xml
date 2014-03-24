@@ -9,8 +9,6 @@
         android:topRightRadius="2dp"
         android:bottomLeftRadius="2dp"
         android:bottomRightRadius="2dp"/><!-- 设置圆角半径 -->
-
-
     <!-- 填充 -->
     <solid
         android:color="#f3f3f3"/><!-- 填充的颜色 -->

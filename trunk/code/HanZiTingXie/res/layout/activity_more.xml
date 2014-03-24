@@ -10,9 +10,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_margin="10dp"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/linearLayout">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -50,7 +53,6 @@
             android:textColor="#000000" />
 
         <TextView
-            android:id="@+id/tvVersion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -59,7 +61,6 @@
             android:textColor="#000000" />
 
         <TextView
-            android:id="@+id/tvVersion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -68,7 +69,6 @@
             android:textColor="#000000" />
 
         <TextView
-            android:id="@+id/tvVersion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -84,30 +84,36 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:gravity="center_horizontal" >
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/linearLayout">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="@null"
+            android:background="@drawable/selector_more_share"
             android:drawableLeft="@drawable/share"
             android:drawablePadding="5dp"
             android:onClick="onShareClick"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:text="分享好友"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:textSize="15sp" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="@null"
-            android:drawableLeft="@drawable/feeback"
+            android:drawableLeft="@drawable/feedback"
+            android:background="@drawable/selector_more_feedback"
             android:drawablePadding="5dp"
             android:onClick="onFeebackClick"
             android:text="意见反馈"
-            android:textColor="#000000"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textColor="#ffffff"
             android:textSize="15sp" />
     </LinearLayout>
 
