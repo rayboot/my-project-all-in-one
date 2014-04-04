@@ -90,6 +90,8 @@
             android:name="com.rayboot.hanzitingxie.MoreActivity"
             android:label="@string/title_activity_more"
             android:screenOrientation="portrait"></activity>
+
+        <!--友盟-->
         <activity
             android:name="com.umeng.fb.ConversationActivity"
             android:label="@string/title_activity_feedback"
@@ -101,6 +103,11 @@
         <service
             android:name="com.umeng.common.net.DownloadingService"
             android:process=":DownloadingService"></service>
+        <activity
+            android:name="com.umeng.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+
 
         <activity
             android:name="com.wanpu.pay.PayView"

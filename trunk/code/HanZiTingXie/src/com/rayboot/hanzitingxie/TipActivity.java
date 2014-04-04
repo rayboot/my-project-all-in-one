@@ -8,6 +8,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 import cn.waps.AppConnect;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.Window;
@@ -22,6 +23,7 @@ public class TipActivity extends MyBaseActivity
     String pinyin;
 
     WebView mWebView;
+    ProgressBar pb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,6 +32,8 @@ public class TipActivity extends MyBaseActivity
         setContentView(R.layout.activity_tip);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        pb = (ProgressBar) findViewById(R.id.progressBar1);
+        pb.setVisibility(View.VISIBLE);
 
         if (DataUtil.getInfoFromShared(TipActivity.this, "isShowAD") == 1)
         {
@@ -83,6 +87,7 @@ public class TipActivity extends MyBaseActivity
                     jsString.append(pinyinStrings[i] + "');");
                 }
                 view.loadUrl(jsString.toString());
+                pb.setVisibility(View.GONE);
             }
         });
         mWebView.setWebChromeClient(new WebChromeClient()

@@ -2,15 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/payeco_orderDetailLayout"
     style="@style/payeco_applicationBgStyle"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:keepScreenOn="true"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical" >
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="0.0dip"
-        android:layout_weight="1.0" >
+        android:layout_height="44.0dip" >
 
         <include
             android:layout_width="fill_parent"
@@ -20,8 +18,7 @@
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="0.0dip"
-        android:layout_weight="9.0"
+        android:layout_height="wrap_content"
         android:paddingBottom="5.0dip"
         android:paddingLeft="10.0dip"
         android:paddingRight="10.0dip" >
@@ -84,18 +81,34 @@
                     </RelativeLayout>
 
                     <RelativeLayout
-                        android:id="@+id/payeco_orderDetail_merchantName_layout"
+                        android:id="@+id/payeco_orderDetail_orderId_layout"
                         style="@style/payeco_pluginNormalLayout" >
 
                         <TextView
-                            android:id="@+id/payeco_orderDetail_merchantName_tv"
+                            android:id="@+id/payeco_orderDetail_orderId_tv"
                             style="@style/payeco_pluginNormalText"
-                            android:text="@string/payeco_order_detail_merchantName" />
+                            android:text="@string/payeco_order_detail_orderId" />
 
                         <TextView
-                            android:id="@+id/payeco_orderDetail_merchantName_edit"
+                            android:id="@+id/payeco_orderDetail_orderId_edit"
                             style="@style/payeco_pluginNormalText2"
-                            android:layout_toRightOf="@+id/payeco_orderDetail_merchantName_tv" />
+                            android:layout_toRightOf="@+id/payeco_orderDetail_orderId_tv" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/payeco_orderDetail_orderDesc_layout"
+                        style="@style/payeco_pluginNormalLayout" >
+
+                        <TextView
+                            android:id="@+id/payeco_orderDetail_orderDesc_tv"
+                            style="@style/payeco_pluginNormalText"
+                            android:text="@string/payeco_order_detail_orderDesc" />
+
+                        <TextView
+                            android:id="@+id/payeco_orderDetail_orderDesc_edit"
+                            style="@style/payeco_pluginNormalText2"
+                            android:layout_toRightOf="@+id/payeco_orderDetail_orderDesc_tv"
+                            android:singleLine="true" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -141,72 +154,26 @@
                         android:text="@string/payeco_support_bank" />
                 </RelativeLayout>
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/payeco_newUser_inputLayout"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                    style="@style/payeco_pluginNormalInputLayout" >
 
-                    <RelativeLayout
-                        android:id="@+id/payeco_pay_panTypes_layout"
-                        style="@style/payeco_pluginNormalInputLayout"
-                        android:visibility="visible" >
+                    <TextView
+                        android:id="@+id/payeco_new_pay_pan_tv"
+                        style="@style/payeco_pluginNormalText"
+                        android:layout_centerVertical="true"
+                        android:text="@string/payeco_pay_pan" />
 
-                        <TextView
-                            android:id="@+id/payeco_new_pay_panType_tv"
-                            style="@style/payeco_pluginNormalText"
-                            android:layout_centerVertical="true"
-                            android:text="@string/payeco_pay_panType" />
-
-                        <RadioGroup
-                            android:id="@+id/payeco_new_radioGroup_pay_panTypes"
-                            android:layout_width="wrap_content"
-                            android:layout_height="fill_parent"
-                            android:layout_marginLeft="10.0dip"
-                            android:layout_toRightOf="@+id/payeco_new_pay_panType_tv"
-                            android:orientation="horizontal" >
-
-                            <RadioButton
-                                android:id="@+id/payeco_new_panType_debit"
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:button="@drawable/payeco_plugin_radiobt_selector"
-                                android:checked="true"
-                                android:text="@string/payeco_panType_debit"
-                                android:textColor="@color/payeco_textColorBlack"
-                                android:textSize="@dimen/payeco_middle_textsize" />
-
-                            <RadioButton
-                                android:id="@+id/payeco_new_panType_credit"
-                                android:layout_width="wrap_content"
-                                android:layout_height="fill_parent"
-                                android:layout_marginLeft="8.0dip"
-                                android:button="@drawable/payeco_plugin_radiobt_selector"
-                                android:text="@string/payeco_panType_credit"
-                                android:textColor="@color/payeco_textColorBlack"
-                                android:textSize="@dimen/payeco_middle_textsize" />
-                        </RadioGroup>
-                    </RelativeLayout>
-
-                    <RelativeLayout style="@style/payeco_pluginNormalInputLayout" >
-
-                        <TextView
-                            android:id="@+id/payeco_new_pay_pan_tv"
-                            style="@style/payeco_pluginNormalText"
-                            android:layout_centerVertical="true"
-                            android:text="@string/payeco_pay_pan" />
-
-                        <EditText
-                            android:id="@+id/payeco_new_pay_pan_edit"
-                            style="@style/payeco_pluginNormalEditText"
-                            android:layout_toRightOf="@+id/payeco_new_pay_pan_tv"
-                            android:digits=" 0123456789"
-                            android:hint="@string/payeco_pay_pan_hint"
-                            android:imeOptions="actionDone"
-                            android:inputType="number"
-                            android:maxLength="30" />
-                    </RelativeLayout>
-                </LinearLayout>
+                    <EditText
+                        android:id="@+id/payeco_new_pay_pan_edit"
+                        style="@style/payeco_pluginNormalEditText"
+                        android:layout_toRightOf="@+id/payeco_new_pay_pan_tv"
+                        android:digits=" 0123456789"
+                        android:hint="@string/payeco_pay_debit_credit_hint"
+                        android:imeOptions="actionDone"
+                        android:inputType="number|phone"
+                        android:maxLength="30" />
+                </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/payeco_oldUser_inputLayout"
