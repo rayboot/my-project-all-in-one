@@ -149,7 +149,6 @@ public class MainActivity extends MyBaseActivity
             tvCi[i].setPressed(
                     TextUtils.isEmpty(tvCi[i].getText()) ? false : true);
         }
-
     }
 
     public void setHanzi()
@@ -477,7 +476,8 @@ public class MainActivity extends MyBaseActivity
                             String assetsApk = "SpeechService.apk";
                             processInstall(MainActivity.this, url, assetsApk);
                         }
-                    });
+                    }
+            );
 
             dialog.create().show();
             return;
@@ -740,7 +740,8 @@ public class MainActivity extends MyBaseActivity
                             break;
                         }
                     }
-                });
+                }
+        );
         builder.setNegativeButton("取消", null);
         AlertDialog dialog = builder.create();
         dialog.setCanceledOnTouchOutside(true);

@@ -18,7 +18,7 @@
     </style>
 
     <style name="payeco_applicationBgStyle">
-        <item name="android:background">#E8E8E8</item>
+        <item name="android:background">@color/payeco_bgColor</item>
     </style>
 
     <style name="payeco_pluginTitleLayout">
@@ -147,9 +147,18 @@
         <item name="android:layout_marginRight">8.0dip</item>
     </style>
 
+    <style name="payeco_pluginSpinnerButton">
+        <item name="android:background">@drawable/payeco_plugin_spinner_selector</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/payeco_textColorBlack</item>
+        <item name="android:textSize">@dimen/payeco_small_textsize</item>
+        <item name="android:layout_height">38.0dip</item>
+    </style>
+
     <style name="payeco_keyboardButton">
         <item name="android:textColor">@color/payeco_textColorWhite</item>
-        <item name="android:background">@drawable/payeco_keyboard_btn1_background</item>
+        <item name="android:background">@drawable/payeco_keyboard_btn1_background
+</item>
         <item name="android:layout_width">70.0dip</item>
         <item name="android:layout_height">fill_parent</item>
         <item name="android:layout_weight">1.0</item>
@@ -165,20 +174,6 @@
         <item name="android:layout_width">0px</item>
         <item name="android:layout_height">fill_parent</item>
         <item name="android:gravity">center</item>
-    </style>
-
-    <style name="payeco_keyboardToastView">
-        <item name="android:textSize">@dimen/payeco_pwkeyboard_toast_textsize</item>
-        <item name="android:textColor">@color/payeco_textColorWhite</item>
-        <item name="android:background">@drawable/payeco_keyboard_toast_bg</item>
-        <item name="android:layout_width">0px</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-       <!--  <item name="android:layout_centerHorizontal">true</item>-->
-        <item name="android:layout_centerVertical">true</item>
-        <item name="android:gravity">center</item>
-        <item name="android:paddingTop">5.0dip</item>
-        <item name="android:paddingBottom">5.0dip</item>
     </style>
 
 </resources>

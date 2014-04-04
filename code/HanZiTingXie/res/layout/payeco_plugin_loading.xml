@@ -4,7 +4,6 @@
     android:layout_height="fill_parent"
     android:background="#d0000000"
     android:gravity="center"
-    android:keepScreenOn="true"
     android:orientation="vertical" >
 
     <LinearLayout
