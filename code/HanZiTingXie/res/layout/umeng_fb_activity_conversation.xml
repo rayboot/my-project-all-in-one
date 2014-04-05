@@ -101,14 +101,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
                 android:background="@drawable/umeng_fb_btn_bg_selector"
                 android:paddingBottom="5dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="5dp"
                 android:text="@string/umeng_fb_send"
-                android:textColor="#ffffff" />
+                android:textColor="#ffffff"
+                android:layout_alignBottom="@+id/umeng_fb_reply_content" />
 
             <EditText
                 android:id="@+id/umeng_fb_reply_content"
