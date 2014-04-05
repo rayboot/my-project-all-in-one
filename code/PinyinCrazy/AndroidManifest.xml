@@ -92,6 +92,10 @@
             android:label="@string/title_activity_tip"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name=".DisclaimerActivity"
+            android:label="@string/title_activity_disclaimer"
+            android:screenOrientation="portrait" />
 
         <!--友盟-->
         <activity
