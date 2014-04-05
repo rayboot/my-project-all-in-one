@@ -14,5 +14,7 @@
     <string name="download_confirm_msg">检测到您尚未安装语音组件，是否现在安装？</string>
     <string name="dialog_confirm_button">确定</string>
     <string name="dialog_cancel_button">取消</string>
+    <string name="tag_answer_word">tag_answer_word</string>
+    <string name="tag_answer_tone">tag_answer_tone</string>
 
 </resources>

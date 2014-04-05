@@ -27,8 +27,8 @@
     </style>
 
     <style name="Widget.Styled.ActionBar" parent="Widget.Sherlock.Light.ActionBar.Solid.Inverse">
-        <item name="background">#f97425</item>
-        <item name="android:background">#f97425</item>
+        <item name="background">#06c15a</item>
+        <item name="android:background">#06c15a</item>
 
     </style>
 
@@ -48,6 +48,32 @@
         <item name="android:taskToBackEnterAnimation">@anim/umeng_fb_slide_in_from_left</item>
         <item name="android:taskToBackExitAnimation">@anim/umeng_fb_slide_out_from_right</item>
 
+    </style>
+    <style name="KeyButtonStyle">
+        <item name="android:background">@drawable/key_btn_selector</item>
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:textColor">@drawable/key_btn_textcolor_selector</item>
+    </style>
+    <style name="TipButtonStyle">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@drawable/selector_game_view_bg</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@drawable/selector_game_text_color</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+    <style name="FunctionButtonStyle">
+        <item name="android:background">@drawable/btn_1_selector</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_weight">1</item>
     </style>
 
 </resources>

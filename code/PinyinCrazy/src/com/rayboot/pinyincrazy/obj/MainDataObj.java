@@ -4,8 +4,9 @@ import com.rayboot.pinyincrazy.R;
 
 public class MainDataObj {
 	public static final int MAIN_GAME = 0;
-	public static final int MAIN_RANK= 1;
-	public static final int MAIN_MORE = 2;
+    public static final int MAIN_WUJIN = 1;
+	public static final int MAIN_RANK= 2;
+	public static final int MAIN_MORE = 3;
 
 	public int key;
     public String name;
@@ -23,24 +24,36 @@ public class MainDataObj {
 		super();
 		this.key = key;
 		switch (key) {
-		case MAIN_GAME:
+        case MAIN_GAME:
             name = "开始闯关";
             imageId = R.drawable.ic_game;
             miniImageId = R.drawable.ic_mini_game;
-            pinyin = "chuang guan";
-            subName = "Ready Go";
+            pinyin = "chuǎng guān";
+            subName = "READY GO";
             mainBg = R.color.main_bg_1;
             rightBg = R.color.main_bg_2;
             textColor = android.R.color.white;
             pinyinColor = R.color.main_pinyin_color1;
             subNameColor = R.color.main_subname_color1;
-			break;
+            break;
+        case MAIN_WUJIN:
+            name = "无尽挑战";
+            imageId = R.drawable.ic_game;
+            miniImageId = R.drawable.ic_mini_game;
+            pinyin = "wú jìn";
+            subName = "READY GO";
+            mainBg = R.color.main_bg_1;
+            rightBg = R.color.main_bg_2;
+            textColor = android.R.color.white;
+            pinyinColor = R.color.main_pinyin_color1;
+            subNameColor = R.color.main_subname_color1;
+            break;
 		case MAIN_RANK:
             name = "历史数据";
 			imageId = R.drawable.ic_rank;
             miniImageId = R.drawable.ic_mini_rank;
-            pinyin = "shu ju";
-            subName = "History";
+            pinyin = "shù jù";
+            subName = "HISTORY";
             mainBg = android.R.color.white;
             rightBg = R.color.main_bg_3;
             textColor = android.R.color.black;
@@ -51,15 +64,14 @@ public class MainDataObj {
             name = "更多";
 			imageId = R.drawable.ic_more;
             miniImageId = R.drawable.ic_mini_more;
-            pinyin = "geng duo";
-            subName = "More";
+            pinyin = "gèng duō";
+            subName = "MORE";
             mainBg = android.R.color.white;
             rightBg = R.color.main_bg_4;
             textColor = android.R.color.black;
             pinyinColor = R.color.main_pinyin_color2;
             subNameColor = R.color.main_subname_color3;
 			break;
-
 		default:
 			break;
 		}
