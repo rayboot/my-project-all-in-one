@@ -1,9 +1,11 @@
 package com.rayboot.pinyincrazy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.rayboot.pinyincrazy.utils.Util;
 
@@ -25,6 +27,9 @@ public class MoreActivity extends MyBaseActivity {
 		case android.R.id.home:
 			finish();
 			break;
+        case 0:
+            this.startActivity(new Intent(this, DisclaimerActivity.class));
+            break;
 		default:
 			break;
 		}
@@ -40,4 +45,14 @@ public class MoreActivity extends MyBaseActivity {
 		Util.openFeedbackActivity(this);
 	}
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        //Used to put dark icons on light action bar
+        menu.add("免责声明")
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM
+                        | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+
+        return true;
+    }
 }
