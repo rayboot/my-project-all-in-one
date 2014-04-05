@@ -8,12 +8,14 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.os.RemoteException;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.MenuItem;
 import com.iflytek.speech.ErrorCode;
 import com.iflytek.speech.ISpeechModule;
@@ -31,17 +33,25 @@ import com.umeng.analytics.MobclickAgent;
 public class GameActivity extends MyBaseActivity
 {
     private PinyinDataObj pinyinData;
-    @InjectView(R.id.tvKeyword) TextView tvKeyword;
-    @InjectView(R.id.tvTone) TextView tvTone;
-    @InjectView(R.id.tvTip) TextView tvTip;
-    @InjectView(R.id.tvTitle) TextView tvTitle;
-    @InjectView(R.id.llAddCoin) LinearLayout llAddCoin;
-    @InjectView(R.id.tvCoinCount) TextView tvCoinCount;
+    @InjectView(R.id.tvChar1) TextView tvChar1;
+    @InjectView(R.id.tvChar2) TextView tvChar2;
+    @InjectView(R.id.tvChar3) TextView tvChar3;
+    @InjectView(R.id.tvChar4) TextView tvChar4;
 
-    String[] toneArray = { " ", "―", "╱", "∨", "╲" };
+    @InjectView(R.id.tvTitle) TextView tvTitle;
+    @InjectView(R.id.tvAnswer) TextView tvAnswer;
+    TextView tvWenzibi;
+
     int rightCount = 0;
     private SpeechSynthesizer mTts = null;
     int curType = 0;
+    String[] ATone = { "a", "ā", "á", "ǎ", "à" };
+    String[] OTone = { "o", "ō", "ó", "ǒ", "ò" };
+    String[] ETone = { "e", "ē", "é", "ě", "è" };
+    String[] ITone = { "i", "ī", "í", "ǐ", "ì" };
+    String[] UTone = { "u", "ū", "ú", "ǔ", "ù" };
+    String[] VTone = { "ü", "ǖ", "ǘ", "ǚ", "ǜ" };
+    TextView[] tvCharArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -49,7 +59,16 @@ public class GameActivity extends MyBaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         ButterKnife.inject(this);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setLogo(android.R.color.transparent);
+        LayoutInflater inflater = getLayoutInflater();
+        View cusView = inflater.inflate(R.layout.view_wenzibi_customview, null);
+        tvWenzibi = (TextView) cusView.findViewById(R.id.tvWenzibi);
+        getSupportActionBar().setCustomView(cusView, new ActionBar.LayoutParams(
+                Gravity.RIGHT | Gravity.CENTER_VERTICAL));
         curType = getIntent().getIntExtra("is_wujin", 0);
         if (curType == 0)
         {
@@ -62,7 +81,13 @@ public class GameActivity extends MyBaseActivity
         {
             getSupportActionBar().setTitle("无尽挑战");
         }
+        tvCharArray = new TextView[4];
+        tvCharArray[0] = tvChar1;
+        tvCharArray[1] = tvChar2;
+        tvCharArray[2] = tvChar3;
+        tvCharArray[3] = tvChar4;
         setGameData();
+        tvTitle.setSelected(true);
         changeCoin(0);
     }
 
@@ -102,32 +127,44 @@ public class GameActivity extends MyBaseActivity
             return;
         }
         tvTitle.setText(pinyinData.keychar);
-        tvTip.setText(pinyinData.title);
+        tvCharArray[1].setVisibility(View.GONE);
+        tvCharArray[2].setVisibility(View.GONE);
+        tvCharArray[3].setVisibility(View.GONE);
+        for (int i = 0; i < pinyinData.title.trim().length(); i++)
+        {
+            String charText = pinyinData.title.substring(i, i + 1);
+            tvCharArray[i].setText(charText);
+            tvCharArray[i].setSelected(charText.equals(pinyinData.keychar));
+            tvCharArray[i].setVisibility(View.VISIBLE);
+        }
         onClearClick(null);
     }
 
     public void onKeyClick(View view)
     {
         String keyString = ((TextView) view).getText().toString();
-        String nowString = tvKeyword.getText().toString();
-        tvKeyword.setText(nowString + keyString);
+        String nowString = tvAnswer.getText().toString();
+        String tagString = (String) tvAnswer.getTag(R.string.tag_answer_word);
+        tvAnswer.setTag(R.string.tag_answer_word, tagString + keyString);
+        tvAnswer.setText(nowString + keyString);
     }
 
     public void onClearClick(View view)
     {
         MobclickAgent.onEvent(this, "101");
-        tvKeyword.setText("");
-        tvTone.setText("");
-        tvTone.setTag("0");
+        tvAnswer.setText("");
+        tvAnswer.setTag(R.string.tag_answer_word, "");
+        tvAnswer.setTag(R.string.tag_answer_tone, "0");
     }
 
     public void onOKClick(View view)
     {
         MobclickAgent.onEvent(this, "100");
-        if (pinyinData.keypinyin.trim()
-                .equals(tvKeyword.getText().toString().trim())
-                && pinyinData.keytone == Integer.valueOf(
-                (String) tvTone.getTag()))
+        String tagAswer =
+                ((String) tvAnswer.getTag(R.string.tag_answer_word)).trim();
+        String tagTone = (String) tvAnswer.getTag(R.string.tag_answer_tone);
+        if (pinyinData.keypinyin.trim().equals(tagAswer)
+                && pinyinData.keytone == Integer.valueOf(tagTone))
         {
             MobclickAgent.onEvent(this, "1000");
             changeCoin(3);
@@ -151,13 +188,62 @@ public class GameActivity extends MyBaseActivity
 
     public void onToneClick(View view)
     {
+        tvAnswer.setTag(R.string.tag_answer_tone, view.getTag());
         String toneString = ((TextView) view).getText().toString();
         if (toneString.equals("轻声"))
         {
             toneString = "";
         }
-        tvTone.setText(toneString);
-        tvTone.setTag(view.getTag());
+        int tone = Integer.valueOf((String) view.getTag());
+        String answer = tvAnswer.getText().toString().trim();
+        tvAnswer.setText(makeTone(answer, tone));
+    }
+
+    private String makeTone(String word, int tone)
+    {
+        for (int i = 0; i < ATone.length; i++)
+        {
+            if (word.contains(ATone[i]))
+            {
+                word = word.replace(ATone[i], ATone[tone]);
+            }
+        }
+        for (int i = 0; i < OTone.length; i++)
+        {
+            if (word.contains(OTone[i]))
+            {
+                word = word.replace(OTone[i], OTone[tone]);
+            }
+        }
+        for (int i = 0; i < ETone.length; i++)
+        {
+            if (word.contains(ETone[i]))
+            {
+                word = word.replace(ETone[i], ETone[tone]);
+            }
+        }
+        for (int i = 0; i < ITone.length; i++)
+        {
+            if (word.contains(ITone[i]))
+            {
+                word = word.replace(ITone[i], ITone[tone]);
+            }
+        }
+        for (int i = 0; i < UTone.length; i++)
+        {
+            if (word.contains(UTone[i]))
+            {
+                word = word.replace(UTone[i], UTone[tone]);
+            }
+        }
+        for (int i = 0; i < VTone.length; i++)
+        {
+            if (word.contains(VTone[i]))
+            {
+                word = word.replace(VTone[i], VTone[tone]);
+            }
+        }
+        return word;
     }
 
     public void onHelpClick(View view)
@@ -183,9 +269,10 @@ public class GameActivity extends MyBaseActivity
                 Toast.makeText(this, "非常抱歉，您的金币不足。", Toast.LENGTH_LONG).show();
                 return;
             }
-            tvKeyword.setText(pinyinData.keypinyin);
-            tvTone.setText(toneArray[pinyinData.keytone]);
-            tvTone.setTag(pinyinData.keytone + "");
+            tvAnswer.setText(
+                    makeTone(pinyinData.keypinyin, pinyinData.keytone));
+            tvAnswer.setTag(R.string.tag_answer_word, pinyinData.keypinyin);
+            tvAnswer.setTag(R.string.tag_answer_tone, pinyinData.keytone + "");
             break;
         case 3:
             // 听一听
@@ -341,28 +428,63 @@ public class GameActivity extends MyBaseActivity
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
             alert.setMessage(getString(R.string.download_confirm_msg));
             alert.setNegativeButton(R.string.dialog_cancel_button, null);
-            alert.setPositiveButton(R.string.dialog_confirm_button, new DialogInterface.OnClickListener()
-            {
-                @Override public void onClick(DialogInterface dialog, int which)
-                {
-                    String url = SpeechUtility.getUtility(
-                            GameActivity.this)
-                            .getComponentUrl();
-                    ApkInstaller.openDownloadWeb(
-                            GameActivity.this, url);
-                }
-            });
+            alert.setPositiveButton(R.string.dialog_confirm_button,
+                    new DialogInterface.OnClickListener()
+                    {
+                        @Override public void onClick(DialogInterface dialog,
+                                int which)
+                        {
+                            String url =
+                                    SpeechUtility.getUtility(GameActivity.this)
+                                            .getComponentUrl();
+                            ApkInstaller.openDownloadWeb(GameActivity.this,
+                                    url);
+                        }
+                    }
+            );
             alert.create().show();
 
             return false;
-        } return true;
+        }
+        return true;
     }
 
     public boolean changeCoin(int count)
     {
         boolean res = DataUtil.changeCoin(this, count);
-        tvCoinCount.setText(
-                " " + DataUtil.getInfoFromShared(this, "pinyin_coin") + " 金币 ");
+        tvWenzibi.setText(
+                " " + DataUtil.getInfoFromShared(this, "pinyin_coin"));
         return res;
+    }
+
+    public void payWenzibi(View view)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("文字币获取方式");
+        builder.setItems(new String[] { "免费文字币", "购买文字币" },
+                new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        switch (which)
+                        {
+                        case 0:
+                            //AppConnect.getInstance(MainActivity.this)
+                            //        .showOffers(MainActivity.this);
+                            break;
+                        case 1:
+                            //Intent intent = new Intent(MainActivity.this,
+                            //        PayWenZiBiActivity.class);
+                            //MainActivity.this.startActivity(intent);
+                            break;
+                        }
+                    }
+                }
+        );
+        builder.setNegativeButton("取消", null);
+        AlertDialog dialog = builder.create();
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.show();
     }
 }

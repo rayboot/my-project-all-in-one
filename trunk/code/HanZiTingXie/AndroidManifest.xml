@@ -47,7 +47,7 @@
             android:value="hanzitingxie.db" />
         <meta-data
             android:name="AA_DB_VERSION"
-            android:value="5" />
+            android:value="6" />
         <meta-data
             android:name="APP_ID"
             android:value="d17140e585412eb323b5312a303b166a" />

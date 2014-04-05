@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@null"
     android:clickable="true"
-    android:onClick="mainItemClick" >
+    android:onClick="mainItemClick">
 
     <RelativeLayout
         android:id="@+id/rlMain"
@@ -14,26 +14,80 @@
         android:layout_marginRight="15dp"
         android:layout_marginTop="7dp"
         android:layout_marginBottom="7dp"
-        android:background="@drawable/btn_1_selector"
-        android:minHeight="120dp" >
+        android:background="@drawable/btn_1_selector">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:paddingTop="26dp"
+            android:paddingBottom="26dp"
+            android:minWidth="150dp"
+            android:gravity="center"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/llRight">
+
+            <ImageView
+                android:id="@+id/ivLogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_launcher" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:textSize="18sp"
+                android:id="@+id/tvEnglish" />
+
+        </LinearLayout>
 
         <ImageView
-            android:id="@+id/ivLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true" />
-
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/ivIcon"
+            android:src="@drawable/ic_launcher"
             android:layout_alignParentBottom="true"
+            android:padding="8dp"
             android:layout_alignParentLeft="true"
-            android:padding="5dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#ffffff"
-            android:textSize="15sp" />
+            android:layout_alignParentStart="true" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/llRight"
+            android:padding="8dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/linearLayout2">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ffffff"
+                android:text="1111"
+                android:textSize="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medium Text"
+                android:textSize="18dp"
+                android:id="@+id/tvPinyin" />
+        </LinearLayout>
+
     </RelativeLayout>
 
 </RelativeLayout>

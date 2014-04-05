@@ -37,15 +37,16 @@ public class MainActivity extends MyBaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 		ButterKnife.inject(this);
 
 		if (PinyinDataObj.getChuangGuanRandomData() == null) {
-			mainDatas.add(new MainDataObj(MainDataObj.MAIN_WUJIN, "无尽挑战"));
+			mainDatas.add(new MainDataObj(MainDataObj.MAIN_WUJIN));
 		}else {
-			mainDatas.add(new MainDataObj(MainDataObj.MAIN_GAME, "闯关"));
+			mainDatas.add(new MainDataObj(MainDataObj.MAIN_GAME));
 		}
-		mainDatas.add(new MainDataObj(MainDataObj.MAIN_RANK, "数据"));
-		mainDatas.add(new MainDataObj(MainDataObj.MAIN_MORE, "更多"));
+		mainDatas.add(new MainDataObj(MainDataObj.MAIN_RANK));
+		mainDatas.add(new MainDataObj(MainDataObj.MAIN_MORE));
 
 		adapter = new MainAdapter<MainDataObj>(this, mainDatas);
 		AnimationAdapter animAdapter = new SwingLeftInAnimationAdapter(adapter);
@@ -105,10 +106,6 @@ public class MainActivity extends MyBaseActivity {
 			break;
 		case MainDataObj.MAIN_RANK:
 			intent = new Intent(MainActivity.this, RankActivity.class);
-			MainActivity.this.startActivity(intent);
-			break;
-		case MainDataObj.MAIN_SETTING:
-			intent = new Intent(MainActivity.this, SettingActivity.class);
 			MainActivity.this.startActivity(intent);
 			break;
 		case MainDataObj.MAIN_MORE:
