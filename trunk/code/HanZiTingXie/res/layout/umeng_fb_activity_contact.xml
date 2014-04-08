@@ -43,7 +43,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@+id/umeng_fb_contact_header"
-        android:background="@drawable/umeng_fb_conversation_bg" >
+        android:background="@android:color/white" >
 
         <EditText
             android:id="@+id/umeng_fb_contact_info"

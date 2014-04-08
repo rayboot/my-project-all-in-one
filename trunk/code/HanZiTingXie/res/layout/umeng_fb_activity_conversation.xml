@@ -70,7 +70,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@+id/umeng_fb_conversation_contact_entry"
-        android:background="@drawable/umeng_fb_conversation_bg" >
+        android:background="@android:color/white" >
 
         <ListView
             android:id="@+id/umeng_fb_reply_list"

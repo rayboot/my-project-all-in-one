@@ -5,7 +5,7 @@
         <shape>
 
             <!-- 实心 -->
-            <solid android:color="#26c15a" />
+            <solid android:color="#06a15a" />
             <!-- 圆角 -->
             <corners
                 android:radius="5dp" />

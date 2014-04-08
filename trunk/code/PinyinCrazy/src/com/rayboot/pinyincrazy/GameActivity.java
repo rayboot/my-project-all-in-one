@@ -206,6 +206,7 @@ public class GameActivity extends MyBaseActivity
             if (word.contains(ATone[i]))
             {
                 word = word.replace(ATone[i], ATone[tone]);
+                return word;
             }
         }
         for (int i = 0; i < OTone.length; i++)
@@ -213,6 +214,7 @@ public class GameActivity extends MyBaseActivity
             if (word.contains(OTone[i]))
             {
                 word = word.replace(OTone[i], OTone[tone]);
+                return word;
             }
         }
         for (int i = 0; i < ETone.length; i++)
@@ -220,20 +222,35 @@ public class GameActivity extends MyBaseActivity
             if (word.contains(ETone[i]))
             {
                 word = word.replace(ETone[i], ETone[tone]);
+                return word;
             }
         }
+        int iIndex = -1;
         for (int i = 0; i < ITone.length; i++)
         {
             if (word.contains(ITone[i]))
             {
+                iIndex = word.lastIndexOf(ITone[i]);
                 word = word.replace(ITone[i], ITone[tone]);
             }
         }
+        int uIndex = -1;
         for (int i = 0; i < UTone.length; i++)
         {
             if (word.contains(UTone[i]))
             {
+                uIndex = word.lastIndexOf(UTone[i]);
                 word = word.replace(UTone[i], UTone[tone]);
+            }
+        }
+        if (iIndex >= 0 && uIndex >= 0)
+        {
+            if (iIndex > uIndex)
+            {
+                word = word.replace(UTone[tone], UTone[0]);
+            }else
+            {
+                word = word.replace(ITone[tone], ITone[0]);
             }
         }
         for (int i = 0; i < VTone.length; i++)
