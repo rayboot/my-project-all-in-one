@@ -80,7 +80,7 @@ public class LoadingActivity extends MyBaseActivity {
 				for (SourceData sourceData : allData) {
 					new WordData(sourceData.title, sourceData.pinyin,
 							sourceData.url, sourceData.isRight,
-							sourceData.wrong).save();
+							sourceData.wrong, "").save();
 				}
 				ActiveAndroid.setTransactionSuccessful();
 			} finally {

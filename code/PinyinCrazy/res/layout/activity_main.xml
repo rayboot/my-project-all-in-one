@@ -5,6 +5,7 @@
     tools:context=".MainActivity" >
 
     <ListView
+        android:background="@drawable/main_bg"
         android:id="@+id/lvMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,6 +15,7 @@
         android:divider="@null"
         android:fadingEdge="none"
         android:listSelector="#00000000"
+        android:paddingTop="20dp"
         android:scrollbars="none" >
     </ListView>
 

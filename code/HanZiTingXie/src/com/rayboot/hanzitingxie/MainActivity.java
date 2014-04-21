@@ -48,8 +48,10 @@ public class MainActivity extends MyBaseActivity
     LinearLayout[] lls = new LinearLayout[4];
     EditText etInput;
     TextView tvWenZiBi;
+    TextView tvShortTip;
     int curPlayType = 0;
     int allCount = 0;
+    Random random = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -83,6 +85,7 @@ public class MainActivity extends MyBaseActivity
         lls[1] = (LinearLayout) findViewById(R.id.ll2);
         lls[2] = (LinearLayout) findViewById(R.id.ll3);
         lls[3] = (LinearLayout) findViewById(R.id.ll4);
+        tvShortTip = (TextView) findViewById(R.id.tvShortTip);
         etInput.addTextChangedListener(watcher);
 
         setHanzi();
@@ -113,16 +116,6 @@ public class MainActivity extends MyBaseActivity
                 if (tvCi[i].isSelected())
                 {
                     tvCi[i].setText(s.toString());
-                    //if (s.toString().length() != 0)
-                    //{
-                    //    for (int j = i; j < curData.title.length(); j ++)
-                    //    {
-                    //        if (TextUtils.isEmpty(tvCi[j].getText()))
-                    //        {
-                    //            onCiClick(lls[j]);
-                    //        }
-                    //    }
-                    //}
                     break;
                 }
             }
@@ -200,6 +193,23 @@ public class MainActivity extends MyBaseActivity
             tvPinyin[i].setText(pinyinStrings[i].toLowerCase());
         }
         etInput.setText("");
+        setTipContent();
+        onCiClick(lls[0]);
+    }
+
+    private void setTipContent()
+    {
+        String tip = curData.tip;
+        for (int i = 0; i < lls.length; i++)
+        {
+            if (lls[i].getVisibility() == View.VISIBLE)
+            {
+                tip = tip.replace(curData.title.substring(i, i + 1),
+                        tvPinyin[i].getText().toString() + " ");
+            }
+        }
+
+        tvShortTip.setText(tip);
     }
 
     public void onTip(View view)
@@ -258,8 +268,7 @@ public class MainActivity extends MyBaseActivity
                         }
                         if (!finishTip)
                         {
-                            int ram = new Random().nextInt(
-                                    curData.title.length());
+                            int ram = random.nextInt(curData.title.length());
                             tvCi[ram].setText(
                                     curData.title.subSequence(ram, ram + 1));
                             if (tvCi[ram].isSelected())
@@ -300,8 +309,7 @@ public class MainActivity extends MyBaseActivity
     {
         if (DataUtil.getInfoFromShared(MainActivity.this, "isShowAD") == 1)
         {
-            Random random = new Random();
-            if (random.nextInt(5) > 2 ? true : false)
+            if (random.nextInt(5) > 2)
             {
                 AppConnect.getInstance(MainActivity.this)
                         .showPopAd(MainActivity.this);
@@ -598,7 +606,8 @@ public class MainActivity extends MyBaseActivity
 
     public void onJumpNext(View view)
     {
-        if (DataUtil.getInfoFromShared(MainActivity.this, "isShowAD") == 1)
+        if (DataUtil.getInfoFromShared(MainActivity.this, "isShowAD") == 1
+                && random.nextInt(5) > 2)
         {
             AppConnect.getInstance(MainActivity.this)
                     .showPopAd(MainActivity.this);
@@ -636,41 +645,6 @@ public class MainActivity extends MyBaseActivity
         }
     }
 
-    public void onShowHelp(View view)
-    {
-
-        //	PopupMenu menu = new PopupMenu(this, view);
-        //	menu.setOnMenuItemClickListener(onMenuItemClickListener);
-        //	menu.inflate(R.menu.menu);
-        //	menu.show();
-    }
-    //
-    //private OnMenuItemClickListener onMenuItemClickListener = new OnMenuItemClickListener() {
-    //
-    //	@Override
-    //	public boolean onMenuItemClick(MenuItem item) {
-    //		// TODO Auto-generated method stub
-    //		switch (item.getItemId()) {
-    //		case R.id.item_tip:
-    //			MobclickAgent.onEvent(MainActivity.this, "102");
-    //			onTip();
-    //			break;
-    //		case R.id.item_pay_wenzibi:
-    //			Intent intent = new Intent(MainActivity.this,
-    //					PayWenZiBiActivity.class);
-    //			MainActivity.this.startActivity(intent);
-    //			break;
-    //		case R.id.item_free_wenzibi:
-    //			AppConnect.getInstance(MainActivity.this).showOffers(
-    //					MainActivity.this);
-    //			break;
-    //		default:
-    //			break;
-    //		}
-    //		return false;
-    //	}
-    //};
-
     private UpdatePointsNotifier myUpdatePointsNotifier =
             new UpdatePointsNotifier()
             {
@@ -679,7 +653,6 @@ public class MainActivity extends MyBaseActivity
                 public void getUpdatePointsFailed(String arg0)
                 {
                     // TODO Auto-generated method stub
-
                 }
 
                 @Override

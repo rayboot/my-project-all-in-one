@@ -33,7 +33,7 @@ public class RankAdapter<T> extends MyBaseAdapter<T> {
 
 		WordData sd = (WordData) getItem(position);
 
-		holder.tvWord.setText(sd.isRight == 1 ? sd.title : sd.pinyin);
+		holder.tvWord.setText(sd.isRight == 1 ? sd.title : sd.pinyin.toLowerCase());
 		holder.tvWrong.setText(sd.wrong + "");
 		return convertView;
 	}

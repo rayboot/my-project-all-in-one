@@ -212,6 +212,7 @@
                 android:gravity="center">
 
                 <ImageButton
+                    android:visibility="invisible"
                     android:layout_width="80dp"
                     android:layout_height="40dp"
                     android:layout_marginRight="4dp"
@@ -233,15 +234,19 @@
                     android:singleLine="true"
                     android:text="111"/>
 
-                <ImageButton
+                <TextView
                     android:layout_width="80dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="4dp"
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/selector_game_ok_bg"
-                    android:onClick="onOKClick"
-                    android:padding="7dp"
-                    android:src="@drawable/ic_ok" />
+                    android:onClick="onSpeakClick"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:text="语音输入"
+                    android:padding="7dp" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
