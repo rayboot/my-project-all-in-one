@@ -1,9 +1,5 @@
 package com.rayboot.hanzitingxie.obj;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
@@ -11,7 +7,9 @@ import com.activeandroid.query.Select;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
-import com.google.gson.annotations.SerializedName;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "WordDataTable")
 public class WordData extends Model {
@@ -27,8 +25,10 @@ public class WordData extends Model {
 	public int isRight = 0;
 	@Column(name = "level")
 	public int level = 0;
-	@Column(name = "wordtype")
-	public String wordtype;
+    @Column(name = "wordtype")
+    public String wordtype;
+    @Column(name = "tip")
+    public String tip;
 
 	public WordData() {
 		super();
@@ -42,13 +42,14 @@ public class WordData extends Model {
 		this.url = url;
 	}
 
-	public WordData(String title, String pinyin, String url, int isRight, int wrong) {
+	public WordData(String title, String pinyin, String url, int isRight, int wrong, String tip) {
 		super();
 		this.title = title;
 		this.pinyin = pinyin;
 		this.url = url;
 		this.isRight = isRight;
 		this.wrong = wrong;
+        this.tip = tip;
 	}
 
 	public static WordData getRandomData() {

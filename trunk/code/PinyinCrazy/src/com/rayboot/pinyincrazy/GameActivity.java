@@ -1,6 +1,7 @@
 package com.rayboot.pinyincrazy;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -8,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.os.RemoteException;
+import android.speech.RecognizerIntent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +31,8 @@ import com.rayboot.pinyincrazy.utils.ApkInstaller;
 import com.rayboot.pinyincrazy.utils.DataUtil;
 import com.rayboot.pinyincrazy.utils.Util;
 import com.umeng.analytics.MobclickAgent;
+import java.util.ArrayList;
+import net.sourceforge.pinyin4j.PinyinHelper;
 
 public class GameActivity extends MyBaseActivity
 {
@@ -52,6 +56,7 @@ public class GameActivity extends MyBaseActivity
     String[] UTone = { "u", "ū", "ú", "ǔ", "ù" };
     String[] VTone = { "ü", "ǖ", "ǘ", "ǚ", "ǜ" };
     TextView[] tvCharArray;
+    private static final int REQUEST_CODE_SEARCH = 1099;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -157,6 +162,111 @@ public class GameActivity extends MyBaseActivity
         tvAnswer.setTag(R.string.tag_answer_tone, "0");
     }
 
+    public void onSpeakClick(View view)
+    {
+        if (!checkIsInstall() || mTts == null)
+        {
+            return;
+        }
+
+        if (DataUtil.getInfoFromShared(this, "is_show_input_dialog_tip") == 0)
+        {
+            Dialog alertDialog = new AlertDialog.Builder(this).setTitle("使用说明")
+                    .setMessage("例如 “达人” 词语，需要输入“达”字的拼音\n"
+                            + "您可以使用语音输入读出\n"
+                            + "“达人的达”\n"
+                            + "或者直接读出 “达”\n"
+                            + "只要读音相同，就能回答正确。")
+                    .setIcon(R.drawable.ic_launcher)
+                    .setPositiveButton(android.R.string.ok,
+                            new DialogInterface.OnClickListener()
+                            {
+                                @Override public void onClick(
+                                        DialogInterface dialog, int which)
+                                {
+                                    dialog.dismiss();
+                                    showInputDialog();
+                                }
+                            }
+                    )
+                    .setNegativeButton("不再提示",
+                            new DialogInterface.OnClickListener()
+                            {
+                                @Override public void onClick(
+                                        DialogInterface dialog, int which)
+                                {
+                                    DataUtil.setInfoToShared(GameActivity.this,
+                                            "is_show_input_dialog_tip", 1);
+                                    dialog.dismiss();
+                                    showInputDialog();
+                                }
+                            })
+                    .create();
+            alertDialog.show();
+        }
+        else
+        {
+            showInputDialog();
+        }
+    }
+
+    private void showInputDialog()
+    {
+        Intent intent = new Intent();
+        // 指定action名字
+        intent.setAction("com.iflytek.speech.action.voiceinput");
+        intent.putExtra(SpeechConstant.PARAMS, "asr_ptt=0");
+        intent.putExtra(SpeechConstant.VAD_EOS, "1000");
+        // 设置弹出框的两个按钮名称
+        intent.putExtra("title_done", "确定");
+        intent.putExtra("title_cancel", "取消");
+        startActivityForResult(intent, REQUEST_CODE_SEARCH);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,
+            Intent data)
+    {
+        if (requestCode == REQUEST_CODE_SEARCH && resultCode == RESULT_OK)
+        {
+            // 取得识别的字符串
+
+            ArrayList<String> results = data.getStringArrayListExtra(
+                    RecognizerIntent.EXTRA_RESULTS);
+            if (results.size() == 0)
+            {
+                Toast.makeText(this, "未能识别成功", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String res = results.get(0);
+            char c = res.charAt(res.length() - 1);
+            for (int i = res.length() - 1; i > 0; i--)
+            {
+                c = res.charAt(i);
+                if (Character.isLetter(c))
+                {
+                    break;
+                }
+            }
+
+            String[] pinyinArray = PinyinHelper.toHanyuPinyinStringArray(c);
+            if (pinyinArray.length == 0)
+            {
+                Toast.makeText(this, "未能识别成功", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            String result = pinyinArray[0];
+            String pinyin = result.substring(0, result.length() - 1);
+            String tone = result.substring(result.length() - 1);
+            tone = tone == "5" ? "0" : tone;
+            tvAnswer.setTag(R.string.tag_answer_word, pinyin);
+            tvAnswer.setTag(R.string.tag_answer_tone, tone);
+            tvAnswer.setText(makeTone(pinyin, Integer.valueOf(tone)));
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
     public void onOKClick(View view)
     {
         MobclickAgent.onEvent(this, "100");
@@ -248,7 +358,8 @@ public class GameActivity extends MyBaseActivity
             if (iIndex > uIndex)
             {
                 word = word.replace(UTone[tone], UTone[0]);
-            }else
+            }
+            else
             {
                 word = word.replace(ITone[tone], ITone[0]);
             }
@@ -383,7 +494,6 @@ public class GameActivity extends MyBaseActivity
      */
     private InitListener mTtsInitListener = new InitListener()
     {
-
         @Override
         public void onInit(ISpeechModule arg0, int code)
         {
@@ -476,32 +586,32 @@ public class GameActivity extends MyBaseActivity
 
     public void payWenzibi(View view)
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("文字币获取方式");
-        builder.setItems(new String[] { "免费文字币", "购买文字币" },
-                new DialogInterface.OnClickListener()
-                {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which)
-                    {
-                        switch (which)
-                        {
-                        case 0:
-                            //AppConnect.getInstance(MainActivity.this)
-                            //        .showOffers(MainActivity.this);
-                            break;
-                        case 1:
-                            //Intent intent = new Intent(MainActivity.this,
-                            //        PayWenZiBiActivity.class);
-                            //MainActivity.this.startActivity(intent);
-                            break;
-                        }
-                    }
-                }
-        );
-        builder.setNegativeButton("取消", null);
-        AlertDialog dialog = builder.create();
-        dialog.setCanceledOnTouchOutside(true);
-        dialog.show();
+        //AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        //builder.setTitle("文字币获取方式");
+        //builder.setItems(new String[] { "免费文字币", "购买文字币" },
+        //        new DialogInterface.OnClickListener()
+        //        {
+        //            @Override
+        //            public void onClick(DialogInterface dialog, int which)
+        //            {
+        //                switch (which)
+        //                {
+        //                case 0:
+        //                    //AppConnect.getInstance(MainActivity.this)
+        //                    //        .showOffers(MainActivity.this);
+        //                    break;
+        //                case 1:
+        //                    //Intent intent = new Intent(MainActivity.this,
+        //                    //        PayWenZiBiActivity.class);
+        //                    //MainActivity.this.startActivity(intent);
+        //                    break;
+        //                }
+        //            }
+        //        }
+        //);
+        //builder.setNegativeButton("取消", null);
+        //AlertDialog dialog = builder.create();
+        //dialog.setCanceledOnTouchOutside(true);
+        //dialog.show();
     }
 }

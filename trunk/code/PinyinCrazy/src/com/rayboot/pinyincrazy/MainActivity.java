@@ -1,18 +1,14 @@
 package com.rayboot.pinyincrazy;
 
-import android.widget.ListView;
-import android.widget.Toast;
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.ListView;
+import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-
 import com.haarman.listviewanimations.swinginadapters.AnimationAdapter;
 import com.haarman.listviewanimations.swinginadapters.prepared.SwingLeftInAnimationAdapter;
 import com.iflytek.speech.SpeechUtility;
@@ -25,6 +21,8 @@ import com.umeng.fb.FeedbackAgent;
 import com.umeng.update.UmengUpdateAgent;
 import com.umeng.update.UmengUpdateListener;
 import com.umeng.update.UpdateResponse;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends MyBaseActivity {
 	@InjectView(R.id.lvMain) ListView lvMain;
@@ -56,7 +54,6 @@ public class MainActivity extends MyBaseActivity {
 				getString(R.string.iflytek_app_id));
 		initUMeng();
 		DataUtil.changeCoin(this, 1);
-		
 	}
 	private void initUMeng() {
 		MobclickAgent.setDebugMode(false);

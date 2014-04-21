@@ -10,8 +10,8 @@
         android:id="@+id/rlMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginTop="7dp"
         android:layout_marginBottom="7dp"
         android:background="@drawable/btn_1_selector">
