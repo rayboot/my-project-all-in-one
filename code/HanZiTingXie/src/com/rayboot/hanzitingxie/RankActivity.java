@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import com.actionbarsherlock.view.MenuItem;
+import com.rayboot.hanzitingxie.adapter.MyBaseAdapter;
+import com.rayboot.hanzitingxie.adapter.RankAdapter;
 import com.rayboot.hanzitingxie.obj.WordData;
 
 public class RankActivity extends MyBaseActivity {

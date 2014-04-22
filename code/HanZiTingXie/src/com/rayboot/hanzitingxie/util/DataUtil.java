@@ -80,20 +80,6 @@ public class DataUtil {
 			}
 			ActiveAndroid.setTransactionSuccessful();
 
-			// List<WordData> datas = WordData.getAllDatas();
-			// StringBuffer data = new StringBuffer();
-			// data.append("[");
-			// for (WordData wordData : datas) {
-			// data.append("{");
-			// data.append("\"title\": \"" + wordData.title + "\",");
-			// data.append("\"pinyin\": \"" + wordData.pinyin + "\",");
-			// data.append("\"url\": \"" + wordData.url + "\"");
-			// data.append("},");
-			// }
-			// data.append("]");
-			// new FileUtils().write2SDFromString("/", "data.json",
-			// data.toString());
-			// Log.i("11111111111111", data.toString());
 		} finally {
 			ActiveAndroid.endTransaction();
 		}

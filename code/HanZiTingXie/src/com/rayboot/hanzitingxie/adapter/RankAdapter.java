@@ -1,5 +1,7 @@
-package com.rayboot.hanzitingxie;
+package com.rayboot.hanzitingxie.adapter;
 
+import com.rayboot.hanzitingxie.R;
+import com.rayboot.hanzitingxie.adapter.MyBaseAdapter;
 import java.util.List;
 
 import android.content.Context;
@@ -9,7 +11,8 @@ import android.widget.TextView;
 
 import com.rayboot.hanzitingxie.obj.WordData;
 
-public class RankAdapter<T> extends MyBaseAdapter<T> {
+public class RankAdapter<T> extends MyBaseAdapter<T>
+{
 
 	public RankAdapter(Context context, List<T> datas) {
 		super(context, datas);

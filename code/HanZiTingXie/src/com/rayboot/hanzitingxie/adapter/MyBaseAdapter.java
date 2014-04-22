@@ -1,4 +1,4 @@
-package com.rayboot.hanzitingxie;
+package com.rayboot.hanzitingxie.adapter;
 
 import java.util.List;
 

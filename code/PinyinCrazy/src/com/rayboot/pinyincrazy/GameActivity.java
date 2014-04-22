@@ -583,35 +583,4 @@ public class GameActivity extends MyBaseActivity
                 " " + DataUtil.getInfoFromShared(this, "pinyin_coin"));
         return res;
     }
-
-    public void payWenzibi(View view)
-    {
-        //AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        //builder.setTitle("文字币获取方式");
-        //builder.setItems(new String[] { "免费文字币", "购买文字币" },
-        //        new DialogInterface.OnClickListener()
-        //        {
-        //            @Override
-        //            public void onClick(DialogInterface dialog, int which)
-        //            {
-        //                switch (which)
-        //                {
-        //                case 0:
-        //                    //AppConnect.getInstance(MainActivity.this)
-        //                    //        .showOffers(MainActivity.this);
-        //                    break;
-        //                case 1:
-        //                    //Intent intent = new Intent(MainActivity.this,
-        //                    //        PayWenZiBiActivity.class);
-        //                    //MainActivity.this.startActivity(intent);
-        //                    break;
-        //                }
-        //            }
-        //        }
-        //);
-        //builder.setNegativeButton("取消", null);
-        //AlertDialog dialog = builder.create();
-        //dialog.setCanceledOnTouchOutside(true);
-        //dialog.show();
-    }
 }

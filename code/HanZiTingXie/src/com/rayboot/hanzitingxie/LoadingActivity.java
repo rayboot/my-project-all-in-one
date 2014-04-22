@@ -95,7 +95,7 @@ public class LoadingActivity extends MyBaseActivity {
 		if (!isDelay || !isUpdateDB) {
 			return;
 		}
-		Intent intent = new Intent(LoadingActivity.this, JumpActivity.class);
+		Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
 		LoadingActivity.this.startActivity(intent);
 	}
 

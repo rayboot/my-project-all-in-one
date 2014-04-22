@@ -1,5 +1,6 @@
-package com.rayboot.hanzitingxie;
+package com.rayboot.hanzitingxie.adapter;
 
+import com.rayboot.hanzitingxie.R;
 import java.util.List;
 
 import android.content.Context;
@@ -7,7 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class ModeAdapter<T> extends MyBaseAdapter<T> {
+public class ModeAdapter<T> extends MyBaseAdapter<T>
+{
 
 	public ModeAdapter(Context context, List<T> datas) {
 		super(context, datas);
