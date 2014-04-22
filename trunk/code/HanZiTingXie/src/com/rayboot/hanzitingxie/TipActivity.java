@@ -1,6 +1,5 @@
 package com.rayboot.hanzitingxie;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -11,9 +10,7 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 import cn.waps.AppConnect;
 import com.actionbarsherlock.view.MenuItem;
-import com.actionbarsherlock.view.Window;
 import com.rayboot.hanzitingxie.util.DataUtil;
-import java.util.Random;
 
 public class TipActivity extends MyBaseActivity
 {
@@ -92,25 +89,15 @@ public class TipActivity extends MyBaseActivity
         });
         mWebView.setWebChromeClient(new WebChromeClient()
         {
-
             @Override
             public void onProgressChanged(WebView view, int newProgress)
             {
                 // TODO Auto-generated method stub
                 super.onProgressChanged(view, newProgress);
-                if (newProgress >= 100)
-                {
-                    //					Dialog popAdDialog = AppConnect.getInstance(
-                    //							TipActivity.this).getPopAdDialog();
-                    //					if (popAdDialog != null) {
-                    //						popAdDialog.dismiss();
-                    //					}
-                    mWebView.setVisibility(View.VISIBLE);
-                }
+                mWebView.setVisibility(
+                        newProgress >= 100 ? View.VISIBLE : View.GONE);
             }
         });
-        // HtmlParser parser = new HtmlParser(mWebView, url, title, this);
-        // parser.execute((Void) null);
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event)

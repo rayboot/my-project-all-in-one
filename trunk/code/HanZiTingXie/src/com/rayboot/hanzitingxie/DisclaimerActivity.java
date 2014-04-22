@@ -25,7 +25,6 @@ public class DisclaimerActivity extends MyBaseActivity
     public boolean onOptionsItemSelected(MenuItem item)
     {
         // TODO Auto-generated method stub
-        int ids = item.getItemId();
         switch (item.getItemId())
         {
         case android.R.id.home:

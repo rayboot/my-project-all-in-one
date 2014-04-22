@@ -15,22 +15,21 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:clickable="true"
-        android:onClick="payWenzibi"
         android:background="@drawable/selector_cus_view_main_bg"
         android:layout_centerVertical="true">
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/imageButton"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_add"
-            android:background="@drawable/selector_cus_view_btn_bg"
-            android:cropToPadding="false"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp" />
+        <!--<ImageButton-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:id="@+id/imageButton"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:src="@drawable/ic_add"-->
+            <!--android:background="@drawable/selector_cus_view_btn_bg"-->
+            <!--android:cropToPadding="false"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:paddingTop="5dp"-->
+            <!--android:paddingBottom="5dp" />-->
 
         <ImageView
             android:layout_width="wrap_content"

@@ -4,16 +4,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.RemoteException;
-import android.view.View;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
-import android.widget.Toast;
 import com.actionbarsherlock.view.MenuItem;
 import com.iflytek.speech.SpeechConstant;
 import com.iflytek.speech.SpeechSynthesizer;
 import com.iflytek.speech.SpeechUtility;
 import com.iflytek.speech.SynthesizerListener;
-import com.rayboot.hanzitingxie.obj.WordData;
 import com.rayboot.hanzitingxie.util.ApkInstaller;
 import com.rayboot.hanzitingxie.util.DataUtil;
 
@@ -59,12 +56,6 @@ public class SettingsActivity extends MyBaseActivity
                         {
                             String url = SpeechUtility.getUtility(
                                     SettingsActivity.this).getComponentUrl();
-                            String assetsApk = "SpeechService.apk";
-                            //							if (!ApkInstaller.installFromAssets(
-                            //									SettingsActivity.this, assetsApk)) {
-                            //								Toast.makeText(SettingsActivity.this, "安装失败",
-                            //										Toast.LENGTH_SHORT).show();
-                            //							}
                             ApkInstaller.openDownloadWeb(SettingsActivity.this,
                                     url);
                         }
@@ -198,20 +189,4 @@ public class SettingsActivity extends MyBaseActivity
         }
         return super.onOptionsItemSelected(item);
     }
-
-    //public void onExport(View view)
-    //{
-    //    if (WordData.getChuangGuanRandomData() != null)
-    //    {
-    //        Toast.makeText(this, "您还未通关，不能导入自定义词语", Toast.LENGTH_SHORT).show();
-    //        return;
-    //    }
-    //    int wenzibi = DataUtil.getInfoFromShared(this, "wenzibi");
-    //    if (wenzibi < 200)
-    //    {
-    //        Toast.makeText(this, "文字币至少需要200，才能导入自定义词语", Toast.LENGTH_SHORT)
-    //                .show();
-    //        return;
-    //    }
-    //}
 }
